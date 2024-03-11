@@ -1,6 +1,6 @@
 ---
 title: "the Internet Is American"
-layout: post
+layout: "post"
 ---
 
 this statement frequently comes up as a given; and for good reasons too!
