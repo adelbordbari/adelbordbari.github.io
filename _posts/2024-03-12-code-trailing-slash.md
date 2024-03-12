@@ -130,10 +130,10 @@ path("one/two/check-password", CheckPasswordView.as_view(), name="login"),
 4. by default URLs without the trailing slash are redirected to the URL with the trailing slash
 5. during this redirection (from `/path` to `/path/`), the data of the POST request is lost
 
-[^1]: https://www.django-rest-framework.org
-[^2]: https://en.wikipedia.org/wiki/One-time_password
-[^3]: https://www.django-rest-framework.org/topics/browsable-api
-[^4]: https://stackoverflow.com/questions/1596552/django-urls-without-a-trailing-slash-do-not-redirect
-[^5]: https://searchfacts.com/url-trailing-slash/
-[^6]: https://stackoverflow.com/questions/30580562/what-is-the-difference-between-resource-and-endpoint
-[^7]: https://stackoverflow.com/questions/45784191/django-is-append-slash-set-to-true-even-if-not-in-settings-py
+[^1]: [Django rest framework](https://www.django-rest-framework.org)
+[^2]: [OTP](https://en.wikipedia.org/wiki/One-time_password)
+[^3]: [Browsable API](https://www.django-rest-framework.org/topics/browsable-api)
+[^4]: [https://stackoverflow.com/questions/1596552/django-urls-without-a-trailing-slash-do-not-redirect](https://stackoverflow.com/questions/1596552/django-urls-without-a-trailing-slash-do-not-redirect)
+[^5]: [Trailing Slash](https://searchfacts.com/url-trailing-slash/)
+[^6]: [https://stackoverflow.com/questions/30580562/what-is-the-difference-between-resource-and-endpoint](https://stackoverflow.com/questions/30580562/what-is-the-difference-between-resource-and-endpoint)
+[^7]: [https://stackoverflow.com/questions/45784191/django-is-append-slash-set-to-true-even-if-not-in-settings-py](https://stackoverflow.com/questions/45784191/django-is-append-slash-set-to-true-even-if-not-in-settings-py)
