@@ -11,6 +11,8 @@ layout: "post"
 - [Solution](#Solution)
 - [References](#References)
 
+---
+
 ## Situation
 I have two endpoints in the Django rest framework[^1] that do almost the same thing. check if a user's credentials are correct. the difference is that one of them works with the typical username/password pair, but the other one checks the validity of the OTP code[^2]. the code for both functions looks pretty similar except the validation part.
 
