@@ -4,7 +4,7 @@ layout: "post"
 ---
 
 ## Table of Contents
-1. [What is this?](#What-is-this?)
+1. [What is this?](#what-is-this?)
 2. [Disclamier](#disclamier)
 3. [Glossary](#glossary)
 
