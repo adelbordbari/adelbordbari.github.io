@@ -29,14 +29,21 @@ In order to have sophisticated conversations, understandings, and thoughts, we n
 
 This is very crucial in writing and often goes overlooked. when thinking in our head we don't need to explain every word to ourselves, because we simply know what we're talking about! however, it's very different in writing or even conversations (that include more than one person) because there must be a mutual understanding. not only we're transferring the message itself, but we're also transferring all the related metadata of the message. metadata can include tone, manner, timing, or accent. you can use the kindest of words with intonations that make them sound brutally rude, and vice versa. the message is received consciously and the metadata unconsciously. you hear words but "sense" the intonation.
 
-Our lives define the language we use, and the language we use alters our lives too. it's affected by our geography, era of time, social circle, family class, and later our own attempts to educate ourselves. moreover, it impacts on what people you attract, how socially acceptable you are, how well others can understand you, how you place yourself in your social class, and many more.
+Our lives define the language we use, and the language we use alters our lives too. it's affected by our geography, era of time, social circle, family class, and later our own attempts to educate ourselves. moreover, it impacts what people you attract, how socially acceptable you are, how well others can understand you, how you place yourself in your social class, and many more.
 
 Its deficiencies are also very complicated since they can result from a problem in several faculties: physical, neurological, hereditary, or even psychological. sometimes it has more than one reasons, which result in more complex situations like [Mixed receptive expressive language disorder](https://en.wikipedia.org/wiki/Mixed_receptive-expressive_language_disorder). this is to say that many forces are at work when we speak, many of which we are not even aware of.
 
-To wrap up, for me, language is a layer of abstraction on top of our perception of the reality of life.
+To wrap up, for me, language is a layer of abstraction on top of our perception of the reality of life which has the ability to slightly alter that perception too.
 
-## Sources
+## How Language Shapes The Brain
+Aside from the obvious effects like communication and memorizing skills, it connects dots in our brains that were not previously connected or even present.
+Different languages require us to remodel our brains to fit into that method of expressing the world. some languages are more literal, and some use more figures of speech. the interesting point here is that language itself is also very alive (at least, until it's not anymore), so this relationship between language and the human brain works in both ways, they constantly reshape each other: on a personal scale and the social scale.
+Here I like to address two ideas more explicitly. first is the case for the English language. English is everywhere, it's spoken by billions daily, in all forms (speech, written, academic, poetic, humorous, etc.). thus it needs to be very flexible, even to an annoying degree where you can't tell what English is, or what is English. there are two reasons behind this:
+1. it has to be leveled down so it can be easily used by the billions. it has to include everything they have in common, the intersection of all its speakers. if I make a tutorial on web development, I have to be aware of the words I use so that people with different dialects and levels of English proficiency can understand me. if I use a word that's too precise and accurate (e.g., "subconsciously") for this context and audience, I'm taking the risk of being misunderstood.
+2. while maintaining the first item, it has the include the outliers too. in the tutorial example, I should be also able to speak to "only experienced web developers" or "only my constant subscribers" too. I should have sets of words and structures that have individual meanings based on who I'm addressing.
+
+Basically, you shouldn't have problems telling children stories today, and the day after write research papers using the same language. that of course, depends on your skills too. the process of your brain being "reshaped" by the language has to be mature enough so you have all the tools you need, to be as descriptive as you intend to be.
+
+This article is a good read on the subject: [How learning a new language changes your brain](https://www.cambridge.org/elt/blog/2022/04/29/learning-language-changes-your-brain/)
+
 [^1]: McLaughlin, T. & Lentricchia, F. (1990). Critical Terms for Literary Study. Chicago: The University of Chicago press
-
-## backyard
-- https://www.cambridge.org/elt/blog/2022/04/29/learning-language-changes-your-brain/
