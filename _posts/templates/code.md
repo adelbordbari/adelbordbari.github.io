@@ -9,6 +9,7 @@ layout: "post"
 3. [Problem](#Problem)
 4. [Investigation](#Investigation)
 5. [Solution](#Solution)
+6. [References](#References)
 
 ## Situation
 this is what I'm generally doing
@@ -30,4 +31,5 @@ I did this to solve the problem
 1. some
 2. things
 
+## References
 [^1]: https://www.footnotes
