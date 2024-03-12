@@ -3,6 +3,11 @@ title: "meta/ Glossary"
 layout: "post"
 ---
 
+## Table of Contents
+1. [What is this?](#What-is-this?)
+2. [Disclamier](#disclamier)
+3. [Glossary](#glossary)
+
 ## What is this?
 I have a particular interest in languages, words, philology, etymology, and philosophy. that is to say, things might get messy. to avoid misunderstandings and for future reference, I decided to collect all the **personal** terms that I use (or personal interpretations of them) in one place so that I can later link those words from articles to their section in this post.
 Language is internalized in many scales; a country can have a certain accent, e.g., Australian English; while also you and your wife could have a memory attached to a certain word which changes your usage and perception of that word.
@@ -14,8 +19,6 @@ A definition is (by definition!) an explanation of the word that's both _necessa
 1. **necessary**: what is needed for X to be X. e.g., you need to have married in order to be a married person. however, you can be somebody who has married but is not a married person: a widow. it is needed but it's not enough.
 2. **sufficient**: something that's enough for X to be X. e.g., it's enough for a "professional photographer" to earn money with photography.
 Overall, my attempt here is the include all Xs and exclude all non-Xs.
-
-***
 
 ## Glossary
 Every word comes with its definition and below that a more lengthy and personal interpretation of it.
