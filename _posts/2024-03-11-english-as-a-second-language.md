@@ -3,6 +3,13 @@ title: "English As A Second Language"
 layout: "post"
 ---
 
+## Table of Contents
+- [Introduction](#Introduction)
+  - [Why English](#Why English)
+- [The Learning of A Language](#The Learning of A Language)
+
+---
+
 ## Introduction
 It's obvious why knowing English is crucial in today's world. moreover, the learning process of a second(or more!) language is rewarding on its own. I'll explain both separately:
 
