@@ -1,5 +1,5 @@
 ---
-title: "meta/ Glossary"
+title: "meta | Glossary"
 layout: "post"
 ---
 
