@@ -23,7 +23,7 @@ As I said before, I see language as a very crucial and philosophical aspect of m
 
 However, a baby can not cry in more than a handful of tones. I reckon that he doesn't need to either, but an adult does. the older we grow, the more complicated our lives become; so we need more complex symbols to convey those ideas and thoughts too.
 > Man, for many philosophers both ancient and modern, is the "representational animal," homo symbolicum [sic], the creature whose distinctive character is the creation and manipulation of signs - things that stand for or take the place of something else.[^1]
-> from "An Essay on Man" by [W. J. T. Mitchell](https://en.wikipedia.org/wiki/W._J._T._Mitchell)
+_from "An Essay on Man" by [W. J. T. Mitchell](https://en.wikipedia.org/wiki/W._J._T._Mitchell)_
 
 In order to have sophisticated conversations, understandings, and thoughts, we need equally sophisticated symbols, vocabulary, and articulation. the trick here is to not get lost in translation, and to stay loyal to the pure idea as much as possible. you have two variables at hand: first is how important this information is to you, and second is how much boredom you're willing to go through in order to understand the message. this is why (serious) philosophical essays are often long, boring, and tedious because every piece of jargon must be come to terms with, between the author and the audience. you write "_I had a hard time working with X_", first both sides need to agree on what use of language this is. it should be agreed upon as consciously as possible. next to be on the same page about every word in use. Heidegger is famous for making up his own words, he's hard to read but the same fact makes him one of the most precise writers of his age.
 
