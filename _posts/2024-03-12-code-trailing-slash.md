@@ -27,12 +27,10 @@ class CheckPasswordView(APIView):
                 return Response(
                     {"error": "user not found"}, status=status.HTTP_404_NOT_FOUND
                 )
-			"""
-			the code is the same for both so far
-			the next section, however, is a bit different for OTP
-			where it checks both the token and the expiration date
-			and also returns the status for valid, expired, or incorrect tokens
-			"""
+			# the code is the same for both so far
+			# the next section, however, is a bit different for OTP
+			# where it checks both the token and the expiration date
+			# and also returns the status for valid, expired, or incorrect tokens			
             if not user.check_password(password):
                 return Response(
                     {"error": "password is incorrect"},
