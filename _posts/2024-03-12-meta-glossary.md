@@ -15,6 +15,8 @@ A definition is (by definition!) an explanation of the word that's both _necessa
 2. **sufficient**: something that's enough for X to be X. e.g., it's enough for a "professional photographer" to earn money with photography.
 Overall, my attempt here is the include all Xs and exclude all non-Xs.
 
+***
+
 ## Glossary
 Every word comes with its definition and below that a more lengthy and personal interpretation of it.
 
@@ -23,6 +25,8 @@ Every word comes with its definition and below that a more lengthy and personal 
 A model, standard, or outline to follow or adapt
 #### interpretation
 A boilerplate structure that's later going to be instantiated and used multiple times. it is what all of its derivatives have in common. e.g., all of the words that I will mention in this file will have a title, a formal common definition, and a personal interpretation.
+
+---
 
 ### Human
 #### definition
