@@ -4,11 +4,11 @@ layout: "post"
 ---
 
 ## Table of Contents
-- [Introduction](##Introduction)
-  - [Why English](###Why-English)
-- [The Learning of A Language](##The-Learning-of-A-Language)
-  - [My Challenges](###My-Challenges)
-- [How Language Shapes The Brain](##How-Language-Shapes-The-Brain)
+- [Introduction](#introduction)
+  - [Why English](#why-english)
+- [The Learning of A Language](#the-learning-of-a-language)
+  - [My Challenges](#my-Challenges)
+- [How Language Shapes The Brain](#how-language-shapes-the-brain)
 
 ---
 
