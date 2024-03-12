@@ -1,5 +1,5 @@
 ---
-title: "code/django | Trailing Slash"
+title: "code | Trailing Slash"
 layout: "post"
 ---
 
