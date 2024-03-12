@@ -10,11 +10,14 @@ layout: "post"
 
 ## What is this?
 I have a particular interest in languages, words, philology, etymology, and philosophy. that is to say, things might get messy. to avoid misunderstandings and for future reference, I decided to collect all the **personal** terms that I use (or personal interpretations of them) in one place so that I can later link those words from articles to their section in this post.
+
 Language is internalized in many scales; a country can have a certain accent, e.g., Australian English; while also you and your wife could have a memory attached to a certain word which changes your usage and perception of that word.
+
 Words are tools that we use to exchange imagined ideas but it also matters to take into account what "game of exchange" we're playing with our audience. "_you'll nail your exam next time_" isn't gonna guarantee an A+ for your son's next week quiz, but it's gonna help him calm down and regain his confidence once again. we humans talk figuratively, informatively, poetically, literally, sympathetically, and in many more manners. it's not always easy to distinguish which game is currently at play, but let's try.
 
 ## Disclamier
 English is not my first language. I do try to be as concise, coherent, and appropriate in my use of language; nevertheless, I'm prone to all sorts of mistakes. if you feel like something in here offends, enrages, or hurts you, please double-check and make sure it's not only a slip of the tongue. not to mention that if your case is beyond the challenges of our language barrier, feel free to drop me an email and we'll have a chat.
+
 A definition is (by definition!) an explanation of the word that's both _necessary_ and _sufficient_ for that word to be itself. that is:
 1. **necessary**: what is needed for X to be X. e.g., you need to have married in order to be a married person. however, you can be somebody who has married but is not a married person: a widow. it is needed but it's not enough.
 2. **sufficient**: something that's enough for X to be X. e.g., it's enough for a "professional photographer" to earn money with photography.
