@@ -5,9 +5,9 @@ layout: "post"
 
 ## Table of Contents
 - [Introduction](#introduction)
-  - [Why English](#why-english)
+- [Why English](#why-english)
 - [The Learning of A Language](#the-learning-of-a-language)
-  - [My Challenges](#my-Challenges)
+- [My Challenges](#my-challenges)
 - [How Language Shapes The Brain](#how-language-shapes-the-brain)
 
 ---
@@ -15,18 +15,22 @@ layout: "post"
 ## Introduction
 It's obvious why knowing English is crucial in today's world. moreover, the learning process of a second(or more!) language is rewarding on its own. I'll explain both separately:
 
-### Why English
+---
+
+## Why English
 The short answer is that because [the internet is American](/the-internet-is-american/). all the apps you use, the lines of code you write, and the pages of documentation you read (namely, this article) are in English. for somebody without a minimum fluency in English, it's inevitable to not feel left out, outdated, or even unfitting at some point; at least in their digital life.
 
 What's really interesting in this situation is that before that point of realization, the person might just not notice the feeling of being left out. they might not notice how much is being overlooked. they just get along with it, never having bothered (or been forced) to try. that is because we humans[^2] are very good at adapting to our surroundings. as any discovery needs a motivation: either a pulling welcome from the outside or a pushing exile from the inside. mine was the latter, and in an indirect manner by my parents because I was too young to experience either.
 
-### The Learning of A Language
+---
+
+## The Learning of A Language
 As I said before, I see language as a very crucial and philosophical aspect of my life. I take extra care when choosing words, phrases, and even tones. it's a very impulsive and instinctual skill, but the goal is to stay as conscious as possible about it. some of it is deep inside us, that's how parents can understand what their child needs by hearing the sound of the baby's crying. there's a more fundamental force at work here than the very abstract, symbolic tool we call language.
 
 However, a baby can not cry in more than a handful of tones. I reckon that he doesn't need to either, but an adult does. the older we grow, the more complicated our lives become; so we need more complex symbols to convey those ideas and thoughts too.
 
 > Man, for many philosophers both ancient and modern, is the "representational animal," homo symbolicum [sic], the creature whose distinctive character is the creation and manipulation of signs - things that stand for or take the place of something else.[^1]  
-> _from "An Essay on Man" by [W. J. T. Mitchell](https://en.wikipedia.org/wiki/W._J._T._Mitchell)_
+> -- _from "An Essay on Man" by [W. J. T. Mitchell](https://en.wikipedia.org/wiki/W._J._T._Mitchell)_
 
 In order to have sophisticated conversations, understandings, and thoughts, we need equally sophisticated symbols, vocabulary, and articulation. the trick here is to not get lost in translation, and to stay loyal to the pure idea as much as possible. you have two variables at hand: first is how important this information is to you, and second is how much boredom you're willing to go through in order to understand the message. this is why (serious) philosophical essays are often long, boring, and tedious because every piece of jargon must be come to terms with, between the author and the audience. you write "_I had a hard time working with X_", first both sides need to agree on what use of language this is. it should be agreed upon as consciously as possible. next to be on the same page about every word in use. Heidegger is famous for making up his own words, he's hard to read but the same fact makes him one of the most precise writers of his age.
 
@@ -38,12 +42,16 @@ Its deficiencies are also very complicated since they can result from a problem 
 
 To wrap up, for me, language is a layer of abstraction on top of our perception of the reality of life which has the ability to slightly alter that perception too.
 
-### My Challenges
+---
+
+## My Challenges
 My mother language is Farsi and I started learning English as a second language when I was 10 years old. I didn't go to preschool or anything like that, so I naturally started to learn things in a more irregular manner than others. I didn't learn anything new in the first grade. second grade was also not very new, and only in third grade, I started to realize that I needed to try to learn, and the materials weren't what I already knew anymore. I could read English letters and some basic words back then too, but I officially started (forcefully, that is) to learn English academically. I attended institutions for 8 years until my school was finished. to my (parents') regret, I didn't ever finish my education, I skipped the final few semesters because I moved away to another city. I don't have a degree for it, which is (or at least was, back then) a big deal here.
 
 I was consumed by the language. I used to spend hours and hours on the internet, therefore I was unwillingly (and even unknowingly) Americanized. Wikipedia, Google Maps, and various blogs were my digital home for years and to a great extent, still are! I was unaware of the greater impact this could have on my upbringing. I laughed at things that didn't sound funny to my peers, on the other hand, the jokes that I heard on the street all seemed dull and irrelevant to me. the problem still persists, I usually need to ask for the "reference" or the reason of jokes being funny. I believe humor is a very important part of language too. it's a useful tool to compare different languages, or how one language has changed over time. e.g., why is [the first bar joke](https://en.wikipedia.org/wiki/Bar_joke#First_recorded_example) not funny anymore?
 
 My biggest problem right now is finding the right words when speaking, and funnily enough this is more of a problem in my mother tongue. many times I find myself struggling to translate the English word that I have in mind, to Farsi -the language I'm speaking. the result is often a very uncommon word, but it's okay for me since I'm willing to sacrifice sounding complicated for a better understanding of what I'm trying to say. this, however, comes with the risk of being perceived as pretentious or geeky.
+
+---
 
 ## How Language Shapes The Brain
 Aside from the obvious effects like communication and memorizing skills, it connects dots in our brains that were not previously connected or even present.
@@ -55,6 +63,8 @@ Here I like to address two ideas more explicitly. first is the case for the Engl
 Basically, you shouldn't have problems telling children stories today, and the day after write research papers using the same language. that of course, depends on your skills too. the process of your brain being "reshaped" by the language has to be mature enough so you have all the tools you need, to be as descriptive as you intend to be.
 
 This article is a good read on the subject: [How learning a new language changes your brain](https://www.cambridge.org/elt/blog/2022/04/29/learning-language-changes-your-brain/)
+
+---
 
 ## Citations
 [^1]: McLaughlin, T. & Lentricchia, F. (1990). Critical Terms for Literary Study. Chicago: The University of Chicago press
