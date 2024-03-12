@@ -40,7 +40,8 @@ You called this URL via POST, but the URL doesn&#x27;t end in a slash and you ha
 			<td>Tue, 12 Mar 2024 05:36:40 +0000</td>
 		</tr>
 	</table>
-</div>```
+</div>
+```
 
 ## Solution
 
