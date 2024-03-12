@@ -4,12 +4,12 @@ layout: "post"
 ---
 
 ## Table of Contents
-1. [Situation](#Situation)
-2. [Expectation](#Expectation)
-3. [Problem](#Problem)
-4. [Investigation](#Investigation)
-5. [Solution](#Solution)
-6. [References](#References)
+- [Situation](#Situation)
+- [Expectation](#Expectation)
+- [Problem](#Problem)
+- [Investigation](#Investigation)
+- [Solution](#Solution)
+- [References](#References)
 
 ## Situation
 this is what I'm generally doing
