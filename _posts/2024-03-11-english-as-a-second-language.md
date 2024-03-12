@@ -13,7 +13,7 @@ layout: "post"
 ---
 
 ## Introduction
-It's obvious why knowing English is crucial in today's world. moreover, the learning process of a second(or more!) language is rewarding on its own. I'll explain both separately:
+It's obvious why knowing English is crucial in today's world. moreover, the learning process of a second (or more!) language is rewarding on its own. I'll explain both separately:
 
 ---
 
