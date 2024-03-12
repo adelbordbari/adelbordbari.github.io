@@ -1,5 +1,18 @@
 <header>
-  <h1>{{ include.post.title }}</h1>
+  <h1 class="page-title">{{ include.post.title }}</h1>
   {%- assign date_format = site.date_format | default: "%B %d, %Y" -%}
   <time datetime="{{ include.post.date | date_to_xmlschema }}">{{ include.post.date | date: date_format }}</time>
 </header>
+
+<style>
+  .page-title {
+    background-color: #ff0f7b;
+    background-image: linear-gradient(45deg, #ff0f7b, #f89b29);
+    background-size: 100%;
+    background-repeat: repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
+  }
+</style>
