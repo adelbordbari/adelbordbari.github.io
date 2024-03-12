@@ -5,8 +5,8 @@ layout: "post"
 
 ## Table of Contents
 - [Introduction](#Introduction)
-  - [Why English](#Why English)
-- [The Learning of A Language](#The Learning of A Language)
+  - [Why English](#Why-English)
+- [The Learning of A Language](#The-Learning-of-A-Language)
 
 ---
 
@@ -21,7 +21,9 @@ What's really interesting in this situation is that before that point of realiza
 ### The Learning of A Language
 As I said before, I see language as a very crucial and philosophical aspect of my life. I take extra care when choosing words, phrases, and even tones. it's a very impulsive and instinctual skill, but the goal is to stay as conscious as possible about it. some of it is deep inside us, that's how parents can understand what their child needs by hearing the sound of the baby's crying. there's a more fundamental force at work here than the very abstract, symbolic tool we call language.
 
-However, a baby can not cry in more than a handful of tones. I reckon that it doesn't need to either, but an adult does. the older we grow, the more complicated our lives become; so we need more complex symbols to convey those ideas and thoughts too. w
+However, a baby can not cry in more than a handful of tones. I reckon that he doesn't need to either, but an adult does. the older we grow, the more complicated our lives become; so we need more complex symbols to convey those ideas and thoughts too.
+> Man, for many philosophers both ancient and modern, is the "representational animal," homo symbolicum [sic], the creature whose distinctive character is the creation and manipulation of signs - things that stand for or take the place of something else.[^1]
+> from "An Essay on Man" by [W. J. T. Mitchell](https://en.wikipedia.org/wiki/W._J._T._Mitchell)
 
 ## no preschool
 ## let's go paluj
@@ -35,4 +37,7 @@ However, a baby can not cry in more than a handful of tones. I reckon that it do
 ## current state
 
 ## Sources
-[1^]: https://www.cambridge.org/elt/blog/2022/04/29/learning-language-changes-your-brain/
+[^1]: McLaughlin, T. & Lentricchia, F. (1990). Critical Terms for Literary Study. Chicago: The University of Chicago press
+
+## backyard
+- https://www.cambridge.org/elt/blog/2022/04/29/learning-language-changes-your-brain/
