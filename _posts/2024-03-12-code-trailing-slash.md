@@ -18,14 +18,14 @@ I have two endpoints in the Django rest framework[^1] that do almost the same th
 
 ```python
 class CheckPasswordView(APIView):
-	# to show the fields in browsable API
+    # to show the fields in browsable API
     serializer_class = CheckPasswordSerializer
     def post(self, request):
         serializer = CheckPasswordSerializer(data=request.data)
         if serializer.is_valid():
             phone_number = serializer.validated_data["phone_number"]
             password = serializer.validated_data["password"]
-			# unlike request data, empty serializer data is blank, and not None
+            # unlike request data, empty serializer data is blank, and not None
             if phone_number == "" or password == "":
                 return Response(
                     {"error": "phone_number and/or password not provided"},
@@ -37,10 +37,10 @@ class CheckPasswordView(APIView):
                 return Response(
                     {"error": "user not found"}, status=status.HTTP_404_NOT_FOUND
                 )
-			# the code is the same for both so far
-			# the next section, however, is a bit different for OTP
-			# where it checks both the token and the expiration date
-			# and also returns the status for valid, expired, or incorrect tokens			
+            # the code is the same for both so far
+            # the next section, however, is a bit different for OTP
+            # where it checks both the token and the expiration date
+            # and also returns the status for valid, expired, or incorrect tokens			
             if not user.check_password(password):
                 return Response(
                     {"error": "password is incorrect"},
@@ -74,7 +74,7 @@ I want these errors to be handled:
 - returns: if the token is valid or invalid (incorrect / expired)
 
 ## Problem
-The second endpoint (`check-otp`) works fine, both in browsable API[^3] and Postman<i class="fa-solid fa-user-astronaut"></i>. but the first endpoint works only in browsable API. I get an HTML page (as the result of an unhandled error) in Postman that looks like this:
+The second endpoint (`check-otp`) works fine, both in browsable API[^3] and Postman; but the first endpoint works only in browsable API. I get an HTML page (as the result of an unhandled error) in Postman that looks like this:
 
 ```html
 <div id="summary">
