@@ -21,15 +21,11 @@ Overall, my attempt here is the include all Xs and exclude all non-Xs.
 Every word comes with its definition and below that a more lengthy and personal interpretation of it.
 
 ### Template
-#### definition
-A model, standard, or outline to follow or adapt
-#### interpretation
-A boilerplate structure that's later going to be instantiated and used multiple times. it is what all of its derivatives have in common. e.g., all of the words that I will mention in this file will have a title, a formal common definition, and a personal interpretation.
+- **definition**: A model, standard, or outline to follow or adapt
+- **interpretation**: A boilerplate structure that's later going to be instantiated and used multiple times. it is what all of its derivatives have in common. e.g., all of the words that I will mention in this file will have a title, a formal common definition, and a personal interpretation.
 
 ---
 
 ### Human
-#### definition
-Any living or extinct member of the family Hominidae characterized by superior intelligence, articulate speech, and erect carriage
-#### interpretation
-the animal that we call human. the species, and not the adjective (as in "_she was filled with human kindness_"). [according to Aristotle](https://en.wikipedia.org/wiki/Rational_animal#History), we humans have a nutritive aspect like plants, an instinctive aspect like animals, and finally a rational aspect that's specifically ours. I address the first two just as equally as the third (which I think, is more than what's normal).
+- **definition**: Any living or extinct member of the family Hominidae characterized by superior intelligence, articulate speech, and erect carriage
+- **interpretation**: the animal that we call human. the species, and not the adjective (as in "_she was filled with human kindness_"). [according to Aristotle](https://en.wikipedia.org/wiki/Rational_animal#History), we humans have a nutritive aspect like plants, an instinctive aspect like animals, and finally a rational aspect that's specifically ours. I address the first two just as equally as the third (which I think, is more than what's normal).
