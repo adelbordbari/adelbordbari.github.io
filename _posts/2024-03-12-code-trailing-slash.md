@@ -80,7 +80,9 @@ The second endpoint (`check-otp`) works fine, both in browsable API[^3] and Post
 <div id="summary">
 	<h1>RuntimeError at /one/two/check-password</h1>
 	<pre class="exception_value">
-You called this URL via POST, but the URL doesn&#x27;t end in a slash and you have APPEND_SLASH set. Django can&#x27;t redirect to the slash URL while maintaining POST data. Change your form to point to 127.0.0.1:8000/one/two/check-password/ (note the trailing slash), or set APPEND_SLASH=False in your Django settings.</pre>
+	You called this URL via POST, but the URL doesn&#x27;t end in a slash and you have APPEND_SLASH set. Django can&#x27;t redirect to the slash
+	URL while maintaining POST data. Change your form to point to 127.0.0.1:8000/one/two/check-password/ (note the trailing slash), or set
+	APPEND_SLASH=False in your Django settings.</pre>
 	<table class="meta">
 		<tr>
 			<th>Request Method:</th>
