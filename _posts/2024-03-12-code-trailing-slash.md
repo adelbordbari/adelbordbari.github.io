@@ -130,6 +130,7 @@ path("one/two/check-password", CheckPasswordView.as_view(), name="login"),
 4. by default URLs without the trailing slash are redirected to the URL with the trailing slash
 5. during this redirection (from `/path` to `/path/`), the data of the POST request is lost
 
+## References
 [^1]: [Django rest framework](https://www.django-rest-framework.org)
 [^2]: [OTP](https://en.wikipedia.org/wiki/One-time_password)
 [^3]: [Browsable API](https://www.django-rest-framework.org/topics/browsable-api)
