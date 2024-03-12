@@ -11,6 +11,8 @@ layout: "post"
 - [Solution](#Solution)
 - [References](#References)
 
+---
+
 ## Situation
 this is what I'm generally doing
 and this is how my code looks like
