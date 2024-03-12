@@ -68,4 +68,4 @@ This article is a good read on the subject: [How learning a new language changes
 
 ## Citations
 [^1]: McLaughlin, T. & Lentricchia, F. (1990). Critical Terms for Literary Study. Chicago: The University of Chicago press
-[^2]: [my own interpretation](/meta-glossary/#human)
+[^2]: [human](/meta-glossary/#human)
