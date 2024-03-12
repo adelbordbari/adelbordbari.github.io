@@ -21,6 +21,7 @@ English is not my first language. I do try to be as concise, coherent, and appro
 A definition is (by definition!) an explanation of the word that's both _necessary_ and _sufficient_ for that word to be itself. that is:
 1. **necessary**: what is needed for X to be X. e.g., you need to have married in order to be a married person. however, you can be somebody who has married but is not a married person: a widow. it is needed but it's not enough.
 2. **sufficient**: something that's enough for X to be X. e.g., it's enough for a "professional photographer" to earn money with photography.
+
 Overall, my attempt here is the include all Xs and exclude all non-Xs.
 
 ## Glossary
