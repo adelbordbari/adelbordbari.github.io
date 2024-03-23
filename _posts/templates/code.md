@@ -1,5 +1,5 @@
 ---
-title: "code/topic | Title"
+title: "code | Title"
 layout: "post"
 ---
 
@@ -9,7 +9,7 @@ layout: "post"
 - [Problem](#Problem)
 - [Investigation](#Investigation)
 - [Solution](#Solution)
-- [References](#References)
+- [Footnotes](#Footnotes)
 
 ---
 
@@ -33,5 +33,5 @@ I did this to solve the problem
 1. some
 2. things
 
-## References
+## Footnotes
 [^1]: https://www.footnotes
