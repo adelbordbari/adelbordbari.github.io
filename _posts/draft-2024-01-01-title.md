@@ -10,7 +10,6 @@ layout: "post"
 3. interviews
 4. stack
 5. frontend journey
-6. django race condition in update_or_create
 7. django show fields in browsable api
 
 ### TODO
