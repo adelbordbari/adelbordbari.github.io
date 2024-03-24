@@ -4,12 +4,13 @@ layout: "post"
 ---
 
 ## Table of Contents
-- [Situation](#Situation)
-- [Expectation](#Expectation)
-- [Problem](#Problem)
-- [Investigation](#Investigation)
-- [Solution](#Solution)
-- [Footnotes](#Footnotes)
+- [Situation](#situation)
+- [Expectation](#expectation)
+- [Problem](#problem)
+- [Investigation](#investigation)
+- [Solution](#solution)
+- [Takeaways](#takeaways)
+- [Footnotes](#footnotes)
 
 ---
 
@@ -29,7 +30,12 @@ this is why I have that problem
 ## Solution
 I did this to solve the problem
 
-## Takeaway
+## Takeaways
+1. this[^1]
+2. that
+
+## Footnotes
+[^1]: www.com
 1. some
 2. things
 
