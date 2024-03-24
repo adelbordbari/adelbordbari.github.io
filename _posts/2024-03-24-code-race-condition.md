@@ -1,5 +1,5 @@
 ---
-title: "code | Race Condition in update_or_create"
+title: "code | Race Condition"
 layout: "post"
 ---
 
