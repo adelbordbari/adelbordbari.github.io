@@ -4,12 +4,12 @@ layout: "post"
 ---
 
 ## Table of Contents
-- [Situation](#Situation)
-- [Expectation](#Expectation)
-- [Problem](#Problem)
-- [Investigation](#Investigation)
-- [Solution](#Solution)
-- [References](#References)
+- [Situation](#situation)
+- [Problem](#problem)
+- [Investigation](#investigation)
+- [Solution](#solution)
+- [Takeaways](#takeaways)
+- [Footnotes](#footnotes)
 
 ---
 
@@ -25,11 +25,11 @@ class MyModel(models.Model):
 ```
 
 
-At first I tried writing a very manual code, something like this:
-1. receive request data, pass it to serializer
+At first, I tried writing a very manual code, something like this:
+1. receive request data, and pass it to the serializer
 2. check the three fields from `validated_data`
 3. check if a model instance exists with those three values
-4. if exists: update other fields
+4. if it exists: update other fields
 5. if does not exist: create a new object with the received data
 6. finally, return the created or updated object with the proper status code (201 CREATED or 200 OK)
 
@@ -71,7 +71,7 @@ class ProductView(APIView):
 ```
 
 ## Problem
-I faced race condition. I deployed the code and the client used it but after some time we obswerved that there are still duplicates, despite setting conditions for updating and creating.
+I faced race condition. I deployed the code and the client used it but after some time we observed that there were still duplicates, despite setting conditions for updating and creating.
 I tried using the [update_or_create](https://docs.djangoproject.com/en/5.0/ref/models/querysets/#update-or-create) method from Django ORM too. using something like this:
 ```python
 from rest_framework import status
@@ -108,7 +108,7 @@ class ProductView(APIView):
 ```
 
 ## Investigation
-I debugged the code but it was working as expected' so I suspected that it might be the result of a [race condition](https://en.wikipedia.org/wiki/Race_condition), where two incoming requests clash.
+I debugged the code but it was working as expected so I suspected that it might be the result of a [race condition](https://en.wikipedia.org/wiki/Race_condition), where two incoming requests clash.
 The system receives two duplicate objects as two simultaneous requests:
 1. checks the first one
 2. find no duplicates
@@ -118,16 +118,23 @@ The system receives two duplicate objects as two simultaneous requests:
 6. creates the second object
 
 ## Solution
-After studying about race condition, atomic transactions and some relevant Django conventions I fugured there are more than one solutions to this problem, such as:
+After studying about race condition, atomic transactions, and some relevant Django conventions I figured there is more than one solution to this problem, such as:
 - using [select_for_update](https://docs.djangoproject.com/en/5.0/ref/models/querysets/#select-for-update)
-- locking mechanisms[^3] - [Django docs](https://docs.djangoproject.com/en/5.0/topics/db/transactions/#controlling-transactions-explicitly) - [stackoverflow](https://stackoverflow.com/questions/42520917/does-django-atomic-transaction-lock-the-database)
-- rate limiting[^4] - [wiki](https://en.wikipedia.org/wiki/Rate_limiting)
-- idempotent operation[^5] - [wiki](https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://en.wikipedia.org/wiki/Idempotence&ved=2ahUKEwicupLsuYuFAxXpXvEDHX12CdMQFnoECCgQAQ&usg=AOvVaw2tBKzMM7JWe5m8N5lGXEiY) - [dev.to](https://dev.to/ck3130/idempotence-and-post-requests-in-django-2bbf)
+- locking mechanisms[^3]
+  - [Django docs](https://docs.djangoproject.com/en/5.0/topics/db/transactions/#controlling-transactions-explicitly)
+  - [stackoverflow](https://stackoverflow.com/questions/42520917/does-django-atomic-transaction-lock-the-database)
+- rate limiting[^4]
+  - [wiki](https://en.wikipedia.org/wiki/Rate_limiting)
+- idempotent operation[^5]
+  - [wiki](https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://en.wikipedia.org/wiki/Idempotence&ved=2ahUKEwicupLsuYuFAxXpXvEDHX12CdMQFnoECCgQAQ&usg=AOvVaw2tBKzMM7JWe5m8N5lGXEiY)
+  - [dev.to](https://dev.to/ck3130/idempotence-and-post-requests-in-django-2bbf)
 - concurrency control in front-end[^6]
-- or atomic database transactions[^7] - almost similar to the next option
-- optimistic concurrency control [^8] - [wiki](https://en.wikipedia.org/wiki/Optimistic_concurrency_control) - [freecodecamp](https://www.freecodecamp.org/news/how-databases-guarantee-isolation/)
+- atomic database transactions[^7] - almost similar to the next option
+- optimistic concurrency control [^8]
+  - [wiki](https://en.wikipedia.org/wiki/Optimistic_concurrency_control)
+  - [freecodecamp](https://www.freecodecamp.org/news/how-databases-guarantee-isolation/)
 
-I eventually re-wrote my viewto look like this:
+I eventually re-wrote my view to look like this:
 ```python
 class ProductViewset(viewsets.ModelViewSet):
     queryset = Product.objects.all()
@@ -162,7 +169,7 @@ class ProductViewset(viewsets.ModelViewSet):
 ```
 I did \*NOT\* implement unique constraints on database level.
 
-## Takeaway
+## Takeaways
 1. race condition is a possible risk and must be considered.
 2. there are several solutions on how to handle the condition, choose based on specific requirements.
 
