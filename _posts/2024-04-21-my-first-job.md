@@ -5,7 +5,8 @@ layout: "post"
 
 ## Table of Contents
 - [Introduction](#introduction)
-- [Front-End](#front_-_end)
+- [Front-End](#front-end)
+- [Footnotes](#footnotes)
 
 ---
 
@@ -22,7 +23,7 @@ I called several people that same day, to see if it was worth it. it wasn't a sm
 
 My plan for the next two months was to retouch my front-end skills and put up some sample projects on my Github. I learned React and created an admin dashboard to _show off_. I felt lucky and told them that I'd contact the company tomorrow. I emailed them, I had an interview, and I got the job. I found Maximilian Schwarzmüller's extensive course on Udemy specifically informative.
 
-## Front-end
+## Front End
 I started off as a front-end developer, creating a monitoring panel for the operators (who would be the users of the dashboard responsible for preparing the content and not the end users). the panel would be:
 
 1. responsive(in five width ranges)
