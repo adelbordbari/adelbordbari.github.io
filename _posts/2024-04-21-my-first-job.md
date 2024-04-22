@@ -1,11 +1,11 @@
 ---
-title: "post title"
+title: "My First Job"
 layout: "post"
 ---
 
 ## Table of Contents
 - [Introduction](#introduction)
-- [Landing](#landing)
+- [Front-End](#frontend)
 
 ---
 
@@ -63,10 +63,13 @@ other than that, most of the challenges were minor, that include
 - clickable overlays
 
 this is what the result looked like[^1]:
+
 ![image](https://github.com/adelbordbari/adelbordbari.github.io/assets/13819151/3dadb67a-bcb7-4973-832f-2dc0675fe8ec)
+
 mobile view:
+
 ![image](https://github.com/adelbordbari/adelbordbari.github.io/assets/13819151/0f59baba-8443-44c1-aa3c-dd6b10fee6ca)
 
 
 ## Footnotes
-^1: in this screenshot, I've logged in using my Google account, and a navbar item is clicked, the overlay is expanded
+[^1]: in this screenshot, I've logged in using my Google account, and a navbar item is clicked, the overlay is expanded
