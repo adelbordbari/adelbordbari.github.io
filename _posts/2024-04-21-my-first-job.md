@@ -43,7 +43,7 @@ This took almost three months. I worked the first two months under a "project-ba
 
 I used these for creating the panel:
 - Javascript (ES6)
-- JQuery: only a few times for certain use cases
+- JQuery: in a few use cases
 - HTML & CSS
 - React: as the main framework
 - TailwindCSS (& TailwindUI): styles. [link](https://tailwindcss.com/)
@@ -56,8 +56,9 @@ I would receive the designs from Figma, and implement them using the tech stack 
 I used the atomic system, where I had `atoms` as my indivisible UI elements, and went up to `templates` that would be full pages.
 
 ### challenges
-My biggest challenge at first routing. I just couldn't get around the ideas but the tutorial from ui.dev finally helped me get the idea. I also watched many hours of courses and tutorials, most significantly 
-other than that, most of the challenges were minor, that include
+My biggest challenge at first routing. I couldn't get around the ideas but the tutorial from [ui.dev](ui.dev) finally helped me get the idea. I also watched many hours of courses and tutorials, most significantly [React - The Complete Guide 2024 (incl. Next.js, Redux) by Maximilian Schwarzmüller](https://www.udemy.com/course/react-the-complete-guide-incl-redux/?couponCode=24T3MT53024). the course is pervasive. However, I still feel guilty to have skipped the last few chapters.
+
+other than that, most of the challenges were minor. to name some:
 - CSS transition/animations: every click was animated and there were many moving parts.
 - Google login: finally made easy by using [react-oauth/google](https://www.npmjs.com/package/@react-oauth/google)
 - the breadcrumb
@@ -71,6 +72,8 @@ mobile view:
 
 ![image](https://github.com/adelbordbari/adelbordbari.github.io/assets/13819151/0f59baba-8443-44c1-aa3c-dd6b10fee6ca)
 
+
+Four months later, I started developing the backend for the same panel. I started using [FastAPI](https://fastapi.tiangolo.com/). it's
 
 ## Footnotes
 [^1]: in this screenshot, I've logged in using my Google account, and a navbar item is clicked, the overlay is expanded
