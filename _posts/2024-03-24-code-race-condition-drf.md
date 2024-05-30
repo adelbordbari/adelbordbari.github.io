@@ -1,5 +1,5 @@
 ---
-title: "code | Race Condition"
+title: "code | Race Condition in DRF"
 layout: "post"
 ---
 
