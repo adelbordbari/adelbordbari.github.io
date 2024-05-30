@@ -14,6 +14,7 @@ layout: "post"
 | *Iranian army manoeuvring near Teheran - 1935* |
 
 ![1200px-CH-NB_-_Persien,_Teheran-_Armee_-_Annemarie_Schwarzenbach_-_SLA-Schwarzenbach-A-5-07-021](https://github.com/adelbordbari/adelbordbari.github.io/assets/13819151/09fffb60-d25a-4b97-86d1-6e4a14cbcbc0)
+
 <em class="image-caption>Iranian army manoeuvring near Teheran - 1935</em>
 
 ## Introduction
