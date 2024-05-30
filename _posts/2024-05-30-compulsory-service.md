@@ -5,7 +5,7 @@ layout: "post"
 
 ## Table of Contents
 - [Introduction](#introduction)
-- [Footenotes](#footnotes)
+- [Footnotes](#footnotes)
 
 ---
 
@@ -16,5 +16,5 @@ After finishing my M.S. I started the first month of work (actually, right after
 
 With summer beginning, I moved to Tehran, rented a house, and started my first "trial" month. a 9-5 job, close to where I live, in a vibrant lively city, not very bad I guess.
 
-## Footenotes
+## Footnotes
 [^1]: since several years ago, "skilled soldiers" can spend their service as employees in tech-based companies. there are many, MANY terms of conditions. in order to attend the program, applicants need to reach a minimum "score". this score is calculated based on certain privileges, including being married, having offspring, being among the families of martyrs/veterans, active [Basij](https://en.wikipedia.org/wiki/Basij) membership, etc. I didn't have any of those, therefore I had to spend at least six months in the company as a regular employee to reach the minimum score.
