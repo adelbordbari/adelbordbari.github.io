@@ -14,7 +14,7 @@ layout: "post"
 | *Iranian army manoeuvring near Teheran - 1935* |
 
 ![1200px-CH-NB_-_Persien,_Teheran-_Armee_-_Annemarie_Schwarzenbach_-_SLA-Schwarzenbach-A-5-07-021](https://github.com/adelbordbari/adelbordbari.github.io/assets/13819151/09fffb60-d25a-4b97-86d1-6e4a14cbcbc0)
-<em class="image-caption">Iranian army manoeuvring near Tehran - 1935</em>
+<em id="caption">Iranian army manoeuvring near Tehran - 1935</em>
 
 ## Introduction
 After my degree, I had the time to spend two years in the military. I decided to use my option to spend my time as [an employee](https://en.wikipedia.org/wiki/Conscription_in_Iran#Non-Military_Conscription_(Persian:_%D8%B3%D8%B1%D8%A8%D8%A7%D8%B2_%D8%A7%D9%85%D8%B1%DB%8C%D9%87)) (instead of a soldier at a base). I'll try to skip the nitty gritty details...
