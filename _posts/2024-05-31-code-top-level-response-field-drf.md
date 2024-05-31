@@ -23,26 +23,26 @@ I have a `Slide` model wired up. below is a sample response from an endpoint tha
 
 ```json
 [
-    {
-        "id": "0b9b8b7b-4e3f-42f9-b021-ccdc5fe906e9",
-        "created_at": "2024-05-12T08:30:57.480924Z",
-        "updated_at": "2024-05-12T08:30:57.480924Z",
-        "type": "movie",
-        "title": "Gone With The Wind 1939",
-        "description": "In April of 1861, Scarlett O'Hara is in love with Ashley and learns about his engagement. Despite warnings from her family, Scarlett intends to throw herself at Ashley at the event at Twelve Oaks.",
-        "bg_image": "https://upload.wikimedia.org/wikipedia/commons/2/27/Poster_-_Gone_With_the_Wind_01.jpg",
-        "bg_video": "https://upload.wikimedia.org/wikipedia/commons/2/27/Poster_-_Gone_With_the_Wind_01.mp4"
-    },
-    {
-        "id": "8e8f9d8d-21de-45c8-b6ea-0042456bc8f4",
-        "created_at": "2024-05-12T08:52:30.135001Z",
-        "updated_at": "2024-05-12T08:52:30.135001Z",
-        "type": "movie",
-        "title": "Moonlight 2016",
-        "description": "A young African-American man grapples with his identity and sexuality while experiencing the everyday struggles of childhood, adolescence, and burgeoning adulthood.",
-        "bg_image": "https://www.imdb.com/title/tt4975722/mediaviewer/rm1452607488/?ref_=tt_ov_i.jpg",
-        "bg_video": "https://www.imdb.com/title/tt4975722/mediaviewer/rm1452607488/?ref_=tt_ov_i.mp4"
-    }
+	{
+		"id": "0b9b8b7b-4e3f-42f9-b021-ccdc5fe906e9",
+		"created_at": "2024-05-12T08:30:57.480924Z",
+		"updated_at": "2024-05-12T08:30:57.480924Z",
+		"type": "movie",
+		"title": "Gone With The Wind 1939",
+		"description": "In April of 1861, Scarlett O'Hara is in love with Ashley and learns about his engagement. Despite warnings from her family, Scarlett intends to throw herself at Ashley at the event at Twelve Oaks.",
+		"bg_image": "https://upload.wikimedia.org/wikipedia/commons/2/27/Poster_-_Gone_With_the_Wind_01.jpg",
+		"bg_video": "https://upload.wikimedia.org/wikipedia/commons/2/27/Poster_-_Gone_With_the_Wind_01.mp4"
+	},
+	{
+		"id": "8e8f9d8d-21de-45c8-b6ea-0042456bc8f4",
+		"created_at": "2024-05-12T08:52:30.135001Z",
+		"updated_at": "2024-05-12T08:52:30.135001Z",
+		"type": "movie",
+		"title": "Moonlight 2016",
+		"description": "A young African-American man grapples with his identity and sexuality while experiencing the everyday struggles of childhood, adolescence, and burgeoning adulthood.",
+		"bg_image": "https://www.imdb.com/title/tt4975722/mediaviewer/rm1452607488/?ref_=tt_ov_i.jpg",
+		"bg_video": "https://www.imdb.com/title/tt4975722/mediaviewer/rm1452607488/?ref_=tt_ov_i.mp4"
+	}
 ]
 ```
 
@@ -112,9 +112,9 @@ class SlideSerializer(serializers.ModelSerializer):
         title = self.context.get("toplevel", None)
         if title:
             return {"apiName": "slide",
-	                  "standard": "Open-API 3.1.0",
-	                  "version": "14",
-                    "content": representation}
+							"standard": "Open-API 3.1.0",
+							"version": "14",
+							"content": representation}
         return representation
 
 # View
