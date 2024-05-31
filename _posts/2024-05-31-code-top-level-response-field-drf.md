@@ -112,9 +112,9 @@ class SlideSerializer(serializers.ModelSerializer):
         title = self.context.get("toplevel", None)
         if title:
             return {"apiName": "slide",
-							"standard": "Open-API 3.1.0",
-							"version": "14",
-							"content": representation}
+	"standard": "Open-API 3.1.0",
+	"version": "14",
+	"content": representation}
         return representation
 
 # View
