@@ -20,7 +20,6 @@ permalink: /film/
 			</div>
 			<div style="flex: 70%">
 				<h3 style="margin: 0;">{{ post.title }}</h3>
-				<p>
 					<small>
 						by: {{ post.director }}
 					</small>
@@ -30,7 +29,6 @@ permalink: /film/
 					</strong>
 					<br />
 					<small> {{ post.date | date: "%B %d, %Y" }}</small>
-				</p>
 				<strong
 					><a
 						href="{{ site.baseurl }}{{ post.url }}"
