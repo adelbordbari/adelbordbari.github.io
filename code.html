@@ -5,9 +5,9 @@ permalink: /code/
 ---
 
 <ul>
-  {% for code in site.code %}
+  {% for post in site.code %}
     <li>
-      <a href="{{ code.url }}">{{ code.title }}</a>
+      {{ post.date | date: "%B %d, %Y" }} - <a href="{{ post.url }}">{{ post.title }}</a>
     </li>
   {% endfor %}
 </ul>
