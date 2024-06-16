@@ -7,7 +7,7 @@ permalink: /etc/
 <ul>
   {% for etc in site.etc %}
     <li>
-      <a href="{{ etc.url }}">{{ etc.title }}</a> - {{ etc.description }}
+      <a href="{{ etc.url }}">{{ etc.title }}</a>
     </li>
   {% endfor %}
 </ul>
