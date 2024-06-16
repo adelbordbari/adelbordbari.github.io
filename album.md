@@ -6,9 +6,6 @@ permalink: /album/
 
 <ul>
   {% for post in site.album %}
-    <li>
-      {{ post.date | date: "%B %d, %Y" }} - <a href="{{ post.url }}">{{ post.title }}</a> - {{ post.rating }}
-    </li>
   <article class="post" style="margin-top: 30px;">
 		<div
 			class="entry"
@@ -28,7 +25,7 @@ permalink: /album/
 						{{ post.rating }}
 					</strong>
 					<br />
-					<small>{{ post.release }}</small>
+					<small> {{ post.date | date: "%B %d, %Y" }}</small>
 				</p>
 				<strong
 					><a
