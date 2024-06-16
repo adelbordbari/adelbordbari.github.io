@@ -5,9 +5,10 @@ permalink: /film/
 ---
 
 <ul>
-  {% for film in site.film %}
+  {% for post in site.film %}
     <li>
-      <a href="{{ film.url }}">{{ film.title }}</a> - {{ film.description }}
+      {{ post.date | date: "%B %d, %Y" }} - <a href="{{ post.url }}">{{ post.title }}</a>
+      <small>{{ post.description }}</small>
     </li>
   {% endfor %}
 </ul>
