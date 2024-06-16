@@ -7,7 +7,7 @@ permalink: /album/
 <ul>
   {% for album in site.album %}
     <li>
-      <a href="{{ album.url }}">{{ album.title }}</a> - {{ album.description }}
+      <a href="{{ album.url }}">{{ album.title }}</a> - {{ album.rating }}
     </li>
   {% endfor %}
 </ul>
