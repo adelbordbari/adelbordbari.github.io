@@ -1,5 +1,5 @@
 ---
-title: "code | Title"
+title: "Title"
 layout: "post"
 ---
 
