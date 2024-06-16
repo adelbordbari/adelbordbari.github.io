@@ -6,25 +6,30 @@ permalink: /film/
 
 <ul>
   {% for post in site.film %}
-  <article style="margin-top: 30px;">
+   <article class="post" style="margin-top: 30px;">
 		<div
 			class="entry"
 			style="display: flex; justify-content: center; align-items: center">
 			<div style="flex: 30%;;">
 				<a href="{{ site.baseurl }}{{ post.url }}"
 					><img
-						src="{{ post.cover }}"
+						id="poster-small"
+						alt="movie poster"
+						src="{{ post.poster }}"
 				/></a>
 			</div>
 			<div style="flex: 70%">
-				<h4 style="margin: 0;">{{ post.title }}</h4>
-				<small>by {{ post.director }}</small>
+				<h3 style="margin: 0;">{{ post.title }}</h3>
 				<p>
+					<strong>
+						by: {{ post.director }}
+					</strong>
+					<br />
 					<strong>
 						{{ post.rating }}
 					</strong>
 					<br />
-					<small>{{ post.release }}</small>
+					<small> {{ post.date | date: "%B %d, %Y" }}</small>
 				</p>
 				<strong
 					><a
