@@ -1,5 +1,5 @@
 ---
-title: "code | Top-level Response Field in DRF"
+title: "Top-level Response Field in DRF"
 layout: "post"
 ---
 
