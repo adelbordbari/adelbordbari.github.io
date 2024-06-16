@@ -6,11 +6,11 @@ layout: default
   {% include meta.html post=page %}
   {{ content }}
   
-  {% if page.cover != false %}
+  {% if post.cover != false %}
     <img id="cover" alt="album cover" src="{{ page.cover }}" />
   {% endif %}
 
-  {% if page.poster != false %}
+  {% if post.poster != false %}
     <img id="poster" alt="movie poster cover" src="{{ page.poster }}" />
   {% endif %}
   
