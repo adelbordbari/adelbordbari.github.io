@@ -5,9 +5,9 @@ permalink: /album/
 ---
 
 <ul>
-  {% for album in site.album %}
+  {% for post in site.album %}
     <li>
-      <a href="{{ album.url }}">{{ album.title }}</a> - {{ album.rating }}
+      {{ post.date | date: "%B %d, %Y" }} - <a href="{{ post.url }}">{{ post.title }}</a> - {{ album.rating }}
     </li>
   {% endfor %}
 </ul>
