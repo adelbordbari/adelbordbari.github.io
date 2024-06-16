@@ -21,9 +21,9 @@ permalink: /album/
 			<div style="flex: 70%">
 				<h3 style="margin: 0;">{{ post.title }}</h3>
 				<p>
-					<strong>
+					<small>
 						by: {{ post.artist }}
-					</strong>
+					</small>
 					<br />
 					<strong>
 						{{ post.rating }}
