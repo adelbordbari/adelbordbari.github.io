@@ -1,5 +1,8 @@
+{% assign collection = site[page.collection] | default: site.posts %}
+
 <article>
   <header><h1>{{ include.title | default: page.title }}</h1></header>
+  <h1>{{ page.title }} - {{ page.collection | capitalize }}</h1>
   <ul class="archive">
     {% for post in site.posts %}
     <li>
@@ -8,4 +11,11 @@
     </li>
     {% endfor %}
   </ul>
+  <ul class="archive">
+  {% for item in collection %}
+    <li>
+      <a href="{{ item.url }}" style="color:#ff0f7b">{{ item.title }}</a>
+    </li>
+  {% endfor %}
+</ul>
 </article>
