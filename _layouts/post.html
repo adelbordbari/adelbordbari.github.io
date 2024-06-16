@@ -5,6 +5,15 @@ layout: default
 <article>
   {% include meta.html post=page %}
   {{ content }}
+  
+  {% if page.cover != false %}
+    <img id="cover" alt="album cover" src="{{ page.cover }}" />
+  {% endif %}
+
+  {% if page.poster != false %}
+    <img id="poster" alt="movie poster cover" src="{{ page.poster }}" />
+  {% endif %}
+  
   {% if page.comments != false and site.comments.isso or site.comments.disqus %}
     <hr>
     {% if site.comments.isso_domain %}<div id="isso-thread"></div>{% endif %}
