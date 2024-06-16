@@ -15,7 +15,7 @@ permalink: /film/
 					><img
 						id="poster-small"
 						alt="movie poster"
-						src="{{ post.poster }}"
+						src="{{ post.cover }}"
 				/></a>
 			</div>
 			<div style="flex: 70%">
