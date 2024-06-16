@@ -35,4 +35,5 @@ plugins:
 collections:
   code:
     output: true
-    permalink: /code/:path/
+  
+permalink: /:collection/:path/
