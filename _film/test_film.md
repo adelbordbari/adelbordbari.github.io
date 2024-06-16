@@ -3,7 +3,7 @@ layout: post
 title: "Woyaya (1971)"
 director: Osibisa
 rating: "★★★☆☆"
-poster: https://upload.wikimedia.org/wikipedia/en/c/c8/Woyayacover.jpg
+cover: https://upload.wikimedia.org/wikipedia/en/c/c8/Woyayacover.jpg
 ---
 
 ## Preface
