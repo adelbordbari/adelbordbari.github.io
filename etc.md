@@ -5,9 +5,9 @@ permalink: /etc/
 ---
 
 <ul>
-  {% for etc in site.etc %}
+  {% for psot in site.etc %}
     <li>
-      <a href="{{ etc.url }}">{{ etc.title }}</a>
+       {{ post.date | date: "%B %d, %Y" }} - <a href="{{ post.url }}">{{ post.title }}</a>
     </li>
   {% endfor %}
 </ul>
