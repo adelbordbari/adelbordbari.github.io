@@ -1,14 +1,6 @@
 <article>
-  <header>Welcome!</header>
-  
-   <ul>
-    <li><a href="{{ site.baseurl }}/">Home</a></li>
-    <li><a href="{{ site.baseurl }}/etc/">Other Posts</a></li>
-    <li><a href="{{ site.baseurl }}/code/">Coding</a></li>
-    <li><a href="{{ site.baseurl }}/album/">Album Reviews</a></li>
-    <!-- Add other links as needed -->
-  </ul>
-<hr />
+  <h4>“I write because I don’t know what I think until I read what I say.” – Flannery O’Connor</h4>
+  <hr />
   {% assign all_posts = site.posts %}
   {% for collection in site.collections %}
         {% assign all_posts = all_posts | concat: collection.docs %}
