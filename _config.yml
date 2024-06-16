@@ -1,6 +1,6 @@
 title: "Adel Bordbari"
 author: "Adel B."
-description: "“I write because I don’t know what I think until I read what I say.” – Flannery O’Connor"
+description: "Made with Jekyll"
 permalink: /:title/
 lang: "en"
 excerpt_separator: "\n\n\n"
@@ -36,6 +36,10 @@ collections:
   code:
     output: true
   film:
+    output: true
+  album:
+    output: true
+  etc:
     output: true
   album:
     output: true
