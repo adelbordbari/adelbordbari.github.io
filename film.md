@@ -10,7 +10,7 @@ permalink: /film/
 		<div
 			class="entry"
 			style="display: flex; justify-content: center; align-items: center">
-			<div style="flex: 30%;;">
+			<div style="flex: 30%">
 				<a href="{{ site.baseurl }}{{ post.url }}"
 					><img
 						id="poster-small"
