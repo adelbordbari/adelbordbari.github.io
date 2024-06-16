@@ -30,3 +30,9 @@ comments:
 
 plugins:
  #- jekyll-feed
+
+### CUSTOM
+collections:
+  code:
+    output: true
+    permalink: /code/:path/
