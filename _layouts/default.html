@@ -36,10 +36,7 @@
 
 {% if site.external %}
 <footer>
-  <div>
-    <p>{{ site.description | default: site.title }}</p>
-    <p>&copy; {{ site.time | date: "%Y %M" }} {{ site.title }}. All rights reserved.</p>
-  </div>
+  <div>{{ site.description | default: site.title }}</div>
   {% include menu.html menu=site.external %}
 </footer>
 {% endif %}
