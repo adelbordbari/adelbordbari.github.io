@@ -22,8 +22,9 @@ permalink: /album/
 				<h3 style="margin: 0;">{{ post.title }}</h3>
 				<p>
 					<strong>
-						{{ post.artist }}
+						by: {{ post.artist }}
 					</strong>
+					<br />
 					<strong>
 						{{ post.rating }}
 					</strong>
