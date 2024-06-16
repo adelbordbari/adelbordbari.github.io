@@ -8,7 +8,7 @@
     <li><a href="{{ site.baseurl }}/album/">Album Reviews</a></li>
     <!-- Add other links as needed -->
   </ul>
-
+<hr />
   {% assign all_posts = site.posts %}
   {% for collection in site.collections %}
         {% assign all_posts = all_posts | concat: collection.docs %}
