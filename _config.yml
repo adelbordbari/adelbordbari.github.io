@@ -35,7 +35,11 @@ plugins:
 collections:
   code:
     output: true
-  post:
+  film:
+    output: true
+  album:
+    output: true
+  etc:
     output: true
   
 permalink: /:collection/:path/
