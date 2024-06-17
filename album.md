@@ -18,7 +18,13 @@ permalink: /album/
 				/></a>
 			</div>
 			<div style="flex: 70%">
-				<h3 style="margin: 0;">{{ post.title }} - {{ post.year }}</h3>
+				<h3 style="margin: 0;">
+					<a
+						href="{{ site.baseurl }}{{ post.url }}"
+						class="read-more">
+						{{ post.title }}
+					</a>
+						- {{ post.year }}</h3>
 					<small>
 						by: {{ post.artist }}
 					</small>
@@ -26,14 +32,6 @@ permalink: /album/
 					<small>
 						{{ post.rating }}
 					</small>
-				<br />
-				<small>
-					<a
-						href="{{ site.baseurl }}{{ post.url }}"
-						class="read-more">
-						Read More
-					</a>
-				</small>
 			</div>
 		</div>
   {% endfor %}
