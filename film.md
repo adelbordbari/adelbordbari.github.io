@@ -24,13 +24,13 @@ permalink: /film/
 					class="read-more">
 						<h3 style="margin: 0;">{{ post.title }}</h3>
 				</a>
-				<h5>{{ post.year }} | by {{ post.director }}</h5>
+				<h5 style="margin: 0;">{{ post.year }} | by {{ post.director }}</h5>
 			</div>
 			<div style="flex: 10%">
 				<small> {{ post.date | date: "%B %d, %Y" }}</small>
 			</div>
 			<div style="flex: 10%">
-				<h4>{{ post.rating }}</h4>
+				<h4 style="margin: 0;">{{ post.rating }}</h4>
 			</div>
 		</div>
 	</article>
