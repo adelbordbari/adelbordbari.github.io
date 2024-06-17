@@ -4,7 +4,7 @@ title: Album
 permalink: /album/
 ---
 
-<div style="display: grid; grid-template-columns: 1fr 1fr;">
+<ul>
   {% for post in site.album %}
 		<div
 			class="entry"
@@ -26,8 +26,6 @@ permalink: /album/
 					<small>
 						{{ post.rating }}
 					</small>
-					<br />
-					<small> {{ post.date | date: "%B %d, %Y" }}</small>
 				<br />
 				<small>
 					<a
@@ -39,4 +37,4 @@ permalink: /album/
 			</div>
 		</div>
   {% endfor %}
-</div>
+</ul>
