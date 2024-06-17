@@ -4,7 +4,6 @@ title: Songs For The Deaf
 year: 2002
 artist: Queens Of The Stone Age
 rating: ★★★☆☆
-release: 2023 Nov 26
 cover: https://upload.wikimedia.org/wikipedia/en/0/01/Queens_of_the_Stone_Age_-_Songs_for_the_Deaf.png
 ---
 
