@@ -17,7 +17,7 @@ permalink: /album/
 						src="{{ post.cover }}"
 				/></a>
 			</div>
-			<div style="flex: 70%">
+			<div style="flex: 60%">
 				<h3 style="margin: 0;">
 					<a
 						href="{{ site.baseurl }}{{ post.url }}"
@@ -28,10 +28,9 @@ permalink: /album/
 					<small>
 						by: {{ post.artist }}
 					</small>
-					<br />
-					<small>
-						{{ post.rating }}
-					</small>
+			</div>
+			<div style="flex: 10%">
+				<h4>{{ post.rating }}</h4>
 			</div>
 		</div>
   {% endfor %}
