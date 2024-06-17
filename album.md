@@ -24,19 +24,19 @@ permalink: /album/
 						by: {{ post.artist }}
 					</small>
 					<br />
-					<strong>
+					<small>
 						{{ post.rating }}
-					</strong>
+					</small>
 					<br />
 					<small> {{ post.date | date: "%B %d, %Y" }}</small>
 				<br />
-				<strong
-					><a
+				<small>
+					<a
 						href="{{ site.baseurl }}{{ post.url }}"
-						class="read-more"
-						>Read More</a
-					></strong
-				>
+						class="read-more">
+						Read More
+					</a>
+				</small>
 			</div>
 		</div>
 	</article>
