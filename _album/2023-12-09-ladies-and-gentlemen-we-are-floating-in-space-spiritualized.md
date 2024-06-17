@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Ladies and Gentlemen We Are Floating in Space
-year: Spiritualized
-artist: 1997
+year: 1997
+artist: Spiritualized
 rating: ★★★★☆
 cover: https://upload.wikimedia.org/wikipedia/en/b/ba/Spiritualized_-_Ladies_and_Gentlemen_We_Are_Floating_in_Space.png
 ---
