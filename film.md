@@ -19,11 +19,13 @@ permalink: /film/
 				/></a>
 			</div>
 			<div style="flex: 50%">
-				<a
+				<h3 style="margin: 0;">
+					<a
 					href="{{ site.baseurl }}{{ post.url }}"
 					class="read-more">
-						<h3 style="margin: 0;">{{ post.title }}</h3>
-				</a>
+						{{ post.title }}
+					</a>
+				</h3>
 				<h5 style="margin: 0;">{{ post.year }} | by {{ post.director }}</h5>
 			</div>
 			<div style="flex: 20%">
