@@ -19,18 +19,16 @@ permalink: /film/
 				/></a>
 			</div>
 			<div style="flex: 60%">
-				<h3 style="margin: 0;">{{ post.title }} <small>| {{ post.year }} | by {{ post.director }}</small></h3>
-				<small>{{ post.rating }}</small>
+				<a
+					href="{{ site.baseurl }}{{ post.url }}"
+					class="read-more">
+						<h3 style="margin: 0;">{{ post.title }}</h3>
+				</a>
+				<h5>{{ post.year }} | by {{ post.director }}</h5>
 				<small> {{ post.date | date: "%B %d, %Y" }}</small>
 			</div>
 			<div style="flex: 10%">
-				<small>
-					<a
-						href="{{ site.baseurl }}{{ post.url }}"
-						class="read-more">
-						Read More
-					</a>
-				</small>
+				<h4>{{ post.rating }}</h4>
 			</div>
 		</div>
 	</article>
