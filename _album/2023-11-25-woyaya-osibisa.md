@@ -1,8 +1,9 @@
 ---
 layout: post
-title: "Woyaya (1971)"
+title: Woyaya
+year: 1971
 artist: Osibisa
-rating: "★★★☆☆"
+rating: ★★★☆☆
 cover: https://upload.wikimedia.org/wikipedia/en/c/c8/Woyayacover.jpg
 ---
 
