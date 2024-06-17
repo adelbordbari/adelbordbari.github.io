@@ -17,15 +17,15 @@ minimal: false             # use a dark header
 
 navigation:                # accepts {file, title, url, icon, sidebaricon}
   - {file: "index.html"}
-  - {file: "code.md", icon: fa-code}
-  - {file: "album.md", icon: fa-music}
-  - {file: "film.md", icon: fa-film}
+  - {file: "code.md", icon: code}
+  - {file: "album.md", icon: music}
+  - {file: "film.md", icon: film}
   - {file: "etc.md"}
 
 external:                  # shows a footer with social links - for available icons see fontawesome.com/icons
   - {title: Mail, icon: envelope, url: "mailto:bordbariadel@gmail.com"}
   - {title: Github, icon: github, url: "https://github.com/adelbordbari"}
-  - {title: About, icon: user, URL: "/about"}
+  - {title: About, icon: address-card, URL: "/about"}
 
 
 comments:
