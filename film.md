@@ -27,7 +27,7 @@ permalink: /film/
 				<h5 style="margin: 0;">{{ post.year }} | by {{ post.director }}</h5>
 			</div>
 			<div style="flex: 10%">
-				<small> {{ post.date | date: "%B %d, %Y" }}</small>
+				<small> {{ post.date | date: "%Y %B" }}</small>
 			</div>
 			<div style="flex: 10%">
 				<h4 style="margin: 0;">{{ post.rating }}</h4>
