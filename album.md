@@ -4,9 +4,8 @@ title: Album
 permalink: /album/
 ---
 
-<ul>
+<div style="display: grid; grid-template-columns: 1fr 1fr;">
   {% for post in site.album %}
- 	<article class="post" style="margin-top: 30px;">
 		<div
 			class="entry"
 			style="display: flex; justify-content: center; align-items: center">
@@ -19,7 +18,7 @@ permalink: /album/
 				/></a>
 			</div>
 			<div style="flex: 70%">
-				<h3 style="margin: 0;">{{ post.title }}</h3>
+				<h3 style="margin: 0;">{{ post.title }} - {{ post.year }}</h3>
 					<small>
 						by: {{ post.artist }}
 					</small>
@@ -39,6 +38,5 @@ permalink: /album/
 				</small>
 			</div>
 		</div>
-	</article>
   {% endfor %}
-</ul>
+</div>
