@@ -3,8 +3,7 @@ layout: post
 title: Untrue
 year: 2007
 artist: Burial
-rating: "☆☆☆☆☆"
-release: "2023 Dec 14"
+rating: ☆☆☆☆☆
 cover: https://upload.wikimedia.org/wikipedia/en/6/64/BurialUntrue.jpg
 ---
 
