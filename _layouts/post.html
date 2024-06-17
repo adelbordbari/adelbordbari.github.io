@@ -5,7 +5,7 @@ layout: default
 <article>
   {% include meta.html post=page %}
   
-  {% if post.cover != false %}
+  {% if post.cover %}
     <img id="cover" alt="cover" src="{{ page.cover }}" />
   {% endif %}
 
