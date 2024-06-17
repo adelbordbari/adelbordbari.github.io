@@ -13,7 +13,7 @@ permalink: /film/
 			<div style="flex: 30%">
 				<a href="{{ site.baseurl }}{{ post.url }}"
 					><img
-						id="poster-small"
+						id="cover-small"
 						alt="movie poster"
 						src="{{ post.cover }}"
 				/></a>
