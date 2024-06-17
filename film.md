@@ -29,7 +29,7 @@ permalink: /film/
 					</strong>
 					<br />
 					<small> {{ post.date | date: "%B %d, %Y" }}</small>
-				< br />
+				<br />
 				<strong
 					><a
 						href="{{ site.baseurl }}{{ post.url }}"
