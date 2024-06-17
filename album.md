@@ -8,7 +8,7 @@ permalink: /album/
   {% for post in site.album %}
 		<div
 			class="entry"
-			style="display: flex; justify-content: center; align-items: center">
+			style="display: flex; justify-content: center; align-items: center; margin-top: 30px;">
 			<div style="flex: 30%">
 				<a href="{{ site.baseurl }}{{ post.url }}"
 					><img
