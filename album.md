@@ -29,6 +29,7 @@ permalink: /album/
 					</strong>
 					<br />
 					<small> {{ post.date | date: "%B %d, %Y" }}</small>
+				<br />
 				<strong
 					><a
 						href="{{ site.baseurl }}{{ post.url }}"
