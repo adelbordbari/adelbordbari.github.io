@@ -19,7 +19,7 @@ permalink: /film/
 				/></a>
 			</div>
 			<div style="flex: 60%">
-				<h3 style="margin: 0;">{{ post.title }} | {{ post.year }} | <small>by {{ post.director }}</small></h3>
+				<h3 style="margin: 0;">{{ post.title }} <small>| {{ post.year }} | by {{ post.director }}</small></h3>
 				<small>{{ post.rating }}</small>
 				<small> {{ post.date | date: "%B %d, %Y" }}</small>
 			</div>
