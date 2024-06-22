@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Film
+title: Films
 permalink: /film/
 ---
 
@@ -19,7 +19,7 @@ permalink: /film/
 				/></a>
 			</div>
 			<div style="flex: 50%">
-				<h3 style="margin: 0;">
+				<h3>
 					<a
 					href="{{ site.baseurl }}{{ post.url }}"
 					class="read-more">
