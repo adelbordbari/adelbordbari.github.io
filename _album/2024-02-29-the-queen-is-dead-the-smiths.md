@@ -8,7 +8,7 @@ cover: https://upload.wikimedia.org/wikipedia/en/e/ed/The-Queen-is-Dead-cover.pn
 ---
 
 ## Also From This Artist
-- [Strangeways, Here We Come (1987)]({{ site.baseurl }}/2024-02-26-strangeways-here-we-come-the-smiths/)
+- [Strangeways, Here We Come (1987)]({{ site.baseurl }}{% link _album/2024-02-26-strangeways-here-we-come-the-smiths.md %})
 
 ## Preface
 Served me well as an "album". it's homogenous both in themes and in the sounds that I heard. a fusion of politics, love, and comedy with very British lyrics and 80s instrumentation. Marr's playing reminded me of Knopfler at some points, on the other hand, Morrissey's nasal, sometimes goofy singing is second to none. it's more mature than the previous album (Strangeways) I listened to. I still like to hear more from them.
