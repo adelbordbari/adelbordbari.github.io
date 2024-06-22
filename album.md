@@ -6,7 +6,7 @@ permalink: /album/
 
 <ul>
   {% for post in site.album %}
-   <article class="post" style="margin-top: 30px;">
+   <div class="post" style="margin-top: 30px;">
 		<div
 			class="entry"
 			style="display: flex; justify-content: center; align-items: center">
@@ -32,6 +32,6 @@ permalink: /album/
 				<h4>{{ post.rating }}</h4>
 			</div>
 		</div>
-	</article>
+	</div>
   {% endfor %}
 </ul>
