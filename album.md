@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Film
-permalink: /film/
+title: Albums
+permalink: /album/
 ---
 
 <ul>
