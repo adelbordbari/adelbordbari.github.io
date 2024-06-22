@@ -19,14 +19,14 @@ permalink: /album/
 				/></a>
 			</div>
 			<div style="flex: 50%">
-				<h3 style="max-width: 100%;">
+				<h3 style="word-wrap: anywhere;">
 					<a
 					href="{{ site.baseurl }}{{ post.url }}"
 					class="read-more">
 						{{ post.title }}
 					</a>
 				</h3>
-				<h5 style="max-width: 100%;">{{ post.year }} | by {{ post.artist }}</h5>
+				<h5 style="word-wrap: anywhere;">{{ post.year }} | by {{ post.artist }}</h5>
 			</div>
 			<div style="flex: 20%">
 				<h4>{{ post.rating }}</h4>
