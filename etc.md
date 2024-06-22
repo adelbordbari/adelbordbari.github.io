@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Etc
+title: Et cetera
 permalink: /etc/
 ---
 
