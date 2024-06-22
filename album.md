@@ -26,10 +26,10 @@ permalink: /album/
 						{{ post.title }}
 					</a>
 				</h3>
-				<h5 style="margin: 0;">{{ post.year }} | by {{ post.director }}</h5>
+				<h5>{{ post.year }} | by {{ post.artist }}</h5>
 			</div>
 			<div style="flex: 20%">
-				<h4 style="margin: 0;">{{ post.rating }}</h4>
+				<h4>{{ post.rating }}</h4>
 			</div>
 		</div>
 	</article>
