@@ -5,7 +5,8 @@ permalink: /album/
 ---
 
 <ul>
-  {% for post in site.album %}
+	{% assign posts = site.album | sort: 'date' %}
+  {% for post in posts %}
 		<div
 			class="entry"
 			style="display: flex; justify-content: center; align-items: center; margin-top: 30px;">
