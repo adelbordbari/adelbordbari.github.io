@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Woyaya
+title: WoyayaWoyayaWoyayaWoyayaWoyayaWoyayaWoyayaWoyayaWoyayaWoyayaWoyayaWoyayaWoyayaWoyaya
 year: 1971
 artist: Osibisa
 rating: ★★★☆☆
