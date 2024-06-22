@@ -1,15 +1,15 @@
 ---
 layout: page
-title: Album
-permalink: /album/
+title: Film
+permalink: /film/
 ---
 
 <ul>
-	{% assign posts = site.album | sort: 'date' | reverse %}
-  {% for post in posts %}
+  {% for post in site.album %}
+   <article class="post" style="margin-top: 30px;">
 		<div
 			class="entry"
-			style="display: flex; justify-content: center; align-items: center; margin-top: 30px;">
+			style="display: flex; justify-content: center; align-items: center">
 			<div style="flex: 30%">
 				<a href="{{ site.baseurl }}{{ post.url }}"
 					><img
@@ -18,21 +18,20 @@ permalink: /album/
 						src="{{ post.cover }}"
 				/></a>
 			</div>
-			<div style="flex: 60%">
+			<div style="flex: 50%">
 				<h3>
 					<a
-						href="{{ site.baseurl }}{{ post.url }}"
-						class="read-more">
+					href="{{ site.baseurl }}{{ post.url }}"
+					class="read-more">
 						{{ post.title }}
 					</a>
-						- {{ post.year }}</h3>
-					<small>
-						by: {{ post.artist }}
-					</small>
+				</h3>
+				<h5 style="margin: 0;">{{ post.year }} | by {{ post.director }}</h5>
 			</div>
-			<div style="flex: 10%">
-				<h4>{{ post.rating }}</h4>
+			<div style="flex: 20%">
+				<h4 style="margin: 0;">{{ post.rating }}</h4>
 			</div>
 		</div>
+	</article>
   {% endfor %}
 </ul>
