@@ -5,7 +5,7 @@ permalink: /album/
 ---
 
 <ul>
-	{% assign posts = site.album | sort: 'date' %}
+	{% assign posts = site.album | sort: 'date' | reverse %}
   {% for post in posts %}
 		<div
 			class="entry"
@@ -19,7 +19,7 @@ permalink: /album/
 				/></a>
 			</div>
 			<div style="flex: 60%">
-				<h3 style="margin: 0;">
+				<h3>
 					<a
 						href="{{ site.baseurl }}{{ post.url }}"
 						class="read-more">
