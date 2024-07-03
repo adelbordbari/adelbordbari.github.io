@@ -5,7 +5,8 @@ permalink: /album/
 ---
 
 <ul>
-  {% for post in site.album %}
+	{% assign sorted_posts = site.album | sort: 'date' | reverse %}
+  {% for post in sorted_posts %}
    <div class="post" style="margin-top: 30px;">
 		<div
 			class="entry"
@@ -27,7 +28,7 @@ permalink: /album/
 					</a>
 				</h3>
 				<h5 style="word-wrap: anywhere;">{{ post.year }} | by {{ post.artist }}</h5>
-				<h6>posted on {{ post.date }} </h6>h6>
+				<h6>posted on {{ post.date | date: "%B %d, %Y" }} </h6>
 			</div>
 			<div style="flex: 20%">
 				<h4>{{ post.rating }}</h4>
