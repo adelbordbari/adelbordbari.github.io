@@ -19,13 +19,12 @@ navigation:                # accepts {file, title, url, icon, sidebaricon}
   - {file: "index.html", icon: home}
   - {file: "code.md", icon: code}
   - {file: "album.md", icon: music}
-  - {file: "film.md", icon: film}
   - {file: "etc.md", icon: asterisk}
 
 external:                  # shows a footer with social links - for available icons see fontawesome.com/icons
+  - {title: About, icon: address-card, file: "about.md"}
   - {title: Mail, icon: envelope, url: "mailto:bordbariadel@gmail.com"}
   - {title: Github, icon: github, url: "https://github.com/adelbordbari"}
-  - {title: About, icon: address-card, file: "about.md"}
 
 
 comments:
@@ -38,8 +37,6 @@ plugins:
 ### CUSTOM
 collections:
   code:
-    output: true
-  film:
     output: true
   album:
     output: true
