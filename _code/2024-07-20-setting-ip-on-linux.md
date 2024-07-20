@@ -6,7 +6,7 @@ layout: "post"
 ## Table of Contents
 - [Problem](#problem)
 - [Solution](#solution)
-- [Footnotes](#footnotes)
+- [Sources](#sources)
 
 ---
 
