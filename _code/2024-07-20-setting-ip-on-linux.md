@@ -65,7 +65,8 @@ network:
 ```
 
 > ⚠️ <strong style="color: yellow">YAML files</strong>  
-> human-readable markup language, highly sensitive to whitespaces, indentations, case/caps, etc.  
+> human-readable markup language  
+> highly sensitive to whitespaces, indentations, case/caps, etc.  
 > take extra care
 
 
