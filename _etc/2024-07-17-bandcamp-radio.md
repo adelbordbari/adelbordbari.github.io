@@ -34,3 +34,10 @@ Finally I settled with Bandcamp. it's a very unique experience since:
 - as an amateur musician myself, I can easily sense the production process while listening to the music
 - Bandcamp Radio! a great radio(-like) show that helps me hear VERY new sounds. be it genre, instrumentation, artist, etc. without trapping me inside a filter bubble. there are often annotation and interviews with artists as well.
 - I admire the platform philosophically
+
+
+
+
+    How do I make the embedded player autostart?
+
+    Welcome home! We trust your eight-year expedition to the heart of the Amazon was a great success. SO much has happened since you left. The first Delawarean was elected Vice President of the United States, the Chronicles of Riddick defied box office expectations, and tabbed browsers became commonplace. As a result, many web enthusiasts now open tabs as they surf. Autostarting media players don’t play well with this behavior, since they put you in a position of wondering whoah, where is that sound coming from and then force you to play find-the-tab-making-your-eardrums-bleed. AUTOSTART IS EVIL is a fairly common refrain nowadays, and who are we to disagree?
