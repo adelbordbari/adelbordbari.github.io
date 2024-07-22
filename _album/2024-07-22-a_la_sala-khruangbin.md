@@ -1,7 +1,7 @@
 ---
 layout: post
 title: A La Sala
-year: 1971
+year: 2024
 artist: Khruangbin
 rating: ★★☆☆☆
 cover: https://upload.wikimedia.org/wikipedia/en/3/37/A_La_Sala.jpg
