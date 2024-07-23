@@ -8,8 +8,9 @@ cover: https://upload.wikimedia.org/wikipedia/en/3/37/A_La_Sala.jpg
 ---
 
 ## Preface
-Very chill and laid-back. has few eye-opening moments. however pretty forgettable. the overal sound is lovable but loses its first touch as it goes on. loved the final song *Les Petits Gris* alongside the only song I had heard from them before, **May Ninth**. listen to the album [here](https://khruangbin.bandcamp.com/album/a-la-sala
-)
+Very chill and laid-back. has few eye-opening moments. however pretty forgettable. the overal sound is lovable but loses its first touch as it goes on. loved the final song *Les Petits Gris* alongside the only song I had heard from them before, **May Ninth**.
+
+<iframe style="border: 0; width: 400px; height: 472px;" src="https://bandcamp.com/EmbeddedPlayer/album=1836174753/size=large/bgcol=ffffff/linkcol=63b2cc/artwork=small/transparent=true/" seamless><a href="https://khruangbin.bandcamp.com/album/a-la-sala">A LA SALA by Khruangbin</a></iframe>
 
 ## Review
 the sounds are so natural, vocals faded and only as accompaniment to the atmosphere that's created by the instruments. there's a very lush quality to the recording that just sounds so intimate, as if they're playing next door and the sound is leaking through the walls.
