@@ -36,12 +36,11 @@ Finally I settled with Bandcamp. it's a very unique experience since:
 - I can NOT download the files (as I normally do) for later local listens; because the artists are mostly too obscure to be found anywhere (for downloads that is! I do occasionally find them on other major streaming platforms like YouTube Music).
 - as an amateur musician myself, I can easily sense the production process while listening to the music
 - Bandcamp Radio! a great radio(-like) show that helps me hear VERY new sounds. be it genre, instrumentation, artist, etc. without trapping me inside a filter bubble. there are often annotation and interviews with artists as well.
-- I admire the platform philosophically
+- I admire the platform philosophically. the body of work that's showcased is beautifully channelled and distributed for the right audience.
 
 
 [^1]: although Bandcamp does not hold a philosophical standpoint towards this and it's more about the UX, I like the result. to quote the Bandcamp Help Center:
-
-  > ***How do I make the embedded player autostart?***  
-  > *Welcome home! We trust your eight-year expedition to the heart of the Amazon was a great success. SO much has happened since you left. The first Delawarean was elected Vice President of the United States, the Chronicles of Riddick defied box office expectations, and tabbed browsers became commonplace. As a result, many web enthusiasts now open tabs as they surf. Autostarting media players don’t play well with this behavior, since they put you in a position of wondering whoah, where is that sound coming from and then force you to play find-the-tab-making-your-eardrums-bleed. AUTOSTART IS EVIL is a fairly common refrain nowadays, and who are we to disagree?*
+  ***How do I make the embedded player autostart?***
+  *Welcome home! We trust your eight-year expedition to the heart of the Amazon was a great success. SO much has happened since you left. The first Delawarean was elected Vice President of the United States, the Chronicles of Riddick defied box office expectations, and tabbed browsers became commonplace. As a result, many web enthusiasts now open tabs as they surf. Autostarting media players don’t play well with this behavior, since they put you in a position of wondering whoah, where is that sound coming from and then force you to play find-the-tab-making-your-eardrums-bleed. AUTOSTART IS EVIL is a fairly common refrain nowadays, and who are we to disagree?*
 
 ---
