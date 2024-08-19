@@ -41,7 +41,7 @@ Finally I settled with Bandcamp. it's a very unique experience since:
 
 [^1]: although Bandcamp does not hold a philosophical standpoint towards this and it's more about the UX, I like the result. to quote the Bandcamp Help Center:
 
-> ***How do I make the embedded player autostart?***  
-> *Welcome home! We trust your eight-year expedition to the heart of the Amazon was a great success. SO much has happened since you left. The first Delawarean was elected Vice President of the United States, the Chronicles of Riddick defied box office expectations, and tabbed browsers became commonplace. As a result, many web enthusiasts now open tabs as they surf. Autostarting media players don’t play well with this behavior, since they put you in a position of wondering whoah, where is that sound coming from and then force you to play find-the-tab-making-your-eardrums-bleed. AUTOSTART IS EVIL is a fairly common refrain nowadays, and who are we to disagree?*
+  > ***How do I make the embedded player autostart?***  
+  > *Welcome home! We trust your eight-year expedition to the heart of the Amazon was a great success. SO much has happened since you left. The first Delawarean was elected Vice President of the United States, the Chronicles of Riddick defied box office expectations, and tabbed browsers became commonplace. As a result, many web enthusiasts now open tabs as they surf. Autostarting media players don’t play well with this behavior, since they put you in a position of wondering whoah, where is that sound coming from and then force you to play find-the-tab-making-your-eardrums-bleed. AUTOSTART IS EVIL is a fairly common refrain nowadays, and who are we to disagree?*
 
 ---
