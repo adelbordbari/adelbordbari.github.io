@@ -180,6 +180,7 @@ I needed to differentiate between "any key-value setting" with my explicit sessi
     </table>
 {% endblock %}
 {% endraw %}
+{% endhighlight %}
 ```
 
 2. create a function to read from models and write to `settings.py`
