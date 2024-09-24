@@ -126,7 +126,7 @@ def delete_setting(request, pk):
 ```
 I needed to differentiate between "any key-value setting" with my explicit session timeout setting in the view, so I came up with a way to have different `request.POST`s after form submission by naming each form differetly. this is how I rendered the forms in my template:
 `templates/form_template.html`
-```html
+```
 {% extends "shared/base.html" %}
 {% block content %}
     <form method="post">
