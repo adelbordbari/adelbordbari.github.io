@@ -185,6 +185,7 @@ I needed to differentiate between "any key-value setting" with my explicit sessi
 
 2. create a function to read from models and write to `settings.py`
 By now users can create, update and delete settings. these are saved in database as instances. but this is just a simple CRUD. the real deal is the function `update_settings()`. let's have a look at the code:
+
 ```python
 def update_settings():
     try:
