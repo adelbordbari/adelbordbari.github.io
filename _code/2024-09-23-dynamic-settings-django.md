@@ -64,7 +64,7 @@ If any of the libraries worked for you and yuor requirement, good for you. but I
 
 ## Solution
 This is a decription of what I came up with, and perfectly matched what I needed: [^2]
-1. created a new app `globalSettings` with a model/form/view:
+At first, I created a new app `globalSettings` with a model/form/view:
 
 `models.py`
 ```python
@@ -183,7 +183,7 @@ I needed to differentiate between "any key-value setting" with my explicit sessi
 {% endraw %}
 ```
 
-2. create a function to read from models and write to `settings.py`
+Then I create a function to read from models and write to `settings.py`
 By now users can create, update and delete settings. these are saved in database as instances. but this is just a simple CRUD. the real deal is the function `update_settings()`. let's have a look at the code:
 
 ```python
