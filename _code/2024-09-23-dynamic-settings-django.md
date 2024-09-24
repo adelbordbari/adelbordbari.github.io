@@ -124,9 +124,13 @@ def delete_setting(request, pk):
         update_settings()
         return redirect("settings")
 ```
+
 I needed to differentiate between "any key-value setting" with my explicit session timeout setting in the view, so I came up with a way to have different `request.POST`s after form submission by naming each form differetly. this is how I rendered the forms in my template:
+
 `templates/form_template.html`
 ```
+{% highlight django %}
+{% raw %}
 {% extends "shared/base.html" %}
 {% block content %}
     <form method="post">
@@ -175,6 +179,7 @@ I needed to differentiate between "any key-value setting" with my explicit sessi
         </tbody>
     </table>
 {% endblock %}
+{% endraw %}
 ```
 
 2. create a function to read from models and write to `settings.py`
