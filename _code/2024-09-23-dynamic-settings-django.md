@@ -42,7 +42,9 @@ Although rather trivial, these two words serve different purposes.
 A *setting* is usually a global configurations for the Django project. it's defined in the `setting.py` file. examples are `INSTALLED_APPS`, `DEBUG`, and `DATABASES`. it's defined in the global scope (project-wide) and not specific to any app/user.
 On the other hand, a preference is (obviously the opposite of what's mentioned above) defined in the scope of specific apps or users, is stored within a model's instances (is read from the database, instead of the `settings.py` file), and can be modified dynamically without needing a full server restart.
 
-<!-- break -->
+---
+- related: ...
+
 Unfortunately, none of these libraries worked for my end goal.
 To be more specific, this is what I intended to do:
 I want the admin to be able to set session expiry time. for that I use `django-session-timeout`. this library uses the "setting" `SESSION_EXPIRE_SECONDS` (integer, seconds of session timeout) to set the period. that's why I needed a way to change the settings.
