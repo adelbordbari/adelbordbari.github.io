@@ -1,3 +1,8 @@
+---
+title: "Dynamic Settings in Django"
+layout: "post"
+---
+
 ## Table of Contents
 - [Situation](#situation)
 - [Problem](#problem)
