@@ -65,6 +65,7 @@ If any of the libraries worked for you and yuor requirement, good for you. but I
 ## Solution
 This is a decription of what I came up with, and perfectly matched what I needed: [^2]
 1. created a new app `globalSettings` with a model/form/view:
+
 `models.py`
 ```python
 class CustomSettings(models.Model):
@@ -74,6 +75,7 @@ class CustomSettings(models.Model):
     def __str__(self):
         return f"{self.name}: {self.value}"
 ```
+
 `forms.py`
 ```python
 class CustomSettingsForm(forms.ModelForm):
@@ -89,6 +91,7 @@ class CustomSettingsForm(forms.ModelForm):
             ),
         }
 ```
+
 `views.py`
 ```python
 def create_update_settings(request):
@@ -116,7 +119,6 @@ def create_update_settings(request):
             "session_form": session_form,
         },
     )
-
 def delete_setting(request, pk):
     setting = get_object_or_404(CustomSettings, pk=pk)
     if request.method == "POST":
@@ -128,8 +130,7 @@ def delete_setting(request, pk):
 I needed to differentiate between "any key-value setting" with my explicit session timeout setting in the view, so I came up with a way to have different `request.POST`s after form submission by naming each form differetly. this is how I rendered the forms in my template:
 
 `templates/form_template.html`
-```
-{% highlight django %}
+```html
 {% raw %}
 {% extends "shared/base.html" %}
 {% block content %}
@@ -180,7 +181,6 @@ I needed to differentiate between "any key-value setting" with my explicit sessi
     </table>
 {% endblock %}
 {% endraw %}
-{% endhighlight %}
 ```
 
 2. create a function to read from models and write to `settings.py`
@@ -206,19 +206,15 @@ def format_value(value):
         return int(value)  # Convert to integer if the value is all digits
     else:
         return repr(value)
-
 def update_settings_file():
     # Get the absolute path of the settings file
     settings_path = os.path.abspath(
         importlib.import_module("myApp.settings").__file__
     )
-
     # Get all custom settings from the database
     custom_settings = CustomSettings.objects.all()
-
     with open(settings_path, "r") as f:
         lines = f.readlines()
-
     # Remove the old custom settings block
     start = None
     end = None
@@ -227,11 +223,9 @@ def update_settings_file():
             start = i
         if "# Custom settings end" in line:
             end = i
-
     # Ensure the custom settings block is removed if it exists
     if start is not None and end is not None:
         del lines[start : end + 1]
-
     # Insert the new custom settings at the same position
     if start is not None:
         # Re-insert the custom settings block at the position where it was removed
@@ -247,12 +241,9 @@ def update_settings_file():
         for setting in custom_settings:
             lines.append(f"{setting.name.upper()} = {format_value(setting.value)}\n")
         lines.append("# Custom settings end\n")
-
     # Write the updated settings back to the file
     with open(settings_path, "w") as f:
         f.writelines(lines)
-
-
 def restart_server():
     os.execl(sys.executable, sys.executable, *sys.argv)
 ```
