@@ -13,6 +13,8 @@ Several blog posts, some youtube tutorials, and a few libraries exist on the int
 
 ## Problem
 Given the specific nature of this problem, the obstacles are equally specific. the major issue is that every change in the `settings.py` requires a (Django) server restart to take effect (unlike `urls.py` or `views.py` in which changes take effect after an auto-restart. or templates that don't even require that). you need to stop the server, and start it with `runserver` again.
+![image](https://github.com/user-attachments/assets/c9b24fba-1005-4094-9645-968ac2f9acca)
+
 So naturally we need a way to store these form inputs somewhere, change the `settings.py` and then restart the server; this is the most manual way to think about this problem.
 
 ## Solution
@@ -22,6 +24,7 @@ If you search "django dynamic settings" (realizing this is what it's called took
 - [Constance](https://django-constance.readthedocs.io/en/latest/)
 
 All of these work the same. they implement an extension to the settings, so that you can access them wherever you need the settings (views, forms, etc.). for instance in your `view.py` you might have something like this with the Django settings:
+
 ```python
 from django.conf import settings
 
@@ -39,9 +42,11 @@ Although rather trivial, these two words serve different purposes.
 A *setting* is usually a global configurations for the Django project. it's defined in the `setting.py` file. examples are `INSTALLED_APPS`, `DEBUG`, and `DATABASES`. it's defined in the global scope (project-wide) and not specific to any app/user.
 On the other hand, a preference is (obviously the opposite of what's mentioned above) defined in the scope of specific apps or users, is stored within a model's instances (is read from the database, instead of the `settings.py` file), and can be modified dynamically without needing a full server restart.
 
+<!-- break -->
 Unfortunately, none of these libraries worked for my end goal.
 To be more specific, this is what I intended to do:
 I want the admin to be able to set session expiry time. for that I use `django-session-timeout`. this library uses the "setting" `SESSION_EXPIRE_SECONDS` (integer, seconds of session timeout) to set the period. that's why I needed a way to change the settings.
+If any of the libraries worked for you and yuor requirement, good for you. but I needed to have dynamic settings that's set AND used in `settings.py`, that was eventually impossible because of circular imports. no external module can be loaded `settings.py` before the django app loads the settings module itself. therefore creating a model (and corresponding form/view) was also not an option because I couldn't load the model into `settings.py` to use the instances as values for variables (namely `SESSION_EXPIRE_SECONDS`).
 
 ## Takeaways
 
