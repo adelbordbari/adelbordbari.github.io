@@ -4,7 +4,7 @@ title: When The Pawn
 year: 1997
 artist: Fiona Apple
 rating: ★★★★☆
-cover: https://en.wikipedia.org/wiki/When_the_Pawn...#/media/File:Fiona_apple_when_the_pawn.jpg
+cover: https://upload.wikimedia.org/wikipedia/en/2/24/Fiona_apple_when_the_pawn.jpg
 ---
 
 ## Preface
