@@ -13,8 +13,12 @@ Her second album, originally titled:
 
 actually held the record for the longest album title until 2007. it's a poem by herself that's written on the front cover.
 
-It's a generally simple song. few instruments, few subject matters, which makes it sound like triphop at some points. but those few pieces come together perfectly. everything compliments everything else. things just "sit" together so nicely. the rhythm is often what you can shake your head to. the words are intimate, she sounds so "real" and human. the melodic parts feel fantastic since they're often contrasted with the rest of the song being passive and dissonant. the contrast also happens with the number of words and notes too. the bridge sections (accidentally?) happen to have that quality: in contrast to the chopped-off wordy verses, they're more expressive and less narrative. they're what you can sing along with.
+It's a generally simplistic record. few instruments, few subject matters, which makes it sound like triphop at some points. but those few pieces come together perfectly. everything compliments everything else. things just "sit" together so nicely. the rhythm is often what you can shake your head to. the words are intimate, she sounds so "real" and human.
+
+The melodic parts feel fantastic since they're often contrasted with the rest of the song being passive and dissonant. the contrast also happens with the number of words and notes too. the bridge sections (accidentally?) happen to have that quality: in contrast to the chopped-off wordy verses, they're more expressive and less narrative. they're what you can sing along with.
+
 Brushing drums and prominent role of the piano makes it sound very jazzy.
+
 My favorite tracks are I Know, On The Bound and Limp; in that order.
 
 ## Review
@@ -46,6 +50,7 @@ I loved the little brass section at the end too. solid resolute ending.
 **A Mistake** is filled with the typical feminine confusion. rebelling against whatever binds. 
 > Do I wanna do right? Of course
 > But do I really wanna feel I'm forced to answer you? Hell no
+
 again to continue her post-relationship process, she misses the mistakes she's made, another one, maybe a better one (and _maybe not_). I find the distorted guitars and the glitchy vinyl-scratches relatable to this. the haze, the itch, the confusion.
 
 **Fast As You Can** extensively uses her contemptuous snobbish tone. she enjoys appearing in control, the devilish underlying layers showing up feeds her.
