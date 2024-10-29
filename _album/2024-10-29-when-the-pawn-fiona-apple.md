@@ -1,15 +1,16 @@
 ---
 layout: post
 title: When The Pawn
-year: 1971
+year: 1997
 artist: Fiona Apple
-rating: ★★★☆☆
+rating: ★★★★☆
 cover: https://en.wikipedia.org/wiki/When_the_Pawn...#/media/File:Fiona_apple_when_the_pawn.jpg
 ---
 
 ## Preface
 Her second album, originally titled:
 > When the Pawn Hits the Conflicts He Thinks like a King What He Knows Throws the Blows When He Goes to the Fight and He’ll Win the Whole Thing ‘fore He Enters the Ring There’s No Body to Batter When Your Mind Is Your Might so When You Go Solo, You Hold Your Own Hand and Remember That Depth Is the Greatest of Heights and If You Know Where You Stand, Then You Know Where to Land and If You Fall It Won’t Matter, Cuz You’ll Know That You’re Right
+
 actually held the record for the longest album title until 2007. it's a poem by herself that's written on the front cover.
 
 It's a generally simple song. few instruments, few subject matters, which makes it sound like triphop at some points. but those few pieces come together perfectly. everything compliments everything else. things just "sit" together so nicely. the rhythm is often what you can shake your head to. the words are intimate, she sounds so "real" and human. the melodic parts feel fantastic since they're often contrasted with the rest of the song being passive and dissonant. the contrast also happens with the number of words and notes too. the bridge sections (accidentally?) happen to have that quality: in contrast to the chopped-off wordy verses, they're more expressive and less narrative. they're what you can sing along with.
