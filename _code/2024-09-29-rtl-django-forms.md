@@ -102,7 +102,6 @@ class loginForm(forms.Form):
 finally render the template, simply like:
 ```html
 <form method="post" id="infoform">
-  {% csrf_token %}
   {{ form }}
 </form>
 ```
