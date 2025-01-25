@@ -12,7 +12,7 @@ Pretty and baffling! sounds like a romantic-comedy theater. a lot of juxtapositi
 
 The instrumentats are a blend of classical and modern. celos and violins put against distorted guitars, double bass hitting against marching drums. it's a medival tale dressed in contemporary clothes. you hear about haunting and hurling at doors but there's also television and make-up, waltz, wine, letters and satin dresses, The Office, and breaking dishes. this gives me a sense of timelessness.
 
-<img src="https://github.com/user-attachments/assets/981fa1d7-4435-44e0-b91a-a7573152f8e8" width="50%" style="margin: 0 auto" />
+<img src="https://github.com/user-attachments/assets/981fa1d7-4435-44e0-b91a-a7573152f8e8" width="50%" />
 
 
 ## Review
