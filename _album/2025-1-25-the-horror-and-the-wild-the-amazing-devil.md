@@ -37,15 +37,10 @@ she claims that despite her evil past, she can and will try to get better, but s
 **Fair** is mostly pictures. it's a sweet picture of them in a room, alone, rather dark, not able to stay cross at each other, acknowledging their relationship being deeper even than their love: _'Cause darling I was born to press my head between your shoulder blades_. neither can comprehend the why and how of what they have. this is overall an upbeat song.
 
 There a lot of dialogue in **The Unwanted Animals**! I like the references in it too: Mr. Wolf, Holofernes. at first it depicts coitus: "_I make shipwrecks out of my dress; And the door below it splinters; And the creature creeps inside_"
-> Can't you hear that scratching?
-> There's something at the door
-> But the wind has picked us up now
-> We're hanging in the air
-> And as you grip me like an animal
-> That you're about to spear
-> "Be good to me," I whisper
-> And you say, "What?"
-> And I said, "Nothing, dear"
+> Can't you hear that scratching? There's something at the door  
+> But the wind has picked us up now. We're hanging in the air  
+> And as you grip me like an animal That you're about to spear  
+> "Be good to me," I whisper And you say, "What?" And I said, "Nothing, dear"
 
 but it can also be the descent back into her madness, suggested by the "I'm the ..." pattern that was also present in Farewell Wanderlust.
 
