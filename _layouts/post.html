@@ -9,6 +9,10 @@ layout: default
     <img id="cover" alt="cover" src="{{ page.cover }}" />
   {% endif %}
 
+  {% if page.rating %}
+    <h2>{{ page.rating }}</h2>
+  {% endif %}
+
   {{ content }}
   
   {% if page.comments != false and site.comments.isso or site.comments.disqus %}
