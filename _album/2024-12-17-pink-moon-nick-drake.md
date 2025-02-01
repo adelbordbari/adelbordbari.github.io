@@ -13,6 +13,7 @@ cover: https://upload.wikimedia.org/wikipedia/en/3/3c/NickDrakePinkMoon.jpg
 ## Preface
 Very short and minimalistic. did not feel like an "album", just a series of unfinished ideas (except a few songs). the poetry is indeed undisputed but everything else could be much more refined and built-upon. a remastered version with more strings (and etcetera accompaniments?) would be at least interesting, if not necessary.
 
+<p>About the night of recording Pink Moon, as Told by <i>John Wood</i></p>
 <audio controls>
     <source src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Pink_Moon_by_Nick_Drake_Night_of_Recording_as_Told_by_John_Wood.ogg" type="audio/ogg" />
     Your browser does not support the audio element.
