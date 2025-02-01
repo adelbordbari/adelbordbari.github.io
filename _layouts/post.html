@@ -6,7 +6,10 @@ layout: default
   {% include meta.html post=page %}
   
   {% if page.cover %}
-    <img id="cover" alt="cover" src="{{ page.cover }}" />
+    <div style="display: flex; justify-content: center; align-items: center; position: relative">
+      <img id="cover" alt="cover" src="{{ page.cover }}" />
+      <img id="cover" alt="coverbg" src="{{ page.cover }}" />
+    </div>
   {% endif %}
  
   {% if page.rating %}
