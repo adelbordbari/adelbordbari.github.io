@@ -1,6 +1,7 @@
 ---
 title: "I wrote a song using AI"
 layout: "post"
+toc: true
 ---
 
 {:toc}
