@@ -26,7 +26,7 @@ Originally, the system was designed to configure only one static interface (usua
 The challenge was to:
 
 - Scale the design to support multiple interfaces.
-- Maintain form-based input via Django views.
+- Maintain form-based input via Django views.[^1]
 - Make sure the YAML format written is consistent and readable by Netplan.
 - Avoid impacting other interfaces when modifying one.
 
