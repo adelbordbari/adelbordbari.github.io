@@ -4,8 +4,9 @@ layout: "post"
 toc: true
 ---
 
-{:toc}
-[TOC]
+## Table of Contents
+- [It's scary](#its-scary)
+- [But there's a more real fear](#but-theres-a-more-real-fear)
 
 ---
 
