@@ -3,9 +3,7 @@ title: "I wrote a song using AI"
 layout: "post"
 ---
 
-## Table of Contents
-- [It's scary](#it's-scary)
-- [But there's a more real fear](#but-there's-a-more-real-fear)
+{:toc}
 
 ---
 
