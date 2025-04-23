@@ -144,9 +144,3 @@ This ensures there's always a fallback value, and the real value is updated when
 - Use button `name` in form submissions to identify multiple forms
 - Rewriting the full settings block is safer and more predictable than trying to diff/patch
 - Graceful restarts via `os.execl` work well for small to medium apps, but consider async handling in production
-
-## Footnotes
-
-[^1]: Changing `settings.py` doesn’t affect a running server unless it’s restarted.
-[^2]: This solution is custom-built, but fits the requirement exactly — especially for settings that must live in Python context.
-[^3]: Metabase is a BI tool we use, and we dynamically change the refresh time for embedded dashboards through this same mechanism.
