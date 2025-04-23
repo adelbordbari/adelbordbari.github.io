@@ -9,7 +9,6 @@ layout: "post"
 - [Investigation](#investigation)
 - [Solution](#solution)
 - [Takeaways](#takeaways)
-- [Footnotes](#footnotes)
 
 ---
 
