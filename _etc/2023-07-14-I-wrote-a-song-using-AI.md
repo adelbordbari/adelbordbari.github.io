@@ -4,6 +4,7 @@ layout: "post"
 ---
 
 {:toc}
+[TOC]
 
 ---
 
