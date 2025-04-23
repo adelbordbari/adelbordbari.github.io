@@ -13,7 +13,7 @@ cover: https://upload.wikimedia.org/wikipedia/en/0/01/Queens_of_the_Stone_Age_-_
 ## Review  
 Starts weirdly, with a radio—very annoying and loud. It's a concept album. **No One Knows**, the second track, has an amazing riff. The album has a great mix: headbanging bass and drums. I think the album is a critique of the music industry—_“songs that sound like everyone else,”_ _“so many rules, this and that, these and those.”_
 
-I think it could be shorter. It's very riff-based, with simple guitar rhythms (but still precise and on point), and very creative drumming—especially during the intro for *Songs for the Dead*, my favorite so far. Super kick-ass and heavy. With tracks 4 and 5, I feel like it’s about a broader topic: the music industry.
+I think it could be shorter. It's very riff-based, with simple guitar rhythms (but still precise and on point), and very creative drumming—especially during the intro for **Songs for the Dead**, my favorite so far. Super kick-ass and heavy. With tracks 4 and 5, I feel like it’s about a broader topic: the music industry.
 
 > Life's the study of dying  
 
@@ -23,7 +23,7 @@ Feels more mellow in **The Sky Is Fallin’**, more melodic. Vocals are quieter 
 
 The radio once again reminds me we’re still not done with the album. **Six-Shooter** isn’t my favorite—too angry, noisy, and weird. Although it’s only one minute long. The previous track mentioned “death metal all the time”—this *is* the death metal. **Hanging Tree** sounds good. Still simple guitars, but more progressive. The guitars are still too loud.
 
-OK, apparently these are the different radio stations! Each plays slightly different genres, but since it’s one band performing, “they all sound like everyone else.” Wow. That’s why **Six-Shooter** was so different.
+Apparently these are the different radio stations! Each plays slightly different genres, but since it’s one band performing, “they all sound like everyone else.” Wow. That’s why **Six-Shooter** was so different.
 
 The tracks don’t feel annoyingly long. The album is one hour, but it feels alright since each track is relatively short.
 
