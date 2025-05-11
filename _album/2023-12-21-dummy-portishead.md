@@ -17,7 +17,7 @@ I didn't like it very much. 49 minutes; it's almost very simple and forgettable.
 
 > The song uses a sample from Argentine composer Lalo Schifrin’s “Danube Incident”
 
-I wasn't very wrong about that European feel. the electronic alarming sound still wanders through the sounds.
+I wasn't very wrong about that European feel. the electronic alarming sound still wanders through the sounds.  
 I've heard a live performance of **Strangers**, which was fascinating. it perfectly captures the band's DNA. Beth's iconic shaky "ou"s, jazzy guitars, and the electronic glue that ties everything together.
 
 > Can anybody see the light?  
