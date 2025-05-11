@@ -16,8 +16,8 @@ Review
 
 It starts off wholesome, sweet, and warm—then builds into a wall of sound. A bit overwhelming at times, but I trust the music. I hear “_I will love you 'til I die_”—and that’s sweet enough. Still, there’s a seriousness to it, especially with the medical beeping that opens the second track.
 
-    The album’s title is from the philosophical novel Sophie's World by Jostein Gaarder, the context being:
-    Only philosophers embark on this perilous expedition to the outermost reaches of language and existence. Some of them fall off, but others cling on desperately and yell at the people nestling deep in the snug softness, stuffing themselves with delicious food and drink. “Ladies and Gentlemen,” they yell, “we are floating in space!” But none of the people down there care.
+> The album’s title is from the philosophical novel Sophie's World by Jostein Gaarder, the context being:  
+> Only philosophers embark on this perilous expedition to the outermost reaches of language and existence. Some of them fall off, but others cling on desperately and yell at the people nestling deep in the snug softness, stuffing themselves with delicious food and drink. “Ladies and Gentlemen,” they yell, “we are floating in space!” But none of the people down there care.
 
 "_Little Johnny's sad and fucked_"; **Come Together** talks about a little boy with an ape on his back that needs feeding. The metaphors begin here. Based on the intro, I’m guessing the ape represents either drugs or modern life’s overwhelming pace. Another build-up to a massive wall of sound. It reminds me, if just by title, of The Beatles’ “Come Together.”
 
