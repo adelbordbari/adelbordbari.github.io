@@ -41,7 +41,7 @@ It's interesting that even in an average song on the album we can see brilliant 
 > Life, it taught me to die  
 > So it's not hard to fall when you float like a cannonball
 
-Another happier song but in a thicker disguise, **Older Chests** talks of the passage of time and how there's always time, and how time always changes things. or maybe it can be a depiction of denial too? he sees "_older gents_" and "_babies_" and "_mamas_" go through time but still he denies the passage of time: "_there's always time_" but only "_on my mind_".
+Another happier song but in a thicker disguise, **Older Chests** talks of the passage of time and how there's always time, and how time always changes things. or maybe it can be a depiction of denial too? he sees "_older gents_" and "_babies_" and "_mamas_" go through time but still he denies the passage of time: "_there's always time_" but only "_on my mind_".  
 The name also makes me think of both the chest of an older human and a very old jewel box.
 
 > Some things in life may change  
