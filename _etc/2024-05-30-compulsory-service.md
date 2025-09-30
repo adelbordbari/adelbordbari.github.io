@@ -25,5 +25,3 @@ I did all the paperwork, got into my skilled soldier program sucessfully, spent 
 
 ## Footnotes
 [^1]: since several years ago, "skilled soldiers" can spend their service as employees in tech-based companies. there are many, MANY terms and conditions. in order to attend the program, applicants need to reach a minimum "score". this score is calculated based on certain privileges, including being married, having offspring, being among the families of martyrs/veterans, active [Basij](https://en.wikipedia.org/wiki/Basij) membership, etc. I didn't have any of those, therefore I had to spend at least six months in the company as a regular employee to reach the minimum score.
-[^2]: see [here](https://en.wikipedia.org/wiki/List_of_metropolitan_areas_in_Asia), and it's not a very recent estimation either.
-
