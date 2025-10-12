@@ -34,7 +34,9 @@
 </header>
 
 {{ content }}
-{% include lastfm.html %}
+<div style="display: flex;justify-content: center;margin: 1rem 0;">
+  {% include lastfm.html %}
+</div>
   
 {% if site.external %}
 <footer>
