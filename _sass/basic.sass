@@ -116,22 +116,27 @@ audio
   border: solid 3px #E0106F
   filter: contrast(95%) saturate(95%)
 
+/* Letterboxd diary card — always light so the embed's dark text is readable */
 .lbdiary
-  background: $light
+  background: #fff        /* force light background for contrast */
   max-width: 700px
   margin: 1.5rem auto
   border-radius: 8px
   overflow: hidden
   height: clamp(380px, 60vh, 640px)
+  box-shadow: 0 1px 0 reduce(16), 0 12px 32px reduce(20)
 
+/* In dark mode, keep the card light but soften edges so it blends better */
 @media (prefers-color-scheme: dark)
   .lbdiary
-    background: $dark
+    background: #fff
+    box-shadow: 0 0 0 1px reduce(24) inset, 0 12px 32px reduce(28)
 
+/* Make the iframe fill the card */
 .lbdiary iframe
   display: block
   width: 100%
   height: 100%
   border: 0
-  background: transparent
+  background: transparent   /* fine to leave; the card supplies the white */
   border-radius: inherit
