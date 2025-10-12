@@ -140,7 +140,6 @@ audio
   overflow: hidden
   text-overflow: ellipsis
 
-/* follow your global link rules (inherit, underline on hover) */
 .recent-played-track a
   color: inherit
   text-decoration: inherit
@@ -153,9 +152,14 @@ audio
     outline: 2px solid $link-color
     outline-offset: 2px
 
-/* optional: make the leading emoji a bit quieter without hiding it */
-.recent-played-track
-  &::first-letter
+/* add this (moved from the inline <style>) */
+.recent-played-art
+  width: 40px
+  height: 40px
+  flex: 0 0 40px
+  border-radius: 4px
+  object-fit: cover
+  box-shadow: 0 0 0 1px reduce(6) inset
 
 .recent-played--inline
   padding: 0
