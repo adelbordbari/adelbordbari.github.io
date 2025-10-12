@@ -6,58 +6,6 @@
 
 <script>
   (function() {
-    let gifInserted = false;
-
-    function insertGifOnce(root) {
-      if (gifInserted) return;
-      const track = root.querySelector('.recent-played-track');
-      if (!track) return;
-
-      const img = document.createElement('img');
-      img.className = 'recent-played-gif';
-      img.src = '/assets/red_circle.gif'; // use 'assets/red_circle.gif' if your site isn't at domain root
-      img.alt = 'Now playing';
-      img.loading = 'lazy';
-      img.decoding = 'async';
-
-      root.insertBefore(img, track);
-      gifInserted = true;
-    }
-
-    // 1) If it's already on the page, do it once.
-    const existing = document.querySelector('.recent-played');
-    if (existing) {
-      tryEnhance(existing); // your existing cover-art enhancer
-      insertGifOnce(existing); // insert GIF just once
-    }
-
-    // 2) Otherwise, observe until we insert once, then disconnect.
-    const mo = new MutationObserver(muts => {
-      if (gifInserted) {
-        mo.disconnect();
-        return;
-      }
-      for (const m of muts) {
-        m.addedNodes && m.addedNodes.forEach(node => {
-          if (gifInserted || node.nodeType !== 1) return;
-          const target =
-            (node.matches && node.matches('.recent-played') && node) ||
-            (node.querySelector && node.querySelector('.recent-played'));
-          if (target) {
-            tryEnhance(target);
-            insertGifOnce(target);
-            mo.disconnect(); // stop observing after first insert
-          }
-        });
-      }
-    });
-    if (!gifInserted) {
-      mo.observe(document.documentElement, {
-        childList: true,
-        subtree: true
-      });
-    }
-
     function tryEnhance(root) {
       if (!root || root.querySelector('.recent-played-art')) return;
       const link = root.querySelector('.recent-played-track a');
