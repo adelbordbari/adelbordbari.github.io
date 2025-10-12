@@ -4,8 +4,13 @@ title: Film
 permalink: /film/
 ---
 
+<iframe title="Letterboxd Diary" width="100%" height="800"
+style="border: 0;background: white;border-radius: .5rem;"
+src="https://lb-embed-content.bokonon.dev?username=adel_bordbari">
+</iframe>
+
 <ul>
-	{% assign sorted_posts = site.film | sort: 'date' | reverse %}
+  {% assign sorted_posts = site.film | sort: 'date' | reverse %}
   {% for post in sorted_posts %}
    <div class="post" style="margin-top: 30px;">
 		<div
