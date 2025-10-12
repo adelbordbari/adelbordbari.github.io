@@ -115,3 +115,23 @@ audio
   width: 100%
   border: solid 3px #E0106F
   filter: contrast(95%) saturate(95%)
+
+.lbdiary
+  background: $light
+  max-width: 700px
+  margin: 1.5rem auto
+  border-radius: 8px
+  overflow: hidden
+  height: clamp(380px, 60vh, 640px)
+
+@media (prefers-color-scheme: dark)
+  .lbdiary
+    background: $dark
+
+.lbdiary iframe
+  display: block
+  width: 100%
+  height: 100%
+  border: 0
+  background: transparent
+  border-radius: inherit
