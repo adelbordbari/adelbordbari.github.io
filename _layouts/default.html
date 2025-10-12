@@ -39,7 +39,7 @@
 <footer>
   <div>{{ site.description | default: site.title }}</div>
   {% include menu.html menu=site.external %}
-  {% include lastfm.html %}
+  <div>{% include lastfm.html %}</div>
 </footer>
 {% endif %}
 
