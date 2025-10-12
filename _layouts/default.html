@@ -34,11 +34,11 @@
 </header>
 
 {{ content }}
-
+<div>{% include lastfm.html %}</div>
+  
 {% if site.external %}
 <footer>
   <div>{{ site.description | default: site.title }}</div>
-  <div>{% include lastfm.html %}</div>
   {% include menu.html menu=site.external %}
 </footer>
 {% endif %}
