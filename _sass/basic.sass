@@ -116,11 +116,6 @@ audio
   border: solid 3px #E0106F
   filter: contrast(95%) saturate(95%)
 
-.recent-gif
-  width: 16px
-  height: 16px
-  display: inline-block
-
 .recent-played
   display: inline-flex
   align-items: center
@@ -135,7 +130,14 @@ audio
   overflow: hidden
   text-overflow: ellipsis
 
+.recent-played--inline
+  padding: 0
+  box-shadow: none
+  background: transparent
+  
 .recent-played-track
+  order: 1
+  min-width: 0
   margin: 0
   font-family: $font-family
   font-weight: $font-weight * 1.2
@@ -156,8 +158,9 @@ audio
     outline: 2px solid $link-color
     outline-offset: 2px
 
-/* add this (moved from the inline <style>) */
 .recent-played-art
+  order: 3
+  margin-left: auto
   width: 40px
   height: 40px
   flex: 0 0 40px
@@ -166,11 +169,10 @@ audio
   box-shadow: 0 0 0 1px reduce(6) inset
   margin: 0
 
-.recent-played--inline
-  padding: 0
-  box-shadow: none
-  background: transparent
-
+.recent-gif
+  width: 16px
+  height: 16px
+  display: inline-block
 
 .recent-gif--inline
   flex: 0 0 16px
@@ -178,3 +180,6 @@ audio
   height: 16px
   margin: 0 .25em
   display: inline-block
+
+.recent-gif, .recent-gif--inline
+  order: 2
