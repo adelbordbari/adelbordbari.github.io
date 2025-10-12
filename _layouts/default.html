@@ -33,14 +33,14 @@
   {% include menu.html menu=pages %}
 </header>
 
+{{ content }}
+  
 <div style="display: flex;justify-content: center;margin: 1rem 0;">
   {% include lastfm.html %}
 </div>
 <div style="display: flex;justify-content: center;margin: 1rem 0;">
   {% include letterboxd.html %}
 </div>
-
-{{ content }}
   
 {% if site.external %}
 <footer>
