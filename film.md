@@ -4,6 +4,16 @@ title: Film
 permalink: /film/
 ---
 
+<div id="letterboxd-embed-wrapper-tc"></div>
+
+<script>
+  fetch('https://lb-embed-content.bokonon.dev?username=adel_bordbari')
+    .then(r => r.text())
+    .then(html => {
+      document.getElementById('letterboxd-embed-wrapper-tc').innerHTML = html;
+    });
+</script>
+
 <div class="lbdiary">
   <iframe
     title="Letterboxd Diary"
