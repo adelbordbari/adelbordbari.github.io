@@ -19,6 +19,65 @@
 
   <section>
     <script src="https://recentfm.rknight.me/now.js?u=thenitwit"></script>
+    <script>
+      (function enhanceRecentFmWithArt() {
+        // wait for the recentfm widget to write its DOM
+        function ready(fn){ document.readyState !== 'loading' ? fn() : document.addEventListener('DOMContentLoaded', fn); }
+      
+        ready(async () => {
+          const root = document.querySelector('.recent-played');
+          const link = root?.querySelector('.recent-played-track a');
+          if (!root || !link) return;
+      
+          // parse "Title by Artist" from the link text
+          const txt = link.textContent.trim();
+          const sep = ' by ';
+          if (!txt.includes(sep)) return;
+      
+          const [title, artist] = txt.split(sep);
+          if (!title || !artist) return;
+      
+          // simple cache to avoid repeated lookups while browsing
+          const cacheKey = `art:${title}::${artist}`;
+          const cached = sessionStorage.getItem(cacheKey);
+          if (cached) return insert(cached);
+      
+          try {
+            const params = new URLSearchParams({
+              term: `${title} ${artist}`,
+              entity: 'song',
+              limit: '1',
+            });
+            const res = await fetch(`https://itunes.apple.com/search?${params.toString()}`);
+            const data = await res.json();
+            const hit = data?.results?.[0];
+            let art = hit?.artworkUrl100;
+      
+            // upsize 100x100 → 300x300/600x600 when available
+            if (art) art = art.replace(/100x100bb\.jpg/, '300x300bb.jpg');
+      
+            if (art) {
+              sessionStorage.setItem(cacheKey, art);
+              insert(art);
+            }
+          } catch (err) {
+            // CORS can occasionally be flaky on iTunes; fail silently.
+            console.warn('Cover art lookup failed', err);
+          }
+      
+          function insert(src) {
+            if (root.querySelector('.recent-played-art')) return;
+            const img = document.createElement('img');
+            img.className = 'recent-played-art';
+            img.alt = `${title} — ${artist} (cover art)`;
+            img.loading = 'lazy';
+            img.decoding = 'async';
+            img.src = src;
+            root.prepend(img);
+          }
+        });
+      })();
+      </script>
   </section>
   
 </article>
