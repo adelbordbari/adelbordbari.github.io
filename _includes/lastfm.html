@@ -8,73 +8,73 @@
   .recent-played-art { width:50px; height:50px; flex:0 0 40px; border-radius:4px; object-fit:cover; box-shadow:0 0 0 1px rgba(0,0,0,.06) inset; }
 </style>
 
-  <script>
-    (function() {
-        function tryEnhance(root) {
-            if (!root || root.querySelector('.recent-played-art')) return;
-            const link = root.querySelector('.recent-played-track a');
-            if (!link) return;
+<script>
+  (function() {
+      function tryEnhance(root) {
+          if (!root || root.querySelector('.recent-played-art')) return;
+          const link = root.querySelector('.recent-played-track a');
+          if (!link) return;
 
-            const txt = link.textContent.trim();
-            const SEP = ' by ';
-            if (!txt.includes(SEP)) return;
-            const [title, artist] = txt.split(SEP);
-            if (!title || !artist) return;
+          const txt = link.textContent.trim();
+          const SEP = ' by ';
+          if (!txt.includes(SEP)) return;
+          const [title, artist] = txt.split(SEP);
+          if (!title || !artist) return;
 
-            const cacheKey = `art:${title}::${artist}`;
-            const cached = sessionStorage.getItem(cacheKey);
-            if (cached) return insert(root, title, artist, cached);
+          const cacheKey = `art:${title}::${artist}`;
+          const cached = sessionStorage.getItem(cacheKey);
+          if (cached) return insert(root, title, artist, cached);
 
-            const params = new URLSearchParams({
-                term: `${title} ${artist}`,
-                entity: 'song',
-                limit: '1'
-            });
-            fetch(`https://itunes.apple.com/search?${params.toString()}`)
-                .then(r => r.json())
-                .then(data => {
-                    const hit = data && data.results && data.results[0];
-                    let art = hit && hit.artworkUrl100;
-                    if (art) art = art.replace(/100x100bb\.jpg/, '300x300bb.jpg');
-                    if (art) {
-                        sessionStorage.setItem(cacheKey, art);
-                        insert(root, title, artist, art);
-                    }
-                })
-                .catch(() => {
-                    /* fail silently */ });
-        }
+          const params = new URLSearchParams({
+              term: `${title} ${artist}`,
+              entity: 'song',
+              limit: '1'
+          });
+          fetch(`https://itunes.apple.com/search?${params.toString()}`)
+              .then(r => r.json())
+              .then(data => {
+                  const hit = data && data.results && data.results[0];
+                  let art = hit && hit.artworkUrl100;
+                  if (art) art = art.replace(/100x100bb\.jpg/, '300x300bb.jpg');
+                  if (art) {
+                      sessionStorage.setItem(cacheKey, art);
+                      insert(root, title, artist, art);
+                  }
+              })
+              .catch(() => {
+                  /* fail silently */ });
+      }
 
-        function insert(root, title, artist, src) {
-            if (root.querySelector('.recent-played-art')) return;
-            const img = document.createElement('img');
-            img.className = 'recent-played-art';
-            img.alt = `${title} — ${artist} (cover art)`;
-            img.loading = 'lazy';
-            img.decoding = 'async';
-            img.src = src;
-            root.prepend(img);
-        }
+      function insert(root, title, artist, src) {
+          if (root.querySelector('.recent-played-art')) return;
+          const img = document.createElement('img');
+          img.className = 'recent-played-art';
+          img.alt = `${title} — ${artist} (cover art)`;
+          img.loading = 'lazy';
+          img.decoding = 'async';
+          img.src = src;
+          root.prepend(img);
+      }
 
-        // 1) If it’s already on the page (fast load), enhance immediately.
-        const existing = document.querySelector('.recent-played');
-        if (existing) tryEnhance(existing);
+      // 1) If it’s already on the page (fast load), enhance immediately.
+      const existing = document.querySelector('.recent-played');
+      if (existing) tryEnhance(existing);
 
-        // 2) Otherwise, observe DOM for when the widget arrives.
-        const mo = new MutationObserver(muts => {
-            for (const m of muts) {
-                m.addedNodes && m.addedNodes.forEach(node => {
-                    if (node.nodeType === 1) {
-                        if (node.matches && node.matches('.recent-played')) tryEnhance(node);
-                        const found = node.querySelector && node.querySelector('.recent-played');
-                        if (found) tryEnhance(found);
-                    }
-                });
-            }
-        });
-        mo.observe(document.documentElement, {
-            childList: true,
-            subtree: true
-        });
-    })();
-  </script>
+      // 2) Otherwise, observe DOM for when the widget arrives.
+      const mo = new MutationObserver(muts => {
+          for (const m of muts) {
+              m.addedNodes && m.addedNodes.forEach(node => {
+                  if (node.nodeType === 1) {
+                      if (node.matches && node.matches('.recent-played')) tryEnhance(node);
+                      const found = node.querySelector && node.querySelector('.recent-played');
+                      if (found) tryEnhance(found);
+                  }
+              });
+          }
+      });
+      mo.observe(document.documentElement, {
+          childList: true,
+          subtree: true
+      });
+  })();
+</script>
