@@ -6,31 +6,35 @@
 <script>
   (function() {
     function placeGif(root) {
-      const gif = document.querySelector('.recent-gif');
-      if (!gif || root.contains(gif)) return; // nothing to do / already moved
+      // already placed?
+      if (root.querySelector('.recent-gif')) return;
 
-      // style tweak for inline layout
-      gif.classList.add('recent-gif--inline');
+      // create the gif only now (after widget exists)
+      const gif = document.createElement('img');
+      gif.src = 'assets/red_circle.gif';
+      gif.alt = '';
+      gif.setAttribute('aria-hidden', 'true');
+      gif.className = 'recent-gif recent-gif--inline';
 
       const art = root.querySelector('.recent-played-art');
       const track = root.querySelector('.recent-played-track');
 
       if (art) {
-        art.after(gif);                // put GIF right after the cover art
+        art.after(gif);
       } else if (track) {
-        root.insertBefore(gif, track); // fallback: before the text
+        root.insertBefore(gif, track);
       } else {
-        root.appendChild(gif);         // last resort: at the end
+        root.appendChild(gif);
       }
     }
 
     function tryEnhance(root) {
       if (!root) return;
 
-      // Move GIF as soon as we see the widget (even before art loads)
+      // Move/create GIF first so it's part of the widget render
       placeGif(root);
 
-      // If we already added art earlier, stop here
+      // If art already present, we're done
       if (root.querySelector('.recent-played-art')) return;
 
       const link = root.querySelector('.recent-played-track a');
@@ -44,11 +48,7 @@
 
       const cacheKey = `art:${title}::${artist}`;
       const cached = sessionStorage.getItem(cacheKey);
-      if (cached) {
-        insert(root, title, artist, cached);
-        placeGif(root);
-        return;
-      }
+      if (cached) return insert(root, title, artist, cached);
 
       const params = new URLSearchParams({
         term: `${title} ${artist}`,
@@ -64,14 +64,9 @@
           if (art) {
             sessionStorage.setItem(cacheKey, art);
             insert(root, title, artist, art);
-            placeGif(root); // ensure GIF sits after the art
-          } else {
-            placeGif(root); // still move the GIF if no art
           }
         })
-        .catch(() => {
-          placeGif(root);   // fail silently but still move the GIF
-        });
+        .catch(() => {/* silent */});
     }
 
     function insert(root, title, artist, src) {
@@ -85,11 +80,11 @@
       root.prepend(img);
     }
 
-    // 1) If it’s already on the page (fast load), enhance immediately.
+    // If it’s already on the page (fast load), enhance immediately.
     const existing = document.querySelector('.recent-played');
     if (existing) tryEnhance(existing);
 
-    // 2) Otherwise, observe DOM for when the widget arrives.
+    // Otherwise, observe for widget arrival.
     const mo = new MutationObserver(muts => {
       for (const m of muts) {
         m.addedNodes && m.addedNodes.forEach(node => {
