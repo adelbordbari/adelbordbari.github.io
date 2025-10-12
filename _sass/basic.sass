@@ -185,7 +185,7 @@ audio
   order: 1
 
 #letterboxd-embed-wrapper-tc
-  width: 70%
+  width: 50%
   max-width: 900px
   margin: 0 auto
   
@@ -197,3 +197,13 @@ audio
 @media (prefers-color-scheme: dark)
   #letterboxd-embed-wrapper-tc .letterboxd-embed-tc-review
     color: lighten($light, 6%) !important
+
+#letterboxd-embed-wrapper-tc .letterboxd-embed-tc-rating
+  color: #ff0f7b !important
+
+/* Catch SVG/star glyph variants just in case */
+#letterboxd-embed-wrapper-tc .letterboxd-embed-tc-rating .letterboxd-embed-tc-star,
+#letterboxd-embed-wrapper-tc .letterboxd-embed-tc-rating svg,
+#letterboxd-embed-wrapper-tc .letterboxd-embed-tc-rating svg path
+  color: #ff0f7b !important
+  fill: #ff0f7b !important
