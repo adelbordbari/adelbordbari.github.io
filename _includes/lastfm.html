@@ -6,8 +6,34 @@
 
 <script>
   (function() {
+    function placeGif(root) {
+      const gif = document.querySelector('.recent-gif');
+      if (!gif || root.contains(gif)) return; // nothing to do / already moved
+
+      // style tweak for inline layout
+      gif.classList.add('recent-gif--inline');
+
+      const art = root.querySelector('.recent-played-art');
+      const track = root.querySelector('.recent-played-track');
+
+      if (art) {
+        art.after(gif);                // put GIF right after the cover art
+      } else if (track) {
+        root.insertBefore(gif, track); // fallback: before the text
+      } else {
+        root.appendChild(gif);         // last resort: at the end
+      }
+    }
+
     function tryEnhance(root) {
-      if (!root || root.querySelector('.recent-played-art')) return;
+      if (!root) return;
+
+      // Move GIF as soon as we see the widget (even before art loads)
+      placeGif(root);
+
+      // If we already added art earlier, stop here
+      if (root.querySelector('.recent-played-art')) return;
+
       const link = root.querySelector('.recent-played-track a');
       if (!link) return;
 
@@ -19,7 +45,11 @@
 
       const cacheKey = `art:${title}::${artist}`;
       const cached = sessionStorage.getItem(cacheKey);
-      if (cached) return insert(root, title, artist, cached);
+      if (cached) {
+        insert(root, title, artist, cached);
+        placeGif(root);
+        return;
+      }
 
       const params = new URLSearchParams({
         term: `${title} ${artist}`,
@@ -35,10 +65,13 @@
           if (art) {
             sessionStorage.setItem(cacheKey, art);
             insert(root, title, artist, art);
+            placeGif(root); // ensure GIF sits after the art
+          } else {
+            placeGif(root); // still move the GIF if no art
           }
         })
         .catch(() => {
-          /* fail silently */
+          placeGif(root);   // fail silently but still move the GIF
         });
     }
 
@@ -69,9 +102,6 @@
         });
       }
     });
-    mo.observe(document.documentElement, {
-      childList: true,
-      subtree: true
-    });
+    mo.observe(document.documentElement, { childList: true, subtree: true });
   })();
 </script>
