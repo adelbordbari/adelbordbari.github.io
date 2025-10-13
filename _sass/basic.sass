@@ -190,20 +190,22 @@ audio
   margin: 0 auto
   
 #letterboxd-embed-wrapper-tc .letterboxd-embed-tc-review
-  color: reduce(20) !important
+  color: reduce(20)
   max-width: 60ch
   line-height: 1.5
 
 @media (prefers-color-scheme: dark)
   #letterboxd-embed-wrapper-tc .letterboxd-embed-tc-review
-    color: lighten($light, 6%) !important
+    color: lighten($light, 6%)
 
 #letterboxd-embed-wrapper-tc .letterboxd-embed-tc-rating
-  color: #ff0f7b !important
+  color: #ff0f7b
 
-/* Catch SVG/star glyph variants just in case */
 #letterboxd-embed-wrapper-tc .letterboxd-embed-tc-rating .letterboxd-embed-tc-star,
 #letterboxd-embed-wrapper-tc .letterboxd-embed-tc-rating svg,
 #letterboxd-embed-wrapper-tc .letterboxd-embed-tc-rating svg path
-  color: #ff0f7b !important
-  fill: #ff0f7b !important
+  color: #ff0f7b
+  fill: #ff0f7b
+
+.letterboxd-embed-tc-divider
+  border-bottom: 1px solid #ff0f7b;
