@@ -109,19 +109,62 @@ pre
   font-size: 2rem
 
 .quote-gradient
+  position: relative  // Required for pseudo-elements
+  display: inline-block  // For multi-line control
   margin: 0
   text-align: center
+  font-size: 2.5rem
+  font-weight: bold
+  color: transparent  // Hide base text; show via pseudos
   background: linear-gradient(45deg, $link-color, $accent-color)
   -webkit-background-clip: text
   -webkit-text-fill-color: transparent
-  font-size: 2.5rem
-  font-weight: bold
-  filter: url(#wavy)
-  text-shadow: 
-    0.05em 0 0 rgba(255, 0, 0, 0.5),
-    -0.03em -0.04em 0 rgba(0, 255, 255, 0.5),
-    0.025em 0.04em 0 rgba(255, 255, 0, 0.5)
-  
+
+  // Pseudo-elements for glitch layers (red/cyan/yellow shifts)
+  &::before,
+  &::after
+    content: attr(data-text)  // Duplicate text (set data-text="Your Quote" in HTML)
+    position: absolute
+    top: 0
+    left: 0
+    background: inherit
+    -webkit-background-clip: text
+    -webkit-text-fill-color: transparent
+    clip-path: inset(0 0 0 0)  // For glitch clipping animation
+
+  &::before
+    text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.7)  // Red fringe
+    animation: glitch-melt 2s infinite linear alternate-reverse
+
+  &::after
+    text-shadow: -0.03em 0 0 rgba(0, 255, 255, 0.7), 0.025em 0.01em 0 rgba(255, 255, 0, 0.7)  // Cyan/yellow fringe
+    animation: glitch-melt 3s infinite linear alternate-reverse
+    opacity: 0.8  // Slight blend
+
+  // Last: Any filters (if you keep wavy SVG, but we're replacing for animation)
+  filter: drop-shadow(0 0 0.1em rgba(0,0,0,0.5))  // Optional soft shadow instead of url(#wavy)
+
+// Animation for melting wavy glitch
+@keyframes glitch-melt
+  0%
+    transform: translate(0)
+    clip-path: inset(0 0 0 0)
+  10%
+    transform: skew(0.5deg) translate(0.02em, 0.01em)
+  20%
+    transform: skew(-0.5deg) translate(-0.01em, 0)
+    clip-path: inset(2% 0 5% 0)
+  30%
+    transform: translate(0.03em, 0.02em)
+  50%
+    transform: skew(1deg) translate(0, 0.03em)
+    clip-path: inset(0 0 10% 0)
+  70%
+    transform: translate(-0.02em, 0.01em)
+  100%
+    transform: translate(0)
+    clip-path: inset(0 0 0 0)
+
 #cover-small
   width: 10vw
   display: block
