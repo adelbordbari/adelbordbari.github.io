@@ -112,9 +112,18 @@ pre
   margin: 0
   text-align: center
   font-size: 2rem
+  font-weight: 700 // helps sharpness
 
-  background: linear-gradient(90deg, $link-color, $accent-color, $link-color)
-  background-size: 300% 300%
+  // Much larger gradient = higher resolution + slower perceived movement
+  background: linear-gradient(90deg,
+    $link-color    0%,
+    $accent-color  30%,
+    $link-color    50%,
+    $accent-color  70%,
+    $link-color    100%
+  )
+  
+  background-size: 600% 600%        // ← huge = super smooth on 4K/retina
   background-position: 0% 50%
 
   -webkit-background-clip: text
@@ -122,17 +131,20 @@ pre
   -webkit-text-fill-color: transparent
   color: transparent
 
-  animation: liquid-flow 60s ease-in-out infinite
-  filter: url(#liquid)
-  will-change: filter, background-position
+  // Very slow, luxurious movement
+  animation: liquid-flow 180s linear infinite  // 3 minutes! (or even 240s–300s)
+
+  // Remove the SVG filter if it makes things blurry – it often hurts more than helps
+  // filter: url(#liquid)   ← comment this out or delete it
+  
+  will-change: background-position
 
 @keyframes liquid-flow
-  0%
+  0%   
     background-position: 0% 50%
-  50%
-    background-position: 100% 50%
-  100%
-    background-position: 0% 50%  
+  100% 
+    background-position: 100% 50%  // simpler + smoother than 0→100→0
+  
 #cover-small
   width: 10vw
   display: block
