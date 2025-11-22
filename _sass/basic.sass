@@ -9,7 +9,18 @@ body
   min-height: 100vh
   -webkit-text-size-adjust: 100%
   -webkit-font-smoothing: antialiased
-  -moz-osx-font-smoothing: grayscale
+  -moz-osx-font-smoothing: grayscale  // Adapted liquid gradient for body background
+  background: linear-gradient(90deg, $link-color 0%, $accent-color 30%, $link-color 50%, $accent-color 70%, $link-color 100%)
+  background-size: 600% 600%
+  background-position: 0% 50%
+  animation: liquid-flow 180s linear infinite
+  will-change: background-position@keyframes
+ liquid-flow
+  0%
+    background-position: 0% 50%
+  100% 
+    background-position: 100% 50%
+
 
 @media (prefers-color-scheme: dark)
   body
@@ -111,33 +122,10 @@ pre
 .quote-gradient
   margin: 0
   text-align: center
-  font-size: 2rem
-  font-weight: 700 // helps sharpness
-
-  // Much larger gradient = higher resolution + slower perceived movement
-  background: linear-gradient(90deg, $link-color 0%, $accent-color 30%, $link-color 50%, $accent-color 70%, $link-color 100%)
-  
-  background-size: 600% 600%        // ← huge = super smooth on 4K/retina
-  background-position: 0% 50%
-
+  background: linear-gradient(45deg, $link-color, $accent-color)
   -webkit-background-clip: text
-  background-clip: text
   -webkit-text-fill-color: transparent
-  color: transparent
-
-  // Very slow, luxurious movement
-  animation: liquid-flow 180s linear infinite  // 3 minutes! (or even 240s–300s)
-
-  // Remove the SVG filter if it makes things blurry – it often hurts more than helps
-  // filter: url(#liquid)   ← comment this out or delete it
-  
-  will-change: background-position
-
-@keyframes liquid-flow
-  0%   
-    background-position: 0% 50%
-  100% 
-    background-position: 100% 50%  // simpler + smoother than 0→100→0
+  font-size: 2rem
   
 #cover-small
   width: 10vw
