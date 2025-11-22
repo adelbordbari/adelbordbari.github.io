@@ -3,6 +3,20 @@
 
 @import index, font, basic, layout, classes
 
+// NOW FORCE THE LIQUID GRADIENT BACKGROUND (this will actually be compiled!)
+body
+  background: linear-gradient(90deg, $link-color 0%, $accent-color 30%, $link-color 50%, $accent-color 70%, $link-color 100%)
+  background-size: 600% 600%
+  background-position: 0% 50%
+  animation: liquid-flow 180s linear infinite
+  will-change: background-position
+
+// Optional: same gradient in dark mode (or tweak colors)
+@media (prefers-color-scheme: dark)
+  body
+    background: linear-gradient(90deg, $link-color 0%, $accent-color 30%, $link-color 50%, $accent-color 70%, $link-color 100%)
+    // or darken the colors if you want: darken($link-color, 12%), etc.
+  
 @media (min-width: 40em)
   body > header, body > article, body > footer
     padding: 1.75em calc(40% - 17em)
