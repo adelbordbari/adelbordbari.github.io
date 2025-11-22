@@ -10,17 +10,18 @@ body
   -webkit-text-size-adjust: 100%
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
+
   background: linear-gradient(90deg, $link-color 0%, $accent-color 30%, $link-color 50%, $accent-color 70%, $link-color 100%)
   background-size: 600% 600%
   background-position: 0% 50%
   animation: liquid-flow 180s linear infinite
-  will-change: background-position@keyframes
- liquid-flow
+  will-change: background-position
+
+@keyframes liquid-flow
   0%
     background-position: 0% 50%
-  100% 
+  100%
     background-position: 100% 50%
-
 
 @media (prefers-color-scheme: dark)
   body
