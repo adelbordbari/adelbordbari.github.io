@@ -1,9 +1,14 @@
----
----
+// assets/css/index.sass
+// ← NO front matter, pure Sass!
 
-@import index, font, basic, layout, classes
+// 1. DEFINE KEYFRAMES FIRST — this fixes the animation on GitHub Pages
+@keyframes liquid-flow
+  0%
+    background-position: 0% 50%
+  100%
+    background-position: 100% 50%
 
-// NOW FORCE THE LIQUID GRADIENT BACKGROUND (this will actually be compiled!)
+// 2. APPLY THE ANIMATED GRADIENT IMMEDIATELY
 body
   background: linear-gradient(90deg, $link-color 0%, $accent-color 30%, $link-color 50%, $accent-color 70%, $link-color 100%)
   background-size: 600% 600%
@@ -11,38 +16,34 @@ body
   animation: liquid-flow 180s linear infinite
   will-change: background-position
 
-// Optional: same gradient in dark mode (or tweak colors)
-@media (prefers-color-scheme: dark)
-  body
+  // Optional: same in dark mode (or tweak colors)
+  @media (prefers-color-scheme: dark)
     background: linear-gradient(90deg, $link-color 0%, $accent-color 30%, $link-color 50%, $accent-color 70%, $link-color 100%)
-    // or darken the colors if you want: darken($link-color, 12%), etc.
-  
+
+// 3. Now import everything else (your variables, basic styles, etc.)
+@import index
+@import font
+@import basic
+@import layout
+@import classes
+
+// 4. Rest of your existing rules
 @media (min-width: 40em)
   body > header, body > article, body > footer
     padding: 1.75em calc(40% - 17em)
 
 {% if site.minimal %}
-
 body > header
   background: $dark
   color: $light
   border-bottom: 1px solid reduce(14)
-
 {% else %}
-
 body > header
   box-shadow: 0 0 .6em rgba($dark, 0.04)
   border-bottom: 1px solid reduce(14)
-
 {% endif %}
 
 body > footer
   box-shadow: 0 0 .6em rgba($dark, 0.04) inset
   border-top: 1px solid reduce(14)
   opacity: .9
-
-@keyframes liquid-flow
-  0%
-    background-position: 0% 50%
-  100%
-    background-position: 100% 50%
