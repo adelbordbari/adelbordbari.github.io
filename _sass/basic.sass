@@ -1,5 +1,4 @@
 body
-  background: $light
   color: $dark
   font-family: $font-family
   font-weight: $font-weight
@@ -17,11 +16,16 @@ body
   animation: liquid-flow 180s linear infinite
   will-change: background-position
 
+  @media (prefers-color-scheme: dark)
+    background: linear-gradient(90deg, darken($link-color, 15%) 0%, darken($accent-color, 10%) 30%, darken($link-color, 15%) 50%, darken($accent-color, 10%) 70%, darken($link-color, 15%) 100%)
+    color: $light
+
 @keyframes liquid-flow
   0%
     background-position: 0% 50%
   100%
     background-position: 100% 50%
+
 
 @media (prefers-color-scheme: dark)
   body
