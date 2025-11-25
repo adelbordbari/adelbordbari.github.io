@@ -1,10 +1,13 @@
 body
-  background-color: $light
+  background-color: #f7f3ea
   color: $dark
 
-  background-image: radial-gradient(circle, rgba($dark, .12) 1px, transparent 1px), radial-gradient(circle, rgba($dark, .06) 1px, transparent 1px)
-  background-position: 0 0, 3px 3px
-  background-size: 6px 6px
+  background-image: radial-gradient(circle, rgba($dark, .10) 1px, transparent 1px),
+                    radial-gradient(circle, rgba($dark, .06) 1px, transparent 1px),
+                    linear-gradient(135deg, rgba($dark, .04) 25%, transparent 25%, transparent 50%, rgba($dark, .04) 50%, rgba($dark, .04) 75%, transparent 75%, transparent)
+  background-position: 0 0, 3px 3px, 0 0
+  background-size: 6px 6px, 6px 6px, 120px 120px
+  background-blend-mode: multiply
 
   font-family: $font-family
   font-weight: $font-weight
@@ -18,14 +21,17 @@ body
 
 @media (prefers-color-scheme: dark)
   body
-    background-color: $dark
+    background-color: #111112
     color: $light
 
-    background-image: radial-gradient(circle, rgba($light, .14) 1px, transparent 1px), radial-gradient(circle, rgba($light, .07) 1px, transparent 1px)
-    background-position: 0 0, 3px 3px
-    background-size: 6px 6px
+    background-image: radial-gradient(circle, rgba($light, .12) 1px, transparent 1px),
+                      radial-gradient(circle, rgba($light, .07) 1px, transparent 1px),
+                      linear-gradient(135deg, rgba($light, .06) 25%, transparent 25%, transparent 50%, rgba($light, .06) 50%, rgba($light, .06) 75%, transparent 75%, transparent)
+    background-position: 0 0, 3px 3px, 0 0
+    background-size: 6px 6px, 6px 6px, 120px 120px
+    background-blend-mode: multiply
 
-h1, h2, h3, h4, h5, h6
+    h1, h2, h3, h4, h5, h6
   font-weight: $heading-weight
 
 h2
