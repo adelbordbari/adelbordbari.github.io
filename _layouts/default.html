@@ -15,8 +15,8 @@
 {% if page.mathjax or site.mathjax %}
 <link rel="stylesheet" href="{{ "/assets/katex/katex.min.css" | relative_url }}">
 <link rel="icon" type="image/png" href="{{ '/favicon.png' | relative_url }}">
-<link rel="stylesheet" href="/styles/pixel-waves.css">
-<script defer src="/assets/pixel-waves.js"></script>
+<link rel="stylesheet" href="{{ "/assets/css/pixel-waves.css" | relative_url }}">
+<script defer src="{{ "/assets/pixel-waves.js" | relative_url }}"></script>
 <script defer src="{{ "/assets/katex/katex.min.js" | relative_url }}"></script>
 <script defer src="{{ "/assets/katex/contrib/auto-render.min.js" | relative_url }}" onload="renderMathInElement(document.body)"></script>
 {% endif %}
