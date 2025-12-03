@@ -1,0 +1,18 @@
+/* styles/pixel-waves.css */
+#pixel-waves-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;               /* behind content */
+  pointer-events: none;      /* allow clicking through */
+  opacity: 0.14;             /* faded so text is readable (tweak) */
+  image-rendering: pixelated;/* keep the blocky look when scaled */
+  mix-blend-mode: normal;
+  filter: contrast(1.05) saturate(0.25) blur(0.2px); /* subtle styling, tweak to taste */
+}
+
+/* Optional: small utility class if you want even more faded on certain pages */
+.pixel-waves--subtle {
+  opacity: 0.08;
+}
