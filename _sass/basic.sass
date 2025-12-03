@@ -1,8 +1,7 @@
 body
   background-color: #f7f3ea
   color: $dark
-  background-image: radial-gradient(circle, rgba($dark, 0.09) 1px, transparent 1px),
-                    radial-gradient(circle, rgba($dark, 0.04) 1px, transparent 1px)
+  background-image: radial-gradient(circle, rgba($dark, 0.09) 1px, transparent 1px), radial-gradient(circle, rgba($dark, 0.04) 1px, transparent 1px)
   background-position: 0 0, 3px 3px
   background-size: 5px 5px, 5px 5px
   background-blend-mode: multiply
@@ -15,67 +14,16 @@ body
   -webkit-text-size-adjust: 100%
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
-  position: relative
-  overflow-x: hidden
-
-  // animated grain overlay
-  &::before
-    content: ''
-    position: fixed
-    inset: -50px   // extend past edges so the jitter doesn’t show gaps
-    pointer-events: none
-    z-index: 0
-    opacity: .35
-    mix-blend-mode: multiply
-    background-image:
-      repeating-radial-gradient(circle at 0 0,       rgba($dark, .35) 0, rgba($dark, .35) 1px, transparent 1px, transparent 4px),
-      repeating-radial-gradient(circle at 100% 0,    rgba($dark, .25) 0, rgba($dark, .25) 1px, transparent 1px, transparent 3px),
-      repeating-radial-gradient(circle at 0 100%,    rgba($dark, .20) 0, rgba($dark, .20) 1px, transparent 1px, transparent 3px),
-      repeating-radial-gradient(circle at 100% 100%, rgba($dark, .20) 0, rgba($dark, .20) 1px, transparent 1px, transparent 4px)
-    background-size: 4px 4px, 3px 3px, 5px 5px, 6px 6px
-    animation: grain 1.2s steps(8) infinite
-    will-change: transform
 
 @media (prefers-color-scheme: dark)
   body
     background-color: #111112
     color: $light
-    background-image: radial-gradient(circle, rgba($light, 0.10) 1px, transparent 1px),
-                      radial-gradient(circle, rgba($light, 0.05) 1px, transparent 1px)
+    background-image: radial-gradient(circle, rgba($light, 0.10) 1px, transparent 1px), radial-gradient(circle, rgba($light, 0.05) 1px, transparent 1px)
     background-position: 0 0, 3px 3px
     background-size: 5px 5px, 5px 5px
     background-blend-mode: multiply
 
-    &::before
-      background-image:
-        repeating-radial-gradient(circle at 0 0,       rgba($light, .35) 0, rgba($light, .35) 1px, transparent 1px, transparent 4px),
-        repeating-radial-gradient(circle at 100% 0,    rgba($light, .25) 0, rgba($light, .25) 1px, transparent 1px, transparent 3px),
-        repeating-radial-gradient(circle at 0 100%,    rgba($light, .20) 0, rgba($light, .20) 1px, transparent 1px, transparent 3px),
-        repeating-radial-gradient(circle at 100% 100%, rgba($light, .20) 0, rgba($light, .20) 1px, transparent 1px, transparent 4px)
-
-@keyframes grain
-  0%
-    transform: translate3d(0, 0, 0)
-  10%
-    transform: translate3d(-5%, -10%, 0)
-  20%
-    transform: translate3d(-15%, 5%, 0)
-  30%
-    transform: translate3d(7%, -25%, 0)
-  40%
-    transform: translate3d(-5%, 25%, 0)
-  50%
-    transform: translate3d(-15%, 10%, 0)
-  60%
-    transform: translate3d(15%, 0, 0)
-  70%
-    transform: translate3d(0, 15%, 0)
-  80%
-    transform: translate3d(3%, 35%, 0)
-  90%
-    transform: translate3d(-10%, 10%, 0)
-  100%
-    transform: translate3d(0, 0, 0)
 h1, h2, h3, h4, h5, h6
   font-weight: $heading-weight
 
