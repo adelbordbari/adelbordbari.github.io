@@ -35,6 +35,7 @@ Later I created few more variations too, here are some examples results: (input:
 <img width="1500" height="463" alt="Figure_3" src="https://github.com/user-attachments/assets/4773e47c-6f6d-4535-8c24-e0c336825c03" />
 <img width="1500" height="463" alt="Figure_2" src="https://github.com/user-attachments/assets/d400f0f8-d7b7-46f2-9655-70060b9b87a2" />
 <img width="1500" height="463" alt="Figure_1" src="https://github.com/user-attachments/assets/7c033e0f-0ce5-47ca-9e57-9d3f7e5192ef" />
+<img width="1500" height="463" alt="Figure_4" src="https://github.com/user-attachments/assets/f95453ad-52a2-41f7-b063-3051c1c90caa" />
 <br />
 
 ---
