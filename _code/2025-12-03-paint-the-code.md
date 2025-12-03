@@ -9,7 +9,6 @@ layout: "post"
 - [Reading the file safely](#reading-the-file-safely)
 - [Tokenizing: turning code into little categories](#tokenizing-turning-code-into-little-categories)
 - [Chopping the canvas into rectangles](#chopping-the-canvas-into-rectangles)
-- [Colors, palettes, and a bit of determinism](#colors-palettes-and-a-bit-of-determinism)
 - [Putting it together: CLI](#putting-it-together-cli)
 - [Takeaways](#takeaways)
 - [Footnotes](#footnotes)
@@ -30,6 +29,13 @@ So I wanted a small sketch that:
 
 The result was this little side project: a Python source visualizer that turns any `.py` file into a panel of abstract rectangles.  
 Nothing “useful”, but very fun.
+
+Later I created few more variations too, here are some examples results: (input: this very post in markdown!)
+
+<img width="1500" height="463" alt="Figure_3" src="https://github.com/user-attachments/assets/4773e47c-6f6d-4535-8c24-e0c336825c03" /><br />
+<img width="1500" height="463" alt="Figure_2" src="https://github.com/user-attachments/assets/d400f0f8-d7b7-46f2-9655-70060b9b87a2" /><br />
+<img width="1500" height="463" alt="Figure_1" src="https://github.com/user-attachments/assets/7c033e0f-0ce5-47ca-9e57-9d3f7e5192ef" /><br />
+<br />
 
 ---
 
@@ -250,8 +256,6 @@ Every resulting rectangle keeps track of:
 * `depth`, so I can adjust styling based on how many splits it went through.
 
 ---
-
-## Colors, palettes, and a bit of determinism
 
 I hardcoded a couple of palettes:
 
