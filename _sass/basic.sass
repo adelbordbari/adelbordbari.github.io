@@ -2,26 +2,19 @@ body
   background-color: #f7f3ea
   color: $dark
   
-  background-image: conic-gradient(
-    from 0deg,
-    #FAA92A 0deg,
-    #FE322F 90deg,
-    #036A57 180deg,
-    #175DD5 270deg,
-    #FAA92A 360deg
-  )
+  background-image: 
+    url('https://your-server.com/noise.png'),
+    conic-gradient(
+      from 0deg,
+      #FAA92A 0deg,
+      #FE322F 90deg,
+      #036A57 180deg,
+      #175DD5 270deg,
+      #FAA92A 360deg
+    )
   
   background-size: 400% 400%
   animation: rotate-gradient 12s linear infinite
-
-  background-image: url('https://your-server.com/noise.png'), conic-gradient(
-    from 0deg,
-    #FAA92A 0deg,
-    #FE322F 90deg,
-    #036A57 180deg,
-    #175DD5 270deg,
-    #FAA92A 360deg
-  )
   background-blend-mode: overlay
 
   font-family: $font-family
