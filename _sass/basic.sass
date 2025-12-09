@@ -1,22 +1,10 @@
 body
   background-color: #f7f3ea
   color: $dark
-  
-  background-image: 
-    url('https://your-server.com/noise.png'),
-    conic-gradient(
-      from 0deg,
-      #FAA92A 0deg,
-      #FE322F 90deg,
-      #036A57 180deg,
-      #175DD5 270deg,
-      #FAA92A 360deg
-    )
-
-  background-size: 400% 400%
-  animation: rotate-gradient 12s linear infinite
-  background-blend-mode: overlay
-
+  background-image: radial-gradient(circle, rgba($dark, 0.09) 1px, transparent 1px), radial-gradient(circle, rgba($dark, 0.04) 1px, transparent 1px)
+  background-position: 0 0, 3px 3px
+  background-size: 5px 5px, 5px 5px
+  background-blend-mode: multiply
   font-family: $font-family
   font-weight: $font-weight
   font-size: $font-size
@@ -27,11 +15,14 @@ body
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
 
-@keyframes rotate-gradient
-  0%
-    background-position: 0 0
-  100%
-    background-position: 100% 100%
+@media (prefers-color-scheme: dark)
+  body
+    background-color: #111112
+    color: $light
+    background-image: radial-gradient(circle, rgba($light, 0.10) 1px, transparent 1px), radial-gradient(circle, rgba($light, 0.05) 1px, transparent 1px)
+    background-position: 0 0, 3px 3px
+    background-size: 5px 5px, 5px 5px
+    background-blend-mode: multiply
 
 h1, h2, h3, h4, h5, h6
   font-weight: $heading-weight
