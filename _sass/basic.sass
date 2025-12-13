@@ -1,10 +1,14 @@
 body
   background-color: #f7f3ea
   color: $dark
-  background-image: radial-gradient(circle, rgba($dark, 0.09) 1px, transparent 1px), radial-gradient(circle, rgba($dark, 0.04) 1px, transparent 1px)
-  background-position: 0 0, 3px 3px
-  background-size: 5px 5px, 5px 5px
-  background-blend-mode: multiply
+  background-image: linear-gradient(135deg, rgba($link-color, 0.35), rgba($accent-color, 0.28) 45%, rgba($dark, 0.12)), radial-gradient(circle at 22% 30%, rgba($link-color, 0.18) 0, transparent 35%), radial-gradient(circle at 80% 70%, rgba($accent-color, 0.22) 0, transparent 32%)
+  background-position: 0% 0%, 18% 30%, 82% 70%
+  background-size: 180% 180%, 75% 75%, 80% 80%
+  background-blend-mode: screen
+  animation: gradient-shift 18s ease-in-out infinite alternate
+  position: relative
+  isolation: isolate
+  overflow-x: hidden
   font-family: $font-family
   font-weight: $font-weight
   font-size: $font-size
@@ -15,14 +19,52 @@ body
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
 
+body::before
+  content: ""
+  position: fixed
+  inset: 0
+  background-image: radial-gradient(circle, rgba($dark, 0.10) 1px, transparent 1px), radial-gradient(circle, rgba($dark, 0.05) 1px, transparent 1px)
+  background-position: 0 0, 3px 3px
+  background-size: 6px 6px, 6px 6px
+  mix-blend-mode: soft-light
+  opacity: .6
+  animation: dither-shift 26s linear infinite
+  pointer-events: none
+  z-index: -1
+
+@keyframes gradient-shift
+  0%
+    background-position: 0% 0%, 16% 28%, 80% 68%
+  50%
+    background-position: 50% 50%, 20% 34%, 76% 62%
+  100%
+    background-position: 100% 80%, 24% 40%, 70% 58%
+
+@keyframes dither-shift
+  0%
+    background-position: 0 0, 3px 3px
+  50%
+    background-position: 6px 6px, 9px 9px
+  100%
+    background-position: 0 0, 3px 3px
+  
 @media (prefers-color-scheme: dark)
   body
     background-color: #111112
     color: $light
-    background-image: radial-gradient(circle, rgba($light, 0.10) 1px, transparent 1px), radial-gradient(circle, rgba($light, 0.05) 1px, transparent 1px)
-    background-position: 0 0, 3px 3px
-    background-size: 5px 5px, 5px 5px
-    background-blend-mode: multiply
+    background-image: linear-gradient(135deg, rgba($light, 0.22), rgba($accent-color, 0.32) 45%, rgba($link-color, 0.16)), radial-gradient(circle at 18% 26%, rgba($light, 0.22) 0, transparent 34%), radial-gradient(circle at 82% 76%, rgba($accent-color, 0.28) 0, transparent 30%)
+    background-position: 0% 0%, 16% 26%, 82% 76%
+    background-size: 200% 200%, 80% 80%, 72% 72%
+    background-blend-mode: screen
+  body::before
+    background-image: radial-gradient(circle, rgba($light, 0.14) 1px, transparent 1px), radial-gradient(circle, rgba($light, 0.07) 1px, transparent 1px)
+    opacity: .5
+
+@media (prefers-reduced-motion: reduce)
+  body
+    animation: none
+  body::before
+    animation: none
 
 h1, h2, h3, h4, h5, h6
   font-weight: $heading-weight
