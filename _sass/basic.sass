@@ -1,7 +1,7 @@
 body
-  background-color: #f7f3ea
+  background-color: #f4f4f4
   color: $dark
-  background-image: linear-gradient(135deg, rgba($link-color, 0.35), rgba($accent-color, 0.28) 45%, rgba($dark, 0.12)), radial-gradient(circle at 22% 30%, rgba($link-color, 0.18) 0, transparent 35%), radial-gradient(circle at 80% 70%, rgba($accent-color, 0.22) 0, transparent 32%)
+  background-image: linear-gradient(135deg, rgba(0, 0, 0, 0.08), rgba(128, 128, 128, 0.14) 45%, rgba(0, 0, 0, 0.06)), radial-gradient(circle at 22% 30%, rgba(64, 64, 64, 0.12) 0, transparent 35%), radial-gradient(circle at 80% 70%, rgba(160, 160, 160, 0.12) 0, transparent 32%)
   background-position: 0% 0%, 18% 30%, 82% 70%
   background-size: 180% 180%, 75% 75%, 80% 80%
   background-blend-mode: screen
@@ -23,7 +23,7 @@ body::before
   content: ""
   position: fixed
   inset: 0
-  background-image: radial-gradient(circle, rgba($dark, 0.10) 1px, transparent 1px), radial-gradient(circle, rgba($dark, 0.05) 1px, transparent 1px)
+  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.10) 1px, transparent 1px), radial-gradient(circle, rgba(0, 0, 0, 0.05) 1px, transparent 1px)
   background-position: 0 0, 3px 3px
   background-size: 6px 6px, 6px 6px
   mix-blend-mode: soft-light
@@ -50,14 +50,14 @@ body::before
   
 @media (prefers-color-scheme: dark)
   body
-    background-color: #111112
+    background-color: #0f0f0f
     color: $light
-    background-image: linear-gradient(135deg, rgba($light, 0.22), rgba($accent-color, 0.32) 45%, rgba($link-color, 0.16)), radial-gradient(circle at 18% 26%, rgba($light, 0.22) 0, transparent 34%), radial-gradient(circle at 82% 76%, rgba($accent-color, 0.28) 0, transparent 30%)
+    background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.14), rgba(128, 128, 128, 0.20) 45%, rgba(255, 255, 255, 0.10)), radial-gradient(circle at 18% 26%, rgba(192, 192, 192, 0.18) 0, transparent 34%), radial-gradient(circle at 82% 76%, rgba(96, 96, 96, 0.16) 0, transparent 30%)
     background-position: 0% 0%, 16% 26%, 82% 76%
     background-size: 200% 200%, 80% 80%, 72% 72%
     background-blend-mode: screen
   body::before
-    background-image: radial-gradient(circle, rgba($light, 0.14) 1px, transparent 1px), radial-gradient(circle, rgba($light, 0.07) 1px, transparent 1px)
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.12) 1px, transparent 1px), radial-gradient(circle, rgba(255, 255, 255, 0.06) 1px, transparent 1px)
     opacity: .5
 
 @media (prefers-reduced-motion: reduce)
