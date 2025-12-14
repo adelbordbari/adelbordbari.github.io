@@ -8,10 +8,10 @@
 
 (function () {
   const CONFIG = {
-    pixelSize: 10,   // larger = bigger blocks; try 6..18
-    speed: 0.025,    // smaller = slower animation; try 0.005..0.06
-    opacity: 0.14,   // also controlled by CSS; kept for JS-driven fallback
-    paletteBoost: 1, // 1 = normal contrast; >1 increases contrast a bit
+    resolutionScale: 0.7,  // render at 70% of device resolution for smoothness
+    speed: 0.018,          // slower, calmer motion
+    opacity: 0.18,         // also controlled by CSS; kept for JS-driven fallback
+    paletteBoost: 0.9,     // slightly softer contrast
   };
 
   // Respect user preference for reduced motion
@@ -32,7 +32,6 @@
   canvas.style.height = '100%';
   canvas.style.zIndex = '-1';
   canvas.style.pointerEvents = 'none';
-  canvas.style.imageRendering = 'pixelated';
   canvas.style.opacity = String(CONFIG.opacity);
 
   document.body.appendChild(canvas);
@@ -53,14 +52,14 @@
     canvas.style.height = window.innerHeight + 'px';
 
     // Determine small canvas size from pixelSize (we want low-res for pixelation)
-    const smallW = Math.max(16, Math.floor(window.innerWidth / CONFIG.pixelSize));
-    const smallH = Math.max(16, Math.floor(window.innerHeight / CONFIG.pixelSize));
-    off.width = smallW;
-    off.height = smallH;
+    // Render to a medium-resolution offscreen surface for smoother gradients
+    const scale = Math.min(1, Math.max(0.4, CONFIG.resolutionScale));
+    off.width = Math.max(160, Math.round(canvas.width * scale));
+    off.height = Math.max(160, Math.round(canvas.height * scale));
 
     // Ensure crisp scaling
-    ctx.imageSmoothingEnabled = false;
-    octx.imageSmoothingEnabled = false;
+    ctx.imageSmoothingEnabled = true;
+    octx.imageSmoothingEnabled = true;
   }
 
   window.addEventListener('resize', resize, { passive: true });
@@ -128,7 +127,7 @@
     // now in ms
     const t = now || performance.now();
     // limit FPS to ~30 for performance (optional)
-    if (t - lastTime < 33) {
+    if (t - lastTime < 25) {
       requestAnimationFrame(draw);
       return;
     }
@@ -139,7 +138,7 @@
     // scale up the offscreen canvas to full size
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     // important: disable smoothing so scaled pixels stay blocky
-    ctx.imageSmoothingEnabled = false;
+    ctx.imageSmoothingEnabled = true;
     ctx.drawImage(off, 0, 0, canvas.width, canvas.height);
 
     requestAnimationFrame(draw);
@@ -149,12 +148,12 @@
 
   // Expose a small API to tweak parameters at runtime if needed
   window.__PixelWaves = {
-    setPixelSize(n) {
-      CONFIG.pixelSize = Math.max(2, +n || CONFIG.pixelSize);
-      resize();
-    },
     setSpeed(s) {
       CONFIG.speed = +s || CONFIG.speed;
+    },
+    setResolutionScale(s) {
+      CONFIG.resolutionScale = Math.min(1.2, Math.max(0.3, +s || CONFIG.resolutionScale));
+      resize();
     },
     setOpacity(o) {
       const v = Math.max(0, Math.min(1, +o));
