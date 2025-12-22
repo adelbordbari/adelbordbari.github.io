@@ -192,9 +192,11 @@ audio
   max-width: 100%
   gap: .6em
   padding: .5em .75em
-  border-radius: 6px
-  box-shadow: 0 0 0 1px reduce(12) inset
-  background: reduce(8)
+  border-radius: 12px
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.12), inset 0 0 0 1px rgba(255, 255, 255, 0.28)
+  background: rgba(255, 255, 255, 0.34)
+  backdrop-filter: blur(12px) saturate(1.2)
+  -webkit-backdrop-filter: blur(12px) saturate(1.2)
   color: inherit
   white-space: nowrap
   overflow: hidden
@@ -256,6 +258,10 @@ audio
 .recent-gif, .recent-gif--inline
   order: 1
 
+@media (prefers-color-scheme: dark)
+  .recent-played
+    background: rgba(12, 12, 12, 0.58)
+    box-shadow: 0 18px 55px rgba(0, 0, 0, 0.35), inset 0 0 0 1px rgba(255, 255, 255, 0.08)
 
 #letterboxd-embed-tc .letterboxd-embed-tc-divider
   border-bottom: 1px solid $link-color
