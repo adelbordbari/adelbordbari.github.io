@@ -123,7 +123,7 @@ img
 
 li
   margin: .25em 0
-
+  
 table
   display: inline-block
   max-width: 100%
@@ -169,7 +169,7 @@ pre
   -webkit-background-clip: text
   -webkit-text-fill-color: transparent
   font-size: 2rem
-
+  
 #cover-small
   width: 10vw
   display: block
@@ -198,6 +198,8 @@ audio
   background: rgba(255, 255, 255, 0.34)
   backdrop-filter: blur(12px) saturate(1.2)
   -webkit-backdrop-filter: blur(12px) saturate(1.2)
+  backdrop-filter: blur(12px) saturate(1.2)
+  -webkit-backdrop-filter: blur(12px) saturate(1.2)
   color: inherit
   white-space: nowrap
   overflow: hidden
@@ -209,84 +211,78 @@ audio
   padding: 0
   box-shadow: none
   background: transparent
-
+  
 .recent-played-track
   order: 2
   min-width: 0
   margin: 0
   font-family: $font-family
   font-weight: $font-weight * 1.2
-
-.recent-played-cover
-  order: 1
-  height: 2.8em
-  width: 2.8em
-  border-radius: 9px
-  flex-shrink: 0
-  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.22), 0 1px 0 rgba(255, 255, 255, 0.12) inset
-  object-fit: cover
-
-.recent-played-header
-  order: 3
-  font-size: .95em
-  opacity: .92
-  display: inline-flex
-  align-items: center
-  gap: .35em
-
-.recent-played-artist
-  order: 4
-  display: inline-flex
-  align-items: center
-  gap: .35em
-  font-size: .85em
-  color: reduce(26)
-
-.recent-played-time
-  order: 5
-  display: inline-flex
-  align-items: center
-  gap: .35em
-  font-size: .78em
-  color: reduce(36)
-
-.post-list
-  line-height: 1.65
-
-.post-list time
-  color: reduce(40)
-  font-size: .9em
-  padding-left: .15em
-
-.post-list-title
+  font-size: .8em
   line-height: 1.2
-  margin: .05em 0
+  overflow: hidden
+  text-overflow: ellipsis
 
-.list-group-item
-  margin-bottom: 14px
-  border-radius: 8px
-  padding: 12px 14px
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.15), 0 8px 22px rgba(0, 0, 0, 0.08)
-  background: rgba(0, 0, 0, 0.28)
+.recent-played-track a
   color: inherit
-  border: 1px solid rgba(255, 255, 255, 0.12)
+  text-decoration: inherit
+  border-bottom: 1px solid reduce(20)
+  transition: border-color .15s ease
+  &:hover
+    text-decoration: underline
+    border-bottom-color: currentColor
+  &:focus-visible
+    outline: 2px solid $link-color
+    outline-offset: 2px
 
-.list-group-item:hover
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.22), 0 10px 28px rgba(0, 0, 0, 0.12)
-  transform: translateY(-1px)
-  transition: all .15s ease
-
-.list-group-item small
-  color: reduce(30)
-
-.list-group-item h3
-  font-size: 1.08em
-  margin: .15em 0 .35em 0
-
-kbd
-  background: rgba(255, 255, 255, .04)
+.recent-played-art
+  order: 3
+  margin-left: auto
+  width: 40px
+  height: 40px
+  flex: 0 0 40px
   border-radius: 4px
-  padding: .1rem .4rem
-  border: 1px solid rgba(255, 255, 255, 0.08)
-  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.4)
-  color: #f4f4f4
+  object-fit: cover
+  box-shadow: 0 0 0 1px reduce(6) inset
+  margin: 0
+
+.recent-gif
+  width: 16px
+  height: 16px
+  display: inline-block
+
+.recent-gif--inline
+  flex: 0 0 16px
+  width: 16px
+  height: 16px
+  margin: 0 .25em
+  display: inline-block
+
+.recent-gif, .recent-gif--inline
+  order: 1
+  
+@media (prefers-color-scheme: dark)
+  .recent-played
+    background: rgba(12, 12, 12, 0.58)
+    box-shadow: 0 18px 55px rgba(0, 0, 0, 0.35), inset 0 0 0 1px rgba(255, 255, 255, 0.08)
+  
+@media (prefers-color-scheme: dark)
+  .recent-played
+    background: rgba(12, 12, 12, 0.58)
+    box-shadow: 0 18px 55px rgba(0, 0, 0, 0.35), inset 0 0 0 1px rgba(255, 255, 255, 0.08)
+
+#letterboxd-embed-tc .letterboxd-embed-tc-divider
+  border-bottom: 1px solid $link-color
+
+#letterboxd-embed-tc .letterboxd-embed-tc-rating
+  color: $link-color
+
+#letterboxd-embed-tc .letterboxd-embed-tc-more
+  display: none
+
+#letterboxd-embed-tc .letterboxd-embed-tc-review
+  color: $light
+  font-size: 0.9rem
+
+#letterboxd-embed-tc .letterboxd-embed-tc-footer
+  display: none
