@@ -218,3 +218,94 @@ audio
   padding: .5em .75em
   border-radius: 12px
   box-shadow: 0 15px 45px rgba(0, 0, 0, 0.12), inset 0 0 0 1px rgba(255, 255, 255, 0.28)
+  background: rgba(255, 255, 255, 0.34)
+  backdrop-filter: blur(12px) saturate(1.2)
+  -webkit-backdrop-filter: blur(12px) saturate(1.2)
+  backdrop-filter: blur(12px) saturate(1.2)
+  -webkit-backdrop-filter: blur(12px) saturate(1.2)
+  color: inherit
+  white-space: nowrap
+  overflow: hidden
+  text-overflow: ellipsis
+  margin-top: 3rem
+  margin-bottom: 3rem
+
+.recent-played--inline
+  padding: 0
+  box-shadow: none
+  background: transparent
+  
+.recent-played-track
+  order: 2
+  min-width: 0
+  margin: 0
+  font-family: $font-family
+  font-weight: $font-weight * 1.2
+  font-size: .8em
+  line-height: 1.2
+  overflow: hidden
+  text-overflow: ellipsis
+
+.recent-played-track a
+  color: inherit
+  text-decoration: inherit
+  border-bottom: 1px solid reduce(20)
+  transition: border-color .15s ease
+  &:hover
+    text-decoration: underline
+    border-bottom-color: currentColor
+  &:focus-visible
+    outline: 2px solid $link-color
+    outline-offset: 2px
+
+.recent-played-art
+  order: 3
+  margin-left: auto
+  width: 40px
+  height: 40px
+  flex: 0 0 40px
+  border-radius: 4px
+  object-fit: cover
+  box-shadow: 0 0 0 1px reduce(6) inset
+  margin: 0
+
+.recent-gif
+  width: 16px
+  height: 16px
+  display: inline-block
+
+.recent-gif--inline
+  flex: 0 0 16px
+  width: 16px
+  height: 16px
+  margin: 0 .25em
+  display: inline-block
+
+.recent-gif, .recent-gif--inline
+  order: 1
+  
+@media (prefers-color-scheme: dark)
+  .recent-played
+    background: rgba(12, 12, 12, 0.58)
+    box-shadow: 0 18px 55px rgba(0, 0, 0, 0.35), inset 0 0 0 1px rgba(255, 255, 255, 0.08)
+  
+@media (prefers-color-scheme: dark)
+  .recent-played
+    background: rgba(12, 12, 12, 0.58)
+    box-shadow: 0 18px 55px rgba(0, 0, 0, 0.35), inset 0 0 0 1px rgba(255, 255, 255, 0.08)
+
+#letterboxd-embed-tc .letterboxd-embed-tc-divider
+  border-bottom: 1px solid $link-color
+
+#letterboxd-embed-tc .letterboxd-embed-tc-rating
+  color: $link-color
+
+#letterboxd-embed-tc .letterboxd-embed-tc-more
+  display: none
+
+#letterboxd-embed-tc .letterboxd-embed-tc-review
+  color: $light
+  font-size: 0.9rem
+
+#letterboxd-embed-tc .letterboxd-embed-tc-footer
+  display: none
