@@ -1,10 +1,10 @@
 body
-  background-color: #000
+  background-color: #070707
   color: #dcdcdc
-  background: radial-gradient(120% 122% at 50% 46%, #000 42%, #0a0a0a 56%, #000 72%), linear-gradient(180deg, #2f2f2f 0%, #151515 34%, #000 52%, #131313 68%, #2f2f2f 100%)
+  background: radial-gradient(120% 122% at 50% 46%, #000 42%, #0a0a0a 56%, #000 72%), linear-gradient(180deg, #2f2f2f 0%, #161616 38%, #050505 56%, #181818 74%, #2f2f2f 100%)
   background-repeat: no-repeat
-  background-blend-mode: screen, multiply
-  animation: base-shift 46s ease-in-out infinite alternate
+  background-blend-mode: normal
+  animation: base-shift 48s ease-in-out infinite alternate
   position: relative
   isolation: isolate
   overflow-x: hidden
@@ -21,67 +21,67 @@ body
 body::before
   content: ""
   position: fixed
-  inset: -12%
-  background: radial-gradient(120% 120% at 30% 16%, rgba($accent-color, 0.86) 0%, rgba($accent-color, 0.08) 46%, transparent 64%), radial-gradient(140% 130% at 74% 82%, rgba($accent-color, 0.86) 0%, rgba($accent-color, 0.07) 50%, transparent 66%), radial-gradient(120% 120% at 50% 50%, rgba(#2f2f2f, 0.5) 30%, transparent 70%)
+  inset: -8%
+  background: radial-gradient(120% 120% at 30% 16%, rgba(#ffffff, 0.38) 0%, rgba(#b3b3b3, 0.08) 44%, transparent 62%), radial-gradient(140% 130% at 74% 82%, rgba(#ffffff, 0.32) 0%, rgba(#b3b3b3, 0.06) 48%, transparent 64%), radial-gradient(120% 120% at 50% 50%, rgba(#2f2f2f, 0.48) 32%, transparent 70%)
   background-repeat: no-repeat
-  filter: saturate(1.08)
+  filter: blur(4px)
   mix-blend-mode: screen
-  opacity: .95
-  animation: glow-ebb 68s ease-in-out infinite alternate
+  opacity: .82
+  animation: glow-ebb 72s ease-in-out infinite alternate
   pointer-events: none
   z-index: -2
 
 body::after
   content: ""
   position: fixed
-  inset: -20%
-  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.16) 0 0.7px, transparent 0.7px), radial-gradient(circle, rgba(0, 0, 0, 0.5) 0 0.75px, transparent 0.75px), radial-gradient(circle, rgba($accent-color, 0.4) 0 0.9px, transparent 0.9px), radial-gradient(circle, rgba(#2f2f2f, 0.48) 0 0.8px, transparent 0.8px)
-  background-size: 2.8px 2.8px, 3.2px 3.2px, 3.6px 3.6px, 4px 4px
-  background-position: 0 0, 1.4px 1.8px, -0.8px -1px, 2px 0.5px
+  inset: -12%
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.16) 0 0.7px, transparent 0.7px), radial-gradient(circle, rgba(0, 0, 0, 0.46) 0 0.8px, transparent 0.8px), radial-gradient(circle, rgba(#2f2f2f, 0.5) 0 0.85px, transparent 0.85px), radial-gradient(circle, rgba(#f5f5f5, 0.12) 0 0.65px, transparent 0.65px)
+  background-size: 2.6px 2.6px, 3px 3px, 3.4px 3.4px, 3.8px 3.8px
+  background-position: 0 0, 1.2px 1.6px, -0.6px -0.8px, 1.8px 0.4px
   mix-blend-mode: soft-light
-  opacity: .95
-  animation: grain-shift 36s linear infinite
+  opacity: .88
+  animation: grain-shift 42s linear infinite
   pointer-events: none
   z-index: -1
 
 @keyframes base-shift
   0%
-    background-position: 50% 46%, 50% 50%
-    background-size: 140% 140%, 180% 180%
+    background-position: 50% 46%, 50% 52%
+    background-size: 140% 140%, 170% 170%
   50%
-    background-position: 52% 52%, 50% 54%
-    background-size: 150% 150%, 200% 200%
+    background-position: 51% 51%, 50% 54%
+    background-size: 145% 145%, 180% 180%
   100%
-    background-position: 48% 44%, 50% 50%
-    background-size: 145% 145%, 190% 190%
-  
+    background-position: 49% 45%, 50% 50%
+    background-size: 142% 142%, 175% 175%
+
 @keyframes glow-ebb
   0%
-    transform: translate3d(-2%, -1%, 0) scale(1)
+    transform: translate3d(-1%, -1%, 0) scale(1)
   50%
-    transform: translate3d(2%, 3%, 0) scale(1.04)
+    transform: translate3d(1.5%, 2%, 0) scale(1.03)
   100%
-    transform: translate3d(5%, -2%, 0) scale(0.98)
+    transform: translate3d(3%, -1.5%, 0) scale(0.99)
 
 @keyframes grain-shift
   0%
-    background-position: 0 0, 1.4px 1.8px, -0.8px -1px, 2px 0.5px
+    background-position: 0 0, 1.2px 1.6px, -0.6px -0.8px, 1.8px 0.4px
   50%
-    background-position: -8px 6px, 4px 12px, -6px 10px, 10px 4px
+    background-position: -5px 4px, 2.4px 7px, -3.5px 6px, 6px 2.5px
   100%
-    background-position: 0 0, 1.4px 1.8px, -0.8px -1px, 2px 0.5px
-  
+    background-position: 0 0, 1.2px 1.6px, -0.6px -0.8px, 1.8px 0.4px
+
 @media (prefers-color-scheme: dark)
   body
-    background-color: #000
+    background-color: #070707
     color: $light
-    background: radial-gradient(120% 124% at 50% 48%, #000 38%, #0c0c0c 56%, #000 72%), linear-gradient(180deg, #2f2f2f 0%, #121212 32%, #000 52%, #101010 68%, #2f2f2f 100%)
+    background: radial-gradient(120% 124% at 50% 48%, #000 38%, #0b0b0b 56%, #000 72%), linear-gradient(180deg, #2f2f2f 0%, #141414 34%, #040404 52%, #141414 70%, #2f2f2f 100%)
     background-repeat: no-repeat
-    background-blend-mode: screen, multiply
-    body::before
-    opacity: .98
-  body::after
+    background-blend-mode: normal
+  body::before
     opacity: .9
+  body::after
+    opacity: .82
 @media (prefers-reduced-motion: reduce)
   body
     animation: none
@@ -218,94 +218,3 @@ audio
   padding: .5em .75em
   border-radius: 12px
   box-shadow: 0 15px 45px rgba(0, 0, 0, 0.12), inset 0 0 0 1px rgba(255, 255, 255, 0.28)
-  background: rgba(255, 255, 255, 0.34)
-  backdrop-filter: blur(12px) saturate(1.2)
-  -webkit-backdrop-filter: blur(12px) saturate(1.2)
-  backdrop-filter: blur(12px) saturate(1.2)
-  -webkit-backdrop-filter: blur(12px) saturate(1.2)
-  color: inherit
-  white-space: nowrap
-  overflow: hidden
-  text-overflow: ellipsis
-  margin-top: 3rem
-  margin-bottom: 3rem
-
-.recent-played--inline
-  padding: 0
-  box-shadow: none
-  background: transparent
-  
-.recent-played-track
-  order: 2
-  min-width: 0
-  margin: 0
-  font-family: $font-family
-  font-weight: $font-weight * 1.2
-  font-size: .8em
-  line-height: 1.2
-  overflow: hidden
-  text-overflow: ellipsis
-
-.recent-played-track a
-  color: inherit
-  text-decoration: inherit
-  border-bottom: 1px solid reduce(20)
-  transition: border-color .15s ease
-  &:hover
-    text-decoration: underline
-    border-bottom-color: currentColor
-  &:focus-visible
-    outline: 2px solid $link-color
-    outline-offset: 2px
-
-.recent-played-art
-  order: 3
-  margin-left: auto
-  width: 40px
-  height: 40px
-  flex: 0 0 40px
-  border-radius: 4px
-  object-fit: cover
-  box-shadow: 0 0 0 1px reduce(6) inset
-  margin: 0
-
-.recent-gif
-  width: 16px
-  height: 16px
-  display: inline-block
-
-.recent-gif--inline
-  flex: 0 0 16px
-  width: 16px
-  height: 16px
-  margin: 0 .25em
-  display: inline-block
-
-.recent-gif, .recent-gif--inline
-  order: 1
-  
-@media (prefers-color-scheme: dark)
-  .recent-played
-    background: rgba(12, 12, 12, 0.58)
-    box-shadow: 0 18px 55px rgba(0, 0, 0, 0.35), inset 0 0 0 1px rgba(255, 255, 255, 0.08)
-  
-@media (prefers-color-scheme: dark)
-  .recent-played
-    background: rgba(12, 12, 12, 0.58)
-    box-shadow: 0 18px 55px rgba(0, 0, 0, 0.35), inset 0 0 0 1px rgba(255, 255, 255, 0.08)
-
-#letterboxd-embed-tc .letterboxd-embed-tc-divider
-  border-bottom: 1px solid $link-color
-
-#letterboxd-embed-tc .letterboxd-embed-tc-rating
-  color: $link-color
-
-#letterboxd-embed-tc .letterboxd-embed-tc-more
-  display: none
-
-#letterboxd-embed-tc .letterboxd-embed-tc-review
-  color: $light
-  font-size: 0.9rem
-
-#letterboxd-embed-tc .letterboxd-embed-tc-footer
-  display: none
