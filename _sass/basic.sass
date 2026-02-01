@@ -1,10 +1,9 @@
 body
-  background-color: #070707
-  color: #dcdcdc
-  background: radial-gradient(120% 122% at 50% 46%, #000 42%, #0a0a0a 56%, #000 72%), linear-gradient(180deg, #2f2f2f 0%, #161616 38%, #050505 56%, #181818 74%, #2f2f2f 100%)
-  background-repeat: no-repeat
-  background-blend-mode: normal
-  animation: base-shift 48s ease-in-out infinite alternate
+  background-color: $light
+  color: $dark
+  background: $light
+  background-repeat: repeat
+  animation: none
   position: relative
   isolation: isolate
   overflow-x: hidden
@@ -21,67 +20,32 @@ body
 body::before
   content: ""
   position: fixed
-  inset: -8%
-  background: radial-gradient(120% 120% at 30% 16%, rgba(#ffffff, 0.38) 0%, rgba(#b3b3b3, 0.08) 44%, transparent 62%), radial-gradient(140% 130% at 74% 82%, rgba(#ffffff, 0.32) 0%, rgba(#b3b3b3, 0.06) 48%, transparent 64%), radial-gradient(120% 120% at 50% 50%, rgba(#2f2f2f, 0.48) 32%, transparent 70%)
-  background-repeat: no-repeat
-  filter: blur(4px)
-  mix-blend-mode: screen
-  opacity: .82
-  animation: glow-ebb 72s ease-in-out infinite alternate
+  inset: 0
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='480' height='360'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.7'/></svg>")
+  background-size: 360px 270px
+  mix-blend-mode: multiply
+  opacity: .5
   pointer-events: none
   z-index: -2
 
 body::after
   content: ""
   position: fixed
-  inset: -12%
-  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.16) 0 0.7px, transparent 0.7px), radial-gradient(circle, rgba(0, 0, 0, 0.46) 0 0.8px, transparent 0.8px), radial-gradient(circle, rgba(#2f2f2f, 0.5) 0 0.85px, transparent 0.85px), radial-gradient(circle, rgba(#f5f5f5, 0.12) 0 0.65px, transparent 0.65px)
-  background-size: 2.6px 2.6px, 3px 3px, 3.4px 3.4px, 3.8px 3.8px
-  background-position: 0 0, 1.2px 1.6px, -0.6px -0.8px, 1.8px 0.4px
-  mix-blend-mode: soft-light
-  opacity: .88
-  animation: grain-shift 42s linear infinite
+  inset: -10%
+  background-image: radial-gradient(circle, rgba(45, 50, 167, 0.1) 0 1px, transparent 1px), radial-gradient(circle, rgba(228, 59, 47, 0.12) 0 0.9px, transparent 0.9px)
+  background-size: 4px 4px, 5px 5px
+  background-position: 0 0, 1px 1.4px
+  mix-blend-mode: multiply
+  opacity: .55
+  animation: none
   pointer-events: none
   z-index: -1
 
-@keyframes base-shift
-  0%
-    background-position: 50% 46%, 50% 52%
-    background-size: 140% 140%, 170% 170%
-  50%
-    background-position: 51% 51%, 50% 54%
-    background-size: 145% 145%, 180% 180%
-  100%
-    background-position: 49% 45%, 50% 50%
-    background-size: 142% 142%, 175% 175%
-
-@keyframes glow-ebb
-  0%
-    transform: translate3d(-1%, -1%, 0) scale(1)
-  50%
-    transform: translate3d(1.5%, 2%, 0) scale(1.03)
-  100%
-    transform: translate3d(3%, -1.5%, 0) scale(0.99)
-
-@keyframes grain-shift
-  0%
-    background-position: 0 0, 1.2px 1.6px, -0.6px -0.8px, 1.8px 0.4px
-  50%
-    background-position: -5px 4px, 2.4px 7px, -3.5px 6px, 6px 2.5px
-  100%
-    background-position: 0 0, 1.2px 1.6px, -0.6px -0.8px, 1.8px 0.4px
-
 @media (prefers-color-scheme: dark)
   body
-    background-color: #070707
-    color: $light
-    background: radial-gradient(120% 124% at 50% 48%, #000 38%, #0b0b0b 56%, #000 72%), linear-gradient(180deg, #2f2f2f 0%, #141414 34%, #040404 52%, #141414 70%, #2f2f2f 100%)
-    background-repeat: no-repeat
-    background-blend-mode: normal
-  body::before
-    opacity: .9
-  body::after
-    opacity: .82
+    background-color: $light
+    color: $dark
+    background: $light
 @media (prefers-reduced-motion: reduce)
   body
     animation: none
@@ -112,7 +76,7 @@ header a, footer a, aside a
   color: inherit
 
 header strong
-  text-shadow: 1px -1px 0 rgb(0, 210, 117),-1px 1px 0 rgb(210, 0, 93)
+  text-shadow: 1px -1px 0 rgba(59, 68, 226, 0.9), -1px 1px 0 rgba(228, 59, 47, 0.8)
 
 header time
   color: reduce(100)
