@@ -11,7 +11,7 @@ layout: "post"
 - [The line is after the act](#the-line-is-after-the-act)
 - [Choosing](#choosing)
 - [A different definition of chore](#a-different-definition-of-chore)
-- 
+
 ---
 
 I used to have a weird resistance to “good morning” and “good night” texts; Not because i disliked the person. not because i didn’t care. but because those messages felt like the beginning of something that turns sour in slow motion: a sweet habit that gradually becomes a requirement. a ritual that starts as affection and ends as an attendance check. and i’ve always been afraid of that specific kind of love. the kind where intimacy becomes performance. where responsibility becomes pressure. where the relationship quietly installs a daily quota: *prove you’re here, prove you care, prove you’re good.* (which is funny, because the “smallest” things are usually the ones that carry the heaviest symbolic baggage. the text isn’t a text. it’s a referendum.) but then someone said something that cracked the whole structure open.
