@@ -11,10 +11,12 @@ pagination:
   permalink: /code/:num/
 ---
 
+{% assign code_posts = paginator.posts | default: site.code %}
+{% assign code_posts = code_posts | sort: 'date' | reverse %}
+
 <ul>
-  {% assign sorted_posts = site.code | sort: 'date' | reverse %}
-  {% for post in sorted_posts %} 
-    <li>
+  {% for post in code_posts %} 
+  <li>
       {{ post.date | date: "%B %d, %Y" }} - <a href="{{ post.url }}">{{ post.title }}</a>
     </li>
   {% endfor %}
