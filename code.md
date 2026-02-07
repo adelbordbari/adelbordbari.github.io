@@ -11,8 +11,9 @@ pagination:
   permalink: /code/:num/
 ---
 
-{% if paginator %}
-  {% assign code_posts = paginator.posts %}
+{% assign pagination_data = paginator | default: page.pagination %}
+{% if pagination_data %}
+  {% assign code_posts = pagination_data.posts %}
 {% else %}
   {% assign code_posts = site.code %}
 {% endif %}
