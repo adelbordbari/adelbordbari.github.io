@@ -11,7 +11,7 @@ pagination:
   permalink: /album/:num/
 ---
 
-{% assign pagination_data = paginator %}
+{% assign pagination_data = paginator | default: page.pagination %}
 {% assign album_posts = pagination_data.posts | default: site.album %}
 {% assign album_posts = album_posts | sort: 'date' | reverse %}
 
