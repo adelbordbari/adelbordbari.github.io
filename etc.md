@@ -11,10 +11,13 @@ pagination:
   permalink: /etc/:num/
 ---
 
-{% assign etc_posts = paginator.posts | default: site.etc %}
+{% if paginator %}
+  {% assign etc_posts = paginator.posts %}
+{% else %}
+  {% assign etc_posts = site.etc %}
+{% endif %}
 {% assign etc_posts = etc_posts | sort: 'date' | reverse %}
 <ul>
-{% for post in paginator.posts %} 
 {% for post in etc_posts %} 
   <li>
        {{ post.date | date: "%B %d, %Y" }} - <a href="{{ post.url }}">{{ post.title }}</a>
