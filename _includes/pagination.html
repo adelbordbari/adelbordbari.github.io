@@ -1,0 +1,66 @@
+{% if paginator and paginator.total_pages > 1 %}
+  {% assign start_page = paginator.page | minus: 1 %}
+  {% assign end_page = start_page | plus: 2 %}
+
+  {% if start_page < 1 %}
+    {% assign start_page = 1 %}
+    {% assign end_page = 3 %}
+  {% endif %}
+
+  {% if end_page > paginator.total_pages %}
+    {% assign end_page = paginator.total_pages %}
+    {% assign start_page = end_page | minus: 2 %}
+  {% endif %}
+
+  {% if start_page < 1 %}
+    {% assign start_page = 1 %}
+  {% endif %}
+
+  <nav class="pagination" aria-label="Pagination">
+    <ul>
+      {% if paginator.previous_page %}
+        <li class="pagination-prev">
+          <a href="{{ paginator.previous_page_path | relative_url }}" rel="prev">Prev</a>
+        </li>
+      {% endif %}
+
+      {% if start_page > 1 %}
+        <li>
+          <a href="{{ paginator.first_page_path | relative_url }}">1</a>
+        </li>
+        <li class="pagination-ellipsis" aria-hidden="true">…</li>
+      {% endif %}
+
+      {% for page_number in (start_page..end_page) %}
+        {% if page_number == paginator.page %}
+          <li class="is-current" aria-current="page">{{ page_number }}</li>
+        {% else %}
+          {% if page_number == 1 %}
+            <li><a href="{{ paginator.first_page_path | relative_url }}">1</a></li>
+          {% else %}
+            <li>
+              <a href="{{ paginator.paginate_path | replace: ':num', page_number | relative_url }}">
+                {{ page_number }}
+              </a>
+            </li>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+
+      {% if end_page < paginator.total_pages %}
+        <li class="pagination-ellipsis" aria-hidden="true">…</li>
+        <li>
+          <a href="{{ paginator.paginate_path | replace: ':num', paginator.total_pages | relative_url }}">
+            {{ paginator.total_pages }}
+          </a>
+        </li>
+      {% endif %}
+
+      {% if paginator.next_page %}
+        <li class="pagination-next">
+          <a href="{{ paginator.next_page_path | relative_url }}" rel="next">Next</a>
+        </li>
+      {% endif %}
+    </ul>
+  </nav>
+{% endif %}
