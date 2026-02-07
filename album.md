@@ -2,12 +2,18 @@
 layout: page
 title: Albums
 permalink: /album/
+pagination:
+  enabled: true
+  collection: album
+  per_page: 10
+  sort_field: "date"
+  sort_reverse: true
+  permalink: /album/:num/
 ---
 
 <ul>
-	{% assign sorted_posts = site.album | sort: 'date' | reverse %}
-  {% for post in sorted_posts %}
-   <div class="post" style="margin-top: 30px;">
+	{% for post in paginator.posts %}
+	<div class="post" style="margin-top: 30px;">
 		<div
 			class="entry"
 			style="display: flex; justify-content: center; align-items: center">
@@ -37,3 +43,4 @@ permalink: /album/
 	</div>
   {% endfor %}
 </ul>
+{% include pagination.html %}
