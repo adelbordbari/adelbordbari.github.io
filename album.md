@@ -11,8 +11,13 @@ pagination:
   permalink: /album/:num/
 ---
 
-{% assign album_posts = paginator.posts | default: site.album %}
+{% if paginator %}
+	{% assign album_posts = paginator.posts %}
+{% else %}
+	{% assign album_posts = site.album %}
+{% endif %}
 {% assign album_posts = album_posts | sort: 'date' | reverse %}
+
 <ul>
 	{% for post in album_posts %}
 	<div class="post" style="margin-top: 30px;">
