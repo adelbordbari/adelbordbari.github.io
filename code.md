@@ -2,6 +2,13 @@
 layout: page
 title: Code
 permalink: /code/
+pagination:
+  enabled: true
+  collection: code
+  per_page: 10
+  sort_field: "date"
+  sort_reverse: true
+  permalink: /code/:num/
 ---
 
 <ul>
@@ -12,3 +19,4 @@ permalink: /code/
     </li>
   {% endfor %}
 </ul>
+{% include pagination.html %}
