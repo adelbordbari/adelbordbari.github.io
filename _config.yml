@@ -35,6 +35,9 @@ plugins:
  - jekyll-feed
  - jekyll-paginate-v2
 
+pagination:
+  enabled: true
+
 ### CUSTOM
 collections:
   code:
