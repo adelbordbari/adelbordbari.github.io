@@ -11,8 +11,9 @@ pagination:
   permalink: /album/:num/
 ---
 
-{% if paginator %}
-	{% assign album_posts = paginator.posts %}
+{% assign pagination_data = paginator | default: page.pagination %}
+{% if pagination_data %}
+	{% assign album_posts = pagination_data.posts %}
 {% else %}
 	{% assign album_posts = site.album %}
 {% endif %}
