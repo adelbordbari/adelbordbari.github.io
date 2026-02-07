@@ -2,6 +2,13 @@
 layout: page
 title: Et cetera
 permalink: /etc/
+pagination:
+  enabled: true
+  collection: etc
+  per_page: 10
+  sort_field: "date"
+  sort_reverse: true
+  permalink: /etc/:num/
 ---
 
 <ul>
