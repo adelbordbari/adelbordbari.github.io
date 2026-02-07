@@ -11,7 +11,7 @@ pagination:
   permalink: /etc/:num/
 ---
 
-{% assign pagination_data = paginator %}
+{% assign pagination_data = paginator | default: page.pagination %}
 {% assign etc_posts = pagination_data.posts | default: site.etc %}
 {% assign etc_posts = etc_posts | sort: 'date' | reverse %}
 <ul>
