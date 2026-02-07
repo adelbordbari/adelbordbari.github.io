@@ -3,6 +3,8 @@ title: "When Love feels Like A Chore; And why That Might Be A Good Sign"
 layout: "post"
 ---
 
+<img width="1280" height="597" alt="image" src="https://github.com/user-attachments/assets/dca93b7c-1359-4ec3-8e77-3acf6ec58ab4" />
+
 ## Table of Contents
 - [What if it really is a chore?](#what-if-it-really-is-a-chore)
 - [The real question](#the-real-question)
