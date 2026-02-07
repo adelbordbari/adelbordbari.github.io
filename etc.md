@@ -11,12 +11,8 @@ pagination:
   permalink: /etc/:num/
 ---
 
-{% assign pagination_data = paginator | default: page.pagination %}
-{% if pagination_data %}
-  {% assign etc_posts = pagination_data.posts %}
-{% else %}
-  {% assign etc_posts = site.etc %}
-{% endif %}
+{% assign pagination_data = paginator %}
+{% assign etc_posts = pagination_data.posts | default: site.etc %}
 {% assign etc_posts = etc_posts | sort: 'date' | reverse %}
 <ul>
 {% for post in etc_posts %} 
