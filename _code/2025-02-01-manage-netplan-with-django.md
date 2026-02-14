@@ -312,31 +312,8 @@ State matters more than logs. If the interface matches expectation, we treat it 
 ---
 
 ## Diagram
+<img width="1377" height="758" alt="image" src="https://github.com/user-attachments/assets/9d873a01-62d2-49b1-8236-4415af33b805" />
 
-```mermaid
-sequenceDiagram
-  participant Op as Operator
-  participant UI as Django UI
-  participant FS as Netplan Files
-  participant SIG as ip_reset
-  participant W as Watcher
-  participant NP as netplan
-
-  Op->>UI: Submit IP change
-  UI->>FS: Write .yaml.pending
-  UI-->>Op: Redirect to confirm
-
-  Op->>UI: Confirm
-  UI->>FS: Backup live YAML
-  UI->>FS: Promote pending -> live
-  UI->>SIG: atomic_write(ip_reset)
-
-  W->>NP: netplan apply
-  W->>FS: Update log + JSON
-
-  Op->>UI: Poll wait page
-  UI-->>Op: Success / error + redirect
-```
 
 ---
 
