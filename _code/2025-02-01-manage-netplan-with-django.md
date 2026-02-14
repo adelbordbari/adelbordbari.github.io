@@ -3,6 +3,8 @@ title: "Managing Netplan with Django in Production (Revisisted)"
 layout: "post"
 ---
 
+<img width="1376" height="768" alt="Gemini_Generated_Image_3xpluw3xpluw3xpl" src="https://github.com/user-attachments/assets/dd4fdb3e-1098-4b7f-8757-adefbbf440e0" />
+
 ## Table of Contents
 - [Situation](#situation)
 - [Problem](#problem)
