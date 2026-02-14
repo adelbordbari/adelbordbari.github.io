@@ -9,7 +9,7 @@ layout: "post"
 - [Investigation](#investigation)
 - [Solution](#solution)
 - [Takeaways](#takeaways)
-- [UI](#UI)
+- [UI](#ui)
 - [Diagram](#diagram)
 - [Final Notes](#final-notes)
 
