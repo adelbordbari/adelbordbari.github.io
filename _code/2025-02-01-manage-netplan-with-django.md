@@ -10,7 +10,6 @@ layout: "post"
 - [Solution](#solution)
 - [Takeaways](#takeaways)
 - [UI](#ui)
-- [Diagram](#diagram)
 - [Final Notes](#final-notes)
 
 ---
@@ -311,12 +310,6 @@ State matters more than logs. If the interface matches expectation, we treat it 
 
 ---
 
-## Diagram
-<img width="1377" height="758" alt="image" src="https://github.com/user-attachments/assets/9d873a01-62d2-49b1-8236-4415af33b805" />
-
-
----
-
 ## Takeaways
 
 * Default interface static-only
@@ -332,6 +325,8 @@ State matters more than logs. If the interface matches expectation, we treat it 
 ---
 
 ### Flow
+
+<img width="1377" height="758" alt="image" src="https://github.com/user-attachments/assets/9d873a01-62d2-49b1-8236-4415af33b805" />
 
 1. Navigate to Network Settings
 2. Select interface
