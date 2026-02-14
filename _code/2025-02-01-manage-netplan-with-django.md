@@ -4,14 +4,14 @@ layout: "post"
 ---
 
 ## Table of Contents
-- [Situation](##situation)
-- [Problem](##problem)
-- [Investigation](##investigation)
-- [Solution](##solution)
-- [Takeaways](##takeaways)
-- [UI](##UI)
-- [Diagram](##diagram)
-- [Final Notes](##final-notes)
+- [Situation](#situation)
+- [Problem](#problem)
+- [Investigation](#investigation)
+- [Solution](#solution)
+- [Takeaways](#takeaways)
+- [UI](#UI)
+- [Diagram](#diagram)
+- [Final Notes](#final-notes)
 
 ---
 
