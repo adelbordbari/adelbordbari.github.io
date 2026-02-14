@@ -1,111 +1,390 @@
 ---
-title: "Managing Netplan with Django in Production"
+title: "Managing Netplan with Django in Production (Revisisted)"
 layout: "post"
 ---
 
 ## Table of Contents
-- [Situation](#situation)
-- [Problem](#problem)
-- [Investigation](#investigation)
-- [Solution](#solution)
-- [Takeaways](#takeaways)
-- [Footnotes](#footnotes)
+- [Situation](##situation)
+- [Problem](##problem)
+- [Investigation](##investigation)
+- [Solution](##solution)
+- [Takeaways](##takeaways)
+- [UI](##UI)
+- [Diagram](##diagram)
+- [Final Notes](##final-notes)
 
 ---
 
 ## Situation
 
-The environment is a production deployment using Docker Compose. Multiple services are involved, notably a Django-based web container (`web`) and a `cronjob` service. The Django container mounts the host’s `/etc/netplan` and `/sys/class/net` to gain access to the machine’s network interface configurations and status.
+Changing a server’s IP address remotely is the kind of task that punishes overconfidence. One wrong route, one malformed YAML, and your remote session evaporates.
 
-Inside the Django app, there's a settings panel accessible to authenticated users. One of the panels allows network configuration directly from the frontend. The web form is expected to work seamlessly across machines with multiple network interfaces (up to 8), and should reflect real-time settings for each interface.
+In field deployments, we don’t always have SSH access. We *do* have interface swaps, DHCP surprises, static networks that move, and gateways that mysteriously don’t belong to the same subnet.
+
+So we built a Django-based admin workflow that lets operators safely change IP settings with:
+
+- A strict **stage → confirm → apply** model  
+- Strong validation and route guardrails  
+- Atomic file operations  
+- A systemd watcher that applies and logs changes  
+- Clear UI feedback with timeout handling  
+
+This is how it works.
+
+---
 
 ## Problem
 
-Originally, the system was designed to configure only one static interface (usually `enp2s0`). The older implementation had hardcoded assumptions and lacked flexibility. This was not suitable for real-world deployments where multiple interfaces are present, and configuration requirements vary per deployment.
+Field deployments often require:
 
-The challenge was to:
+- Switching Ethernet interfaces  
+- Moving between static IP and DHCP  
+- Reassigning the default interface  
 
-- Scale the design to support multiple interfaces.
-- Maintain form-based input via Django views.[^1]
-- Make sure the YAML format written is consistent and readable by Netplan.
-- Avoid impacting other interfaces when modifying one.
+Manually editing `/etc/netplan/*.yaml` is risky because:
+
+1. A YAML mistake can drop connectivity instantly.
+2. Changing the default route can kill your active session.
+3. Old netplan files or cloud-init can conflict with your intended config.
+4. Operators need a guided, predictable workflow — not shell roulette.
+
+We needed:
+
+- A UI-driven process
+- Strict validation rules
+- Separation between staging and applying
+- Protection of the default route
+- Minimal downtime
+- Auditable logs
+
+---
 
 ## Investigation
 
-Goals included:
+### Architecture Overview
 
-1. **List available interfaces**  
-   Interfaces are read from `/host_sys/class/net` mounted from the host.
+- The Django UI validates input and stages a per-interface netplan YAML as `.yaml.pending`.
+- A confirmation page acts as the **only commit point**.
+- Confirm promotes pending → live and writes a signal file (`ip_reset`) atomically.
+- A systemd watcher detects the signal, runs `netplan apply`, logs the result, and regenerates interface state JSON for the UI.
+- The default interface is defined in `config.cnf` and enforced everywhere.
 
-2. **Validate form input**
-   - IP must be in CIDR format (`192.168.1.10/24`)
-   - Gateway should only be allowed for the default interface (e.g., `enp2s0`)
-   - Regex and logical checks for both IP and Gateway
+### Critical Rule
 
-3. **YAML Format Consistency**  
-   Netplan expects strict YAML schema. Whether we write or read, we needed a uniform representation.
+Only the default interface:
 
-4. **Pre-filling the form**  
-   If a YAML file exists for a selected interface, populate the form with existing values.
+- May define a gateway  
+- Must remain static  
+- Cannot use DHCP  
 
-5. **Atomic Configuration**  
-   Handle each interface via separate YAML files, instead of one monolithic config.
+This single constraint prevents most catastrophic lockouts.
+
+---
 
 ## Solution
 
-The `ipForm` form class in Django was extended to handle dynamic rendering, pre-populated fields, and validation logic. Here's a key section of the form logic:
+### Default Interface from `config.cnf`
+
+The default interface is the source of truth:
 
 ```python
-self.fields["interface"].choices = [("", "-----")] + [(iface, iface) for iface in interfaces]
+def get_default_interface():
+    config_parser = configparser.RawConfigParser()
+    config_path = os.path.join(settings.BASE_DIR, "config.cnf")
+
+    try:
+        config_parser.read(config_path)
+        iface = config_parser.get("system", "eth", fallback=None)
+        if iface:
+            return iface.strip()
+    except Exception:
+        pass
+
+    return None
+````
+
+---
+
+### Interface Filtering
+
+Only Ethernet-style interfaces are allowed:
+
+```python
+def get_interfaces():
+    all_interfaces = os.listdir("/host_sys/class/net")
+    return [
+        iface for iface in all_interfaces
+        if iface.startswith(("eth", "ens", "enp"))
+    ]
 ```
 
-When a user selects an interface, the form reads `/host_netplan/{interface}.yaml` to extract existing configuration:
+The view hard-validates the selection:
 
 ```python
-def retrieve_interface_config(self, interface):
+known_interfaces = list(get_interfaces())
+if selected_interface not in known_interfaces:
+    messages.error(request, f"Unknown interface '{selected_interface}'")
+    return redirect("/setting#change_ip")
+```
+
+---
+
+### File Permissions and Ownership
+
+Staged and live YAML files are locked down:
+
+```python
+def set_permissions(filepath, mode=0o600):
+    os.chmod(filepath, mode)
+    os.chown(filepath, 0, 0)  # root:root
+```
+
+This ensures predictable ownership and reduces risk of accidental edits.
+
+---
+
+### Building Netplan Config In Memory
+
+Before touching the filesystem:
+
+```python
+interface_config = {
+    "network": {
+        "version": 2,
+        "renderer": "networkd",
+        "ethernets": {
+            selected_interface: {"optional": True}
+        },
+    }
+}
+```
+
+#### DHCP Mode (Non-Default Only)
+
+```python
+interface_config["network"]["ethernets"][selected_interface]["dhcp4"] = True
+interface_config["network"]["ethernets"][selected_interface]["addresses"] = []
+interface_config["network"]["ethernets"][selected_interface]["dhcp4-overrides"] = {
+    "use-routes": False,
+    "route-metric": 500,
+}
+```
+
+`use-routes: False` prevents DHCP from hijacking the default route.
+
+---
+
+#### Static Mode
+
+```python
+interface_config["network"]["ethernets"][selected_interface]["dhcp4"] = False
+interface_config["network"]["ethernets"][selected_interface]["addresses"] = [ip]
+```
+
+If it’s the default interface, inject the default route:
+
+```python
+interface_config["network"]["ethernets"][selected_interface]["routes"] = [
+    {"to": "0.0.0.0/0", "via": gateway}
+]
+```
+
+---
+
+### Staging Only (`.yaml.pending`)
+
+```python
+pending_path = f"/host_netplan/{selected_interface}.yaml.pending"
+
+with open(pending_path, "w") as f:
+    yaml.dump(interface_config, f, default_flow_style=False)
+
+set_permissions(pending_path, 0o600)
+```
+
+At this point:
+
+* No live YAML is touched.
+* No `netplan apply` runs.
+* No routing changes happen.
+
+Then the UI redirects to the confirmation page.
+
+---
+
+### Confirmation: The Only Commit Point
+
+On confirm:
+
+1. Backup live YAML (if exists)
+2. Promote pending → live (atomic)
+3. Write `ip_reset` signal file (atomic)
+4. Store session state for polling
+
+```python
+if os.path.exists(yaml_path):
+    shutil.copy(yaml_path, backup_path)
+
+os.replace(pending_path, yaml_path)
+
+atomic_write("/code/ip_reset", sig_content)
+```
+
+Atomic write implementation:
+
+```python
+def atomic_write(path: str, content: str):
+    tmp_path = f"{path}.tmp"
+    with open(tmp_path, "w") as f:
+        f.write(content)
+        f.flush()
+        os.fsync(f.fileno())
+    os.replace(tmp_path, path)
+```
+
+If the default interface IP changed, the browser redirects to the new IP.
+
+---
+
+The watcher service:
+
+* Monitors `ip_reset`
+* Runs `netplan apply`
+* Logs status to `netplan_result.log`
+* Regenerates `interface_config.json`
+
+It:
+
+* Cleans conflicting netplan files
+* Disables cloud-init networking
+* Detects duplicate interface definitions
+* Logs IP changes per interface
+* Never crashes on failure
+
+The systemd unit ensures resiliency:
+
+```ini
+Restart=always
+RestartSec=2
+StandardOutput=append:/home/.../netplan_result.log
+StandardError=append:/home/.../netplan_result.log
+```
+
+---
+
+## UI
+
+### Interface Status Endpoint
+
+The UI reads watcher-generated JSON:
+
+```python
+def interface_status_view(request):
+    INTERFACE_CONFIG_PATH = "/code/interface_config.json"
     ...
-    if file.endswith(".yaml"):
-        ...
-        if config_name == interface:
-            ...
-            return {
-                "ip": ip_address,
-                "gateway": gateway,
-            }
+    return JsonResponse({
+        "interface": iface,
+        "ip": iface_data.get("ip", ""),
+        "gateway": iface_data.get("gateway", "")
+    })
 ```
 
-On form submission (`POST`), the view constructs a YAML structure like this:
+This avoids shelling out during requests.
 
-```yaml
-network:
-  version: 2
-  renderer: networkd
-  ethernets:
-    enp2s0:
-      addresses:
-        - 192.168.1.10/24
-      dhcp4: false
-      optional: true
-      gateway4: 192.168.1.1
+---
+
+### Netplan Log Polling
+
+`check_netplan_log`:
+
+* Reads log only if it’s newer than the change start time
+* Verifies actual interface state from JSON
+* Distinguishes:
+
+  * static → must match expected IP
+  * dhcp → must have some IP
+  * no_ip → must be empty
+* Enforces timeout
+* Returns `pending`, `updated`, or `error`
+
+State matters more than logs. If the interface matches expectation, we treat it as success even if logs are late.
+
+---
+
+## Diagram
+
+```mermaid
+sequenceDiagram
+  participant Op as Operator
+  participant UI as Django UI
+  participant FS as Netplan Files
+  participant SIG as ip_reset
+  participant W as Watcher
+  participant NP as netplan
+
+  Op->>UI: Submit IP change
+  UI->>FS: Write .yaml.pending
+  UI-->>Op: Redirect to confirm
+
+  Op->>UI: Confirm
+  UI->>FS: Backup live YAML
+  UI->>FS: Promote pending -> live
+  UI->>SIG: atomic_write(ip_reset)
+
+  W->>NP: netplan apply
+  W->>FS: Update log + JSON
+
+  Op->>UI: Poll wait page
+  UI-->>Op: Success / error + redirect
 ```
 
-The file is written to `/host_netplan/enp2s0.yaml`, and a file `ip_reset` is touched to signal a change.
-
-The form supports:
-- Real-time validation
-- Conditional readonly for gateway (non-default interfaces)
-- Language support (via cookie-based `lang` param)
-
-On success, the user is redirected. If the default interface was changed, they may even be redirected via the new IP address.
+---
 
 ## Takeaways
 
-- Writing YAML is not hard, but writing *valid* Netplan YAML is.
-- Managing each interface as a separate file reduces risk and eases debugging.
-- Cookie-based language detection makes the UX accessible.
-- Race conditions between form write and system apply must be watched carefully in production.
-- Graceful restarts (triggered by writing `ip_reset`) are safer than reboots.
+* Default interface static-only
+* Gateway restricted to default interface
+* DHCP route injection disabled for non-default
+* Atomic writes for YAML and signal files
+* `.bak` backups for rollback
+* Timeout handling
+* Duplicate netplan detection
+* Root-owned config files
+* Cloud-init networking disabled
 
-## Footnotes
+---
 
-[^1]: The web UI uses Django forms with hidden input tags to distinguish between multiple settings forms on the same page. The main settings URL is routed via `path("setting", deletion_page, name="settings")`.
+### Flow
+
+1. Navigate to Network Settings
+2. Select interface
+3. Choose DHCP or static
+4. Enter IP/CIDR and gateway (if required)
+5. Click **Save** (stages config)
+6. Review confirmation page
+7. Click **Confirm changes**
+8. Wait page monitors apply status
+9. Redirect back (or to new IP if default changed)
+
+Downtime is typically just the duration of `netplan apply`.
+
+---
+
+## Final Notes
+
+This system works because it treats network changes as a transaction:
+
+* Stage safely
+* Confirm explicitly
+* Apply once
+* Verify state
+* Log everything
+
+It reduces lockouts, improves auditability, and gives operators a predictable workflow without SSH access.
+**Why it’s safe:**
+
+* Default interface protected
+* DHCP cannot hijack routes
+* Atomic file operations
+* Automatic backups
+* Clear success/failure reporting
