@@ -4,8 +4,7 @@ layout: "post"
 toc: true
 ---
 
-![777ba68a-01f2-48bd-8b4a-255a04d0eb72](https://github.com/user-attachments/assets/2d8dd6a6-f2f6-4c09-a821-c02da15e5727)
-
+![photo_2026-02-16_17-10-33](https://github.com/user-attachments/assets/ac56758b-58d5-4999-89ab-748a9594460a)
 
 ## 1. The Paradox of Action  
 It’s funny how we keep telling ourselves we need the full blueprint, the perfect conditions, the safety net all tied up before we move, but half the time the real spark is just deciding to act when none of that exists. You sit there with half an idea, no guarantees, stomach doing that low-key flip, and somehow the confidence shows up exactly when the certainty doesn’t. It’s not that preparation is useless, it’s just that it rarely shows up on time, so you end up stepping anyway, hoping the ground forms under your feet mid-air.
