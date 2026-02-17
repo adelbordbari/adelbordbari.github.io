@@ -37,6 +37,7 @@ Sometimes the album can feel quite intense, especially on a song like I Got God,
 **Fits** didn't feel like anything, forgettable.
 
 **I'll Show You Mine** has a similar melody to the longer tracks, it's like a summary of the whole album, sonically.
+
 ---
 
 In the end, this is not an album that asks for your attention; it just takes it. It is not perfect, and it does not pretend to be. It carries its imperfections openly, like a personal secret you want to tell someone because you know they will understand it too.
