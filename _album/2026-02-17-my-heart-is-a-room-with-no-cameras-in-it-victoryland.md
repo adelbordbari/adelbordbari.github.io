@@ -7,7 +7,7 @@ rating: ★★★☆☆
 cover: https://f4.bcbits.com/img/a3262232756_10.jpg
 ---
 
-<iframe style="border: 0; width: 350px; height: 786px;" src="https://bandcamp.com/EmbeddedPlayer/album=4012746539/size=large/bgcol=ffffff/linkcol=de270f/transparent=true/" seamless><a href="https://victoryland.bandcamp.com/album/my-heart-is-a-room-with-no-cameras-in-it">My Heart Is A Room With No Cameras In It by Victoryland</a></iframe>
+<iframe style="border: 0; width: 400px; height: 472px;" src="https://bandcamp.com/EmbeddedPlayer/album=4012746539/size=large/bgcol=ffffff/linkcol=63b2cc/artwork=small/transparent=true/" seamless><a href="https://victoryland.bandcamp.com/album/my-heart-is-a-room-with-no-cameras-in-it">My Heart Is A Room With No Cameras In It by Victoryland</a></iframe>
 
 ## Preface
 **My Heart Is A Room With No Cameras In It** by **Victoryland** feels like a series of personal snapshots. It takes you from very close, vulnerable moments to wide, almost empty spaces that feel a bit haunting. Each song shows another part of the same feelings: self-doubt, longing, and the rough truth of being human.
