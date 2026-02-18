@@ -147,6 +147,42 @@ pre
   padding: .2em .4em
 
 //CUSTOM
+.risograph-heading
+  font-family: 'Arial', sans-serif
+  font-size: 5rem
+  color: $dark
+  text-align: center
+  position: relative
+  z-index: 1
+  text-transform: uppercase
+  
+  &::before
+    content: attr(data-text)
+    position: absolute
+    top: 0
+    left: 0
+    z-index: -1
+    color: #ff3366
+    background: -webkit-linear-gradient(#ff3366, #00b8b8)
+    background-clip: text
+    -webkit-background-clip: text
+    opacity: 0.3
+    filter: blur(8px)
+    transform: translate(-3px, 3px)
+  
+  &::after
+    content: attr(data-text)
+    position: absolute
+    top: 0
+    left: 0
+    z-index: -2
+    color: #0099cc
+    background: -webkit-linear-gradient(#0099cc, #ffcc00)
+    background-clip: text
+    -webkit-background-clip: text
+    opacity: 0.4
+    filter: blur(10px)
+    transform: translate(3px, -3px)
 .page-title
   background: $accent-color
   -webkit-background-clip: text
