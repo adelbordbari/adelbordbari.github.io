@@ -4,7 +4,7 @@ title: Automatic For The People
 year: 1992
 artist: R.E.M.
 rating: ★★★★☆
-cover: 
+cover: https://upload.wikimedia.org/wikipedia/en/8/85/R.E.M._-_Automatic_for_the_People.jpg
 ---
 
 ## Preface
