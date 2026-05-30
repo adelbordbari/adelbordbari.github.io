@@ -1,10 +1,10 @@
----
+<img width="300" height="300" alt="image" src="https://github.com/user-attachments/assets/4d0dd46c-edf9-4ef7-8819-f67c5a226b5c" />---
 layout: post
 title: Moondance
 year: 1970
 artist: Van Morrison
 rating: ★★★★☆
-cover: https://en.wikipedia.org/wiki/Moondance#/media/File:VanMorrisonMoondance.jpg
+cover: https://upload.wikimedia.org/wikipedia/en/a/ae/VanMorrisonMoondance.jpg
 ---
 
 ## Preface
