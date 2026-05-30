@@ -4,7 +4,7 @@ title: Moondance
 year: 1970
 artist: Van Morrison
 rating: ★★★★☆
-cover: 
+cover: https://en.wikipedia.org/wiki/Moondance#/media/File:VanMorrisonMoondance.jpg
 ---
 
 ## Preface
