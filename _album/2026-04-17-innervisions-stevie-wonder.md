@@ -4,7 +4,7 @@ title: Innervisions
 year: 1973
 artist: Stevie Wonder
 rating: ★★★★☆
-cover: 
+cover: https://upload.wikimedia.org/wikipedia/en/3/3b/Steviewonder_innervisions.jpg
 ---
 
 ## Preface
