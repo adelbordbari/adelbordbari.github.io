@@ -19,6 +19,7 @@ navigation:                # accepts {file, title, url, icon, sidebaricon}
   - {file: "index.html", icon: home}
   - {file: "code.md", icon: code}
   - {file: "album.md", icon: music}
+  - {file: "photo.md", icon: camera}
   - {file: "etc.md", icon: asterisk}
 
 external:                  # shows a footer with social links - for available icons see fontawesome.com/icons
@@ -43,6 +44,8 @@ collections:
   code:
     output: true
   album:
+    output: true
+  photos:
     output: true
   etc:
     output: true

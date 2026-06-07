@@ -214,6 +214,288 @@ audio
   border: solid 3px $link_color
   filter: contrast(95%) saturate(95%)
 
+.photo-page
+  --photo-ink: #0b0b0b
+  --photo-paper: #f4efe5
+  --photo-acid: #caff28
+  --photo-red: #ff4b37
+  --photo-blue: #52b7ff
+  width: 100%
+  min-height: 100vh
+  background: var(--photo-ink)
+  color: var(--photo-paper)
+  overflow: hidden
+  font-family: "Space Mono", "Courier New", monospace
+
+.photo-page a
+  color: inherit
+  text-decoration: none
+
+.photo-page img
+  max-width: none
+  margin: 0
+  border-radius: 0
+
+.photo-hero
+  min-height: 72vh
+  display: grid
+  align-content: space-between
+  gap: 2rem
+  padding: clamp(1.25rem, 4vw, 4rem)
+  background: linear-gradient(115deg, transparent 0 58%, var(--photo-acid) 58% 60%, transparent 60%), radial-gradient(circle at 80% 15%, rgba(202, 255, 40, .24), transparent 28%), var(--photo-ink)
+  border-bottom: 1px solid rgba(244, 239, 229, .28)
+
+.photo-hero__kicker
+  width: fit-content
+  padding: .45rem .7rem
+  background: var(--photo-acid)
+  color: var(--photo-ink)
+  font-size: .78rem
+  font-weight: 700
+  text-transform: uppercase
+  transform: rotate(-2deg)
+
+.photo-hero h1
+  max-width: 8ch
+  margin: 0
+  color: var(--photo-paper)
+  font-size: clamp(5rem, 18vw, 16rem)
+  line-height: .78
+  letter-spacing: 0
+  text-transform: uppercase
+  text-shadow: .04em .04em 0 var(--photo-red), -.035em -.025em 0 var(--photo-blue)
+
+.photo-hero p
+  max-width: 38rem
+  margin: 0
+  font-size: clamp(1.1rem, 2.2vw, 2rem)
+  line-height: 1.1
+  text-align: left
+
+.photo-hero__ticker
+  display: flex
+  flex-wrap: wrap
+  gap: .45rem
+  max-width: 46rem
+
+.photo-hero__ticker span
+  display: inline-flex
+  align-items: center
+  min-height: 2.4rem
+  padding: .28rem .7rem
+  border: 1px solid currentColor
+  border-radius: 999px
+  color: var(--photo-acid)
+  font-size: .9rem
+  text-transform: uppercase
+  transition: transform .2s ease, background .2s ease, color .2s ease
+
+.photo-hero__ticker span:hover
+  background: var(--photo-acid)
+  color: var(--photo-ink)
+  transform: translateY(-.25rem) rotate(-2deg)
+
+.photo-marquee
+  position: relative
+  width: 100%
+  overflow: hidden
+  border-block: 1px solid rgba(244, 239, 229, .28)
+  background: var(--photo-paper)
+  color: var(--photo-ink)
+
+.photo-marquee div
+  display: flex
+  width: max-content
+  animation: photo-marquee 22s linear infinite
+
+.photo-marquee span
+  padding: .75rem 1.2rem
+  font-size: clamp(1.2rem, 3vw, 3rem)
+  font-weight: 700
+  text-transform: uppercase
+  white-space: nowrap
+
+.photo-grid
+  display: grid
+  grid-template-columns: repeat(2, minmax(0, 1fr))
+  gap: 1px
+  background: rgba(244, 239, 229, .28)
+  border-bottom: 1px solid rgba(244, 239, 229, .28)
+
+.photo-card
+  position: relative
+  min-height: 36rem
+  isolation: isolate
+  overflow: hidden
+  background: var(--photo-ink)
+
+.photo-card__number
+  position: absolute
+  top: 1rem
+  left: 1rem
+  z-index: 2
+  padding: .25rem .55rem
+  background: var(--photo-acid)
+  color: var(--photo-ink)
+  font-size: .8rem
+  font-weight: 700
+
+.photo-card figure,
+.photo-card img
+  width: 100%
+  height: 100%
+
+.photo-card figure
+  margin: 0
+
+.photo-card img
+  object-fit: cover
+  filter: grayscale(1) contrast(1.08)
+  transform: scale(1.01)
+  transition: filter .35s ease, transform .35s ease
+
+.photo-card figcaption
+  position: absolute
+  inset: auto 0 0
+  z-index: 2
+  display: flex
+  align-items: end
+  justify-content: space-between
+  gap: 1rem
+  padding: 1rem
+  background: linear-gradient(transparent, rgba(0, 0, 0, .82))
+  color: var(--photo-paper)
+
+.photo-card figcaption span
+  font-size: clamp(1.5rem, 4vw, 4rem)
+  font-weight: 700
+  line-height: .9
+  text-transform: uppercase
+
+.photo-card figcaption small
+  max-width: 16rem
+  text-align: right
+  text-transform: uppercase
+
+.photo-card:hover img
+  filter: grayscale(0) contrast(1.02) saturate(1.2)
+  transform: scale(1.08) rotate(.5deg)
+
+.photo-card:hover .photo-card__number
+  background: var(--photo-red)
+  color: var(--photo-paper)
+
+.photo-empty
+  min-height: 32rem
+  display: grid
+  place-items: center
+  gap: 1rem
+  padding: clamp(2rem, 6vw, 6rem)
+  background: repeating-linear-gradient(90deg, rgba(244, 239, 229, .12) 0 1px, transparent 1px 5rem), var(--photo-ink)
+
+.photo-empty__frame
+  width: min(72vw, 32rem)
+  aspect-ratio: 4 / 5
+  border: .8rem solid var(--photo-paper)
+  box-shadow: 1.2rem 1.2rem 0 var(--photo-acid), -1rem -1rem 0 var(--photo-red)
+  transform: rotate(-3deg)
+
+.photo-empty p
+  margin: 0
+  color: var(--photo-acid)
+  font-size: clamp(2rem, 7vw, 6rem)
+  font-weight: 700
+  line-height: .9
+  text-transform: uppercase
+  text-align: center
+
+.photo-page .pagination
+  padding: 2rem
+  background: var(--photo-ink)
+  color: var(--photo-paper)
+
+.photo-page .pagination ul
+  display: flex
+  flex-wrap: wrap
+  justify-content: center
+  gap: .5rem
+  padding: 0
+  margin: 0
+  list-style: none
+
+.photo-page .pagination li,
+.photo-page .pagination a
+  min-width: 2.5rem
+  min-height: 2.5rem
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  border: 1px solid currentColor
+
+.photo-page .pagination a:hover,
+.photo-page .pagination .is-current
+  background: var(--photo-acid)
+  color: var(--photo-ink)
+
+.photo-single
+  min-height: 100vh
+  padding: clamp(1.25rem, 4vw, 4rem)
+  background: var(--photo-ink)
+
+.photo-single__back
+  display: inline-flex
+  margin-bottom: 2rem
+  padding: .5rem .75rem
+  background: var(--photo-acid)
+  color: var(--photo-ink)
+  font-weight: 700
+
+.photo-single figure
+  margin: 0
+  display: grid
+  gap: 1rem
+
+.photo-single img
+  width: min(100%, 76rem)
+  max-height: 82vh
+  object-fit: contain
+  background: #000
+
+.photo-single h1
+  margin: 0
+  font-size: clamp(2.5rem, 8vw, 7rem)
+  line-height: .9
+  text-transform: uppercase
+
+.photo-single figcaption p,
+.photo-single__notes p
+  max-width: 46rem
+  text-align: left
+
+@keyframes photo-marquee
+  from
+    transform: translateX(0)
+  to
+    transform: translateX(-50%)
+
+@media (max-width: 44rem)
+  .photo-grid
+    grid-template-columns: 1fr
+  .photo-card
+    min-height: 28rem
+  .photo-card figcaption
+    align-items: start
+    flex-direction: column
+  .photo-card figcaption small
+    text-align: left
+
+@media (prefers-reduced-motion: reduce)
+  .photo-marquee div
+    animation: none
+  .photo-card img,
+  .photo-hero__ticker span
+    transition: none
+
 .recent-played
   display: inline-flex
   align-items: center
