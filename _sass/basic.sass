@@ -274,6 +274,12 @@ pre
   margin: auto
   border-radius: 5%
 
+.album-cover-filters
+  position: absolute
+  width: 0
+  height: 0
+  overflow: hidden
+
 .album-cover-link
   display: block
   width: 10vw
@@ -287,7 +293,7 @@ pre
   aspect-ratio: 1 / 1
   overflow: hidden
   border-radius: 5%
-  background: linear-gradient(90deg, $link-color 0 50%, $accent-color 50% 100%)
+  background: $light
 
 .album-cover-duotone #cover-small
   width: 100%
@@ -295,14 +301,10 @@ pre
   margin: 0
   border-radius: 0
   object-fit: cover
-  filter: grayscale(1) contrast(1.24)
-  mix-blend-mode: multiply
-  opacity: .9
-  transition: filter .2s ease, opacity .2s ease, transform .2s ease
+  filter: url("#album-cover-red-blue")
+  transition: transform .2s ease
 
 .album-cover-link:hover .album-cover-duotone #cover-small
-  filter: grayscale(.45) contrast(1.06) saturate(1.05)
-  opacity: .96
   transform: scale(1.04)
 
 #cover
