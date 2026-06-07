@@ -28,16 +28,18 @@
 
   <section class="photo-marquee" aria-hidden="true">
     <div>
-      <span>phone</span>
-      <span>35mm</span>
-      <span>grain</span>
-      <span>flash</span>
-      <span>contact sheet</span>
-      <span>phone</span>
-      <span>35mm</span>
-      <span>grain</span>
-      <span>flash</span>
-      <span>contact sheet</span>
+      {% for repeat in (1..2) %}
+        <span>mobile phone</span>
+        <span>35mm</span>
+        <span>grain</span>
+        <span>flash</span>
+        <span>contact sheet</span>
+        <span>light leak</span>
+        <span>scan</span>
+        <span>street corner</span>
+        <span>small room</span>
+        <span>passing weather</span>
+      {% endfor %}
     </div>
   </section>
 

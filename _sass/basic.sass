@@ -415,14 +415,25 @@ audio
 .photo-marquee div
   display: flex
   width: max-content
-  animation: photo-marquee 22s linear infinite
+  min-width: max(200vw, 120rem)
+  animation: photo-marquee 34s linear infinite
 
 .photo-marquee span
+  display: inline-flex
+  align-items: center
+  gap: .9rem
   padding: .45rem .9rem
   font-size: clamp(.9rem, 2vw, 1.8rem)
   font-weight: 700
   text-transform: uppercase
   white-space: nowrap
+
+.photo-marquee span::after
+  content: ""
+  width: .35rem
+  height: .35rem
+  border-radius: 50%
+  background: var(--photo-red)
 
 .photo-grid
   display: grid
