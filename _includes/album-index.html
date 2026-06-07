@@ -20,12 +20,15 @@
         class="entry"
         style="display: flex; justify-content: center; align-items: center">
         <div style="flex: 30%">
-          <a href="{{ site.baseurl }}{{ post.url }}"
-            ><img
-              id="cover-small"
-              alt="album cover"
-              src="{{ post.cover }}"
-          /></a>
+          <a class="album-cover-link" href="{{ site.baseurl }}{{ post.url }}">
+            <span class="album-cover-duotone">
+              <img
+                id="cover-small"
+                alt="album cover"
+                src="{{ post.cover }}"
+              />
+            </span>
+          </a>
         </div>
         <div style="flex: 50%; line-height: 1;">
           <h3 style="word-wrap: anywhere;">

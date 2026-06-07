@@ -123,27 +123,31 @@ li
   flex-wrap: wrap
   align-items: center
   justify-content: center
-  gap: .25rem
+  gap: .42rem
   padding: 0
   margin: 0
   list-style: none
 
-.pagination li,
-.pagination a
-  min-width: 1.55rem
-  min-height: 1.55rem
+.pagination li
+  margin: 0
+  padding: 0
+  border: 0
+
+.pagination a,
+.pagination .is-current,
+.pagination .is-disabled
+  min-width: 1.6rem
+  min-height: 1.6rem
   display: inline-flex
   align-items: center
   justify-content: center
   border-radius: 999px
-
-.pagination li
-  margin: 0
   border: 1px solid transparent
+  padding: 0 .35rem
+  box-sizing: border-box
+  line-height: 1
 
 .pagination a
-  border: 1px solid transparent
-  border-bottom-color: reduce(24)
   color: $link-color
   text-decoration: none
   transition: border-color .15s ease, color .15s ease, background .15s ease
@@ -164,16 +168,21 @@ li
 
 .pagination-prev,
 .pagination-next
-  min-width: 3.6rem
-  padding: 0 .55rem
   font-size: .9em
 
+.pagination-prev.is-disabled,
+.pagination-next.is-disabled,
 .pagination-prev a,
 .pagination-next a
-  min-width: 3.6rem
-  padding: 0 .75rem
+  min-width: 3.95rem
+  padding: 0 .8rem
   border-color: rgba($link-color, .22)
   background: rgba(232, 238, 245, .38)
+
+.pagination-ellipsis
+  min-width: 1rem
+  text-align: center
+  color: reduce(36)
   
 table
   display: inline-block
@@ -264,6 +273,46 @@ pre
   display: block
   margin: auto
   border-radius: 5%
+
+.album-cover-link
+  display: inline-block
+
+.album-cover-duotone
+  position: relative
+  display: block
+  width: fit-content
+  margin: auto
+  overflow: hidden
+  border-radius: 5%
+  background: $dark
+  box-shadow: 0 10px 22px rgba(45, 50, 167, .14)
+
+.album-cover-duotone::before,
+.album-cover-duotone::after
+  content: ""
+  position: absolute
+  inset: 0
+  pointer-events: none
+  border-radius: inherit
+  mix-blend-mode: multiply
+
+.album-cover-duotone::before
+  background: rgba(228, 59, 47, .72)
+
+.album-cover-duotone::after
+  background: rgba(59, 68, 226, .72)
+  mix-blend-mode: screen
+  opacity: .72
+
+.album-cover-duotone #cover-small
+  margin: 0
+  filter: grayscale(1) contrast(1.18)
+  mix-blend-mode: luminosity
+  transition: filter .2s ease, transform .2s ease
+
+.album-cover-link:hover .album-cover-duotone #cover-small
+  filter: grayscale(.35) contrast(1.08) saturate(1.1)
+  transform: scale(1.04)
 
 #cover
   width: 24vw
@@ -492,30 +541,34 @@ audio
   display: flex
   flex-wrap: wrap
   justify-content: center
-  gap: .35rem
+  gap: .42rem
   padding: 0
   margin: 0
   list-style: none
 
-.photo-page .pagination li,
-.photo-page .pagination a
+.photo-page .pagination li
+  margin: 0
+  padding: 0
+  border: 0
+
+.photo-page .pagination a,
+.photo-page .pagination .is-current,
+.photo-page .pagination .is-disabled
   min-width: 1.8rem
   min-height: 1.8rem
   display: inline-flex
   align-items: center
   justify-content: center
   border: 1px solid rgba(45, 50, 167, .18)
+  border-radius: 999px
+  padding: 0 .38rem
+  box-sizing: border-box
 
-.photo-page .pagination li
-  margin: 0
-
-.photo-page .pagination-prev,
-.photo-page .pagination-next
-  min-width: 3.7rem
-
+.photo-page .pagination-prev.is-disabled,
+.photo-page .pagination-next.is-disabled,
 .photo-page .pagination-prev a,
 .photo-page .pagination-next a
-  min-width: 3.7rem
+  min-width: 3.95rem
   padding: 0 .8rem
   background: rgba(232, 238, 245, .38)
 
