@@ -114,40 +114,43 @@ li
   margin: .25em 0
 
 .pagination
-  margin: 2rem 0 0
+  margin: 1.25rem 0 0
+  font-size: .82em
+  line-height: 1
 
 .pagination ul
   display: flex
   flex-wrap: wrap
   align-items: center
   justify-content: center
-  gap: .45rem
+  gap: .25rem
   padding: 0
   margin: 0
   list-style: none
 
 .pagination li,
 .pagination a
-  min-width: 2.35rem
-  min-height: 2.35rem
+  min-width: 1.55rem
+  min-height: 1.55rem
   display: inline-flex
   align-items: center
   justify-content: center
-  border-radius: 8px
+  border-radius: 999px
 
 .pagination li
-  border: 1px solid reduce(18)
+  border: 1px solid transparent
 
 .pagination a
-  border: 1px solid $link-color
+  border: 1px solid transparent
+  border-bottom-color: reduce(24)
   color: $link-color
   text-decoration: none
-  transition: transform .15s ease, background .15s ease, color .15s ease
+  transition: border-color .15s ease, color .15s ease, background .15s ease
 
 .pagination a:hover
-  background: $link-color
-  color: $light
-  transform: translateY(-2px)
+  background: rgba($link-color, .08)
+  border-color: rgba($link-color, .28)
+  color: $link-color
 
 .pagination .is-current
   background: $link-color
@@ -155,9 +158,13 @@ li
   color: $light
 
 .pagination .is-disabled
-  color: reduce(45)
-  border-color: reduce(14)
+  color: reduce(32)
   cursor: not-allowed
+
+.pagination-prev,
+.pagination-next
+  padding: 0 .45rem
+  font-size: .9em
   
 table
   display: inline-block
@@ -261,15 +268,16 @@ audio
   filter: contrast(95%) saturate(95%)
 
 .photo-page
-  --photo-ink: #0b0b0b
-  --photo-paper: #f4efe5
-  --photo-acid: #caff28
-  --photo-red: #ff4b37
-  --photo-blue: #52b7ff
+  --photo-ink: #{$dark}
+  --photo-paper: #{$light}
+  --photo-acid: #f0ff66
+  --photo-red: #{$link-color}
+  --photo-blue: #{$accent-color}
+  --photo-line: rgba(45, 50, 167, .18)
   width: 100%
   min-height: 100vh
-  background: var(--photo-ink)
-  color: var(--photo-paper)
+  background: rgba(243, 241, 237, .62)
+  color: var(--photo-ink)
   overflow: hidden
   font-family: "Space Mono", "Courier New", monospace
 
@@ -283,20 +291,21 @@ audio
   border-radius: 0
 
 .photo-hero
-  min-height: 72vh
+  min-height: 46vh
   display: grid
   align-content: space-between
-  gap: 2rem
-  padding: clamp(1.25rem, 4vw, 4rem)
-  background: linear-gradient(115deg, transparent 0 58%, var(--photo-acid) 58% 60%, transparent 60%), radial-gradient(circle at 80% 15%, rgba(202, 255, 40, .24), transparent 28%), var(--photo-ink)
-  border-bottom: 1px solid rgba(244, 239, 229, .28)
+  gap: 1.4rem
+  padding: clamp(1.5rem, 5vw, 4rem) clamp(1.25rem, 6vw, 6rem)
+  background: linear-gradient(115deg, transparent 0 62%, rgba(228, 59, 47, .14) 62% 64%, transparent 64%), radial-gradient(circle at 82% 12%, rgba(45, 50, 167, .13), transparent 30%), rgba(243, 241, 237, .78)
+  border-bottom: 1px solid var(--photo-line)
 
 .photo-hero__kicker
   width: fit-content
-  padding: .45rem .7rem
-  background: var(--photo-acid)
-  color: var(--photo-ink)
-  font-size: .78rem
+  padding: .28rem .5rem
+  background: rgba(228, 59, 47, .1)
+  border: 1px solid rgba(228, 59, 47, .32)
+  color: var(--photo-red)
+  font-size: .72rem
   font-weight: 700
   text-transform: uppercase
   transform: rotate(-2deg)
@@ -304,49 +313,50 @@ audio
 .photo-hero h1
   max-width: 8ch
   margin: 0
-  color: var(--photo-paper)
-  font-size: clamp(5rem, 18vw, 16rem)
-  line-height: .78
+  color: var(--photo-ink)
+  font-size: clamp(4rem, 14vw, 11rem)
+  line-height: .84
   letter-spacing: 0
   text-transform: uppercase
-  text-shadow: .04em .04em 0 var(--photo-red), -.035em -.025em 0 var(--photo-blue)
+  text-shadow: .035em .035em 0 rgba(228, 59, 47, .72), -.025em -.02em 0 rgba(59, 68, 226, .28)
 
 .photo-hero p
-  max-width: 38rem
+  max-width: 34rem
   margin: 0
-  font-size: clamp(1.1rem, 2.2vw, 2rem)
-  line-height: 1.1
+  font-size: clamp(1rem, 1.7vw, 1.35rem)
+  line-height: 1.25
   text-align: left
 
 .photo-hero__ticker
   display: flex
   flex-wrap: wrap
-  gap: .45rem
+  gap: .35rem
   max-width: 46rem
 
 .photo-hero__ticker span
   display: inline-flex
   align-items: center
-  min-height: 2.4rem
-  padding: .28rem .7rem
+  min-height: 1.85rem
+  padding: .18rem .55rem
   border: 1px solid currentColor
   border-radius: 999px
-  color: var(--photo-acid)
-  font-size: .9rem
+  color: var(--photo-ink)
+  background: rgba(243, 241, 237, .74)
+  font-size: .74rem
   text-transform: uppercase
   transition: transform .2s ease, background .2s ease, color .2s ease
 
 .photo-hero__ticker span:hover
-  background: var(--photo-acid)
-  color: var(--photo-ink)
-  transform: translateY(-.25rem) rotate(-2deg)
+  background: var(--photo-red)
+  color: var(--photo-paper)
+  transform: translateY(-.16rem) rotate(-2deg)
 
 .photo-marquee
   position: relative
   width: 100%
   overflow: hidden
-  border-block: 1px solid rgba(244, 239, 229, .28)
-  background: var(--photo-paper)
+  border-block: 1px solid var(--photo-line)
+  background: rgba(232, 238, 245, .5)
   color: var(--photo-ink)
 
 .photo-marquee div
@@ -355,8 +365,8 @@ audio
   animation: photo-marquee 22s linear infinite
 
 .photo-marquee span
-  padding: .75rem 1.2rem
-  font-size: clamp(1.2rem, 3vw, 3rem)
+  padding: .45rem .9rem
+  font-size: clamp(.9rem, 2vw, 1.8rem)
   font-weight: 700
   text-transform: uppercase
   white-space: nowrap
@@ -364,26 +374,34 @@ audio
 .photo-grid
   display: grid
   grid-template-columns: repeat(2, minmax(0, 1fr))
-  gap: 1px
-  background: rgba(244, 239, 229, .28)
-  border-bottom: 1px solid rgba(244, 239, 229, .28)
+  gap: clamp(1rem, 3vw, 2rem)
+  padding: clamp(1.25rem, 5vw, 4rem) clamp(1.25rem, 6vw, 6rem)
+  background: rgba(243, 241, 237, .42)
+  border-bottom: 1px solid var(--photo-line)
 
 .photo-card
   position: relative
-  min-height: 36rem
+  min-height: 30rem
   isolation: isolate
   overflow: hidden
-  background: var(--photo-ink)
+  background: rgba(232, 238, 245, .72)
+  border: 1px solid var(--photo-line)
+  box-shadow: 0 16px 34px rgba(45, 50, 167, .1)
+  transform: rotate(-.5deg)
+
+.photo-card:nth-child(2n)
+  transform: rotate(.6deg)
 
 .photo-card__number
   position: absolute
-  top: 1rem
-  left: 1rem
+  top: .8rem
+  left: .8rem
   z-index: 2
-  padding: .25rem .55rem
-  background: var(--photo-acid)
-  color: var(--photo-ink)
-  font-size: .8rem
+  padding: .16rem .42rem
+  background: rgba(243, 241, 237, .9)
+  color: var(--photo-red)
+  border: 1px solid rgba(228, 59, 47, .35)
+  font-size: .72rem
   font-weight: 700
 
 .photo-card figure,
@@ -396,7 +414,7 @@ audio
 
 .photo-card img
   object-fit: cover
-  filter: grayscale(1) contrast(1.08)
+  filter: grayscale(.82) contrast(1.04) saturate(.92)
   transform: scale(1.01)
   transition: filter .35s ease, transform .35s ease
 
@@ -408,14 +426,14 @@ audio
   align-items: end
   justify-content: space-between
   gap: 1rem
-  padding: 1rem
-  background: linear-gradient(transparent, rgba(0, 0, 0, .82))
+  padding: .9rem
+  background: linear-gradient(transparent, rgba(45, 50, 167, .78))
   color: var(--photo-paper)
 
 .photo-card figcaption span
-  font-size: clamp(1.5rem, 4vw, 4rem)
+  font-size: clamp(1.1rem, 3vw, 2.6rem)
   font-weight: 700
-  line-height: .9
+  line-height: .95
   text-transform: uppercase
 
 .photo-card figcaption small
@@ -424,76 +442,83 @@ audio
   text-transform: uppercase
 
 .photo-card:hover img
-  filter: grayscale(0) contrast(1.02) saturate(1.2)
-  transform: scale(1.08) rotate(.5deg)
+  filter: grayscale(.15) contrast(1.02) saturate(1.08)
+  transform: scale(1.055) rotate(.35deg)
 
 .photo-card:hover .photo-card__number
   background: var(--photo-red)
   color: var(--photo-paper)
 
 .photo-empty
-  min-height: 32rem
+  min-height: 24rem
   display: grid
   place-items: center
   gap: 1rem
   padding: clamp(2rem, 6vw, 6rem)
-  background: repeating-linear-gradient(90deg, rgba(244, 239, 229, .12) 0 1px, transparent 1px 5rem), var(--photo-ink)
+  background: repeating-linear-gradient(90deg, rgba(45, 50, 167, .08) 0 1px, transparent 1px 5rem), rgba(243, 241, 237, .48)
 
 .photo-empty__frame
   width: min(72vw, 32rem)
   aspect-ratio: 4 / 5
-  border: .8rem solid var(--photo-paper)
-  box-shadow: 1.2rem 1.2rem 0 var(--photo-acid), -1rem -1rem 0 var(--photo-red)
+  border: .55rem solid rgba(243, 241, 237, .9)
+  box-shadow: .9rem .9rem 0 rgba(59, 68, 226, .22), -.75rem -.75rem 0 rgba(228, 59, 47, .22)
   transform: rotate(-3deg)
 
 .photo-empty p
   margin: 0
-  color: var(--photo-acid)
-  font-size: clamp(2rem, 7vw, 6rem)
+  color: var(--photo-ink)
+  font-size: clamp(1.6rem, 5vw, 4rem)
   font-weight: 700
   line-height: .9
   text-transform: uppercase
   text-align: center
 
 .photo-page .pagination
-  padding: 2rem
-  background: var(--photo-ink)
-  color: var(--photo-paper)
+  padding: 1rem 1.25rem 1.5rem
+  background: rgba(243, 241, 237, .42)
+  color: var(--photo-ink)
+  font-size: .78rem
 
 .photo-page .pagination ul
   display: flex
   flex-wrap: wrap
   justify-content: center
-  gap: .5rem
+  gap: .35rem
   padding: 0
   margin: 0
   list-style: none
 
 .photo-page .pagination li,
 .photo-page .pagination a
-  min-width: 2.5rem
-  min-height: 2.5rem
+  min-width: 1.8rem
+  min-height: 1.8rem
   display: inline-flex
   align-items: center
   justify-content: center
-  border: 1px solid currentColor
+  border: 1px solid rgba(45, 50, 167, .18)
 
 .photo-page .pagination a:hover,
 .photo-page .pagination .is-current
-  background: var(--photo-acid)
-  color: var(--photo-ink)
+  background: var(--photo-red)
+  border-color: var(--photo-red)
+  color: var(--photo-paper)
+
+.photo-page .pagination .is-disabled
+  color: rgba(45, 50, 167, .38)
+  border-color: rgba(45, 50, 167, .12)
 
 .photo-single
   min-height: 100vh
   padding: clamp(1.25rem, 4vw, 4rem)
-  background: var(--photo-ink)
+  background: rgba(243, 241, 237, .5)
 
 .photo-single__back
   display: inline-flex
   margin-bottom: 2rem
-  padding: .5rem .75rem
-  background: var(--photo-acid)
-  color: var(--photo-ink)
+  padding: .35rem .6rem
+  background: rgba(228, 59, 47, .1)
+  border: 1px solid rgba(228, 59, 47, .32)
+  color: var(--photo-red)
   font-weight: 700
 
 .photo-single figure
@@ -505,12 +530,15 @@ audio
   width: min(100%, 76rem)
   max-height: 82vh
   object-fit: contain
-  background: #000
+  background: rgba(45, 50, 167, .08)
+  border: 1px solid var(--photo-line)
+  box-shadow: 0 18px 40px rgba(45, 50, 167, .12)
 
 .photo-single h1
   margin: 0
-  font-size: clamp(2.5rem, 8vw, 7rem)
-  line-height: .9
+  color: var(--photo-ink)
+  font-size: clamp(2rem, 6vw, 5rem)
+  line-height: .95
   text-transform: uppercase
 
 .photo-single figcaption p,
