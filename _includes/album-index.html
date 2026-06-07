@@ -13,59 +13,6 @@
 {% assign pagination_base = '/album/' %}
 {% assign album_posts = all_posts | slice: offset, per_page %}
 
-<svg class="album-cover-filters" aria-hidden="true" focusable="false">
-  <filter id="album-cover-red-blue" color-interpolation-filters="sRGB">
-    <feColorMatrix
-      in="SourceGraphic"
-      type="matrix"
-      values="0.2126 0.7152 0.0722 0 0
-              0.2126 0.7152 0.0722 0 0
-              0.2126 0.7152 0.0722 0 0
-              0      0      0      1 0"
-      result="gray" />
-
-    <feComponentTransfer in="gray" result="red-threshold">
-      <feFuncR type="discrete" tableValues="0 0 1 1" />
-      <feFuncG type="discrete" tableValues="0 0 1 1" />
-      <feFuncB type="discrete" tableValues="0 0 1 1" />
-      <feFuncA type="identity" />
-    </feComponentTransfer>
-    <feColorMatrix
-      in="red-threshold"
-      type="matrix"
-      values="0 0 0 0 0
-              0 0 0 0 0
-              0 0 0 0 0
-              1 0 0 0 0"
-      result="red-mask" />
-
-    <feComponentTransfer in="gray" result="blue-threshold">
-      <feFuncR type="discrete" tableValues="1 1 0 0" />
-      <feFuncG type="discrete" tableValues="1 1 0 0" />
-      <feFuncB type="discrete" tableValues="1 1 0 0" />
-      <feFuncA type="identity" />
-    </feComponentTransfer>
-    <feColorMatrix
-      in="blue-threshold"
-      type="matrix"
-      values="0 0 0 0 0
-              0 0 0 0 0
-              0 0 0 0 0
-              1 0 0 0 0"
-      result="blue-mask" />
-
-    <feFlood flood-color="#e43b2f" result="red" />
-    <feFlood flood-color="#3b44e2" result="blue" />
-    <feComposite in="red" in2="red-mask" operator="in" result="red-part" />
-    <feComposite in="blue" in2="blue-mask" operator="in" result="blue-part" />
-
-    <feMerge>
-      <feMergeNode in="blue-part" />
-      <feMergeNode in="red-part" />
-    </feMerge>
-  </filter>
-</svg>
-
 <ul>
   {% for post in album_posts %}
     <div class="post" style="margin-top: 30px;">
