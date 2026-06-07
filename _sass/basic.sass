@@ -287,17 +287,7 @@ pre
   aspect-ratio: 1 / 1
   overflow: hidden
   border-radius: 5%
-  background: $link-color
-
-.album-cover-duotone::after
-  content: ""
-  position: absolute
-  inset: 0
-  pointer-events: none
-  border-radius: inherit
-  background: $accent-color
-  mix-blend-mode: lighten
-  opacity: .92
+  background: linear-gradient(90deg, $link-color 0 50%, $accent-color 50% 100%)
 
 .album-cover-duotone #cover-small
   width: 100%
@@ -305,14 +295,14 @@ pre
   margin: 0
   border-radius: 0
   object-fit: cover
-  filter: grayscale(1) contrast(1.28)
+  filter: grayscale(1) contrast(1.24)
   mix-blend-mode: multiply
-  opacity: .94
+  opacity: .9
   transition: filter .2s ease, opacity .2s ease, transform .2s ease
 
 .album-cover-link:hover .album-cover-duotone #cover-small
-  filter: grayscale(.25) contrast(1.08) saturate(1.05)
-  opacity: .98
+  filter: grayscale(.45) contrast(1.06) saturate(1.05)
+  opacity: .96
   transform: scale(1.04)
 
 #cover
