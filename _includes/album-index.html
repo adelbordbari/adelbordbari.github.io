@@ -54,13 +54,12 @@
               1 0 0 0 0"
       result="blue-mask" />
 
-    <feFlood flood-color="#e43b2f" flood-opacity=".48" result="red" />
-    <feFlood flood-color="#3b44e2" flood-opacity=".48" result="blue" />
+    <feFlood flood-color="#e43b2f" result="red" />
+    <feFlood flood-color="#3b44e2" result="blue" />
     <feComposite in="red" in2="red-mask" operator="in" result="red-part" />
     <feComposite in="blue" in2="blue-mask" operator="in" result="blue-part" />
 
     <feMerge>
-      <feMergeNode in="SourceGraphic" />
       <feMergeNode in="blue-part" />
       <feMergeNode in="red-part" />
     </feMerge>
