@@ -60,6 +60,7 @@
     <feComposite in="blue" in2="blue-mask" operator="in" result="blue-part" />
 
     <feMerge>
+      <feMergeNode in="SourceGraphic" />
       <feMergeNode in="blue-part" />
       <feMergeNode in="red-part" />
     </feMerge>

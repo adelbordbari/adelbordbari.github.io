@@ -301,10 +301,12 @@ pre
   margin: 0
   border-radius: 0
   object-fit: cover
-  filter: url("#album-cover-red-blue")
+  filter: url("#album-cover-red-blue") saturate(.82) contrast(1.02)
+  opacity: .74
   transition: transform .2s ease
 
 .album-cover-link:hover .album-cover-duotone #cover-small
+  opacity: .9
   transform: scale(1.04)
 
 #cover
