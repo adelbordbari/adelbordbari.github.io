@@ -49,14 +49,10 @@ pagination:
         <a class="photo-card" href="{{ post.url | relative_url }}">
           <span class="photo-card__number">{{ forloop.index | prepend: '00' | slice: -2, 2 }}</span>
           <figure>
-            <img src="{{ post.image | relative_url }}" alt="{{ post.alt | default: post.title | escape }}" loading="lazy">
+            <img src="{{ post.image | relative_url }}" alt="{{ post.title | escape }}" loading="lazy">
             <figcaption>
               <span>{{ post.title }}</span>
-              <small>
-                {% if post.camera %}{{ post.camera }}{% endif %}
-                {% if post.camera and post.film %} / {% endif %}
-                {% if post.film %}{{ post.film }}{% endif %}
-              </small>
+              <small>{{ post.date | date: site.date_format }}</small>
             </figcaption>
           </figure>
         </a>

@@ -38,6 +38,7 @@ plugins:
 
 pagination:
   enabled: true
+  per_page: 10
 
 ### CUSTOM
 collections:
