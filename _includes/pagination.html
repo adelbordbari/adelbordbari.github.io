@@ -1,4 +1,9 @@
 {% assign pagination_data = paginator | default: page.pagination %}
+{% assign pagination_path = pagination_data.paginate_path | default: page.pagination.permalink %}
+{% assign first_page_path = pagination_data.first_page_path %}
+{% unless first_page_path %}
+  {% assign first_page_path = pagination_path | split: ':num' | first %}
+{% endunless %}
 
 {% if pagination_data and pagination_data.total_pages > 1 %}
   {% assign start_page = pagination_data.page | minus: 1 %}
@@ -28,7 +33,7 @@
 
       {% if start_page > 1 %}
         <li>
-          <a href="{{ pagination_data.first_page_path | relative_url }}">1</a>
+          <a href="{{ first_page_path | relative_url }}">1</a>
         </li>
         <li class="pagination-ellipsis" aria-hidden="true">…</li>
       {% endif %}
@@ -38,10 +43,10 @@
           <li class="is-current" aria-current="page">{{ page_number }}</li>
         {% else %}
           {% if page_number == 1 %}
-            <li><a href="{{ pagination_data.first_page_path | relative_url }}">1</a></li>
+            <li><a href="{{ first_page_path | relative_url }}">1</a></li>
           {% else %}
             <li>
-              <a href="{{ pagination_data.paginate_path | replace: ':num', page_number | relative_url }}">
+              <a href="{{ pagination_path | replace: ':num', page_number | relative_url }}">
                 {{ page_number }}
               </a>
             </li>
@@ -52,7 +57,7 @@
       {% if end_page < pagination_data.total_pages %}
         <li class="pagination-ellipsis" aria-hidden="true">…</li>
         <li>
-          <a href="{{ pagination_data.paginate_path | replace: ':num', pagination_data.total_pages | relative_url }}">
+          <a href="{{ pagination_path | replace: ':num', pagination_data.total_pages | relative_url }}">
             {{ pagination_data.total_pages }}
           </a>
         </li>
