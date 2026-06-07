@@ -296,17 +296,18 @@ pre
   background: $light
 
 .album-cover-duotone #cover-small
+  display: block
   width: 100%
+  max-width: none
   height: 100%
   margin: 0
   border-radius: 0
   object-fit: cover
-  filter: url("#album-cover-red-blue") saturate(.82) contrast(1.02)
-  opacity: .74
+  filter: url("#album-cover-red-blue") saturate(1.04) contrast(1.08)
+  opacity: 1
   transition: transform .2s ease
 
 .album-cover-link:hover .album-cover-duotone #cover-small
-  opacity: .9
   transform: scale(1.04)
 
 #cover
