@@ -113,6 +113,32 @@ img
 li
   margin: .25em 0
 
+.latest-post-kind
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  width: 1.45em
+  height: 1.45em
+  margin: 0 .28em 0 .1em
+  border-radius: 999px
+  color: $link-color
+  background: rgba(228, 59, 47, .08)
+  box-shadow: inset 0 0 0 1px rgba(228, 59, 47, .2)
+  text-decoration: none
+  vertical-align: middle
+  transition: background .15s ease, color .15s ease, transform .15s ease
+
+.latest-post-kind .icon
+  width: .78em
+  height: .78em
+  margin: 0
+
+.latest-post-kind:hover
+  color: $light
+  background: $link-color
+  text-decoration: none
+  transform: translateY(-1px)
+
 .pagination
   margin: 1.25rem 0 0
   font-size: .82em

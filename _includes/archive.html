@@ -11,8 +11,34 @@
     <h4>Latest Posts</h4>
     <ul>
       {% for post in sorted_posts limit:5 %}
+        {% assign collection_name = post.collection | default: 'posts' %}
+        {% if collection_name == 'album' %}
+          {% assign collection_icon = 'music' %}
+          {% assign collection_url = '/album/' %}
+          {% assign collection_title = 'Albums' %}
+        {% elsif collection_name == 'code' %}
+          {% assign collection_icon = 'code' %}
+          {% assign collection_url = '/code/' %}
+          {% assign collection_title = 'Code' %}
+        {% elsif collection_name == 'photos' %}
+          {% assign collection_icon = 'camera' %}
+          {% assign collection_url = '/photo/' %}
+          {% assign collection_title = 'Photos' %}
+        {% elsif collection_name == 'etc' %}
+          {% assign collection_icon = 'asterisk' %}
+          {% assign collection_url = '/etc/' %}
+          {% assign collection_title = 'Et cetera' %}
+        {% else %}
+          {% assign collection_icon = 'home' %}
+          {% assign collection_url = '/' %}
+          {% assign collection_title = 'Posts' %}
+        {% endif %}
         <li>
-          {{ post.date | date: "%B %d, %Y" }} - <a href="{{ post.url }}">{{ post.title }}</a>
+          {{ post.date | date: "%B %d, %Y" }} -
+          <a class="latest-post-kind" href="{{ collection_url | relative_url }}" title="More {{ collection_title }}" aria-label="More {{ collection_title }}">
+            <svg class="icon" aria-hidden="true"><use xlink:href="{{ "/assets/fontawesome/icons.svg" | relative_url }}#{{ collection_icon }}"></use></svg>
+          </a>
+          <a href="{{ post.url }}">{{ post.title }}</a>
         </li>
       {% endfor %}
     </ul>
