@@ -4,7 +4,7 @@ title: Songs In A Minor
 year: 2001
 artist: Alicia Keys
 rating: ★★★☆☆
-cover: https://upload.wikimedia.org/wikipedia/en/thumb/8/84/AliciaKeys-SongsInAMinor-music-album.jpg/250px-AliciaKeys-SongsInAMinor-music-album.jpg
+cover: https://upload.wikimedia.org/wikipedia/en/5/59/Songs_in_A_Minor.png
 ---
 
 First time writing on an R&B album! it should feel new, I'm not sure what I should be writing for. I always looked down on R&B (alongside rap, EDM, house, and a handful more). this doesn't mean I can't "enjoy" them though. I particularly like 90's R&B, and I chose this album because I'm expecting some inspirations drawn from classical music.
