@@ -1,0 +1,48 @@
+{% assign per_page = page.per_page | default: 10 %}
+{% assign current_page = page.current_page | default: 1 %}
+{% assign offset = current_page | minus: 1 | times: per_page %}
+{% assign all_posts = site.album | sort: 'date' | reverse %}
+{% assign total_pages = all_posts.size | divided_by: per_page %}
+{% assign remainder = all_posts.size | modulo: per_page %}
+{% if remainder > 0 %}
+  {% assign total_pages = total_pages | plus: 1 %}
+{% endif %}
+{% if total_pages < 1 %}
+  {% assign total_pages = 1 %}
+{% endif %}
+{% assign pagination_base = '/album/' %}
+{% assign album_posts = all_posts | slice: offset, per_page %}
+
+<ul>
+  {% for post in album_posts %}
+    <div class="post" style="margin-top: 30px;">
+      <div
+        class="entry"
+        style="display: flex; justify-content: center; align-items: center">
+        <div style="flex: 30%">
+          <a href="{{ site.baseurl }}{{ post.url }}"
+            ><img
+              id="cover-small"
+              alt="album cover"
+              src="{{ post.cover }}"
+          /></a>
+        </div>
+        <div style="flex: 50%; line-height: 1;">
+          <h3 style="word-wrap: anywhere;">
+            <a
+            href="{{ site.baseurl }}{{ post.url }}"
+            class="read-more">
+              {{ post.title }}
+            </a>
+          </h3>
+          <h5 style="word-wrap: anywhere;">{{ post.year }} | by {{ post.artist }}</h5>
+          <h6>posted on {{ post.date | date: "%B %d, %Y" }} </h6>
+        </div>
+        <div style="flex: 20%">
+          <h4>{{ post.rating }}</h4>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</ul>
+{% include pagination.html %}

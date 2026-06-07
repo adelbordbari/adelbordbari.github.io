@@ -1,12 +1,9 @@
-{% assign pagination_data = paginator | default: page.pagination %}
-{% assign pagination_path = pagination_data.paginate_path | default: page.pagination.permalink %}
-{% assign first_page_path = pagination_data.first_page_path %}
-{% unless first_page_path %}
-  {% assign first_page_path = pagination_path | split: ':num' | first %}
-{% endunless %}
+{% assign current_page = current_page | default: page.current_page | default: 1 %}
+{% assign total_pages = total_pages | default: page.total_pages | default: 1 %}
+{% assign pagination_base = pagination_base | default: page.pagination_base | default: page.url %}
 
-{% if pagination_data and pagination_data.total_pages > 1 %}
-  {% assign start_page = pagination_data.page | minus: 1 %}
+{% if total_pages > 0 %}
+  {% assign start_page = current_page | minus: 1 %}
   {% assign end_page = start_page | plus: 2 %}
 
   {% if start_page < 1 %}
@@ -14,8 +11,8 @@
     {% assign end_page = 3 %}
   {% endif %}
 
-  {% if end_page > pagination_data.total_pages %}
-    {% assign end_page = pagination_data.total_pages %}
+  {% if end_page > total_pages %}
+    {% assign end_page = total_pages %}
     {% assign start_page = end_page | minus: 2 %}
   {% endif %}
 
@@ -25,28 +22,33 @@
 
   <nav class="pagination" aria-label="Pagination">
     <ul>
-      {% if pagination_data.previous_page %}
+      {% if current_page > 1 %}
+        {% assign previous_page = current_page | minus: 1 %}
         <li class="pagination-prev">
-          <a href="{{ pagination_data.previous_page_path | relative_url }}" rel="prev">Prev</a>
+          {% if previous_page == 1 %}
+            <a href="{{ pagination_base | relative_url }}" rel="prev">Prev</a>
+          {% else %}
+            <a href="{{ pagination_base | append: previous_page | append: '/' | relative_url }}" rel="prev">Prev</a>
+          {% endif %}
         </li>
+      {% else %}
+        <li class="pagination-prev is-disabled">Prev</li>
       {% endif %}
 
       {% if start_page > 1 %}
-        <li>
-          <a href="{{ first_page_path | relative_url }}">1</a>
-        </li>
-        <li class="pagination-ellipsis" aria-hidden="true">…</li>
+        <li><a href="{{ pagination_base | relative_url }}">1</a></li>
+        <li class="pagination-ellipsis" aria-hidden="true">...</li>
       {% endif %}
 
       {% for page_number in (start_page..end_page) %}
-        {% if page_number == pagination_data.page %}
+        {% if page_number == current_page %}
           <li class="is-current" aria-current="page">{{ page_number }}</li>
         {% else %}
           {% if page_number == 1 %}
-            <li><a href="{{ first_page_path | relative_url }}">1</a></li>
+            <li><a href="{{ pagination_base | relative_url }}">1</a></li>
           {% else %}
             <li>
-              <a href="{{ pagination_path | replace: ':num', page_number | relative_url }}">
+              <a href="{{ pagination_base | append: page_number | append: '/' | relative_url }}">
                 {{ page_number }}
               </a>
             </li>
@@ -54,19 +56,22 @@
         {% endif %}
       {% endfor %}
 
-      {% if end_page < pagination_data.total_pages %}
-        <li class="pagination-ellipsis" aria-hidden="true">…</li>
+      {% if end_page < total_pages %}
+        <li class="pagination-ellipsis" aria-hidden="true">...</li>
         <li>
-          <a href="{{ pagination_path | replace: ':num', pagination_data.total_pages | relative_url }}">
-            {{ pagination_data.total_pages }}
+          <a href="{{ pagination_base | append: total_pages | append: '/' | relative_url }}">
+            {{ total_pages }}
           </a>
         </li>
       {% endif %}
 
-      {% if pagination_data.next_page %}
+      {% if current_page < total_pages %}
+        {% assign next_page = current_page | plus: 1 %}
         <li class="pagination-next">
-          <a href="{{ pagination_data.next_page_path | relative_url }}" rel="next">Next</a>
+          <a href="{{ pagination_base | append: next_page | append: '/' | relative_url }}" rel="next">Next</a>
         </li>
+      {% else %}
+        <li class="pagination-next is-disabled">Next</li>
       {% endif %}
     </ul>
   </nav>

@@ -1,0 +1,30 @@
+{% assign per_page = page.per_page | default: 10 %}
+{% assign current_page = page.current_page | default: 1 %}
+{% assign offset = current_page | minus: 1 | times: per_page %}
+{% if page.collection_name == 'code' %}
+  {% assign collection_posts = site.code %}
+{% elsif page.collection_name == 'etc' %}
+  {% assign collection_posts = site.etc %}
+{% else %}
+  {% assign collection_posts = site.posts %}
+{% endif %}
+{% assign all_posts = collection_posts | sort: 'date' | reverse %}
+{% assign total_pages = all_posts.size | divided_by: per_page %}
+{% assign remainder = all_posts.size | modulo: per_page %}
+{% if remainder > 0 %}
+  {% assign total_pages = total_pages | plus: 1 %}
+{% endif %}
+{% if total_pages < 1 %}
+  {% assign total_pages = 1 %}
+{% endif %}
+{% assign pagination_base = page.pagination_base %}
+{% assign posts = all_posts | slice: offset, per_page %}
+
+<ul>
+  {% for post in posts %}
+    <li>
+      {{ post.date | date: "%B %d, %Y" }} - <a href="{{ post.url }}">{{ post.title }}</a>
+    </li>
+  {% endfor %}
+</ul>
+{% include pagination.html %}

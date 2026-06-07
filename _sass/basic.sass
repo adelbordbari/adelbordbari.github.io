@@ -112,6 +112,52 @@ img
 
 li
   margin: .25em 0
+
+.pagination
+  margin: 2rem 0 0
+
+.pagination ul
+  display: flex
+  flex-wrap: wrap
+  align-items: center
+  justify-content: center
+  gap: .45rem
+  padding: 0
+  margin: 0
+  list-style: none
+
+.pagination li,
+.pagination a
+  min-width: 2.35rem
+  min-height: 2.35rem
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  border-radius: 8px
+
+.pagination li
+  border: 1px solid reduce(18)
+
+.pagination a
+  border: 1px solid $link-color
+  color: $link-color
+  text-decoration: none
+  transition: transform .15s ease, background .15s ease, color .15s ease
+
+.pagination a:hover
+  background: $link-color
+  color: $light
+  transform: translateY(-2px)
+
+.pagination .is-current
+  background: $link-color
+  border-color: $link-color
+  color: $light
+
+.pagination .is-disabled
+  color: reduce(45)
+  border-color: reduce(14)
+  cursor: not-allowed
   
 table
   display: inline-block

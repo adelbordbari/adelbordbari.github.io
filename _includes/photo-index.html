@@ -1,0 +1,67 @@
+{% assign per_page = page.per_page | default: 10 %}
+{% assign current_page = page.current_page | default: 1 %}
+{% assign offset = current_page | minus: 1 | times: per_page %}
+{% assign all_posts = site.photos | sort: 'date' | reverse %}
+{% assign total_pages = all_posts.size | divided_by: per_page %}
+{% assign remainder = all_posts.size | modulo: per_page %}
+{% if remainder > 0 %}
+  {% assign total_pages = total_pages | plus: 1 %}
+{% endif %}
+{% if total_pages < 1 %}
+  {% assign total_pages = 1 %}
+{% endif %}
+{% assign pagination_base = '/photo/' %}
+{% assign photo_posts = all_posts | slice: offset, per_page %}
+
+<main class="photo-page">
+  <section class="photo-hero" aria-labelledby="photo-title">
+    <div class="photo-hero__kicker">mobile / 35mm</div>
+    <h1 id="photo-title">Photo</h1>
+    <p>light leaks, street corners, small rooms, passing weather.</p>
+    <div class="photo-hero__ticker" aria-hidden="true">
+      <span>shoot</span>
+      <span>develop</span>
+      <span>scan</span>
+      <span>remember</span>
+    </div>
+  </section>
+
+  <section class="photo-marquee" aria-hidden="true">
+    <div>
+      <span>phone</span>
+      <span>35mm</span>
+      <span>grain</span>
+      <span>flash</span>
+      <span>contact sheet</span>
+      <span>phone</span>
+      <span>35mm</span>
+      <span>grain</span>
+      <span>flash</span>
+      <span>contact sheet</span>
+    </div>
+  </section>
+
+  {% if photo_posts.size > 0 %}
+    <section class="photo-grid" aria-label="Photo posts">
+      {% for post in photo_posts %}
+        <a class="photo-card" href="{{ post.url | relative_url }}">
+          <span class="photo-card__number">{{ offset | plus: forloop.index | prepend: '00' | slice: -2, 2 }}</span>
+          <figure>
+            <img src="{{ post.image | relative_url }}" alt="{{ post.title | escape }}" loading="lazy">
+            <figcaption>
+              <span>{{ post.title }}</span>
+              <small>{{ post.date | date: site.date_format }}</small>
+            </figcaption>
+          </figure>
+        </a>
+      {% endfor %}
+    </section>
+  {% else %}
+    <section class="photo-empty" aria-label="No photos yet">
+      <div class="photo-empty__frame"></div>
+      <p>No photos yet.</p>
+    </section>
+  {% endif %}
+
+  {% include pagination.html %}
+</main>
