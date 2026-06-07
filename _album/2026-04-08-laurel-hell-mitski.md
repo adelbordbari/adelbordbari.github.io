@@ -4,7 +4,7 @@ title: Laurel Hell
 year: 2022
 artist: Mitski
 rating: ★☆☆☆☆
-cover: https://upload.wikimedia.org/wikipedia/en/thumb/b/b3/Mitski_-_Laurel_Hell.png/250px-Mitski_-_Laurel_Hell.png
+cover: https://upload.wikimedia.org/wikipedia/en/a/a8/Mitski_-_Laurel_Hell.png
 ---
 
 **Valentine, Texas** starts off the album very cinematically, it has a great jump from an atmospherically ambient lullaby to an almost new-wave, synth-dominated piece with its industrial pulsing rhythm; which is rather confusing to me. the poetry is imaginatively graphic. it's a yearning for getting away. the vocals sound given up, as if preparing for an pre-emptive departure.
