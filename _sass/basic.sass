@@ -275,43 +275,44 @@ pre
   border-radius: 5%
 
 .album-cover-link
-  display: inline-block
+  display: block
+  width: 10vw
+  margin: auto
+  line-height: 0
 
 .album-cover-duotone
   position: relative
   display: block
-  width: fit-content
-  margin: auto
+  width: 100%
+  aspect-ratio: 1 / 1
   overflow: hidden
   border-radius: 5%
-  background: $dark
-  box-shadow: 0 10px 22px rgba(45, 50, 167, .14)
+  background: $link-color
 
-.album-cover-duotone::before,
 .album-cover-duotone::after
   content: ""
   position: absolute
   inset: 0
   pointer-events: none
   border-radius: inherit
-  mix-blend-mode: multiply
-
-.album-cover-duotone::before
-  background: rgba(228, 59, 47, .72)
-
-.album-cover-duotone::after
-  background: rgba(59, 68, 226, .72)
-  mix-blend-mode: screen
-  opacity: .72
+  background: $accent-color
+  mix-blend-mode: lighten
+  opacity: .92
 
 .album-cover-duotone #cover-small
+  width: 100%
+  height: 100%
   margin: 0
-  filter: grayscale(1) contrast(1.18)
-  mix-blend-mode: luminosity
-  transition: filter .2s ease, transform .2s ease
+  border-radius: 0
+  object-fit: cover
+  filter: grayscale(1) contrast(1.28)
+  mix-blend-mode: multiply
+  opacity: .94
+  transition: filter .2s ease, opacity .2s ease, transform .2s ease
 
 .album-cover-link:hover .album-cover-duotone #cover-small
-  filter: grayscale(.35) contrast(1.08) saturate(1.1)
+  filter: grayscale(.25) contrast(1.08) saturate(1.05)
+  opacity: .98
   transform: scale(1.04)
 
 #cover
