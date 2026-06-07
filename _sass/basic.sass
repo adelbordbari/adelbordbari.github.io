@@ -138,6 +138,7 @@ li
   border-radius: 999px
 
 .pagination li
+  margin: 0
   border: 1px solid transparent
 
 .pagination a
@@ -163,8 +164,16 @@ li
 
 .pagination-prev,
 .pagination-next
-  padding: 0 .45rem
+  min-width: 3.6rem
+  padding: 0 .55rem
   font-size: .9em
+
+.pagination-prev a,
+.pagination-next a
+  min-width: 3.6rem
+  padding: 0 .75rem
+  border-color: rgba($link-color, .22)
+  background: rgba(232, 238, 245, .38)
   
 table
   display: inline-block
@@ -496,6 +505,19 @@ audio
   align-items: center
   justify-content: center
   border: 1px solid rgba(45, 50, 167, .18)
+
+.photo-page .pagination li
+  margin: 0
+
+.photo-page .pagination-prev,
+.photo-page .pagination-next
+  min-width: 3.7rem
+
+.photo-page .pagination-prev a,
+.photo-page .pagination-next a
+  min-width: 3.7rem
+  padding: 0 .8rem
+  background: rgba(232, 238, 245, .38)
 
 .photo-page .pagination a:hover,
 .photo-page .pagination .is-current
