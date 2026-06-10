@@ -1,8 +1,41 @@
-<div id="letterboxd-embed-wrapper-tc"></div>
+<div id="letterboxd-embed-wrapper-tc" class="atomic-widget" data-atomic-widget></div>
 <script>
-  fetch('https://lb-embed-content.bokonon.dev?username=adel263')
-  .then(response => response.text())
-  .then(data => {
-  document.getElementById('letterboxd-embed-wrapper-tc').innerHTML = data;
-  });
+  (function() {
+    const wrapper = document.getElementById('letterboxd-embed-wrapper-tc');
+
+    function waitForImages(root) {
+      const images = Array.from(root.querySelectorAll('img'));
+      if (!images.length) return Promise.resolve();
+      return Promise.all(images.map(img => {
+        if (img.complete) return Promise.resolve();
+        return new Promise(resolve => {
+          const done = () => resolve();
+          img.addEventListener('load', done, { once: true });
+          img.addEventListener('error', done, { once: true });
+        }).then(() => {
+          if (img.decode) return img.decode().catch(() => {});
+        });
+      }));
+    }
+
+    function withTimeout(promise, ms) {
+      return Promise.race([
+        promise,
+        new Promise(resolve => setTimeout(resolve, ms))
+      ]);
+    }
+
+    fetch('https://lb-embed-content.bokonon.dev?username=adel263')
+      .then(response => response.text())
+      .then(data => {
+        wrapper.innerHTML = data;
+        return withTimeout(waitForImages(wrapper), 3000);
+      })
+      .then(() => {
+        wrapper.classList.add('is-ready');
+      })
+      .catch(() => {
+        wrapper.classList.add('is-ready');
+      });
+  })();
 </script>

@@ -1,17 +1,43 @@
-<div>
+<div class="atomic-widget atomic-widget--lastfm" data-atomic-widget>
   <script src="https://recentfm.rknight.me/now.js?u=thenitwit&nomoji=true"></script>
   <!-- <script src="https://recentfm.rknight.me/now.js?u=thenitwit&e=▶️"></script> -->
 </div>
 
 <script>
   (function() {
+    function reveal(root) {
+      const wrapper = root.closest('[data-atomic-widget]') || root;
+      root.classList.add('is-ready');
+      wrapper.classList.add('is-ready');
+    }
+
+    function waitForImage(img) {
+      if (!img) return Promise.resolve();
+      if (img.complete) return Promise.resolve();
+      return new Promise(resolve => {
+        const done = () => resolve();
+        img.addEventListener('load', done, { once: true });
+        img.addEventListener('error', done, { once: true });
+      }).then(() => {
+        if (img.decode) return img.decode().catch(() => {});
+      });
+    }
+
+    function withTimeout(promise, ms) {
+      return Promise.race([
+        promise,
+        new Promise(resolve => setTimeout(resolve, ms))
+      ]);
+    }
+
     function placeGif(root) {
       // already placed?
-      if (root.querySelector('.recent-gif')) return;
+      const existing = root.querySelector('.recent-gif');
+      if (existing) return existing;
 
       // create the gif only now (after widget exists)
       const gif = document.createElement('img');
-      gif.src = 'assets/red_circle.gif';
+      gif.src = '{{ "/assets/red_circle.gif" | relative_url }}';
       gif.alt = '';
       gif.setAttribute('aria-hidden', 'true');
       gif.className = 'recent-gif recent-gif--inline';
@@ -26,29 +52,50 @@
       } else {
         root.appendChild(gif);
       }
+
+      return gif;
     }
 
     function tryEnhance(root) {
       if (!root) return;
+      if (root.dataset.atomicStarted === 'true') return;
+      root.dataset.atomicStarted = 'true';
 
       // Move/create GIF first so it's part of the widget render
-      placeGif(root);
+      const gif = placeGif(root);
 
       // If art already present, we're done
-      if (root.querySelector('.recent-played-art')) return;
+      const existingArt = root.querySelector('.recent-played-art');
+      if (existingArt) {
+        withTimeout(Promise.all([waitForImage(gif), waitForImage(existingArt)]), 2500).then(() => reveal(root));
+        return;
+      }
 
       const link = root.querySelector('.recent-played-track a');
-      if (!link) return;
+      if (!link) {
+        withTimeout(waitForImage(gif), 1500).then(() => reveal(root));
+        return;
+      }
 
       const txt = link.textContent.trim();
       const SEP = ' by ';
-      if (!txt.includes(SEP)) return;
+      if (!txt.includes(SEP)) {
+        withTimeout(waitForImage(gif), 1500).then(() => reveal(root));
+        return;
+      }
       const [title, artist] = txt.split(SEP);
-      if (!title || !artist) return;
+      if (!title || !artist) {
+        withTimeout(waitForImage(gif), 1500).then(() => reveal(root));
+        return;
+      }
 
       const cacheKey = `art:${title}::${artist}`;
       const cached = sessionStorage.getItem(cacheKey);
-      if (cached) return insert(root, title, artist, cached);
+      if (cached) {
+        const art = insert(root, title, artist, cached);
+        withTimeout(Promise.all([waitForImage(gif), waitForImage(art)]), 2500).then(() => reveal(root));
+        return;
+      }
 
       const params = new URLSearchParams({
         term: `${title} ${artist}`,
@@ -63,14 +110,20 @@
           if (art) art = art.replace(/100x100bb\.jpg/, '300x300bb.jpg');
           if (art) {
             sessionStorage.setItem(cacheKey, art);
-            insert(root, title, artist, art);
+            const img = insert(root, title, artist, art);
+            withTimeout(Promise.all([waitForImage(gif), waitForImage(img)]), 2500).then(() => reveal(root));
+          } else {
+            withTimeout(waitForImage(gif), 1500).then(() => reveal(root));
           }
         })
-        .catch(() => {/* silent */});
+        .catch(() => {
+          withTimeout(waitForImage(gif), 1500).then(() => reveal(root));
+        });
     }
 
     function insert(root, title, artist, src) {
-      if (root.querySelector('.recent-played-art')) return;
+      const existing = root.querySelector('.recent-played-art');
+      if (existing) return existing;
       const img = document.createElement('img');
       img.className = 'recent-played-art';
       img.alt = `${title} — ${artist} (cover art)`;
@@ -78,6 +131,7 @@
       img.decoding = 'async';
       img.src = src;
       root.prepend(img);
+      return img;
     }
 
     // If it’s already on the page (fast load), enhance immediately.
@@ -97,5 +151,13 @@
       }
     });
     mo.observe(document.documentElement, { childList: true, subtree: true });
+
+    setTimeout(() => {
+      document.querySelectorAll('.atomic-widget--lastfm').forEach(el => {
+        if (!el.classList.contains('is-ready') && !el.querySelector('.recent-played')) {
+          el.classList.add('is-ready');
+        }
+      });
+    }, 5000);
   })();
 </script>
