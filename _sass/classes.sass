@@ -1,28 +1,46 @@
 .title
-  font-size: 1.25em
+  font-size: 1.35em
+  letter-spacing: 0
+  line-height: .95
+  text-transform: uppercase
 
 .more
   margin: 2em 0 1em
 
 .more a
-  border-radius: 2px
-  border: 1.5px solid $link-color
-  padding: .4em .8em
-  transition: .2s background, .2s color
+  display: inline-flex
+  align-items: center
+  min-height: 2.25rem
+  border-radius: $radius
+  border: $line-width-thin solid $dark
+  background: $light
+  box-shadow: $hard-shadow-small
+  padding: .35em .8em
+  font-weight: 700
+  text-decoration: none
+  text-transform: uppercase
+  transition: .15s background, .15s color, .15s transform, .15s box-shadow
 
 .more a:hover
-  color: #fff
+  color: $light
   background: $link-color
   text-decoration: inherit
+  transform: translate(-2px, -2px)
+  box-shadow: 6px 6px 0 $dark
 
 .archive
   font-size: 1.1em
 
 .archive time
-  display: inline-block
+  display: inline-flex
+  align-items: center
   min-width: 10ch
   min-height: 1.75em
-  margin: 0 .2em
+  margin: 0 .2em 0 0
+  color: $dark
+  font-size: .78rem
+  font-weight: 700
+  text-transform: uppercase
 
 .icon
   height: 1em
@@ -38,6 +56,134 @@ a:hover .icon
 .full table
   display: table
   width: 100%
+
+article > ul
+  list-style: none
+  padding: 0
+
+article > ul > li,
+article section > ul > li,
+.post
+  border: $line-width-thin solid $dark
+  border-radius: $radius
+  background: rgba($light, .86)
+  box-shadow: $hard-shadow-small
+  margin: .8rem 0
+  padding: .65rem .8rem
+
+article section
+  margin: 2rem 0
+
+article section h4
+  display: inline-flex
+  width: fit-content
+  margin: 0 0 .7rem
+  padding: .28rem .55rem
+  border: $line-width-thin solid $dark
+  border-radius: $radius
+  background: $dark
+  box-shadow: $hard-shadow-small
+  color: $light
+
+article section > ul
+  list-style: none
+  padding: 0
+
+.post
+  padding: 1rem
+
+.album-list
+  display: grid
+  gap: 1rem
+
+.album-item
+  margin: 0
+
+.entry
+  display: flex
+  align-items: center
+  justify-content: center
+  gap: 1rem
+
+.album-item__cover
+  flex: 0 0 min(9rem, 26vw)
+
+.album-item__body
+  flex: 1 1 auto
+  min-width: 0
+  line-height: 1
+
+.album-item__body h3,
+.album-item__body h5
+  overflow-wrap: anywhere
+
+.album-item__rating
+  flex: 0 0 auto
+
+.post h3,
+.post h4,
+.post h5,
+.post h6
+  margin: .25rem 0
+
+.post h4
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  min-width: 2.6rem
+  min-height: 2.6rem
+  padding: .25rem
+  border: $line-width-thin solid $dark
+  border-radius: $radius
+  background: rgba($link-color, .1)
+  box-shadow: 3px 3px 0 $dark
+  color: $link-color
+
+.collection-list
+  display: grid
+  gap: .75rem
+  list-style: none
+  padding: 0
+
+.collection-list li
+  display: grid
+  gap: .25rem .8rem
+  align-items: center
+  margin: 0
+
+.collection-list time
+  color: $dark
+  font-size: .78rem
+  font-weight: 700
+  text-transform: uppercase
+
+.collection-list a,
+article section > ul > li > a:last-child
+  font-weight: 700
+  overflow-wrap: anywhere
+
+.embed-stack
+  display: flex
+  justify-content: center
+  margin: 1rem 0
+
+@media (min-width: 38rem)
+  .collection-list li
+    grid-template-columns: 12rem 1fr
+
+  article section > ul > li
+    display: flex
+    align-items: center
+    gap: .35rem
+    flex-wrap: wrap
+
+@media (max-width: 42rem)
+  .entry
+    flex-direction: column
+    align-items: flex-start !important
+
+  .album-cover-link
+    margin: 0
 
 .katex
   overflow-x: auto

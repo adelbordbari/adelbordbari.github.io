@@ -10,9 +10,10 @@ body > header, body > footer
   flex-wrap: wrap
   align-items: center
   justify-content: space-between
-  background: rgba(232, 238, 245, 0.72)
-  border: 1px solid rgba(45, 50, 167, 0.08)
-  box-shadow: 0 8px 24px rgba(45, 50, 167, 0.08)
+  gap: 1rem
+  background: rgba($light, .9)
+  border: $line-width solid $dark
+  box-shadow: $hard-shadow
   backdrop-filter: none
   -webkit-backdrop-filter: none
   position: relative
@@ -20,22 +21,56 @@ body > header, body > footer
 
 @media (prefers-color-scheme: dark)
   body > header, body > footer
-    background: rgba(232, 238, 245, 0.72)
-    border-color: rgba(45, 50, 167, 0.08)
-    box-shadow: 0 8px 24px rgba(45, 50, 167, 0.08)
+    background: rgba($light, .9)
+    border-color: $dark
+    box-shadow: $hard-shadow
 
 body > header, body > article, body > footer
   padding: 1.5em
+  width: min(72rem, calc(100% - 2rem))
+  box-sizing: border-box
+  margin-inline: auto
 
 article header
   margin-bottom: 1.5em
 
 article header h1
-  font-size: 1.7em
   margin: 0 0 .1em
 
 nav
-  margin: .5em -1.2em
+  display: flex
+  flex-wrap: wrap
+  gap: .5rem
+  margin: .5em 0
 
 nav a
-  margin: .5em 1.2em
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  min-width: 2.35rem
+  min-height: 2.35rem
+  margin: 0
+  border: $line-width-thin solid $dark
+  border-radius: $radius
+  background: $light
+  box-shadow: 4px 4px 0 $dark
+  color: $dark
+  text-decoration: none
+  transition: transform .15s ease, box-shadow .15s ease, background .15s ease, color .15s ease
+
+nav a:hover,
+nav a.selected
+  background: $link-color
+  color: $light
+  text-decoration: none
+  transform: translate(-2px, -2px)
+  box-shadow: 6px 6px 0 $dark
+
+@media (max-width: 42rem)
+  body > header, body > footer
+    align-items: flex-start
+    flex-direction: column
+
+  body > header, body > article, body > footer
+    width: min(100% - 1rem, 72rem)
+    padding: 1rem

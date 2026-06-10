@@ -6,14 +6,14 @@ layout: default
   {% include meta.html post=page %}
   
   {% if page.cover %}
-    <div style="display: flex; justify-content: center; align-items: center; position: relative">
-      <img id="cover" alt="coverbg" src="{{ page.cover }}" style="filter: blur(90px) contrast(150%) saturate(150%) brightness(150%); opacity: 0.5; width: 150%; height: 24vw;" />
-      <img id="cover" alt="cover" src="{{ page.cover }}" style="position: absolute;" />
+    <div class="post-cover">
+      <img class="post-cover__glow" alt="" src="{{ page.cover }}" aria-hidden="true" />
+      <img id="cover" class="post-cover__image" alt="cover" src="{{ page.cover }}" />
     </div>
   {% endif %}
  
   {% if page.rating %}
-    <h2 style="display: flex; justify-content: center;">{{ page.rating }}</h2>
+    <h2 class="post-rating">{{ page.rating }}</h2>
   {% endif %}
 
   {{ content }}

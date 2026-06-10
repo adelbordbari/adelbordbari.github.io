@@ -18,6 +18,7 @@ body
   -webkit-text-size-adjust: 100%
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
+  text-rendering: geometricPrecision
 
 body::before
   content: ""
@@ -43,6 +44,10 @@ body::after
   pointer-events: none
   z-index: -1
 
+::selection
+  background: $link-color
+  color: $light
+
 @media (prefers-color-scheme: dark)
   body
     background-color: $light
@@ -58,6 +63,25 @@ body::after
 
 h1, h2, h3, h4, h5, h6
   font-weight: $heading-weight
+  line-height: .98
+  letter-spacing: 0
+  text-transform: uppercase
+  text-wrap: balance
+
+h1
+  font-size: 2.6rem
+
+h2
+  font-size: 2rem
+
+h3
+  font-size: 1.45rem
+
+h4
+  font-size: 1.25rem
+
+h5, h6
+  font-size: .86rem
 
 h2
   color: $link-color
@@ -66,37 +90,130 @@ b, strong, th
   font-weight: $font-weight + 200
 
 p
-  text-align: justify
+  max-width: 68ch
+  text-align: left
 
 a
   color: $link-color
-  text-decoration: inherit
+  text-decoration: underline
+  text-decoration-thickness: 2px
+  text-underline-offset: .18em
   &:hover
-    text-decoration: underline
+    color: $dark
+    text-decoration-thickness: 3px
+  &:focus-visible
+    outline: $line-width solid $link-color
+    outline-offset: 3px
+
+button,
+input,
+textarea,
+select
+  font: inherit
+
+button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"]
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  min-height: 2.35rem
+  border: $line-width-thin solid $dark
+  border-radius: $radius
+  background: $light
+  box-shadow: $hard-shadow-small
+  color: $dark
+  cursor: pointer
+  font-weight: 700
+  padding: .35rem .8rem
+  text-transform: uppercase
+  transition: transform .15s ease, box-shadow .15s ease, background .15s ease, color .15s ease
+
+button:hover,
+input[type="button"]:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover
+  background: $link-color
+  color: $light
+  transform: translate(-2px, -2px)
+  box-shadow: 6px 6px 0 $dark
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible
+  outline: $line-width solid $link-color
+  outline-offset: 3px
+
+input:not([type]),
+input[type="email"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+input[type="text"],
+input[type="url"],
+textarea,
+select
+  width: 100%
+  max-width: 34rem
+  box-sizing: border-box
+  border: $line-width-thin solid $dark
+  border-radius: $radius
+  background: $light
+  box-shadow: 3px 3px 0 $dark
+  color: $dark
+  padding: .55rem .65rem
+
+textarea
+  min-height: 9rem
+  resize: vertical
+
+@media (min-width: 48rem)
+  h1
+    font-size: 5.25rem
+
+  h2
+    font-size: 3.45rem
+
+  h3
+    font-size: 2.35rem
 
 header a, footer a, aside a
   color: inherit
 
 header strong
-  text-shadow: 1px -1px 0 rgba(59, 68, 226, 0.9), -1px 1px 0 rgba(228, 59, 47, 0.8)
+  text-shadow: 2px 2px 0 rgba(228, 59, 47, 0.45)
+  text-transform: uppercase
 
 header time
-  color: reduce(100)
+  color: $dark
+  display: inline-flex
+  width: fit-content
+  padding: .18rem .38rem
+  background: rgba($link-color, .08)
+  border: $line-width-thin solid $dark
+  box-shadow: $hard-shadow-small
+  font-size: .75rem
+  font-weight: 700
+  text-transform: uppercase
 
 hr
-  border: 1px solid reduce(30)
+  border: 0
+  border-top: $line-width solid $dark
   margin: 2em 0
 
 article:not(:last-of-type)
-  border-bottom: 1px solid reduce(14)
+  border-bottom: $line-width solid $dark
 
 blockquote
   font-family: $font-family-serif
   font-size: large
-  background: reduce(10)
-  border-left: 5px solid $link-color
-  padding: 1px 1.5em
-  opacity: .75
+  background: rgba($light, .85)
+  border: $line-width solid $dark
+  box-shadow: $hard-shadow-small
+  padding: .75em 1.1em
+  opacity: 1
 
 blockquote, figure
   margin: 1em 0
@@ -106,7 +223,7 @@ img
   display: block
   margin-left: auto
   margin-right: auto
-  border-radius: 15px
+  border-radius: $radius
   max-width: 80%
   height: auto
 
@@ -120,10 +237,11 @@ li
   width: 1.45em
   height: 1.45em
   margin: 0 .28em 0 .1em
-  border-radius: 999px
+  border-radius: $radius
   color: $link-color
   background: rgba(228, 59, 47, .08)
-  box-shadow: inset 0 0 0 1px rgba(228, 59, 47, .2)
+  border: $line-width-thin solid $dark
+  box-shadow: 3px 3px 0 $dark
   text-decoration: none
   vertical-align: middle
   transition: background .15s ease, color .15s ease, transform .15s ease
@@ -137,7 +255,8 @@ li
   color: $light
   background: $link-color
   text-decoration: none
-  transform: translateY(-1px)
+  transform: translate(-2px, -2px)
+  box-shadow: 5px 5px 0 $dark
 
 .pagination
   margin: 1.25rem 0 0
@@ -162,35 +281,40 @@ li
 .pagination a,
 .pagination .is-current,
 .pagination .is-disabled
-  min-width: 1.6rem
-  min-height: 1.6rem
+  min-width: 2rem
+  min-height: 2rem
   display: inline-flex
   align-items: center
   justify-content: center
-  border-radius: 999px
-  border: 1px solid transparent
+  border-radius: $radius
+  border: $line-width-thin solid $dark
   padding: 0 .35rem
   box-sizing: border-box
   line-height: 1
+  font-weight: 700
 
 .pagination a
   color: $link-color
   text-decoration: none
-  transition: border-color .15s ease, color .15s ease, background .15s ease
+  background: $light
+  box-shadow: 3px 3px 0 $dark
+  transition: transform .15s ease, box-shadow .15s ease, color .15s ease, background .15s ease
 
 .pagination a:hover
-  background: rgba($link-color, .08)
-  border-color: rgba($link-color, .28)
-  color: $link-color
+  background: $link-color
+  color: $light
+  transform: translate(-2px, -2px)
+  box-shadow: 5px 5px 0 $dark
 
 .pagination .is-current
   background: $link-color
-  border-color: $link-color
   color: $light
+  box-shadow: 3px 3px 0 $dark
 
 .pagination .is-disabled
   color: reduce(32)
   cursor: not-allowed
+  background: rgba($light, .66)
 
 .pagination-prev,
 .pagination-next
@@ -202,8 +326,7 @@ li
 .pagination-next a
   min-width: 3.95rem
   padding: 0 .8rem
-  border-color: rgba($link-color, .22)
-  background: rgba(232, 238, 245, .38)
+  background: $light
 
 .pagination-ellipsis
   min-width: 1rem
@@ -214,21 +337,30 @@ table
   display: inline-block
   max-width: 100%
   overflow-y: scroll
-  border-spacing: 1px
-  border-radius: 2px
-  box-shadow: 0 0 0 1px reduce(12) inset
+  border-spacing: 0
+  border: $line-width solid $dark
+  border-radius: $radius
+  box-shadow: $hard-shadow-small
+  background: $light
 
 th, td
   padding: .5em 1em
-  box-shadow: 0 0 0 1px reduce(12)
+  box-shadow: inset -2px -2px 0 reduce(18)
+
+th
+  background: $dark
+  color: $light
+  text-transform: uppercase
 
 tr:hover, tr:nth-child(odd) td
-  background: reduce(4)
+  background: rgba($accent-color, .08)
 
 pre
   background: #2c2c2c
   color: $light
-  border-radius: 2px
+  border: $line-width solid $dark
+  border-radius: $radius
+  box-shadow: $hard-shadow-small
   font-size: .8em
   margin: 1.5em 0
   padding: .8em 1.2em
@@ -236,10 +368,10 @@ pre
 
 \:not(pre) > code
   font-size: .9em
-  background: reduce(90)
+  background: $dark
   color: $light
   opacity: 1
-  border-radius: 2px
+  border-radius: $radius
   margin: 0 .1em
   padding: .2em .4em
 
@@ -281,30 +413,48 @@ pre
     filter: blur(10px)
     transform: translate(3px, -3px)
 .page-title
-  background: $accent-color
-  -webkit-background-clip: text
-  -webkit-text-fill-color: transparent
-  font-size: 2rem
+  color: $accent-color
+  font-size: 2.4rem
+  margin-bottom: .2rem
+  text-shadow: 3px 3px 0 rgba($link-color, .28)
 
 .quote-gradient
-  margin: 0
-  text-align: center
-  background: $accent-color
-  -webkit-background-clip: text
-  -webkit-text-fill-color: transparent
-  font-size: 2rem
+  margin: 0 0 2rem
+  padding: 1rem
+  text-align: left
+  color: $accent-color
+  border: $line-width solid $dark
+  border-radius: $radius
+  box-shadow: $hard-shadow
+  background: rgba($light, .78)
+  font-size: 1.35rem
+
+.quote-gradient small
+  display: inline-block
+  margin-top: .5rem
+  color: $dark
+  font-size: .55em
+  line-height: 1.1
+
+@media (min-width: 48rem)
+  .page-title
+    font-size: 5rem
+
+  .quote-gradient
+    font-size: 2.25rem
   
-#cover-small
-  width: 10vw
+.cover-small
+  width: min(9rem, 26vw)
   display: block
   margin: auto
-  border-radius: 5%
+  border-radius: $radius
 
 .album-cover-link
   display: block
-  width: 10vw
+  width: min(9rem, 26vw)
   margin: auto
   line-height: 0
+  text-decoration: none
 
 .album-cover-duotone
   position: relative
@@ -312,12 +462,13 @@ pre
   width: 100%
   aspect-ratio: 1 / 1
   overflow: hidden
-  border-radius: 5%
+  border: $line-width solid $dark
+  border-radius: $radius
   background: transparent
-  box-shadow: -5px 5px 0 rgba(228, 59, 47, .72), 5px -5px 0 rgba(59, 68, 226, .72)
+  box-shadow: $hard-shadow
   transition: box-shadow .2s ease, transform .2s ease
 
-.album-cover-duotone #cover-small
+.album-cover-duotone .cover-small
   display: block
   width: 100%
   max-width: none
@@ -329,33 +480,70 @@ pre
   transition: filter .2s ease, transform .2s ease
 
 .album-cover-link:hover .album-cover-duotone
-  box-shadow: -7px 7px 0 rgba(228, 59, 47, .82), 7px -7px 0 rgba(59, 68, 226, .82)
+  box-shadow: 11px 11px 0 $dark
+  transform: translate(-3px, -3px)
 
-.album-cover-link:hover .album-cover-duotone #cover-small
+.album-cover-link:hover .album-cover-duotone .cover-small
   filter: saturate(1) contrast(1.03)
   transform: scale(1.04)
 
 #cover
-  width: 24vw
+  width: min(22rem, 78vw)
   display: block
   margin: auto
-  border-radius: 3%
+  border-radius: $radius
+  border: $line-width solid $dark
+
+.post-cover
+  position: relative
+  display: grid
+  place-items: center
+  margin: 2rem 0
+  overflow: hidden
+  min-height: 18rem
+
+.post-cover__glow
+  position: absolute
+  width: min(48rem, 120%)
+  max-width: none
+  height: 18rem
+  object-fit: cover
+  filter: blur(90px) contrast(150%) saturate(150%) brightness(150%)
+  opacity: .5
+  z-index: 0
+
+.post-cover__image
+  position: relative
+  z-index: 1
+  box-shadow: $hard-shadow
+
+.post-rating
+  display: flex
+  justify-content: center
+  width: fit-content
+  margin: 1.5rem auto
+  padding: .45rem .8rem
+  border: $line-width solid $dark
+  border-radius: $radius
+  background: rgba($link-color, .1)
+  box-shadow: $hard-shadow
+  color: $link-color
 
 audio
   width: 100%
-  border: solid 3px $link_color
+  border: solid $line-width $link-color
+  border-radius: $radius
   filter: contrast(95%) saturate(95%)
 
 .photo-page
   --photo-ink: #{$dark}
   --photo-paper: #{$light}
-  --photo-acid: #f0ff66
   --photo-red: #{$link-color}
   --photo-blue: #{$accent-color}
-  --photo-line: rgba(45, 50, 167, .18)
+  --photo-line: #{$dark}
   width: 100%
   min-height: 100vh
-  background: rgba(243, 241, 237, .62)
+  background: rgba($light, .62)
   color: var(--photo-ink)
   overflow: hidden
   font-family: "Space Mono", "Courier New", monospace
@@ -370,19 +558,22 @@ audio
   border-radius: 0
 
 .photo-hero
-  min-height: 46vh
+  min-height: 42vh
   display: grid
   align-content: space-between
   gap: 1.4rem
-  padding: clamp(1.5rem, 5vw, 4rem) clamp(1.25rem, 6vw, 6rem)
-  background: linear-gradient(115deg, transparent 0 62%, rgba(228, 59, 47, .14) 62% 64%, transparent 64%), radial-gradient(circle at 82% 12%, rgba(45, 50, 167, .13), transparent 30%), rgba(243, 241, 237, .78)
-  border-bottom: 1px solid var(--photo-line)
+  padding: clamp(1.25rem, 4vw, 3rem)
+  background: rgba($light, .82)
+  border: $line-width solid var(--photo-line)
+  border-radius: $radius
+  box-shadow: $hard-shadow
 
 .photo-hero__kicker
   width: fit-content
   padding: .28rem .5rem
   background: rgba(228, 59, 47, .1)
-  border: 1px solid rgba(228, 59, 47, .32)
+  border: $line-width-thin solid var(--photo-line)
+  box-shadow: 4px 4px 0 var(--photo-line)
   color: var(--photo-red)
   font-size: .72rem
   font-weight: 700
@@ -393,16 +584,16 @@ audio
   max-width: 8ch
   margin: 0
   color: var(--photo-ink)
-  font-size: clamp(4rem, 14vw, 11rem)
+  font-size: 4rem
   line-height: .84
   letter-spacing: 0
   text-transform: uppercase
-  text-shadow: .035em .035em 0 rgba(228, 59, 47, .72), -.025em -.02em 0 rgba(59, 68, 226, .28)
+  text-shadow: .035em .035em 0 rgba(228, 59, 47, .58)
 
 .photo-hero p
   max-width: 34rem
   margin: 0
-  font-size: clamp(1rem, 1.7vw, 1.35rem)
+  font-size: 1rem
   line-height: 1.25
   text-align: left
 
@@ -417,8 +608,8 @@ audio
   align-items: center
   min-height: 1.85rem
   padding: .18rem .55rem
-  border: 1px solid currentColor
-  border-radius: 999px
+  border: $line-width-thin solid currentColor
+  border-radius: $radius
   color: var(--photo-ink)
   background: rgba(243, 241, 237, .74)
   font-size: .74rem
@@ -428,13 +619,14 @@ audio
 .photo-hero__ticker span:hover
   background: var(--photo-red)
   color: var(--photo-paper)
-  transform: translateY(-.16rem) rotate(-2deg)
+  transform: translate(-.16rem, -.16rem)
+  box-shadow: 4px 4px 0 var(--photo-line)
 
 .photo-marquee
   position: relative
   width: 100%
   overflow: hidden
-  border-block: 1px solid var(--photo-line)
+  border-block: $line-width solid var(--photo-line)
   background: rgba(232, 238, 245, .5)
   color: var(--photo-ink)
 
@@ -449,7 +641,7 @@ audio
   align-items: center
   gap: .9rem
   padding: .45rem .9rem
-  font-size: clamp(.9rem, 2vw, 1.8rem)
+  font-size: .9rem
   font-weight: 700
   text-transform: uppercase
   white-space: nowrap
@@ -458,7 +650,7 @@ audio
   content: ""
   width: .35rem
   height: .35rem
-  border-radius: 50%
+  border-radius: $radius
   background: var(--photo-red)
 
 .photo-grid
@@ -467,7 +659,7 @@ audio
   gap: clamp(1rem, 3vw, 2rem)
   padding: clamp(1.25rem, 5vw, 4rem) clamp(1.25rem, 6vw, 6rem)
   background: rgba(243, 241, 237, .42)
-  border-bottom: 1px solid var(--photo-line)
+  border-bottom: $line-width solid var(--photo-line)
 
 .photo-card
   position: relative
@@ -475,8 +667,9 @@ audio
   isolation: isolate
   overflow: hidden
   background: rgba(232, 238, 245, .72)
-  border: 1px solid var(--photo-line)
-  box-shadow: 0 16px 34px rgba(45, 50, 167, .1)
+  border: $line-width solid var(--photo-line)
+  border-radius: $radius
+  box-shadow: $hard-shadow
   transform: rotate(-.5deg)
 
 .photo-card:nth-child(2n)
@@ -490,7 +683,8 @@ audio
   padding: .16rem .42rem
   background: rgba(243, 241, 237, .9)
   color: var(--photo-red)
-  border: 1px solid rgba(228, 59, 47, .35)
+  border: $line-width-thin solid var(--photo-line)
+  box-shadow: 3px 3px 0 var(--photo-line)
   font-size: .72rem
   font-weight: 700
 
@@ -521,7 +715,7 @@ audio
   color: var(--photo-paper)
 
 .photo-card figcaption span
-  font-size: clamp(1.1rem, 3vw, 2.6rem)
+  font-size: 1.1rem
   font-weight: 700
   line-height: .95
   text-transform: uppercase
@@ -550,14 +744,14 @@ audio
 .photo-empty__frame
   width: min(72vw, 32rem)
   aspect-ratio: 4 / 5
-  border: .55rem solid rgba(243, 241, 237, .9)
-  box-shadow: .9rem .9rem 0 rgba(59, 68, 226, .22), -.75rem -.75rem 0 rgba(228, 59, 47, .22)
+  border: $line-width solid var(--photo-line)
+  box-shadow: $hard-shadow
   transform: rotate(-3deg)
 
 .photo-empty p
   margin: 0
   color: var(--photo-ink)
-  font-size: clamp(1.6rem, 5vw, 4rem)
+  font-size: 1.6rem
   font-weight: 700
   line-height: .9
   text-transform: uppercase
@@ -591,8 +785,8 @@ audio
   display: inline-flex
   align-items: center
   justify-content: center
-  border: 1px solid rgba(45, 50, 167, .18)
-  border-radius: 999px
+  border: $line-width-thin solid var(--photo-line)
+  border-radius: $radius
   padding: 0 .38rem
   box-sizing: border-box
 
@@ -624,9 +818,12 @@ audio
   margin-bottom: 2rem
   padding: .35rem .6rem
   background: rgba(228, 59, 47, .1)
-  border: 1px solid rgba(228, 59, 47, .32)
+  border: $line-width-thin solid var(--photo-line)
+  border-radius: $radius
+  box-shadow: $hard-shadow-small
   color: var(--photo-red)
   font-weight: 700
+  text-decoration: none
 
 .photo-single figure
   margin: 0
@@ -638,13 +835,14 @@ audio
   max-height: 82vh
   object-fit: contain
   background: rgba(45, 50, 167, .08)
-  border: 1px solid var(--photo-line)
-  box-shadow: 0 18px 40px rgba(45, 50, 167, .12)
+  border: $line-width solid var(--photo-line)
+  border-radius: $radius
+  box-shadow: $hard-shadow
 
 .photo-single h1
   margin: 0
   color: var(--photo-ink)
-  font-size: clamp(2rem, 6vw, 5rem)
+  font-size: 2rem
   line-height: .95
   text-transform: uppercase
 
@@ -670,6 +868,25 @@ audio
   .photo-card figcaption small
     text-align: left
 
+@media (min-width: 48rem)
+  .photo-hero h1
+    font-size: 9rem
+
+  .photo-hero p
+    font-size: 1.25rem
+
+  .photo-marquee span
+    font-size: 1.6rem
+
+  .photo-card figcaption span
+    font-size: 2.35rem
+
+  .photo-empty p
+    font-size: 3.5rem
+
+  .photo-single h1
+    font-size: 4.5rem
+
 @media (prefers-reduced-motion: reduce)
   .photo-marquee div
     animation: none
@@ -683,10 +900,10 @@ audio
   max-width: 100%
   gap: .6em
   padding: .5em .75em
-  border-radius: 12px
-  box-shadow: 0 12px 30px rgba(45, 50, 167, 0.12), inset 0 0 0 1px rgba(45, 50, 167, 0.2)
+  border-radius: $radius
+  box-shadow: $hard-shadow-small
   background: rgba(232, 238, 245, 0.9)
-  border: 1px solid rgba(45, 50, 167, 0.2)
+  border: $line-width-thin solid $dark
   color: $dark
   backdrop-filter: none
   -webkit-backdrop-filter: none
@@ -730,7 +947,7 @@ audio
   width: 40px
   height: 40px
   flex: 0 0 40px
-  border-radius: 4px
+  border-radius: $radius
   object-fit: cover
   box-shadow: 0 0 0 1px reduce(6) inset
   margin: 0
@@ -753,16 +970,16 @@ audio
 @media (prefers-color-scheme: dark)
   .recent-played
     background: rgba(232, 238, 245, 0.9)
-    box-shadow: 0 12px 30px rgba(45, 50, 167, 0.12), inset 0 0 0 1px rgba(45, 50, 167, 0.2)
-    border-color: rgba(45, 50, 167, 0.2)
+    box-shadow: $hard-shadow-small
+    border-color: $dark
 
 #letterboxd-embed-wrapper-tc
   background: rgba(232, 238, 245, 0.9)
-  border: 1px solid rgba(45, 50, 167, 0.2)
-  box-shadow: 0 12px 30px rgba(45, 50, 167, 0.12)
+  border: $line-width-thin solid $dark
+  box-shadow: $hard-shadow-small
   color: $dark
   padding: 1rem
-  border-radius: 14px
+  border-radius: $radius
     
 #letterboxd-embed-tc .letterboxd-embed-tc-divider
   border-bottom: 1px solid $link-color
