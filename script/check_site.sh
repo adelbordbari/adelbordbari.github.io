@@ -28,6 +28,14 @@ grep -q 'font-weight: 900' _sass/basic.sass
 grep -q 'font-stretch: condensed' _sass/basic.sass
 grep -q 'backdrop-filter: blur' _sass/classes.sass
 grep -q 'site-cover::before' _sass/classes.sass
+grep -q 'collection-row__title-track' _includes/simple-collection-index.html
+grep -q 'post.title.size > 38' _includes/simple-collection-index.html
+grep -q 'collection-row__title--scroll' _sass/classes.sass
+grep -q 'animation: title-marquee' _sass/classes.sass
+grep -q 'white-space: nowrap' _sass/classes.sass
+grep -q 'font-family: \$font-family-serif' _sass/classes.sass
+grep -q 'font-size: clamp(1.8rem' _sass/classes.sass
+grep -q 'overflow-x: auto' _sass/classes.sass
 
 if grep -R -n 'Departure' _sass assets/css; then
   echo "Pixelated Departure font remains in active styles." >&2
