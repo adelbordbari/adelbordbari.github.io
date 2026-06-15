@@ -4,12 +4,25 @@ set -euo pipefail
 
 grep -q 'site-cover' _includes/archive.html
 grep -q 'catalog-table' _includes/archive.html
-grep -q 'specimen-grid' _includes/archive.html
 grep -q 'post-header__meta' _includes/meta.html
 grep -q '\$paper:' _sass/index.sass
 grep -q 'album-item__specs' _includes/album-index.html
 grep -q 'photo-card__number' _includes/photo-index.html
 grep -q 'jekyll-feed' _config.yml
+grep -q 'Benjamin Franklin' _includes/archive.html
+grep -q 'catalog-kind' _includes/archive.html
+grep -q 'post-content .prose' _sass/basic.sass
+grep -q 'max-width: 80ch' _sass/basic.sass
+
+if grep -q -E 'cover-specs|specimen-grid' _includes/archive.html; then
+  echo "Decorative homepage specs or grids remain." >&2
+  exit 1
+fi
+
+if grep -q 'photo-hero__kicker' _includes/photo-index.html; then
+  echo "Photo archive kicker remains." >&2
+  exit 1
+fi
 
 if grep -R -n -E '^:{1,2}[a-zA-Z-]+' _sass assets/css --include='*.sass'; then
   echo "Top-level pseudo selectors must be prefixed for legacy GitHub Pages Sass." >&2
@@ -43,7 +56,9 @@ if command -v bundle >/dev/null 2>&1; then
   test -f _site/feed.xml
   grep -q 'site-cover' _site/index.html
   grep -q 'catalog-table' _site/index.html
-  grep -q 'specimen-grid' _site/index.html
+  grep -q 'Benjamin Franklin' _site/index.html
+  grep -q 'catalog-kind' _site/index.html
+  ! grep -q -E 'cover-specs|specimen-grid' _site/index.html
   grep -q 'post-header__meta' _site/code/paint-the-code/index.html
   grep -q 'rel="canonical"' _site/index.html
   grep -q 'application/atom+xml' _site/index.html

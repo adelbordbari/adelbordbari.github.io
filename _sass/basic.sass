@@ -279,7 +279,18 @@ button, input, textarea, select
   min-width: 0
 
 .post-content .prose
+  max-width: 80ch
   margin-inline: auto
+
+.visually-hidden
+  position: absolute
+  width: 1px
+  height: 1px
+  padding: 0
+  overflow: hidden
+  clip: rect(0, 0, 0, 0)
+  white-space: nowrap
+  border: 0
 
 .post-content .post-header,
 .post-content .post-cover
