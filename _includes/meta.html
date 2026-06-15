@@ -25,6 +25,12 @@
       <span>Rating</span>
       <span>{{ include.post.rating }}</span>
     {% endif %}
+    {% if collection_name == "album" and include.post.artist %}
+      {% assign artist_name = include.post.artist | strip %}
+      {% assign artist_slug = artist_name | slugify %}
+      <span>Artist</span>
+      <a href="{{ '/album/artists/' | relative_url }}#{{ artist_slug }}">{{ artist_name }}</a>
+    {% endif %}
     {% if include.post.tags and include.post.tags.size > 0 %}
       <span>Tags</span>
       <span>{{ include.post.tags | join: ", " }}</span>

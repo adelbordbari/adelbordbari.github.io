@@ -38,16 +38,11 @@
           </h3>
           {% assign artist_name = post.artist | strip %}
           {% assign artist_slug = artist_name | slugify %}
-          {% assign artist_albums = site.album | where: "artist", post.artist %}
           <dl class="album-item__specs">
             <div>
               <dt>Artist</dt>
               <dd>
-                {% if artist_albums.size > 1 %}
-                  <a href="{{ '/album/artists/' | relative_url }}#{{ artist_slug }}">{{ artist_name }}</a>
-                {% else %}
-                  {{ artist_name }}
-                {% endif %}
+                <a href="{{ '/album/artists/' | relative_url }}#{{ artist_slug }}">{{ artist_name }}</a>
               </dd>
             </div>
             <div><dt>Year</dt><dd>{{ post.year }}</dd></div>

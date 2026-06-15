@@ -15,7 +15,7 @@ grep -q 'post-content .prose' _sass/basic.sass
 grep -q 'max-width: 80ch' _sass/basic.sass
 grep -q 'permalink: /album/artists/' album/artists.html
 grep -q 'group_by: "artist"' _includes/artist-index.html
-grep -q 'artist_albums.size > 1' _includes/album-index.html
+grep -q "'/album/artists/' | relative_url" _includes/album-index.html
 grep -q 'album-item__rating-spec' _includes/album-index.html
 grep -q 'post-header__kind' _includes/meta.html
 grep -q 'utility-module--compact .utility-label' _sass/classes.sass
@@ -34,8 +34,23 @@ grep -q 'collection-row__title--scroll' _sass/classes.sass
 grep -q 'animation: title-marquee' _sass/classes.sass
 grep -q 'white-space: nowrap' _sass/classes.sass
 grep -q 'font-family: \$font-family-serif' _sass/classes.sass
-grep -q 'font-size: clamp(1.8rem' _sass/classes.sass
+grep -q 'font-size: clamp(1.35rem' _sass/classes.sass
 grep -q 'overflow-x: auto' _sass/classes.sass
+grep -q 'page-content > .prose > .collection-list' _sass/basic.sass
+grep -q 'max-width: none' _sass/basic.sass
+grep -q 'artist-index:has(.artist-group:target)' _sass/classes.sass
+grep -q 'artist_group.items.size' _includes/artist-index.html
+grep -q 'include.post.artist' _includes/meta.html
+grep -q 'Artist' _includes/meta.html
+
+if grep -q -E 'artist_group.items.size > 1|artist_albums.size > 1' _includes/artist-index.html _includes/album-index.html; then
+  echo "Artist index still excludes single-entry artists." >&2
+  exit 1
+fi
+grep -q 'width: 100%' _sass/basic.sass
+grep -q 'page-content > .prose > .collection-list' _sass/basic.sass
+grep -q 'id="{{ artist_group.name | strip | slugify }}"' _includes/artist-index.html
+grep -q 'artist-group:not(:target)' _sass/classes.sass
 
 if grep -R -n 'Departure' _sass assets/css; then
   echo "Pixelated Departure font remains in active styles." >&2
