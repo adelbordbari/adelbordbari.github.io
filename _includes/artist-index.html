@@ -1,0 +1,25 @@
+{% assign artist_groups = site.album | group_by: "artist" | sort: "name" %}
+
+<div class="artist-index">
+  <p class="artist-index__intro">Artists with more than one album entry.</p>
+  {% for artist_group in artist_groups %}
+    {% if artist_group.items.size > 1 %}
+      {% assign artist_albums = artist_group.items | sort: "year" | reverse %}
+      <section class="artist-group" id="{{ artist_group.name | strip | slugify }}">
+        <div class="section-heading">
+          <h2>{{ artist_group.name | strip }}</h2>
+          <span>{{ artist_albums.size }} albums</span>
+        </div>
+        <ol class="artist-albums">
+          {% for album in artist_albums %}
+            <li>
+              <span>{{ album.year }}</span>
+              <a href="{{ album.url | relative_url }}">{{ album.title }}</a>
+              <span>{{ album.rating }}</span>
+            </li>
+          {% endfor %}
+        </ol>
+      </section>
+    {% endif %}
+  {% endfor %}
+</div>

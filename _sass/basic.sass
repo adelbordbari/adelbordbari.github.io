@@ -59,7 +59,7 @@ body::before
 
 h1, h2, h3, h4, h5, h6
   color: $ink
-  font-family: $font-family-sans
+  font-family: $font-family-ui
   font-weight: $heading-weight
   line-height: 1.02
   letter-spacing: .015em
@@ -67,11 +67,18 @@ h1, h2, h3, h4, h5, h6
   text-wrap: balance
 
 h1
-  font-size: clamp(2.6rem, 8vw, 6rem)
+  font-family: $font-family-display
+  font-size: clamp(2.5rem, 7vw, 5.4rem)
+  font-stretch: condensed
+  font-weight: 900
+  line-height: 1.08
+  letter-spacing: -.045em
 
 h2
   margin-top: 2.4em
-  font-size: clamp(1.65rem, 4vw, 2.65rem)
+  font-size: clamp(1.55rem, 3.5vw, 2.35rem)
+  font-weight: 900
+  letter-spacing: -.025em
 
 h3
   margin-top: 2em
@@ -81,7 +88,7 @@ h4
   font-size: 1.15rem
 
 h5, h6
-  font-family: $font-family-mono
+  font-family: $font-family-ui
   font-size: .78rem
   letter-spacing: .1em
 
@@ -123,7 +130,7 @@ figure
 figcaption
   margin-top: .5rem
   color: $muted
-  font-family: $font-family-mono
+  font-family: $font-family-ui
   font-size: .72rem
   text-transform: uppercase
 
@@ -147,7 +154,7 @@ li
   margin: .42rem 0
 
 code, kbd, samp
-  font-family: $font-family-mono
+  font-family: $font-family-code
 
 \:not(pre) > code
   padding: .14rem .34rem
@@ -164,7 +171,7 @@ pre
   border: 1px solid $rule
   background: #0b0c0b
   color: $ink
-  font-family: $font-family-mono
+  font-family: $font-family-code
   font-size: .82rem
   line-height: 1.55
   tab-size: 2
@@ -181,7 +188,7 @@ table
   margin: 1.8rem 0
   border-collapse: collapse
   border: 1px solid $rule
-  font-family: $font-family-mono
+  font-family: $font-family-ui
   font-size: .78rem
 
 th, td
@@ -242,7 +249,7 @@ button, input, textarea, select
   grid-template-columns: max-content 1fr max-content 1fr
   margin-top: 1.2rem
   border: 1px solid $rule
-  font-family: $font-family-mono
+  font-family: $font-family-ui
   font-size: .7rem
   text-transform: uppercase
 
@@ -261,6 +268,30 @@ button, input, textarea, select
 
 .post-header__meta > :nth-child(odd)
   color: $muted
+
+.post-header__kind
+  display: flex
+  align-items: center
+  justify-content: center
+  color: $muted
+  text-decoration: none
+
+.post-header__kind:hover
+  background: $ink
+  color: $paper
+
+.post-header__kind .icon
+  width: .9rem
+  height: .9rem
+
+.post-header__meta--album
+  grid-template-columns: max-content 1fr 3rem max-content 1fr
+
+.post-header__meta--album > *
+  border-bottom: 0
+
+.post-header__meta--album > :last-child
+  border-right: 0
 
 .post-cover
   max-width: 32rem
@@ -341,6 +372,17 @@ button, input, textarea, select
   overflow-x: auto
   overflow-y: hidden
 
+[lang="fa"],
+[dir="rtl"]
+  font-family: $font-family-fa
+  line-height: 2
+
+[lang="fa"] code,
+[lang="fa"] pre,
+[dir="rtl"] code,
+[dir="rtl"] pre
+  font-family: $font-family-code
+
 @media (max-width: 40rem)
   .post-header__meta
     grid-template-columns: max-content 1fr
@@ -353,6 +395,18 @@ button, input, textarea, select
     border-right: 1px solid $rule
 
   .post-header__meta > :nth-last-child(-n+2)
+    border-bottom: 0
+
+  .post-header__meta--album
+    grid-template-columns: max-content 1fr
+
+  .post-header__meta--album .post-header__kind
+    grid-column: 1 / -1
+    min-height: 2.5rem
+    border-right: 0
+    border-bottom: 1px solid $rule
+
+  .post-header__meta--album > :nth-last-child(-n+2)
     border-bottom: 0
 
   table

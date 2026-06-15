@@ -10,11 +10,17 @@
   <span class="utility-label">Filed record / {{ collection_label }}</span>
   <h1 class="page-title">{{ include.post.title }}</h1>
   {%- assign date_format = site.date_format | default: "%B %d, %Y" -%}
-  <div class="post-header__meta">
+  <div class="post-header__meta{% if collection_name == "album" %} post-header__meta--album{% endif %}">
     <span>Published</span>
     <time datetime="{{ include.post.date | date_to_xmlschema }}">{{ include.post.date | date: date_format }}</time>
-    <span>Class</span>
-    <span>{{ collection_label }}</span>
+    {% if collection_name == "album" %}
+      <a class="post-header__kind" href="{{ '/album/' | relative_url }}" aria-label="View all album entries" title="View all album entries">
+        <svg class="icon" aria-hidden="true"><use xlink:href="{{ "/assets/fontawesome/icons.svg" | relative_url }}#music"></use></svg>
+      </a>
+    {% else %}
+      <span>Class</span>
+      <span>{{ collection_label }}</span>
+    {% endif %}
     {% if include.post.rating %}
       <span>Rating</span>
       <span>{{ include.post.rating }}</span>

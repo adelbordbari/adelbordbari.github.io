@@ -13,6 +13,33 @@ grep -q 'Benjamin Franklin' _includes/archive.html
 grep -q 'catalog-kind' _includes/archive.html
 grep -q 'post-content .prose' _sass/basic.sass
 grep -q 'max-width: 80ch' _sass/basic.sass
+grep -q 'permalink: /album/artists/' album/artists.html
+grep -q 'group_by: "artist"' _includes/artist-index.html
+grep -q 'artist_albums.size > 1' _includes/album-index.html
+grep -q 'album-item__rating-spec' _includes/album-index.html
+grep -q 'post-header__kind' _includes/meta.html
+grep -q 'utility-module--compact .utility-label' _sass/classes.sass
+grep -q 'min-height: 3.5rem' _sass/classes.sass
+test -f assets/fonts/Vazirmatn-Regular.woff2
+grep -q 'font-family: "Vazirmatn"' _sass/font.sass
+grep -q '\$font-family-ui:' _sass/index.sass
+grep -q '\$font-family-code:' _sass/index.sass
+grep -q 'font-weight: 900' _sass/basic.sass
+grep -q 'font-stretch: condensed' _sass/basic.sass
+grep -q 'backdrop-filter: blur' _sass/classes.sass
+grep -q 'site-cover::before' _sass/classes.sass
+
+if grep -R -n 'Departure' _sass assets/css; then
+  echo "Pixelated Departure font remains in active styles." >&2
+  exit 1
+fi
+
+non_code_mono_uses=$(grep -R -n '\$font-family-code' _sass | grep -v -E 'code|pre|kbd|samp|rouge|highlight|index.sass' || true)
+if test -n "$non_code_mono_uses"; then
+  echo "$non_code_mono_uses" >&2
+  echo "Code font is used outside code presentation." >&2
+  exit 1
+fi
 
 if grep -q -E 'cover-specs|specimen-grid' _includes/archive.html; then
   echo "Decorative homepage specs or grids remain." >&2
@@ -51,6 +78,7 @@ if command -v bundle >/dev/null 2>&1; then
   test -f _site/code/index.html
   test -f _site/etc/index.html
   test -f _site/album/index.html
+  test -f _site/album/artists/index.html
   test -f _site/photo/index.html
   test -f _site/about/index.html
   test -f _site/feed.xml
@@ -60,6 +88,8 @@ if command -v bundle >/dev/null 2>&1; then
   grep -q 'catalog-kind' _site/index.html
   ! grep -q -E 'cover-specs|specimen-grid' _site/index.html
   grep -q 'post-header__meta' _site/code/paint-the-code/index.html
+  grep -q 'artist-index' _site/album/artists/index.html
+  grep -q 'The Smiths' _site/album/artists/index.html
   grep -q 'rel="canonical"' _site/index.html
   grep -q 'application/atom+xml' _site/index.html
 
