@@ -1,6 +1,8 @@
 title: "Adel B."
 author: "adel"
-description: "Made with Jekyll"
+description: "A personal notebook for code, albums, photography, reviews, and occasional rants."
+url: "https://adelbordbari.github.io"
+baseurl: ""
 permalink: /:title/
 lang: "en"
 excerpt_separator: "\n\n\n"

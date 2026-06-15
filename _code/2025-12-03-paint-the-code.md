@@ -1,6 +1,10 @@
 ---
 title: "Paint The Code"
 layout: "post"
+kind: project
+status: complete
+stack:
+  - Python
 ---
 
 ## Table of Contents

@@ -1,7 +1,8 @@
 <div class="atomic-widget atomic-widget--lastfm" data-atomic-widget>
+  <a class="widget-fallback" href="https://www.last.fm/user/thenitwit">View my Last.fm profile</a>
   <script src="https://recentfm.rknight.me/now.js?u=thenitwit&nomoji=true"></script>
-  <!-- <script src="https://recentfm.rknight.me/now.js?u=thenitwit&e=▶️"></script> -->
 </div>
+<noscript><a class="widget-fallback" href="https://www.last.fm/user/thenitwit">View my Last.fm profile</a></noscript>
 
 <script>
   (function() {
@@ -60,6 +61,8 @@
       if (!root) return;
       if (root.dataset.atomicStarted === 'true') return;
       root.dataset.atomicStarted = 'true';
+      const fallback = root.closest('[data-atomic-widget]')?.querySelector('.widget-fallback');
+      if (fallback) fallback.hidden = true;
 
       // Move/create GIF first so it's part of the widget render
       const gif = placeGif(root);
@@ -156,6 +159,8 @@
       document.querySelectorAll('.atomic-widget--lastfm').forEach(el => {
         if (!el.classList.contains('is-ready') && !el.querySelector('.recent-played')) {
           el.classList.add('is-ready');
+          const fallback = el.querySelector('.widget-fallback');
+          if (fallback) fallback.hidden = false;
         }
       });
     }, 5000);

@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-<article class="page-content">
+<article class="page-content" lang="{{ page.lang | default: site.lang }}" dir="{{ page.dir | default: page_direction }}">
   <header class="page-header">
     <span class="utility-label">Filed section / {{ page.title }}</span>
     <h1>{{ page.title }}</h1>

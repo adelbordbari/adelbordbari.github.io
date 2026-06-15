@@ -35,5 +35,21 @@
       <span>Tags</span>
       <span>{{ include.post.tags | join: ", " }}</span>
     {% endif %}
+    {% if collection_name == "code" and include.post.kind == "project" %}
+      <span>Kind</span>
+      <span>Project</span>
+      {% if include.post.status %}
+        <span>Status</span>
+        <span>{{ include.post.status }}</span>
+      {% endif %}
+      {% if include.post.stack %}
+        <span>Stack</span>
+        <span>{{ include.post.stack | join: ", " }}</span>
+      {% endif %}
+      {% if include.post.source_url %}
+        <span>Source</span>
+        <a href="{{ include.post.source_url }}">View repository</a>
+      {% endif %}
+    {% endif %}
   </div>
 </header>

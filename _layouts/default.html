@@ -1,12 +1,20 @@
 <!DOCTYPE html>
-<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+{% assign page_language = page.lang | default: site.lang | default: "en" %}
+{% if page.dir %}
+  {% assign page_direction = page.dir %}
+{% elsif page_language == "fa" or page_language == "ar" or page_language == "he" %}
+  {% assign page_direction = "rtl" %}
+{% else %}
+  {% assign page_direction = "ltr" %}
+{% endif %}
+<html lang="{{ page_language }}" dir="{{ page_direction }}">
   <head>
-    <title>{% if page.title %}{{ page.title | escape }} | {% endif %}{{ site.title | escape }}</title>
     <meta charset="{{ site.encoding }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="{{ page.author | default: site.author | escape }}">
     <meta name="generator" content="Jekyll v{{ jekyll.version }}">
-    <link rel="canonical" href="{{ page.url | absolute_url }}">
+    {% include seo.html %}
+    <link rel="icon" href="{{ "/favicon.ico" | relative_url }}" sizes="any">
     {% if site.show_frame %}
     <link rel="stylesheet" href="{{ "/assets/css/frame.css" | relative_url }}">
     {% else %}

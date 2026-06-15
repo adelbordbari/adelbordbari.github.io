@@ -22,13 +22,12 @@
 
 <ol class="collection-list">
   {% for post in posts %}
-    {% assign item_number = offset | plus: forloop.index %}
     <li class="collection-row">
-      <span class="collection-row__ref">REF-{{ item_number | prepend: "0" }}</span>
+      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%d %b %Y" }}</time>
       <a class="collection-row__title{% if post.title.size > 38 %} collection-row__title--scroll{% endif %}" href="{{ post.url | relative_url }}">
         <span class="collection-row__title-track">{{ post.title }}</span>
       </a>
-      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%d %b %Y" }}</time>
+      <span class="collection-row__kind">{% if post.kind == "project" %}Project{% else %}Article{% endif %}</span>
     </li>
   {% endfor %}
 </ol>

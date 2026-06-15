@@ -29,13 +29,6 @@
   position: relative
   z-index: 1
 
-.site-cover__issue
-  color: $muted
-  font-family: $font-family-ui
-  font-size: .78rem
-  letter-spacing: .14em
-  text-transform: uppercase
-
 .site-cover h1
   max-width: 9ch
   margin: .35em 0 .15em
@@ -86,13 +79,6 @@
   letter-spacing: .1em
   text-transform: uppercase
 
-.barcode-divider
-  width: min(34rem, 100%)
-  height: 24px
-  margin: 2rem auto 1rem
-  background: repeating-linear-gradient(90deg, $ink 0 1px, transparent 1px 4px, $ink 4px 7px, transparent 7px 10px, $ink 10px 12px, transparent 12px 17px)
-  opacity: .72
-
 .catalog-section
   margin-top: clamp(2rem, 6vw, 5rem)
 
@@ -117,14 +103,14 @@
   position: relative
   overflow: hidden
   border: 1px solid rgba($ink, .18)
-  background: linear-gradient(120deg, rgba($ink, .075), rgba($raised, .44) 45%, rgba($ink, .025))
-  box-shadow: inset 0 1px 0 rgba($ink, .1), 0 14px 34px rgba($paper, .14)
-  backdrop-filter: blur(14px) saturate(.65)
-  -webkit-backdrop-filter: blur(14px) saturate(.65)
+  background: rgba($raised, .78)
+  box-shadow: inset 0 1px 0 rgba($ink, .08)
+  backdrop-filter: blur(10px)
+  -webkit-backdrop-filter: blur(10px)
 
 .catalog-row
   display: grid
-  grid-template-columns: 4.5rem minmax(0, 1fr) 3.25rem 8rem
+  grid-template-columns: 8rem minmax(0, 1fr) 8rem
   border-bottom: 1px solid $rule
   font-family: $font-family-ui
   font-size: .8rem
@@ -159,7 +145,7 @@
 .catalog-kind
   display: flex
   align-items: center
-  justify-content: center
+  gap: .45rem
   color: $muted
   text-decoration: none
 
@@ -195,10 +181,10 @@
   padding: 1rem
   overflow: hidden
   border: 1px solid rgba($ink, .16)
-  background: linear-gradient(120deg, rgba($ink, .09), rgba($raised, .48) 42%, rgba($ink, .035))
-  box-shadow: inset 0 1px 0 rgba($ink, .12), inset 0 -1px 0 rgba($paper, .3), 0 14px 34px rgba($paper, .18)
-  backdrop-filter: blur(16px) saturate(.6)
-  -webkit-backdrop-filter: blur(16px) saturate(.6)
+  background: rgba($raised, .78)
+  box-shadow: inset 0 1px 0 rgba($ink, .09)
+  backdrop-filter: blur(10px)
+  -webkit-backdrop-filter: blur(10px)
 
 .utility-module::after,
 .cover-quote::after
@@ -271,10 +257,18 @@
   margin: 0
 
 .atomic-widget
-  opacity: 0
-
-.atomic-widget.is-ready
   opacity: 1
+
+.widget-fallback
+  min-height: 2.75rem
+  display: inline-flex
+  align-items: center
+  color: $muted
+  font-family: $font-family-ui
+  font-size: .82rem
+
+.atomic-widget--lastfm:has(.recent-played) > .widget-fallback
+  display: none
 
 #letterboxd-embed-wrapper-tc
   margin-top: 1rem
@@ -303,10 +297,10 @@
   padding: 0
   overflow: hidden
   border: 1px solid rgba($ink, .18)
-  background: linear-gradient(120deg, rgba($ink, .07), rgba($raised, .46) 48%, rgba($ink, .025))
-  box-shadow: inset 0 1px 0 rgba($ink, .1), 0 14px 34px rgba($paper, .14)
-  backdrop-filter: blur(14px) saturate(.65)
-  -webkit-backdrop-filter: blur(14px) saturate(.65)
+  background: rgba($raised, .78)
+  box-shadow: inset 0 1px 0 rgba($ink, .08)
+  backdrop-filter: blur(10px)
+  -webkit-backdrop-filter: blur(10px)
   list-style: none
 
 .collection-row
@@ -331,12 +325,15 @@
 .collection-row > :last-child
   border-right: 0
 
-.collection-row__ref,
-.collection-row time
+.collection-row time,
+.collection-row__kind
   color: $muted
   font-family: $font-family-ui
   font-size: .78rem
   text-transform: uppercase
+
+.collection-row__kind
+  justify-content: center
 
 .collection-row__title
   overflow: hidden
@@ -369,10 +366,10 @@
 .album-item
   padding: 1rem
   border: 1px solid rgba($ink, .18)
-  background: linear-gradient(120deg, rgba($ink, .065), rgba($raised, .46) 48%, rgba($ink, .02))
-  box-shadow: inset 0 1px 0 rgba($ink, .09), 0 14px 34px rgba($paper, .12)
-  backdrop-filter: blur(13px) saturate(.65)
-  -webkit-backdrop-filter: blur(13px) saturate(.65)
+  background: rgba($raised, .78)
+  box-shadow: inset 0 1px 0 rgba($ink, .08)
+  backdrop-filter: blur(10px)
+  -webkit-backdrop-filter: blur(10px)
 
 .album-item__entry
   display: grid
@@ -683,7 +680,7 @@
     min-height: 26rem
 
   .catalog-row
-    grid-template-columns: 4.2rem minmax(0, 1fr)
+    grid-template-columns: 6.25rem minmax(0, 1fr)
 
   .catalog-row--head
     display: none
@@ -691,10 +688,12 @@
   .catalog-row > *
     border-bottom: 1px solid $rule
 
-  .catalog-row > :nth-child(even)
+  .catalog-row > :nth-child(2)
     border-right: 0
 
-  .catalog-row > :nth-last-child(-n+2)
+  .catalog-row > :last-child
+    grid-column: 1 / -1
+    border-right: 0
     border-bottom: 0
 
   .catalog-row > [data-label]::before
@@ -716,12 +715,13 @@
     flex-direction: column
 
   .collection-row
-    grid-template-columns: 5.5rem minmax(0, 1fr)
+    grid-template-columns: 6.25rem minmax(0, 1fr)
 
-  .collection-row time
+  .collection-row__kind
     grid-column: 1 / -1
     border-top: 1px solid $rule
     border-right: 0
+    justify-content: flex-start
 
   .collection-row__title
     white-space: normal
@@ -747,6 +747,17 @@
     flex-direction: column
 
 @media (prefers-reduced-motion: reduce)
+  html
+    scroll-behavior: auto
+
+  *,
+  *::before,
+  *::after
+    scroll-behavior: auto !important
+    animation-duration: .01ms !important
+    animation-iteration-count: 1 !important
+    transition-duration: .01ms !important
+
   .collection-row__title--scroll:hover .collection-row__title-track,
   .collection-row__title--scroll:focus-visible .collection-row__title-track
     animation: none

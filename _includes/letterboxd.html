@@ -1,4 +1,7 @@
-<div id="letterboxd-embed-wrapper-tc" class="atomic-widget" data-atomic-widget></div>
+<div id="letterboxd-embed-wrapper-tc" class="atomic-widget is-ready" data-atomic-widget>
+  <a class="widget-fallback" href="https://letterboxd.com/adel_bordbari/">View my Letterboxd profile</a>
+</div>
+<noscript><a class="widget-fallback" href="https://letterboxd.com/adel_bordbari/">View my Letterboxd profile</a></noscript>
 <script>
   (function() {
     const wrapper = document.getElementById('letterboxd-embed-wrapper-tc');
@@ -26,8 +29,12 @@
     }
 
     fetch('https://lb-embed-content.bokonon.dev?username=adel263')
-      .then(response => response.text())
+      .then(response => {
+        if (!response.ok) throw new Error('Letterboxd request failed');
+        return response.text();
+      })
       .then(data => {
+        if (!data.trim()) throw new Error('Empty Letterboxd response');
         wrapper.innerHTML = data;
         return withTimeout(waitForImages(wrapper), 3000);
       })

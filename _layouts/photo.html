@@ -2,7 +2,7 @@
 layout: default
 ---
 
-<main class="photo-page photo-page--single">
+<main class="photo-page photo-page--single" lang="{{ page.lang | default: site.lang }}" dir="{{ page.dir | default: page_direction }}">
   <article class="photo-single">
     <a class="photo-single__back" href="{{ '/photo/' | relative_url }}">Return to contact sheet</a>
 

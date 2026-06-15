@@ -1,13 +1,12 @@
 <article class="home-index">
   <section class="site-cover" aria-labelledby="cover-title">
-    <span class="site-cover__issue">Notebook no. 18 / digital edition</span>
+    <span class="utility-label">Independent web notebook</span>
     <h1 id="cover-title">{{ site.title }}</h1>
     <p>Field notes from the web: code, records, photographs, reviews, and personal writing.</p>
     <blockquote class="cover-quote">
       <p>Either write things worth reading, or do things worth the writing.</p>
       <cite>Benjamin Franklin</cite>
     </blockquote>
-    <div class="barcode-divider" aria-hidden="true"></div>
   </section>
 
   {% assign all_posts = site.posts | concat: site.code | concat: site.album | concat: site.photos | concat: site.etc %}
@@ -19,52 +18,46 @@
     </div>
     <div class="catalog-table" role="table" aria-label="Latest entries">
       <div class="catalog-row catalog-row--head" role="row">
-        <span role="columnheader">Ref.</span>
-        <span role="columnheader">Entry</span>
-        <span role="columnheader"><span class="visually-hidden">Category</span></span>
         <span role="columnheader">Filed</span>
+        <span role="columnheader">Entry</span>
+        <span role="columnheader">Collection</span>
       </div>
       {% for post in sorted_posts limit:8 %}
         {% assign collection_name = post.collection | default: 'posts' %}
         {% if collection_name == 'album' %}
-          {% assign collection_code = 'A' %}
           {% assign collection_title = 'Album' %}
           {% assign collection_url = '/album/' %}
           {% assign collection_icon = 'music' %}
         {% elsif collection_name == 'code' %}
-          {% assign collection_code = 'C' %}
           {% assign collection_title = 'Code' %}
           {% assign collection_url = '/code/' %}
           {% assign collection_icon = 'code' %}
         {% elsif collection_name == 'photos' %}
-          {% assign collection_code = 'P' %}
           {% assign collection_title = 'Photo' %}
           {% assign collection_url = '/photo/' %}
           {% assign collection_icon = 'camera' %}
         {% elsif collection_name == 'etc' %}
-          {% assign collection_code = 'E' %}
           {% assign collection_title = 'Et cetera' %}
           {% assign collection_url = '/etc/' %}
           {% assign collection_icon = 'asterisk' %}
         {% else %}
-          {% assign collection_code = 'J' %}
           {% assign collection_title = 'Journal' %}
           {% assign collection_url = '/' %}
           {% assign collection_icon = 'home' %}
         {% endif %}
         <div class="catalog-row" role="row">
-          <span role="cell" data-label="Reference">{{ collection_code }}-{{ forloop.index | prepend: "0" }}</span>
-          <a role="cell" data-label="Entry" href="{{ post.url | relative_url }}">{{ post.title }}</a>
-          <a class="catalog-kind" role="cell" href="{{ collection_url | relative_url }}" aria-label="View all {{ collection_title }} entries" title="View all {{ collection_title }} entries">
-            <svg class="icon" aria-hidden="true"><use xlink:href="{{ "/assets/fontawesome/icons.svg" | relative_url }}#{{ collection_icon }}"></use></svg>
-          </a>
           <time role="cell" data-label="Filed" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%d %b %Y" }}</time>
+          <a role="cell" data-label="Entry" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          <a class="catalog-kind" role="cell" data-label="Collection" href="{{ collection_url | relative_url }}" aria-label="View all {{ collection_title }} entries">
+            <svg class="icon" aria-hidden="true"><use xlink:href="{{ "/assets/fontawesome/icons.svg" | relative_url }}#{{ collection_icon }}"></use></svg>
+            <span>{{ collection_title }}</span>
+          </a>
         </div>
       {% endfor %}
     </div>
   </section>
 
-  <section class="utility-grid" aria-label="Listening and viewing activity">
+  <section class="utility-grid" aria-label="Recent listening and film activity">
     <div class="utility-module utility-module--compact">
       <span class="utility-label">Recently played</span>
       {% include lastfm.html %}

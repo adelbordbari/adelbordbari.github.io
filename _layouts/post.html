@@ -2,7 +2,7 @@
 layout: default
 ---
 
-<article class="post-content">
+<article class="post-content" lang="{{ page.lang | default: site.lang }}" dir="{{ page.dir | default: page_direction }}">
   {% include meta.html post=page %}
 
   {% if page.cover %}

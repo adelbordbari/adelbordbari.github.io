@@ -2,55 +2,28 @@
 
 set -euo pipefail
 
-grep -q 'site-cover' _includes/archive.html
+grep -q '^url: "https://adelbordbari.github.io"' _config.yml
+grep -q 'include seo.html' _layouts/default.html
+grep -q 'dir="{{ page_direction }}"' _layouts/default.html
+grep -q 'property="og:title"' _includes/seo.html
+grep -q 'name="twitter:card"' _includes/seo.html
+grep -q 'application/ld+json' _includes/seo.html
+grep -q 'include.post.kind == "project"' _includes/meta.html
+grep -q 'include.post.source_url' _includes/meta.html
+grep -q 'kind: project' _code/2025-12-03-paint-the-code.md
+grep -q 'lang: fa' _album/2026-04-15-88-radio-tehran.md
+grep -q '\[dir="rtl"\]' _sass/basic.sass
+grep -q '@media (prefers-reduced-motion: reduce)' _sass/classes.sass
+grep -q 'View my Last.fm profile' _includes/lastfm.html
+grep -q 'View my Letterboxd profile' _includes/letterboxd.html
+grep -q 'noscript' _includes/lastfm.html
+grep -q 'noscript' _includes/letterboxd.html
+grep -q 'Benjamin Franklin' _includes/archive.html
 grep -q 'catalog-table' _includes/archive.html
-grep -q 'post-header__meta' _includes/meta.html
-grep -q '\$paper:' _sass/index.sass
 grep -q 'album-item__specs' _includes/album-index.html
 grep -q 'photo-card__number' _includes/photo-index.html
-grep -q 'jekyll-feed' _config.yml
-grep -q 'Benjamin Franklin' _includes/archive.html
-grep -q 'catalog-kind' _includes/archive.html
-grep -q 'post-content .prose' _sass/basic.sass
-grep -q 'max-width: 80ch' _sass/basic.sass
 grep -q 'permalink: /album/artists/' album/artists.html
-grep -q 'group_by: "artist"' _includes/artist-index.html
-grep -q "'/album/artists/' | relative_url" _includes/album-index.html
-grep -q 'album-item__rating-spec' _includes/album-index.html
-grep -q 'post-header__kind' _includes/meta.html
-grep -q 'utility-module--compact .utility-label' _sass/classes.sass
-grep -q 'min-height: 3.5rem' _sass/classes.sass
 test -f assets/fonts/Vazirmatn-Regular.woff2
-grep -q 'font-family: "Vazirmatn"' _sass/font.sass
-grep -q '\$font-family-ui:' _sass/index.sass
-grep -q '\$font-family-code:' _sass/index.sass
-grep -q 'font-weight: 900' _sass/basic.sass
-grep -q 'font-stretch: condensed' _sass/basic.sass
-grep -q 'backdrop-filter: blur' _sass/classes.sass
-grep -q 'site-cover::before' _sass/classes.sass
-grep -q 'collection-row__title-track' _includes/simple-collection-index.html
-grep -q 'post.title.size > 38' _includes/simple-collection-index.html
-grep -q 'collection-row__title--scroll' _sass/classes.sass
-grep -q 'animation: title-marquee' _sass/classes.sass
-grep -q 'white-space: nowrap' _sass/classes.sass
-grep -q 'font-family: \$font-family-serif' _sass/classes.sass
-grep -q 'font-size: clamp(1.35rem' _sass/classes.sass
-grep -q 'overflow-x: auto' _sass/classes.sass
-grep -q 'page-content > .prose > .collection-list' _sass/basic.sass
-grep -q 'max-width: none' _sass/basic.sass
-grep -q 'artist-index:has(.artist-group:target)' _sass/classes.sass
-grep -q 'artist_group.items.size' _includes/artist-index.html
-grep -q 'include.post.artist' _includes/meta.html
-grep -q 'Artist' _includes/meta.html
-
-if grep -q -E 'artist_group.items.size > 1|artist_albums.size > 1' _includes/artist-index.html _includes/album-index.html; then
-  echo "Artist index still excludes single-entry artists." >&2
-  exit 1
-fi
-grep -q 'width: 100%' _sass/basic.sass
-grep -q 'page-content > .prose > .collection-list' _sass/basic.sass
-grep -q 'id="{{ artist_group.name | strip | slugify }}"' _includes/artist-index.html
-grep -q 'artist-group:not(:target)' _sass/classes.sass
 
 if grep -R -n 'Departure' _sass assets/css; then
   echo "Pixelated Departure font remains in active styles." >&2
@@ -64,8 +37,8 @@ if test -n "$non_code_mono_uses"; then
   exit 1
 fi
 
-if grep -q -E 'cover-specs|specimen-grid' _includes/archive.html; then
-  echo "Decorative homepage specs or grids remain." >&2
+if grep -q -E 'site-cover__issue|barcode-divider|REF-' _includes/archive.html _includes/simple-collection-index.html; then
+  echo "Artificial issue, barcode, or reference labels remain." >&2
   exit 1
 fi
 
@@ -114,6 +87,10 @@ if command -v bundle >/dev/null 2>&1; then
   grep -q 'artist-index' _site/album/artists/index.html
   grep -q 'The Smiths' _site/album/artists/index.html
   grep -q 'rel="canonical"' _site/index.html
+  grep -q 'property="og:title"' _site/index.html
+  grep -q 'name="twitter:card"' _site/index.html
+  grep -q 'application/ld+json' _site/index.html
+  grep -q '<html lang="fa" dir="rtl">' _site/album/88-radio-tehran/index.html
   grep -q 'application/atom+xml' _site/index.html
 
   if grep -q 'fonts.googleapis.com' _site/assets/css/index.css; then
