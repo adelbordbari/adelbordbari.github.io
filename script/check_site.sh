@@ -11,6 +11,11 @@ grep -q 'album-item__specs' _includes/album-index.html
 grep -q 'photo-card__number' _includes/photo-index.html
 grep -q 'jekyll-feed' _config.yml
 
+if grep -R -n -E '^:{1,2}[a-zA-Z-]+' _sass assets/css --include='*.sass'; then
+  echo "Top-level pseudo selectors must be prefixed for legacy GitHub Pages Sass." >&2
+  exit 1
+fi
+
 if grep -q 'photo-marquee' _includes/photo-index.html; then
   echo "Legacy photo marquee remains in the photo index." >&2
   exit 1
