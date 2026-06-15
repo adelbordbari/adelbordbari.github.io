@@ -36,11 +36,15 @@
               {{ post.title }}
             </a>
           </h3>
-          <h5>{{ post.year }} | by {{ post.artist }}</h5>
-          <h6>posted on {{ post.date | date: "%B %d, %Y" }} </h6>
+          <dl class="album-item__specs">
+            <div><dt>Artist</dt><dd>{{ post.artist }}</dd></div>
+            <div><dt>Year</dt><dd>{{ post.year }}</dd></div>
+            <div><dt>Filed</dt><dd>{{ post.date | date: "%d %b %Y" }}</dd></div>
+          </dl>
         </div>
         <div class="album-item__rating">
-          <h4>{{ post.rating }}</h4>
+          <span>Rating</span>
+          <strong>{{ post.rating }}</strong>
         </div>
       </div>
     </article>

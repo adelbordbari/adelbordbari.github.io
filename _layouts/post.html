@@ -2,22 +2,19 @@
 layout: default
 ---
 
-<article>
+<article class="post-content">
   {% include meta.html post=page %}
-  
+
   {% if page.cover %}
     <div class="post-cover">
-      <img class="post-cover__glow" alt="" src="{{ page.cover }}" aria-hidden="true" />
-      <img id="cover" class="post-cover__image" alt="cover" src="{{ page.cover }}" />
+      <img id="cover" class="post-cover__image" alt="{{ page.title | escape }} cover" src="{{ page.cover }}" />
     </div>
   {% endif %}
- 
-  {% if page.rating %}
-    <h2 class="post-rating">{{ page.rating }}</h2>
-  {% endif %}
 
-  {{ content }}
-  
+  <div class="prose">
+    {{ content }}
+  </div>
+
   {% if page.comments != false and site.comments.isso or site.comments.disqus %}
     <hr>
     {% if site.comments.isso_domain %}<div id="isso-thread"></div>{% endif %}

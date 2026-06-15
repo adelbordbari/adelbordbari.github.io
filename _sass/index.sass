@@ -1,24 +1,30 @@
 $font-size: 1rem !default
 $font-weight: 400 !default
-// $font-family: "PT Sans", -apple-system, "Helvetica Neue", "Segoe UI", "Roboto", sans-serif !default
-// $font-family: "Departure", -apple-system, "Helvetica Neue", "Segoe UI", "Roboto", sans-serif !default
-// $font-family-serif: "PT Serif", -apple-system, "Playfair Display", "Noto Serif", "Georgia", serif !default
-// $font-family-serif: "Departure", -apple-system, "Playfair Display", "Noto Serif", "Georgia", serif !default
-$font-family: "Space Mono", "Courier New", monospace !default
-$font-family-serif: "Space Mono", "Courier New", monospace !default
-$heading-weight: 600 !default
-$line-height: 1.3 !default
-$link-color: #e43b2f !default
-$accent-color: #3b44e2 !default
-$dark: #2d32a7 !default
-$light: #f3f1ed !default
-$line-width: 3px !default
-$line-width-thin: 2px !default
-$radius: 4px !default
-$shadow-step: 8px !default
-$hard-shadow: $shadow-step $shadow-step 0 $dark !default
-$hard-shadow-small: 4px 4px 0 $dark !default
+$font-family: "PT Serif", Georgia, serif !default
+$font-family-sans: "PT Sans", Arial, sans-serif !default
+$font-family-mono: "Departure", "SFMono-Regular", Consolas, monospace !default
+$font-family-serif: $font-family !default
+$heading-weight: 700 !default
+$line-height: 1.65 !default
 
+$paper: #090a09 !default
+$sheet: #111210 !default
+$raised: #171815 !default
+$ink: #e7e4d9 !default
+$muted: #aaa99f !default
+$rule: #5f6059 !default
+$accent: #b7b08c !default
+
+// Compatibility aliases used by the optional frame/sidebar styles.
+$dark: $paper !default
+$light: $ink !default
+$link-color: $accent !default
+$accent-color: $muted !default
+$line-width: 1px !default
+$line-width-thin: 1px !default
+$radius: 0 !default
+$hard-shadow: none !default
+$hard-shadow-small: none !default
 
 @function reduce ($percent)
-  @return rgba(mix($dark, $light), $percent / 100)
+  @return rgba($ink, $percent / 100)

@@ -1,5 +1,27 @@
-<header>
+{% assign collection_name = include.post.collection | default: "posts" %}
+{% if collection_name == "posts" %}
+  {% assign collection_label = "Journal" %}
+{% elsif collection_name == "etc" %}
+  {% assign collection_label = "Et cetera" %}
+{% else %}
+  {% assign collection_label = collection_name | capitalize %}
+{% endif %}
+<header class="post-header">
+  <span class="utility-label">Filed record / {{ collection_label }}</span>
   <h1 class="page-title">{{ include.post.title }}</h1>
   {%- assign date_format = site.date_format | default: "%B %d, %Y" -%}
-  <time datetime="{{ include.post.date | date_to_xmlschema }}">{{ include.post.date | date: date_format }}</time>
+  <div class="post-header__meta">
+    <span>Published</span>
+    <time datetime="{{ include.post.date | date_to_xmlschema }}">{{ include.post.date | date: date_format }}</time>
+    <span>Class</span>
+    <span>{{ collection_label }}</span>
+    {% if include.post.rating %}
+      <span>Rating</span>
+      <span>{{ include.post.rating }}</span>
+    {% endif %}
+    {% if include.post.tags and include.post.tags.size > 0 %}
+      <span>Tags</span>
+      <span>{{ include.post.tags | join: ", " }}</span>
+    {% endif %}
+  </div>
 </header>

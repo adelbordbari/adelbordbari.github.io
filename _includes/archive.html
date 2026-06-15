@@ -1,79 +1,71 @@
-<article>
-  <h3 class="quote-gradient">
-    Either write things worth reading, or do things worth the writing.<br /><small><small><i>-- Benjamin Franklin</i></small></small>
-  </h3>
-  {% assign all_posts = site.posts %}
-  {% for collection in site.collections %}
-        {% assign all_posts = all_posts | concat: collection.docs %}
-      {% endfor %}
+<article class="home-index">
+  <section class="site-cover" aria-labelledby="cover-title">
+    <span class="site-cover__issue">Notebook no. 18 / digital edition</span>
+    <h1 id="cover-title">{{ site.title }}</h1>
+    <p>Field notes from the web: code, records, photographs, reviews, and personal writing.</p>
+    <div class="barcode-divider" aria-hidden="true"></div>
+    <div class="cover-specs" aria-label="Archive specifications">
+      <span>Format / Independent web notebook</span>
+      <span>Language / {{ site.lang | upcase }}</span>
+      <span>Sections / 04 collections</span>
+    </div>
+    <div class="specimen-grid" aria-hidden="true">
+      <div><span class="specimen specimen--graph"></span><small>I / grid</small></div>
+      <div><span class="specimen specimen--margin"></span><small>II / margin</small></div>
+      <div><span class="specimen specimen--ruled"></span><small>III / ruled</small></div>
+    </div>
+  </section>
+
+  {% assign all_posts = site.posts | concat: site.code | concat: site.album | concat: site.photos | concat: site.etc %}
   {% assign sorted_posts = all_posts | sort: 'date' | reverse %}
-  <section>
-    <h4>Latest Posts</h4>
-    <ul>
-      {% for post in sorted_posts limit:5 %}
+  <section class="catalog-section" aria-labelledby="latest-title">
+    <div class="section-heading">
+      <h2 id="latest-title">Latest entries</h2>
+      <span>{{ all_posts.size }} records / newest first</span>
+    </div>
+    <div class="catalog-table" role="table" aria-label="Latest entries">
+      <div class="catalog-row catalog-row--head" role="row">
+        <span role="columnheader">Ref.</span>
+        <span role="columnheader">Entry</span>
+        <span role="columnheader">Class</span>
+        <span role="columnheader">Filed</span>
+      </div>
+      {% for post in sorted_posts limit:8 %}
         {% assign collection_name = post.collection | default: 'posts' %}
         {% if collection_name == 'album' %}
-          {% assign collection_icon = 'music' %}
-          {% assign collection_url = '/album/' %}
-          {% assign collection_title = 'Albums' %}
+          {% assign collection_code = 'A' %}
+          {% assign collection_title = 'Album' %}
         {% elsif collection_name == 'code' %}
-          {% assign collection_icon = 'code' %}
-          {% assign collection_url = '/code/' %}
+          {% assign collection_code = 'C' %}
           {% assign collection_title = 'Code' %}
         {% elsif collection_name == 'photos' %}
-          {% assign collection_icon = 'camera' %}
-          {% assign collection_url = '/photo/' %}
-          {% assign collection_title = 'Photos' %}
+          {% assign collection_code = 'P' %}
+          {% assign collection_title = 'Photo' %}
         {% elsif collection_name == 'etc' %}
-          {% assign collection_icon = 'asterisk' %}
-          {% assign collection_url = '/etc/' %}
+          {% assign collection_code = 'E' %}
           {% assign collection_title = 'Et cetera' %}
         {% else %}
-          {% assign collection_icon = 'home' %}
-          {% assign collection_url = '/' %}
-          {% assign collection_title = 'Posts' %}
+          {% assign collection_code = 'J' %}
+          {% assign collection_title = 'Journal' %}
         {% endif %}
-        <li>
-          {{ post.date | date: "%B %d, %Y" }} -
-          <a class="latest-post-kind" href="{{ collection_url | relative_url }}" title="More {{ collection_title }}" aria-label="More {{ collection_title }}">
-            <svg class="icon" aria-hidden="true"><use xlink:href="{{ "/assets/fontawesome/icons.svg" | relative_url }}#{{ collection_icon }}"></use></svg>
-          </a>
-          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-        </li>
+        <div class="catalog-row" role="row">
+          <span role="cell" data-label="Reference">{{ collection_code }}-{{ forloop.index | prepend: "0" }}</span>
+          <a role="cell" data-label="Entry" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          <span role="cell" data-label="Class">{{ collection_title }}</span>
+          <time role="cell" data-label="Filed" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%d %b %Y" }}</time>
+        </div>
       {% endfor %}
-    </ul>
+    </div>
   </section>
-  <section>
-    <div class="embed-stack">
+
+  <section class="utility-grid" aria-label="Listening and viewing activity">
+    <div class="utility-module">
+      <span class="utility-label">Recently played</span>
       {% include lastfm.html %}
     </div>
-    <div class="embed-stack">
+    <div class="utility-module">
+      <span class="utility-label">Recent film log</span>
       {% include letterboxd.html %}
     </div>
   </section>
 </article>
-
-
-<svg width="0" height="0" style="position:absolute">
-  <filter id="liquid">
-    <feTurbulence
-      type="fractalNoise"
-      baseFrequency="0.012 0.025"
-      numOctaves="2"
-      seed="2"
-      result="noise">
-      <animate
-        attributeName="baseFrequency"
-        dur="6s"
-        values="0.012 0.025; 0.02 0.015; 0.012 0.025"
-        repeatCount="indefinite" />
-    </feTurbulence>
-
-    <feDisplacementMap
-      in="SourceGraphic"
-      in2="noise"
-      scale="10"
-      xChannelSelector="R"
-      yChannelSelector="G" />
-  </filter>
-</svg>

@@ -1,76 +1,117 @@
+html
+  min-width: 20rem
+  background: $paper
+  scroll-behavior: smooth
+
 body
-  display: flex
-  flex-direction: column
+  min-height: 100vh
+  margin: 0
+  padding: clamp(.5rem, 2vw, 1.5rem)
 
-article
-  flex-grow: 1
+.site-sheet
+  width: min(72rem, 100%)
+  min-height: calc(100vh - clamp(1rem, 4vw, 3rem))
+  margin: 0 auto
+  border: 1px solid $rule
+  background: rgba($sheet, .96)
 
-body > header, body > footer
+.site-header,
+.site-footer
   display: flex
-  flex-wrap: wrap
   align-items: center
   justify-content: space-between
   gap: 1rem
-  background: rgba($light, .9)
-  border: $line-width solid $dark
-  box-shadow: $hard-shadow
-  backdrop-filter: none
-  -webkit-backdrop-filter: none
-  position: relative
-  overflow: hidden
+  padding: .8rem clamp(.8rem, 2vw, 1.5rem)
 
-@media (prefers-color-scheme: dark)
-  body > header, body > footer
-    background: rgba($light, .9)
-    border-color: $dark
-    box-shadow: $hard-shadow
+.site-header
+  border-bottom: 1px solid $rule
 
-body > header, body > article, body > footer
-  padding: 1.5em
-  width: min(72rem, calc(100% - 2rem))
-  box-sizing: border-box
-  margin-inline: auto
+.site-footer
+  border-top: 1px solid $rule
+  color: $muted
 
-article header
-  margin-bottom: 1.5em
+.site-main
+  padding: clamp(1rem, 4vw, 3.5rem)
 
-article header h1
-  margin: 0 0 .1em
+.site-identity
+  display: grid
+  gap: .18rem
+  color: $ink
+  text-decoration: none
 
-nav
+.site-identity__label,
+.utility-label
+  font-family: $font-family-mono
+  font-size: .64rem
+  letter-spacing: .12em
+  line-height: 1.2
+  text-transform: uppercase
+
+.site-identity__label
+  color: $muted
+
+.title
+  font-family: $font-family-sans
+  font-size: 1.35rem
+  font-weight: 700
+  letter-spacing: .04em
+  line-height: 1
+  text-transform: uppercase
+
+.site-nav
   display: flex
   flex-wrap: wrap
-  gap: .5rem
-  margin: .5em 0
+  justify-content: flex-end
+  gap: .35rem
+  margin: 0
 
-nav a
+.site-nav a
+  min-height: 2.5rem
   display: inline-flex
   align-items: center
   justify-content: center
-  min-width: 2.35rem
-  min-height: 2.35rem
-  margin: 0
-  border: $line-width-thin solid $dark
-  border-radius: $radius
-  background: $light
-  box-shadow: 4px 4px 0 $dark
-  color: $dark
+  padding: .3rem .65rem
+  border: 1px solid $rule
+  color: $muted
+  font-family: $font-family-mono
+  font-size: .68rem
+  letter-spacing: .08em
   text-decoration: none
-  transition: transform .15s ease, box-shadow .15s ease, background .15s ease, color .15s ease
+  text-transform: uppercase
 
-nav a:hover,
-nav a.selected
-  background: $link-color
-  color: $light
-  text-decoration: none
-  transform: translate(-2px, -2px)
-  box-shadow: 6px 6px 0 $dark
+.site-nav a:hover,
+.site-nav a.selected
+  border-color: $ink
+  background: $ink
+  color: $paper
 
-@media (max-width: 42rem)
-  body > header, body > footer
-    align-items: flex-start
+.site-footer__copy
+  display: grid
+  gap: .25rem
+  font-family: $font-family-mono
+  font-size: .72rem
+
+@media (max-width: 44rem)
+  body
+    padding: .35rem
+
+  .site-sheet
+    min-height: calc(100vh - .7rem)
+
+  .site-header,
+  .site-footer
+    align-items: stretch
     flex-direction: column
 
-  body > header, body > article, body > footer
-    width: min(100% - 1rem, 72rem)
-    padding: 1rem
+  .site-nav
+    display: grid
+    grid-template-columns: repeat(3, minmax(0, 1fr))
+
+  .site-nav a
+    padding-inline: .35rem
+
+  .site-footer .site-nav
+    grid-template-columns: repeat(2, minmax(0, 1fr))
+
+  .site-main
+    padding: 1.15rem .8rem 2rem

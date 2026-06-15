@@ -20,12 +20,14 @@
 {% assign pagination_base = page.pagination_base %}
 {% assign posts = all_posts | slice: offset, per_page %}
 
-<ul class="collection-list">
+<ol class="collection-list">
   {% for post in posts %}
-    <li>
-      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time>
-      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+    {% assign item_number = offset | plus: forloop.index %}
+    <li class="collection-row">
+      <span class="collection-row__ref">REF-{{ item_number | prepend: "0" }}</span>
+      <a class="collection-row__title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%d %b %Y" }}</time>
     </li>
   {% endfor %}
-</ul>
+</ol>
 {% include pagination.html %}

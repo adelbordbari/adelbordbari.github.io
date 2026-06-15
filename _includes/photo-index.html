@@ -15,39 +15,16 @@
 
 <main class="photo-page">
   <section class="photo-hero" aria-labelledby="photo-title">
-    <div class="photo-hero__kicker">fragments / stills</div>
+    <div class="photo-hero__kicker">Contact sheet / visual archive</div>
     <h1 id="photo-title">Photos</h1>
     <p>light leaks, street corners, small rooms, passing weather.</p>
-    <div class="photo-hero__ticker" aria-hidden="true">
-      <span>shoot</span>
-      <span>develop</span>
-      <span>scan</span>
-      <span>remember</span>
-    </div>
-  </section>
-
-  <section class="photo-marquee" aria-hidden="true">
-    <div>
-      {% for repeat in (1..2) %}
-        <span>stills</span>
-        <span>fragments</span>
-        <span>grain</span>
-        <span>flash</span>
-        <span>contact sheet</span>
-        <span>light leak</span>
-        <span>scan</span>
-        <span>street corner</span>
-        <span>small room</span>
-        <span>passing weather</span>
-      {% endfor %}
-    </div>
   </section>
 
   {% if photo_posts.size > 0 %}
     <section class="photo-grid" aria-label="Photo posts">
       {% for post in photo_posts %}
         <a class="photo-card" href="{{ post.url | relative_url }}">
-          <span class="photo-card__number">{{ offset | plus: forloop.index | prepend: '00' | slice: -2, 2 }}</span>
+          <span class="photo-card__number">FRAME {{ offset | plus: forloop.index | prepend: '00' | slice: -2, 2 }}</span>
           <figure>
             <img src="{{ post.image | relative_url }}" alt="{{ post.title | escape }}" loading="lazy">
             <figcaption>
