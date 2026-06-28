@@ -2,6 +2,10 @@
 layout: default
 ---
 
+{% assign backstory_text = content | strip_html | strip -%}
+{% assign has_backstory = false -%}
+{% if backstory_text != "" %}{% assign has_backstory = true %}{% endif -%}
+{% if has_backstory %}{% include reading-progress.html %}{% endif %}
 <main class="photo-page photo-page--single" lang="{{ page.lang | default: site.lang }}" dir="{{ page.dir | default: page_direction }}">
   <article class="photo-single">
     <a class="photo-single__back" href="{{ '/photo/' | relative_url }}">Return to contact sheet</a>
@@ -10,12 +14,15 @@ layout: default
       <img src="{{ page.image | relative_url }}" alt="{{ page.title | escape }}">
       <figcaption>
         <h1>{{ page.title }}</h1>
-        <p>{{ page.date | date: site.date_format }}</p>
+        <p>
+          {% include relative-date.html date=page.date %}
+          {% if has_backstory %}{% include reading-time.html content=content %}{% endif %}
+        </p>
       </figcaption>
     </figure>
 
-    {% if content != "" %}
-      <div class="photo-single__notes">
+    {% if has_backstory %}
+      <div class="photo-single__notes reading-region prose">
         {{ content }}
       </div>
     {% endif %}

@@ -23,11 +23,11 @@
 <ol class="collection-list">
   {% for post in posts %}
     <li class="collection-row">
-      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%d %b %Y" }}</time>
+      {% include relative-date.html date=post.date %}
       <a class="collection-row__title{% if post.title.size > 38 %} collection-row__title--scroll{% endif %}" href="{{ post.url | relative_url }}">
         <span class="collection-row__title-track">{{ post.title }}</span>
       </a>
-      <span class="collection-row__kind">{% if post.kind == "project" %}Project{% else %}Article{% endif %}</span>
+      {% include reading-time.html content=post.content %}
     </li>
   {% endfor %}
 </ol>

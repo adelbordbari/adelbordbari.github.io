@@ -1,0 +1,2 @@
+{% assign exact_date_format = site.date_format | default: "%B %d, %Y" -%}
+<time class="relative-time" datetime="{{ include.date | date_to_xmlschema }}" title="{{ include.date | date: exact_date_format }}">{{ include.date | date: exact_date_format }}</time>

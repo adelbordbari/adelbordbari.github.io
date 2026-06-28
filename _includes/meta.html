@@ -7,49 +7,16 @@
   {% assign collection_label = collection_name | capitalize %}
 {% endif %}
 <header class="post-header">
-  <span class="utility-label">Filed record / {{ collection_label }}</span>
+  <span class="utility-label">{{ collection_label }}</span>
   <h1 class="page-title">{{ include.post.title }}</h1>
-  {%- assign date_format = site.date_format | default: "%B %d, %Y" -%}
-  <div class="post-header__meta{% if collection_name == "album" %} post-header__meta--album{% endif %}">
-    <span>Published</span>
-    <time datetime="{{ include.post.date | date_to_xmlschema }}">{{ include.post.date | date: date_format }}</time>
-    {% if collection_name == "album" %}
-      <a class="post-header__kind" href="{{ '/album/' | relative_url }}" aria-label="View all album entries" title="View all album entries">
-        <svg class="icon" aria-hidden="true"><use xlink:href="{{ "/assets/fontawesome/icons.svg" | relative_url }}#music"></use></svg>
-      </a>
-    {% else %}
-      <span>Class</span>
-      <span>{{ collection_label }}</span>
-    {% endif %}
-    {% if include.post.rating %}
-      <span>Rating</span>
-      <span>{{ include.post.rating }}</span>
-    {% endif %}
+  <div class="post-header__meta">
+    {% include relative-date.html date=include.post.date %}
+    {% include reading-time.html content=include.content %}
     {% if collection_name == "album" and include.post.artist %}
       {% assign artist_name = include.post.artist | strip %}
       {% assign artist_slug = artist_name | slugify %}
-      <span>Artist</span>
       <a href="{{ '/album/artists/' | relative_url }}#{{ artist_slug }}">{{ artist_name }}</a>
     {% endif %}
-    {% if include.post.tags and include.post.tags.size > 0 %}
-      <span>Tags</span>
-      <span>{{ include.post.tags | join: ", " }}</span>
-    {% endif %}
-    {% if collection_name == "code" and include.post.kind == "project" %}
-      <span>Kind</span>
-      <span>Project</span>
-      {% if include.post.status %}
-        <span>Status</span>
-        <span>{{ include.post.status }}</span>
-      {% endif %}
-      {% if include.post.stack %}
-        <span>Stack</span>
-        <span>{{ include.post.stack | join: ", " }}</span>
-      {% endif %}
-      {% if include.post.source_url %}
-        <span>Source</span>
-        <a href="{{ include.post.source_url }}">View repository</a>
-      {% endif %}
-    {% endif %}
+    {% if include.post.rating %}<span>{{ include.post.rating }}</span>{% endif %}
   </div>
 </header>

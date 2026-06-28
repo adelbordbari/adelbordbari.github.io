@@ -46,7 +46,7 @@
               </dd>
             </div>
             <div><dt>Year</dt><dd>{{ post.year }}</dd></div>
-            <div><dt>Filed</dt><dd>{{ post.date | date: "%d %b %Y" }}</dd></div>
+            <div><dt>Filed</dt><dd>{% include relative-date.html date=post.date %}</dd></div>
             <div class="album-item__rating-spec"><dt>Rating</dt><dd>{{ post.rating }}</dd></div>
           </dl>
         </div>

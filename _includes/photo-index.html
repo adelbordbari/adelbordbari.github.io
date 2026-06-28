@@ -28,7 +28,7 @@
             <img src="{{ post.image | relative_url }}" alt="{{ post.title | escape }}" loading="lazy">
             <figcaption>
               <span>{{ post.title }}</span>
-              <small>{{ post.date | date: site.date_format }}</small>
+              <small>{% include relative-date.html date=post.date %}</small>
             </figcaption>
           </figure>
         </a>

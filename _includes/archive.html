@@ -46,7 +46,7 @@
           {% assign collection_icon = 'home' %}
         {% endif %}
         <div class="catalog-row" role="row">
-          <time role="cell" data-label="Filed" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%d %b %Y" }}</time>
+          <span role="cell" data-label="Filed">{% include relative-date.html date=post.date %}</span>
           <a role="cell" data-label="Entry" href="{{ post.url | relative_url }}">{{ post.title }}</a>
           <a class="catalog-kind" role="cell" data-label="Collection" href="{{ collection_url | relative_url }}" aria-label="View all {{ collection_title }} entries">
             <svg class="icon" aria-hidden="true"><use xlink:href="{{ "/assets/fontawesome/icons.svg" | relative_url }}#{{ collection_icon }}"></use></svg>

@@ -326,13 +326,13 @@
   border-right: 0
 
 .collection-row time,
-.collection-row__kind
+.collection-row .reading-time
   color: $muted
   font-family: $font-family-ui
   font-size: .78rem
   text-transform: uppercase
 
-.collection-row__kind
+.collection-row .reading-time
   justify-content: center
 
 .collection-row__title
@@ -651,13 +651,27 @@
   gap: 1rem
   margin-top: 1rem
 
+.photo-single figcaption p
+  display: flex
+  flex-wrap: wrap
+  gap: .45rem
+  margin: 0
+  color: $muted
+  font-family: $font-family-ui
+  font-size: .8rem
+
+.photo-single figcaption .reading-time::before
+  content: "·"
+  margin-right: .45rem
+  color: $accent
+
 .photo-single h1
   margin: 0
   font-size: clamp(2rem, 6vw, 4.5rem)
 
 .photo-single__notes
-  max-width: 68ch
-  margin-top: 2rem
+  max-width: 42rem
+  margin: clamp(2rem, 6vw, 4rem) auto 0
 
 .more a
   display: inline-flex
@@ -717,7 +731,7 @@
   .collection-row
     grid-template-columns: 6.25rem minmax(0, 1fr)
 
-  .collection-row__kind
+  .collection-row .reading-time
     grid-column: 1 / -1
     border-top: 1px solid $rule
     border-right: 0
@@ -761,3 +775,6 @@
   .collection-row__title--scroll:hover .collection-row__title-track,
   .collection-row__title--scroll:focus-visible .collection-row__title-track
     animation: none
+
+  .reading-progress__fill
+    transition: none

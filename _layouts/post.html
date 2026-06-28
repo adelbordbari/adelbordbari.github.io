@@ -2,8 +2,9 @@
 layout: default
 ---
 
+{% include reading-progress.html %}
 <article class="post-content" lang="{{ page.lang | default: site.lang }}" dir="{{ page.dir | default: page_direction }}">
-  {% include meta.html post=page %}
+  {% include meta.html post=page content=content %}
 
   {% if page.cover %}
     <div class="post-cover">
@@ -11,7 +12,7 @@ layout: default
     </div>
   {% endif %}
 
-  <div class="prose">
+  <div class="reading-region prose">
     {{ content }}
   </div>
 
