@@ -23,17 +23,25 @@ widget behavior, reading progress, relative dates, or search/social metadata.
 
 ## Color System
 
-Use near-black and charcoal surfaces, off-white primary text, cool muted text,
-and low-contrast gray rules. Preserve the established brand colors exactly:
+Use a soft graphite hierarchy rather than absolute black and white. The base
+surface is `#17191c`, the site sheet is `#1d2024`, raised records are `#24282d`,
+primary text is a muted `#c9c8c2`, secondary text is `#92969b`, and rules range
+from `#3d4248` to `#555b62`. This keeps long-form text comfortably above WCAG
+contrast requirements while matching the quieter gray reference more closely.
+
+Preserve the established brand colors exactly:
 
 - red `#e43b2f` is the primary action accent for active navigation, important
-  labels, progress, arrows, calls to action, selection, and hover inversion;
+  labels, progress, arrows, calls to action, selection, and hover feedback;
 - blue `#3b44e2` is the secondary system accent for links, focus outlines,
   occasional panel rules, and restrained technical marks.
 
-No other strong accent color is introduced. Images and album artwork retain
-their original colors. Shadows are absent except for subtle focus or inset
-separation. Texture uses faint monochrome noise and grid lines.
+Solid accent fills are reserved for selection and reading progress. Navigation,
+row, card, and pagination states prefer accent-colored outlines, text, or low
+alpha washes so the overall page remains gray-led. No other strong accent color
+is introduced. Images and album artwork retain their original colors. Shadows
+are absent except for subtle focus or inset separation. Texture uses faint
+monochrome noise and grid lines.
 
 ## Typography
 
