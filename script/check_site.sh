@@ -39,21 +39,16 @@ grep -q 'album-item__specs' _includes/album-index.html
 grep -q 'photo-card__number' _includes/photo-index.html
 grep -q 'permalink: /album/artists/' album/artists.html
 test -f assets/fonts/Vazirmatn-Regular.woff2
+test -f assets/fonts/DepartureMono-Regular.woff2
+grep -q '\$accent-red: #e43b2f' _sass/index.sass
+grep -q '\$accent-blue: #3b44e2' _sass/index.sass
+grep -q 'font-family: "Departure Mono"' _sass/font.sass
+grep -q 'site-cover__primary' _includes/archive.html
+grep -q 'site-cover__secondary' _includes/archive.html
+grep -q 'site-cover__mark" aria-hidden="true"' _includes/archive.html
 
 if grep -q -E '>Kind<|>Class<|>Project<|>Article<|>Status<|>Stack<' _includes/meta.html _includes/simple-collection-index.html; then
   echo "Classification-heavy metadata remains reader-facing." >&2
-  exit 1
-fi
-
-if grep -R -n 'Departure' _sass assets/css; then
-  echo "Pixelated Departure font remains in active styles." >&2
-  exit 1
-fi
-
-non_code_mono_uses=$(grep -R -n '\$font-family-code' _sass | grep -v -E 'code|pre|kbd|samp|rouge|highlight|index.sass' || true)
-if test -n "$non_code_mono_uses"; then
-  echo "$non_code_mono_uses" >&2
-  echo "Code font is used outside code presentation." >&2
   exit 1
 fi
 
@@ -82,8 +77,8 @@ if grep -R -n 'fonts.googleapis.com' _sass assets/css; then
   exit 1
 fi
 
-if grep -R -n -i -E '#e43b2f|#3b44e2|#2d32a7' _sass assets/css; then
-  echo "Legacy red/blue theme colors remain in source styles." >&2
+if grep -q -E 'REF-|coordinates|system-ready|version-label' _includes/archive.html _layouts/*.html; then
+  echo "Fictional technical metadata is reader-facing." >&2
   exit 1
 fi
 
@@ -99,6 +94,9 @@ if command -v bundle >/dev/null 2>&1; then
   test -f _site/about/index.html
   test -f _site/feed.xml
   grep -q 'site-cover' _site/index.html
+  grep -q 'site-cover__primary' _site/index.html
+  grep -q 'site-cover__secondary' _site/index.html
+  grep -q 'site-cover__mark" aria-hidden="true"' _site/index.html
   grep -q 'catalog-table' _site/index.html
   grep -q 'Benjamin Franklin' _site/index.html
   grep -q 'catalog-kind' _site/index.html
@@ -126,10 +124,9 @@ if command -v bundle >/dev/null 2>&1; then
     exit 1
   fi
 
-  if grep -q -i -E '#e43b2f|#3b44e2|#2d32a7' _site/assets/css/index.css; then
-    echo "Legacy red/blue theme colors remain in compiled CSS." >&2
-    exit 1
-  fi
+  grep -qi '#e43b2f' _site/assets/css/index.css
+  grep -qi '#3b44e2' _site/assets/css/index.css
+  grep -q 'Departure Mono' _site/assets/css/index.css
 else
   echo "Bundler is unavailable; skipped generated-site checks." >&2
 fi

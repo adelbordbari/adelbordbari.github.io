@@ -1,12 +1,17 @@
 <article class="home-index">
   <section class="site-cover" aria-labelledby="cover-title">
-    <span class="utility-label">Independent web notebook</span>
-    <h1 id="cover-title">{{ site.title }}</h1>
-    <p>Field notes from the web: code, records, photographs, reviews, and personal writing.</p>
-    <blockquote class="cover-quote">
-      <p>Either write things worth reading, or do things worth the writing.</p>
-      <cite>Benjamin Franklin</cite>
-    </blockquote>
+    <div class="site-cover__primary">
+      <span class="utility-label">Independent web notebook</span>
+      <h1 id="cover-title">{{ site.title }}</h1>
+      <p class="site-cover__intro">Field notes from the web: code, records, photographs, reviews, and personal writing.</p>
+      <span class="site-cover__mark" aria-hidden="true"></span>
+    </div>
+    <div class="site-cover__secondary">
+      <blockquote class="cover-quote">
+        <p>Either write things worth reading, or do things worth the writing.</p>
+        <cite>Benjamin Franklin</cite>
+      </blockquote>
+    </div>
   </section>
 
   {% assign all_posts = site.posts | concat: site.code | concat: site.album | concat: site.photos | concat: site.etc %}
