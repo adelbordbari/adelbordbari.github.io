@@ -13,8 +13,11 @@ layout: default
     <figure>
       <img src="{{ page.image | relative_url }}" alt="{{ page.title | escape }}">
       <figcaption>
-        <h1>{{ page.title }}</h1>
-        <p>
+        <div class="photo-single__caption">
+          <h1>{{ page.title }}</h1>
+          {% if page.caption %}<p class="photo-single__caption-text">{{ page.caption }}</p>{% endif %}
+        </div>
+        <p class="photo-single__meta">
           {% include relative-date.html date=page.date %}
           {% if has_backstory %}{% include reading-time.html content=content %}{% endif %}
         </p>

@@ -273,3 +273,17 @@ Run: `git push origin master`
 
 Expected: the remote `master` branch advances to the implementation commit and
 GitHub Pages begins its normal build.
+
+### Follow-up: Compact Activity, Dates, And Photo Captions
+
+- Add acceptance assertions for an 18rem maximum Recently Played column,
+  non-wrapping 8.5rem/7.75rem collection date columns, and conditional
+  `page.caption` markup.
+- Update `_sass/classes.sass` with those grid rules and separate serif caption
+  styling from mono photo metadata.
+- Update `_layouts/photo.html` to render `page.caption` only when supplied while
+  retaining optional Markdown body text and reading progress.
+- Populate `_photos/2026-06-07-tmp.md` with a descriptive title, sample caption,
+  and sample paragraph.
+- Run `node script/test_reader_context.js`, `bash script/check_site.sh`, direct
+  Sass compilation, and `git diff --check` before publication.

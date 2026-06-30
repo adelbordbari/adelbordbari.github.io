@@ -20,12 +20,18 @@ grep -q 'include reading-progress.html' _layouts/post.html
 grep -q 'class="reading-region prose"' _layouts/post.html
 grep -q 'has_backstory' _layouts/photo.html
 grep -q 'photo-single__notes reading-region prose' _layouts/photo.html
+grep -q 'grid-template-columns: minmax(14rem, 18rem) minmax(0, 1fr)' _sass/classes.sass
+grep -q 'grid-template-columns: 8.5rem minmax(0, 1fr) 8rem' _sass/classes.sass
+grep -q 'grid-template-columns: 7.75rem minmax(0, 1fr)' _sass/classes.sass
+grep -q 'page.caption' _layouts/photo.html
+grep -q 'photo-single__caption-text' _layouts/photo.html
+grep -q '^caption:' _photos/2026-06-07-tmp.md
 grep -q 'reader-context.js' _layouts/default.html
 grep -q 'relative-time' _includes/relative-date.html
 grep -q '200' _includes/reading-time.html
 grep -q 'calculateProgress' assets/js/reader-context.js
 grep -q 'reading-progress__fill' _sass/basic.sass
-grep -q '.photo-single figcaption p' _sass/classes.sass
+grep -q '.photo-single__meta' _sass/classes.sass
 grep -q 'lang: fa' _album/2026-04-15-88-radio-tehran.md
 grep -q '\[dir="rtl"\]' _sass/basic.sass
 grep -q '@media (prefers-reduced-motion: reduce)' _sass/classes.sass
@@ -116,7 +122,8 @@ if command -v bundle >/dev/null 2>&1; then
   grep -q 'min read' _site/code/paint-the-code/index.html
   grep -q 'reader-context.js' _site/code/paint-the-code/index.html
   ! grep -q -E '>Kind<|>Class<|>Project<|>Article<|>Status<|>Stack<' _site/code/paint-the-code/index.html
-  ! grep -q 'class="reading-progress"' _site/photos/tmp/index.html
+  grep -q 'class="reading-progress"' _site/photos/tmp/index.html
+  grep -q 'class="reading-time"' _site/photos/tmp/index.html
   grep -q 'artist-index' _site/album/artists/index.html
   grep -q 'The Smiths' _site/album/artists/index.html
   grep -q 'rel="canonical"' _site/index.html
@@ -124,6 +131,8 @@ if command -v bundle >/dev/null 2>&1; then
   grep -q 'name="twitter:card"' _site/index.html
   grep -q 'application/ld+json' _site/index.html
   grep -q '<html lang="fa" dir="rtl">' _site/album/88-radio-tehran/index.html
+  grep -q 'photo-single__caption-text' _site/photos/tmp/index.html
+  grep -q 'photo-single__notes reading-region prose' _site/photos/tmp/index.html
   grep -q 'application/atom+xml' _site/index.html
 
   if grep -q 'fonts.googleapis.com' _site/assets/css/index.css; then

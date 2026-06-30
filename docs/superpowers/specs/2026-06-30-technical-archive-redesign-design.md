@@ -143,3 +143,15 @@ English post, and RTL output at desktop and mobile widths where tooling permits.
 - All reusable site elements share one coherent token and component system.
 - Mobile layouts remain legible and free from page-level horizontal overflow.
 - Repository checks and the Jekyll production build pass.
+
+## Compact Activity And Photo Caption Revision
+
+The homepage Recently Played module uses a capped 18rem column while the film
+module consumes the remaining width. Collection date columns are wide enough for
+relative dates such as “4 months ago” and keep those dates on one line.
+
+Photos support three independent content levels: `title` for the archive entry
+and image alternative text, an optional short `caption` displayed beneath the
+title, and optional Markdown body text rendered in the existing reading region.
+Older photos without captions or body text remain compatible and produce no
+empty wrappers.
