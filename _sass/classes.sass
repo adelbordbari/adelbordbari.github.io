@@ -31,7 +31,7 @@
   justify-content: flex-end
   padding: clamp(3rem, 8vw, 7rem) clamp(1.25rem, 5vw, 5rem)
   border-right: 1px solid $rule
-  background-image: linear-gradient(rgba($rule, .2) 1px, transparent 1px), linear-gradient(90deg, rgba($rule, .2) 1px, transparent 1px)
+  background-image: linear-gradient(rgba($rule, .12) 1px, transparent 1px), linear-gradient(90deg, rgba($rule, .12) 1px, transparent 1px)
   background-size: 32px 32px
 
 .site-cover__secondary
@@ -61,14 +61,14 @@
   right: clamp(1.25rem, 3vw, 2.5rem)
   width: clamp(3.5rem, 8vw, 6.5rem)
   aspect-ratio: 1
-  border: 1px solid rgba($accent-blue, .8)
+  border: 1px solid rgba($accent-blue, .42)
   border-radius: 50%
 
 .site-cover__mark::before,
 .site-cover__mark::after
   content: ""
   position: absolute
-  background: rgba($accent-blue, .7)
+  background: rgba($accent-blue, .38)
 
 .site-cover__mark::before
   top: 50%
@@ -184,8 +184,8 @@
   text-decoration: none
 
 .catalog-kind:hover
-  background: $accent-red
-  color: $paper
+  background: rgba($accent-red, .1)
+  color: $ink
 
 .catalog-kind .icon
   width: .85rem
@@ -571,9 +571,9 @@
 
 .pagination a:hover,
 .pagination .is-current
-  border-color: $accent-red
-  background: $accent-red
-  color: $paper
+  border-color: rgba($accent-red, .65)
+  background: rgba($accent-red, .1)
+  color: $ink
 
 .pagination .is-disabled
   color: $rule

@@ -40,6 +40,13 @@ grep -q 'photo-card__number' _includes/photo-index.html
 grep -q 'permalink: /album/artists/' album/artists.html
 test -f assets/fonts/Vazirmatn-Regular.woff2
 test -f assets/fonts/DepartureMono-Regular.woff2
+grep -q '\$paper: #17191c' _sass/index.sass
+grep -q '\$sheet: #1d2024' _sass/index.sass
+grep -q '\$raised: #24282d' _sass/index.sass
+grep -q '\$ink: #c9c8c2' _sass/index.sass
+grep -q '\$muted: #92969b' _sass/index.sass
+grep -q '\$rule: #3d4248' _sass/index.sass
+grep -q '\$rule-strong: #555b62' _sass/index.sass
 grep -q '\$accent-red: #e43b2f' _sass/index.sass
 grep -q '\$accent-blue: #3b44e2' _sass/index.sass
 grep -q 'font-family: "Departure Mono"' _sass/font.sass
