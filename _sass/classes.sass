@@ -79,9 +79,9 @@
 .site-cover h1
   max-width: 6ch
   margin: .1em 0 .12em
-  font-size: clamp(4.4rem, 13vw, 10rem)
+  font-size: clamp(3.2rem, 11vw, 7rem)
   letter-spacing: .02em
-  line-height: .8
+  line-height: .9
   text-transform: uppercase
 
 .site-cover__intro
@@ -129,7 +129,7 @@
   border-left: 0
   color: $ink
   font-family: $font-family-display
-  font-size: clamp(1.1rem, 2.4vw, 1.9rem)
+  font-size: clamp(1rem, 2vw, 1.5rem)
   font-weight: 400
   line-height: 1.12
   letter-spacing: .03em
@@ -198,7 +198,7 @@
 
 .section-heading h2
   margin: 0
-  font-size: clamp(1.8rem, 5vw, 3.4rem)
+  font-size: clamp(1.5rem, 4vw, 2.5rem)
 
 .section-heading span
   color: $muted
@@ -274,7 +274,7 @@
   position: relative
   isolation: isolate
   display: grid
-  grid-template-columns: minmax(14rem, 18rem) minmax(0, 1fr)
+  grid-template-columns: 1fr
   gap: 0
   margin-top: 3rem
 
@@ -297,7 +297,7 @@
   background: linear-gradient(90deg, $accent-red, $accent-yellow, transparent 60%)
 
 .utility-module + .utility-module
-  border-left: 0
+  border-top: 0
 
 .utility-module > *,
 .cover-quote > *
@@ -306,23 +306,23 @@
 
 .utility-module--compact
   padding-block: .75rem
-  text-align: center
+  text-align: left
 
 .utility-module--compact .utility-label
-  text-align: center
+  text-align: left
 
 .utility-module--compact .recent-played
-  width: fit-content
-  justify-content: center
+  width: 100%
+  justify-content: flex-start
   margin-top: .55rem
-  margin-inline: auto
+  margin-inline: 0
 
 .utility-module--compact .recent-played-art
   margin-left: 0
 
 .embed-stack
   display: flex
-  justify-content: center
+  justify-content: flex-start
 
 .recent-played
   width: 100%
@@ -340,9 +340,10 @@
 
 .recent-played-track
   min-width: 0
-  overflow: hidden
-  text-overflow: ellipsis
-  white-space: nowrap
+  overflow: visible
+  text-overflow: clip
+  white-space: normal
+  line-height: 1.45
 
 .recent-played-art
   width: 42px
@@ -805,7 +806,7 @@
 
 .photo-single h1
   margin: 0
-  font-size: clamp(2rem, 6vw, 4.5rem)
+  font-size: clamp(1.8rem, 5vw, 3.2rem)
 
 .photo-single__notes
   max-width: 42rem
@@ -849,14 +850,14 @@
     margin-top: 1rem
 
   .site-cover h1
-    font-size: clamp(4.5rem, 24vw, 7rem)
+    font-size: clamp(3rem, 18vw, 5rem)
 
   .utility-grid
     grid-template-columns: 1fr
 
   .utility-module + .utility-module
     border-top: 0
-    border-left: 1px solid $rule
+    border-left: 0
 
   .catalog-row
     grid-template-columns: 6.25rem minmax(0, 1fr)

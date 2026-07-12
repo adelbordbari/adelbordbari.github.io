@@ -20,7 +20,6 @@ grep -q 'include reading-progress.html' _layouts/post.html
 grep -q 'class="reading-region prose"' _layouts/post.html
 grep -q 'has_backstory' _layouts/photo.html
 grep -q 'photo-single__notes reading-region prose' _layouts/photo.html
-grep -q 'grid-template-columns: minmax(14rem, 18rem) minmax(0, 1fr)' _sass/classes.sass
 grep -q 'grid-template-columns: 8.5rem minmax(0, 1fr) 8rem' _sass/classes.sass
 grep -q 'grid-template-columns: 7.75rem minmax(0, 1fr)' _sass/classes.sass
 grep -q 'page.caption' _layouts/photo.html
@@ -64,7 +63,8 @@ grep -q '\$rule: #2e3036' _sass/index.sass
 grep -q '\$rule-strong: #666873' _sass/index.sass
 grep -q '\$accent-red: #e43b2f' _sass/index.sass
 grep -q '\$accent-blue: #1990ff' _sass/index.sass
-grep -q 'font-family: "Departure Mono"' _sass/font.sass
+grep -q '\$font-family-display: "SFMono-Regular"' _sass/index.sass
+grep -q '\$font-family-mono: "SFMono-Regular"' _sass/index.sass
 grep -q 'site-cover__primary' _includes/archive.html
 grep -q 'site-cover__secondary' _includes/archive.html
 grep -q 'site-cover__mark" aria-hidden="true"' _includes/archive.html
@@ -158,7 +158,8 @@ if command -v bundle >/dev/null 2>&1; then
 
   grep -qi '#e43b2f' _site/assets/css/index.css
   grep -qi '#1990ff' _site/assets/css/index.css
-  grep -q 'Departure Mono' _site/assets/css/index.css
+  grep -q 'SFMono-Regular' _site/assets/css/index.css
+  ! grep -q 'Departure Mono' _site/assets/css/index.css
 else
   echo "Bundler is unavailable; skipped generated-site checks." >&2
 fi
