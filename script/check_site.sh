@@ -47,22 +47,23 @@ grep -q 'View my Last.fm profile' _includes/lastfm.html
 grep -q 'View my Letterboxd profile' _includes/letterboxd.html
 grep -q 'noscript' _includes/lastfm.html
 grep -q 'noscript' _includes/letterboxd.html
-grep -q 'Benjamin Franklin' _includes/archive.html
+grep -q 'Perhaps if I make myself write I shall find out what is wrong with me.' _includes/archive.html
 grep -q 'catalog-table' _includes/archive.html
+grep -q 'site-cover__calibration' _includes/archive.html
 grep -q 'album-item__specs' _includes/album-index.html
 grep -q 'photo-card__number' _includes/photo-index.html
 grep -q 'permalink: /album/artists/' album/artists.html
 test -f assets/fonts/Vazirmatn-Regular.woff2
 test -f assets/fonts/DepartureMono-Regular.woff2
-grep -q '\$paper: #17191c' _sass/index.sass
-grep -q '\$sheet: #1d2024' _sass/index.sass
-grep -q '\$raised: #24282d' _sass/index.sass
-grep -q '\$ink: #c9c8c2' _sass/index.sass
-grep -q '\$muted: #92969b' _sass/index.sass
-grep -q '\$rule: #3d4248' _sass/index.sass
-grep -q '\$rule-strong: #555b62' _sass/index.sass
+grep -q '\$paper: #050505' _sass/index.sass
+grep -q '\$sheet: #0a0a0b' _sass/index.sass
+grep -q '\$raised: #111214' _sass/index.sass
+grep -q '\$ink: #f5f3ee' _sass/index.sass
+grep -q '\$muted: #a1a1aa' _sass/index.sass
+grep -q '\$rule: #2e3036' _sass/index.sass
+grep -q '\$rule-strong: #666873' _sass/index.sass
 grep -q '\$accent-red: #e43b2f' _sass/index.sass
-grep -q '\$accent-blue: #3b44e2' _sass/index.sass
+grep -q '\$accent-blue: #1990ff' _sass/index.sass
 grep -q 'font-family: "Departure Mono"' _sass/font.sass
 grep -q 'site-cover__primary' _includes/archive.html
 grep -q 'site-cover__secondary' _includes/archive.html
@@ -124,7 +125,7 @@ if command -v bundle >/dev/null 2>&1; then
   grep -q 'site-cover__secondary' _site/index.html
   grep -q 'site-cover__mark" aria-hidden="true"' _site/index.html
   grep -q 'catalog-table' _site/index.html
-  grep -q 'Benjamin Franklin' _site/index.html
+  grep -q 'Perhaps if I make myself write I shall find out what is wrong with me.' _site/index.html
   grep -q 'catalog-kind' _site/index.html
   ! grep -q -E 'cover-specs|specimen-grid' _site/index.html
   grep -q 'post-header__meta' _site/code/paint-the-code/index.html
@@ -156,7 +157,7 @@ if command -v bundle >/dev/null 2>&1; then
   fi
 
   grep -qi '#e43b2f' _site/assets/css/index.css
-  grep -qi '#3b44e2' _site/assets/css/index.css
+  grep -qi '#1990ff' _site/assets/css/index.css
   grep -q 'Departure Mono' _site/assets/css/index.css
 else
   echo "Bundler is unavailable; skipped generated-site checks." >&2

@@ -9,6 +9,10 @@ html
   --accent: #{$accent}
   --accent-red: #{$accent-red}
   --accent-blue: #{$accent-blue}
+  --accent-yellow: #{$accent-yellow}
+  --accent-green: #{$accent-green}
+  --accent-cyan: #{$accent-cyan}
+  --accent-magenta: #{$accent-magenta}
 
 *
   box-sizing: border-box
@@ -18,9 +22,9 @@ body
   isolation: isolate
   overflow-x: hidden
   background-color: $paper
-  background-image: linear-gradient(rgba($rule, .1) 1px, transparent 1px), linear-gradient(90deg, rgba($rule, .1) 1px, transparent 1px)
+  background-image: linear-gradient(rgba($ink, .035) 1px, transparent 1px), linear-gradient(90deg, rgba($ink, .035) 1px, transparent 1px)
   background-position: center top
-  background-size: 32px 32px
+  background-size: 36px 36px
   color: $ink
   font-family: $font-family
   font-size: $font-size
@@ -35,8 +39,10 @@ body::before
   inset: 0
   z-index: -1
   pointer-events: none
-  opacity: .08
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.78' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='.32'/></svg>")
+  opacity: .12
+  background-image: radial-gradient(circle at center, rgba($ink, .14) 0 1px, transparent 1px)
+  background-size: 9px 9px
+  mix-blend-mode: soft-light
 
 *::selection
   background: $accent-red
@@ -62,25 +68,24 @@ body::before
 
 h1, h2, h3, h4, h5, h6
   color: $ink
-  font-family: $font-family-ui
+  font-family: $font-family-display
   font-weight: $heading-weight
-  line-height: .96
-  letter-spacing: -.025em
+  line-height: .9
+  letter-spacing: .02em
+  text-transform: uppercase
   text-wrap: balance
 
 h1
-  font-family: $font-family-display
-  font-size: clamp(3.2rem, 9vw, 7.5rem)
-  font-stretch: condensed
+  font-size: clamp(3.4rem, 9vw, 7.8rem)
   font-weight: 700
-  line-height: .84
-  letter-spacing: -.065em
+  line-height: .82
+  letter-spacing: .01em
 
 h2
   margin-top: 2.4em
-  font-size: clamp(1.8rem, 4vw, 3rem)
+  font-size: clamp(1.9rem, 4vw, 3.1rem)
   font-weight: 700
-  letter-spacing: -.025em
+  letter-spacing: .02em
 
 h3
   margin-top: 2em
@@ -96,15 +101,17 @@ h5, h6
 
 p
   margin: 1.15em 0
+  overflow-wrap: anywhere
 
 a
   color: $ink
-  text-decoration-color: $accent-blue
+  text-decoration-color: rgba($ink, .55)
   text-decoration-thickness: 1px
   text-underline-offset: .22em
 
 a:hover
-  color: $accent-red
+  color: $ink
+  text-decoration-color: $accent-red
 
 strong, b, th
   font-weight: 700
@@ -116,7 +123,7 @@ hr
   height: 1px
   margin: 2.5rem 0
   border: 0
-  background: linear-gradient(90deg, $accent-red 0 4rem, $rule 4rem 100%)
+  background: linear-gradient(90deg, $accent-red 0 3rem, $accent-yellow 3rem 4rem, $rule 4rem 100%)
 
 img
   display: block
@@ -140,15 +147,18 @@ figcaption
   color: $muted
   font-family: $font-family-mono
   font-size: .8rem
+  letter-spacing: .08em
   text-transform: uppercase
   overflow-wrap: anywhere
 
 blockquote
   margin: 2rem 0
-  padding: .35rem 1.25rem
-  border-left: 3px solid $accent-red
+  padding: .75rem 1.25rem
+  border-left: 1px solid $accent-red
+  border-top: 1px solid rgba($ink, .2)
+  border-bottom: 1px solid rgba($ink, .2)
   color: $ink
-  font-size: 1.08rem
+  font-size: 1.04rem
 
 blockquote p:first-child
   margin-top: 0
@@ -169,7 +179,7 @@ code, kbd, samp
   padding: .14rem .34rem
   border: 1px solid rgba($rule, .8)
   background: $raised
-  color: $accent-blue
+  color: $ink
   font-size: .84em
 
 pre
@@ -178,8 +188,8 @@ pre
   padding: 1rem 1.15rem
   overflow-x: auto
   border: 1px solid $rule
-  border-top-color: $accent-blue
-  background: $paper
+  border-top-color: $accent-red
+  background: $sheet
   color: $ink
   font-family: $font-family-code
   font-size: .82rem
@@ -233,7 +243,7 @@ input, textarea, select
   color: $ink
 
 .prose
-  max-width: 70ch
+  max-width: 72ch
 
 .page-content > .prose
   width: 100%
@@ -266,24 +276,37 @@ input, textarea, select
 .post-header
   position: relative
   margin-bottom: clamp(2rem, 6vw, 4.5rem)
-  padding: clamp(1.25rem, 4vw, 3rem) 0 clamp(1.5rem, 5vw, 4rem)
+  padding: clamp(1.5rem, 4vw, 3rem) 0 clamp(1.75rem, 5vw, 4rem)
   border-top: 1px solid $rule
   border-bottom: 1px solid $rule
+
+.page-header::before,
+.post-header::before
+  content: ""
+  position: absolute
+  top: .65rem
+  right: 0
+  width: clamp(6rem, 16vw, 11rem)
+  height: .72rem
+  background: linear-gradient(90deg, $accent-red 0 18%, $accent-green 18% 34%, $accent-blue 34% 50%, $accent-yellow 50% 66%, $accent-magenta 66% 82%, $ink 82% 100%)
 
 .page-header::after,
 .post-header::after
   content: ""
   position: absolute
-  right: 0
+  left: 0
   bottom: -1px
-  width: clamp(3rem, 10vw, 8rem)
-  height: 2px
-  background: $accent-red
+  width: clamp(4rem, 12vw, 9rem)
+  height: 1px
+  background: $ink
 
 .page-header h1,
 .post-header h1
-  max-width: 14ch
-  margin: .35rem 0 0
+  max-width: 16ch
+  margin: .65rem 0 0
+
+.page-title
+  word-spacing: -.18em
 
 .post-header__meta
   display: flex
@@ -294,16 +317,16 @@ input, textarea, select
   color: $muted
   font-family: $font-family-mono
   font-size: .8rem
-  letter-spacing: .04em
+  letter-spacing: .12em
   text-transform: uppercase
 
 .post-header__meta > *
   min-width: 0
 
 .post-header__meta > * + *::before
-  content: "/"
+  content: "•"
   margin-right: .45rem
-  color: $accent-red
+  color: $accent-yellow
 
 .post-header__meta a
   color: inherit
@@ -324,11 +347,12 @@ input, textarea, select
 [dir="rtl"] .page-header h1
   font-family: $font-family-fa
   letter-spacing: 0
+  text-transform: none
 
 [dir="rtl"] .prose blockquote
   padding-right: 1.25rem
   padding-left: 0
-  border-right: 3px solid $accent-red
+  border-right: 1px solid $accent-red
   border-left: 0
 
 [dir="rtl"] .prose ul,
@@ -366,9 +390,9 @@ input, textarea, select
   position: fixed
   inset: 0 0 auto
   z-index: 100
-  height: 3px
+  height: 4px
   overflow: hidden
-  background: rgba($accent-blue, .28)
+  background: rgba($ink, .14)
 
 .reading-progress[hidden]
   display: none
@@ -379,7 +403,7 @@ input, textarea, select
   display: block
   transform: scaleX(0)
   transform-origin: left center
-  background: $accent-red
+  background: linear-gradient(90deg, $accent-red 0 22%, $accent-yellow 22% 38%, $accent-green 38% 54%, $accent-cyan 54% 70%, $accent-blue 70% 86%, $accent-magenta 86% 100%)
   will-change: transform
 
 .post-cover
@@ -387,7 +411,7 @@ input, textarea, select
   margin: 0 0 3rem
   padding: .65rem
   border: 1px solid $rule
-  background: $paper
+  background: $sheet
 
 .post-cover__image,
 #cover
@@ -435,7 +459,7 @@ input, textarea, select
   color: $ink
 
 .highlight .m, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .mo
-  color: $accent-blue
+  color: $accent-cyan
 
 .highlight .nf, .highlight .nc, .highlight .na
   color: $ink

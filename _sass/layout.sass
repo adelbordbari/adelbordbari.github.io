@@ -6,23 +6,45 @@ html
 body
   min-height: 100vh
   margin: 0
-  padding: clamp(.4rem, 1.4vw, 1rem)
+  padding: clamp(.45rem, 1.4vw, 1rem)
 
 .site-sheet
-  width: min(86rem, 100%)
+  position: relative
+  width: min(92rem, 100%)
   min-height: calc(100vh - clamp(1rem, 4vw, 3rem))
   margin: 0 auto
   border: 1px solid $rule
   background: $sheet
 
+.site-sheet::before,
+.site-sheet::after
+  content: ""
+  position: absolute
+  width: .8rem
+  height: .8rem
+  pointer-events: none
+  border-color: rgba($ink, .32)
+
+.site-sheet::before
+  top: .55rem
+  left: .55rem
+  border-top: 1px solid
+  border-left: 1px solid
+
+.site-sheet::after
+  right: .55rem
+  bottom: .55rem
+  border-right: 1px solid
+  border-bottom: 1px solid
+
 .site-header,
 .site-footer
   display: grid
-  grid-template-columns: minmax(12rem, 1fr) auto
+  grid-template-columns: minmax(14rem, 1fr) auto
   align-items: center
   justify-content: space-between
   gap: 1rem
-  padding: .75rem clamp(.75rem, 2vw, 1.5rem)
+  padding: .9rem clamp(.85rem, 2vw, 1.65rem)
 
 .site-header
   border-bottom: 1px solid $rule
@@ -33,11 +55,11 @@ body
 .site-header::after
   content: ""
   position: absolute
-  left: clamp(.75rem, 2vw, 1.5rem)
+  left: clamp(.85rem, 2vw, 1.65rem)
   bottom: -1px
-  width: 3.5rem
-  height: 2px
-  background: $accent-red
+  width: min(14rem, 34vw)
+  height: .78rem
+  background: linear-gradient(90deg, $accent-red 0 14%, $accent-green 14% 28%, $accent-blue 28% 42%, $accent-cyan 42% 56%, $accent-yellow 56% 70%, $accent-magenta 70% 84%, rgba($ink, .25) 84% 100%)
 
 .site-footer
   border-top: 1px solid $rule
@@ -48,7 +70,7 @@ body
 
 .site-identity
   display: grid
-  gap: .18rem
+  gap: .28rem
   color: $ink
   text-decoration: none
 
@@ -61,13 +83,13 @@ body
   text-transform: uppercase
 
 .site-identity__label
-  color: $accent-red
+  color: $muted
 
 .title
   font-family: $font-family-display
-  font-size: 1.35rem
+  font-size: clamp(1.1rem, 2vw, 1.55rem)
   font-weight: 700
-  letter-spacing: -.02em
+  letter-spacing: .08em
   line-height: 1
   text-transform: uppercase
 
@@ -83,19 +105,20 @@ body
   display: inline-flex
   align-items: center
   justify-content: center
-  padding: .3rem .65rem
-  border: 1px solid transparent
+  padding: .3rem .7rem
+  border: 1px solid $rule
   color: $muted
   font-family: $font-family-mono
   font-size: .78rem
-  letter-spacing: .08em
+  letter-spacing: .12em
   text-decoration: none
   text-transform: uppercase
+  background: rgba($ink, .015)
 
 .site-nav a:hover,
 .site-nav a.selected
-  border-color: rgba($accent-red, .65)
-  background: rgba($accent-red, .1)
+  border-color: rgba($ink, .4)
+  background: rgba($ink, .06)
   color: $ink
 
 .site-nav a:focus-visible
