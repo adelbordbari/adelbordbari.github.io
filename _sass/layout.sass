@@ -132,3 +132,20 @@ body
 
   .site-main
     padding: 1.15rem .8rem 2rem
+
+@media (max-width: 30rem)
+  .site-header,
+  .site-footer
+    padding-inline: .65rem
+
+  .title
+    font-size: 1.15rem
+
+  .site-nav
+    grid-template-columns: repeat(2, minmax(0, 1fr))
+
+  .site-footer .site-nav
+    grid-template-columns: 1fr
+
+  .site-main
+    padding: 1rem .65rem 1.75rem

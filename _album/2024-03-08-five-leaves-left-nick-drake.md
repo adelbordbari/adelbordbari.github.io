@@ -46,7 +46,7 @@ I've heard and loved **River Man** for over a year. I expect great atmospheres, 
 
 it's odd how ironic **Fruit Tree** happened to be: _"Fame is but a fruit tree... It can never flourish ‘Til its stock is in the ground"_. Drake didn't get any attention during his lifetime, and became famous only when he died, and was "in the ground", _"‘Til time has flown, Far from their dying day"_. I love the strings in the third quarter, so unsettling and alarming. there's a clarinet that I like too, it sounds a bit like flamenco in the second part. this is now my other favorite song. the text is a gem, with many brilliant lines in it.
 
-> Forgotten while you’re here, Remembered for a while  
+> Forgotten while you're here, Remembered for a while  
 > A much-updated ruin, From a much-outdated style  
 > Life is but a memory, Happened long ago  
 > Theatre full of sadness, For a long-forgotten show  
@@ -56,12 +56,12 @@ it's odd how ironic **Fruit Tree** happened to be: _"Fame is but a fruit tree...
 it ends very well too, and concludes everything. in the final verse he "calls" the fruit tree as if it's a person who he knows, he comforts the tree. the melody is reassuring and not alarming anymore, there's comfort in the hope that someday he will be appreciated. Drake committed suicide at 26.
 
 > Fruit tree, fruit tree; No one knows you but the rain and the air  
-> Don’t you worry, They’ll stand and stare when you’re gone  
+> Don't you worry, They'll stand and stare when you're gone  
 > Fruit tree, fruit tree; Open your eyes to another year  
-> They’ll all know, That you were here when you’re gone
+> They'll all know, That you were here when you're gone
 
 **Saturday Sun** is a sweet clear ending. it talks of a great day that happened to follow a sad day. probably an analogy for his own life where he had a great childhood/youth but that child has matured into someone melancholic and there's nothing we can do about it but to cry for a good day gone.
 
-> But Saturday’s sun has turned to Sunday’s rain  
+> But Saturday's sun has turned to Sunday's rain  
 > So Sunday sat in the Saturday sun  
 > And wept for a day gone by

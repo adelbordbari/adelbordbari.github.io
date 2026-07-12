@@ -29,7 +29,7 @@ instead of thinking “I need a big serious project”, just sketch. make tiny t
 So I wanted a small sketch that:
 - uses code as *data* instead of something to execute
 - feels a bit like generative art
-- doesn’t require a browser or shaders or anything fancy
+- doesn't require a browser or shaders or anything fancy
 
 The result was this little side project: a Python source visualizer that turns any `.py` file into a panel of abstract rectangles.  
 Nothing “useful”, but very fun.
@@ -52,7 +52,7 @@ The core idea is:
 
 So comments, strings, numbers, keywords, etc. all get their own “visual personality”.
 
-In the end you get something that kind of looks like a Mondrian painting that’s been hit with a syntax highlighter.
+In the end you get something that kind of looks like a Mondrian painting that's been hit with a syntax highlighter.
 
 ---
 
@@ -68,7 +68,7 @@ def read_text(path):
 ````
 
 Nothing fancy, but the important bit for me: I *never* `import` or `exec` the file.[^1]
-It’s just bytes → text. That’s it.
+It's just bytes → text. That's it.
 
 I also explicitly set `errors="replace"` so if the file has weird encoding issues, the visualizer still works and just throws in some replacement characters. Glitch-friendly.
 
@@ -118,14 +118,14 @@ def tokenize_source(text):
 
 A couple of fun bits here:
 
-* I’m using Python’s built-in `tokenize` module instead of splitting on characters myself.
+* I'm using Python's built-in `tokenize` module instead of splitting on characters myself.
 * Every token falls into one of a small set of groups:
   `keyword`, `name`, `string`, `number`, `comment`, `op`, `other`.
 * Each token gets a `weight` that is roughly `len(tok_str)`. Longer tokens = more “influence” later.
 
 The `try/except` is there so that if tokenization fails (e.g., half-written files or snippets), I just treat the whole thing as one big `"other"` block. The sketch should never crash just because the code is ugly.
 
-This matches that “sketching” mindset: it’s allowed to be broken, the tool should still respond somehow.
+This matches that “sketching” mindset: it's allowed to be broken, the tool should still respond somehow.
 
 ---
 
@@ -250,7 +250,7 @@ So:
 * each token group has a *typical* split ratio (e.g. comments are a bit 65/35-ish),
 * then I nudge it randomly within bounds.
 
-This is one of those tiny details that doesn’t matter logically, but visually it changes things a lot.
+This is one of those tiny details that doesn't matter logically, but visually it changes things a lot.
 The layouts feel less “perfect grid” and more “hand-tuned but slightly drunk”.
 
 Every resulting rectangle keeps track of:
@@ -438,17 +438,17 @@ Running it without `-o` just pops up a Matplotlib window.
 
 ## Takeaways
 
-1. Code is a great medium to sketch with, even when it’s not doing “real work”.
+1. Code is a great medium to sketch with, even when it's not doing “real work”.
 2. Treating source code as raw data (instead of something to execute) is oddly refreshing.
 3. Randomness is fun, but *deterministic* randomness is much more usable.
 4. Letting token types leak into visuals (orientation, ratios, colors) makes each file feel like it has its own personality.
-5. And finally, once again: sketching is worth it. This started as a “let’s see what happens if…” evening and now I kinda want to build a whole series of tools like this.
+5. And finally, once again: sketching is worth it. This started as a “let's see what happens if…” evening and now I kinda want to build a whole series of tools like this.
 
 ---
 
 ## Footnotes
 
-[^1]: This is both from the “security” side (don’t execute random files) and from the “art” side – the program should not care if the code even *runs*.
+[^1]: This is both from the “security” side (don't execute random files) and from the “art” side – the program should not care if the code even *runs*.
 
 [^2]: I still think a proper generative palette system would be fun. Maybe next sketch.
 

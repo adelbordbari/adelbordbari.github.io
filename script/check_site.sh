@@ -38,6 +38,11 @@ grep -q '.photo-single__meta' _sass/classes.sass
 grep -q 'lang: fa' _album/2026-04-15-88-radio-tehran.md
 grep -q '\[dir="rtl"\]' _sass/basic.sass
 grep -q '@media (prefers-reduced-motion: reduce)' _sass/classes.sass
+grep -q '@media (max-width: 30rem)' _sass/layout.sass
+grep -q 'overflow-wrap: anywhere' _sass/basic.sass
+grep -q '\.mermaid' _sass/basic.sass
+grep -q 'figcaption' _sass/basic.sass
+grep -q 'grid-template-columns: 1fr' _sass/classes.sass
 grep -q 'View my Last.fm profile' _includes/lastfm.html
 grep -q 'View my Letterboxd profile' _includes/letterboxd.html
 grep -q 'noscript' _includes/lastfm.html
@@ -62,6 +67,11 @@ grep -q 'font-family: "Departure Mono"' _sass/font.sass
 grep -q 'site-cover__primary' _includes/archive.html
 grep -q 'site-cover__secondary' _includes/archive.html
 grep -q 'site-cover__mark" aria-hidden="true"' _includes/archive.html
+
+if rg -n '```[A-Za-z0-9_+-]+ id="' _code _etc _album _photos >/dev/null; then
+  echo "Nonstandard fenced code block attributes remain in markdown content." >&2
+  exit 1
+fi
 
 if grep -q -E '>Kind<|>Class<|>Project<|>Article<|>Status<|>Stack<' _includes/meta.html _includes/simple-collection-index.html; then
   echo "Classification-heavy metadata remains reader-facing." >&2

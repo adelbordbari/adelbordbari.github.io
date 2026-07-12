@@ -33,7 +33,7 @@ We reviewed several libraries:
 - `django-dynamic-preferences`
 - `dj-dynamic-settings`
 
-While they provide models and admin interfaces for preferences, they either don’t reflect settings in `django.conf.settings` or require custom logic to do so — which still doesn't help when a hard setting like `SESSION_EXPIRE_SECONDS` needs to live in `settings.py`.
+While they provide models and admin interfaces for preferences, they either don't reflect settings in `django.conf.settings` or require custom logic to do so — which still doesn't help when a hard setting like `SESSION_EXPIRE_SECONDS` needs to live in `settings.py`.
 
 Additionally, circular import issues block you from directly referencing database models from within `settings.py`.
 

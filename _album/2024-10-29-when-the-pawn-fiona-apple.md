@@ -9,7 +9,7 @@ cover: https://upload.wikimedia.org/wikipedia/en/2/24/Fiona_apple_when_the_pawn.
 
 ## Preface
 Her second album, originally titled:
-> When the Pawn Hits the Conflicts He Thinks like a King What He Knows Throws the Blows When He Goes to the Fight and He’ll Win the Whole Thing ‘fore He Enters the Ring There’s No Body to Batter When Your Mind Is Your Might so When You Go Solo, You Hold Your Own Hand and Remember That Depth Is the Greatest of Heights and If You Know Where You Stand, Then You Know Where to Land and If You Fall It Won’t Matter, Cuz You’ll Know That You’re Right
+> When the Pawn Hits the Conflicts He Thinks like a King What He Knows Throws the Blows When He Goes to the Fight and He'll Win the Whole Thing ‘fore He Enters the Ring There's No Body to Batter When Your Mind Is Your Might so When You Go Solo, You Hold Your Own Hand and Remember That Depth Is the Greatest of Heights and If You Know Where You Stand, Then You Know Where to Land and If You Fall It Won't Matter, Cuz You'll Know That You're Right
 
 actually held the record for the longest album title until 2007. it's a poem by herself that's written on the front cover.
 

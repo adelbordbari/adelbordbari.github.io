@@ -855,6 +855,54 @@
   .album-item__specs div:nth-child(even)
     border-right: 0
 
+@media (max-width: 30rem)
+  .site-cover__primary
+    min-height: auto
+    padding: 1.25rem 1rem 4.5rem
+
+  .site-cover__secondary
+    min-height: 0
+    padding: 1rem
+
+  .site-cover__mark
+    width: 3.75rem
+
+  .catalog-row,
+  .collection-row,
+  .artist-albums li
+    grid-template-columns: 1fr
+
+  .catalog-row > *,
+  .collection-row > *,
+  .artist-albums li > *
+    border-right: 0
+
+  .catalog-row > * + *,
+  .collection-row > * + *,
+  .artist-albums li > * + *
+    border-top: 1px solid $rule
+
+  .collection-row time,
+  .collection-row .reading-time,
+  .artist-albums li > :last-child
+    justify-content: flex-start
+
+  .album-item__specs
+    grid-template-columns: 1fr
+
+  .album-item__specs div,
+  .album-item__specs div:nth-child(even)
+    border-right: 0
+
+  .photo-card figcaption,
+  .photo-single__meta
+    align-items: flex-start
+    flex-direction: column
+    gap: .35rem
+
+  .photo-card figcaption small
+    text-align: left
+
 @media (prefers-reduced-motion: reduce)
   html
     scroll-behavior: auto

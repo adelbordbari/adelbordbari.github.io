@@ -29,7 +29,7 @@ the tracks have been so short so far (less than 3 minutes). **Lonesome Love** is
 > Every time I drive through the city where you're from  
 > I squeeze a little
 
-**Why Didn’t You Stop Me** is pretty straightforward. it has a more resolute composition. it's a slow burn of regret and self-awareness.
+**Why Didn't You Stop Me** is pretty straightforward. it has a more resolute composition. it's a slow burn of regret and self-awareness.
 
 > I know that I ended it, but  
 > Why won't you chase after me?

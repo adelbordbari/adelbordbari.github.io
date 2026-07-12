@@ -4,9 +4,12 @@ layout: "post"
 ---
 
 ## Table of Contents
+- [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)
-- [Front-End](#front-end)
-- [Back-End](#back-end)
+- [Front End](#front-end)
+  - [challenges](#challenges)
+- [Back End](#back-end)
+- [Conclusion](#conclusion)
 - [Footnotes](#footnotes)
 
 ---
@@ -31,12 +34,12 @@ I started off as a front-end developer, creating a monitoring panel for the oper
 2. in dark and light color modes
 3. in both English and Farsi (RTL direction)
 4. any menu would fold in small screens: a kebab menu and a hamburger menu that had their own routing
-5. users could log in using an external provider (google log in)
+5. users could log in using an external provider (SSO)
 
 This was a crucial time because it was my first committed job. I practiced teamwork, honesty, and communication. I most importantly learned to not under/overestimate my abilities.
-promising to do a small task in two days and _actually doing it_ is way better than promising that you'd do it in 5 hours but failing to do so.
+Promising to do a small task in two days and _actually doing it_ is way better than promising that you'd do it in 5 hours but failing to do so.
 
-We adopted the mobile-first approach, also implementing the English (LTR), dark mode. then process to English light mode, and finally seal the deal by implementing the Farsi, RTL mode. both theme and language would change with a button. we also had our own color palette that included over 80 colors.
+We adopted the mobile-first approach, also implementing the English (LTR), dark mode. then process to English light mode, and finally seal the deal by implementing the Farsi, RTL mode. both themes and languages would change with a button. we also had our own color palette that included over 80 colors.
 
 We held sessions every day. I reported my work on Notion, checking tasks and reporting work hours. 
 
@@ -74,7 +77,7 @@ mobile view:
 ![image](https://github.com/adelbordbari/adelbordbari.github.io/assets/13819151/0f59baba-8443-44c1-aa3c-dd6b10fee6ca)
 
 ## Back End
-Four months later, I started developing the backend for the same panel. I started using [FastAPI](https://fastapi.tiangolo.com/). I loved it since I the GitHub repository. it's very fresh, fast, and interesting but despite all this I felt like developing with FastAPI is a lonely process and the framework is not mature engouh for a novice. I didn't give Flast a try yet because the obvious choice was already on the table. I ditched FastAPI and switched to Django Rest Framework (drf). most of the work includes basic CRUDs and database design.
+Four months later, I started developing the backend for the same panel. I started using [FastAPI](https://fastapi.tiangolo.com/). I loved it since I saw the GitHub repository. it's very fresh, fast, and interesting but despite all this I felt like developing with FastAPI is a lonely process and the framework is not mature enough for a novice. I didn't give Flask a try yet because the obvious choice was already on the table. I ditched FastAPI and switched to Django Rest Framework (drf). most of the work includes basic CRUDs and database design.
 
 Although there have been several exceptions that happened to be rather challenging. here's a list:
 1. which constraints should be handled in database level and which in serializer level
@@ -89,6 +92,13 @@ Although there have been several exceptions that happened to be rather challengi
 10. protected endpoints (e.g., endpoints that require login)
 11. [race conditions](/code-race-condition-drf/)
 12. multiple scenarios (attempting to be as exclusive as possible)
+
+This went on for almost two years, until I finished the coursework. one goal out of three, checked.
+
+## Conclusion
+This wasn't by any chance my "first" job, but it was the first one I "tried" to acquire, not just a summertime odd job I did on auto-pilot or to get my hands on some extra cash. the first one I enjoyed doing, the first one that made me feel more interested by the day, the first one that matched what I had studied for, and the first one that will appear on my resume for the rest of my life.
+I did always like backend, because there is system design, and because it has a lot of "engineering" to do. decisions "objectively" matter and it's often much more than a matter of personal taste, or machine-like delivery/implementation. you're responsible for every detail, and every decision must be intentional. that's my criteria for defining good art: **intentionality**. everything you do, not do, plan, postpone, ditch, learn, and use is at its peak when it's intentional. *"I used Django because it had more GitHub stars"* gets you nowhere, but *"I used Django because it had more production-ready auth community libraries so we could deliver faster"* sounds fair.
+It can be tough finding the job you want, even more so considering the brutal market. I like to think of myself lucky to have found it, and I will forever cherish the experiences, challenges, people, and what it taught me.
 
 ## Footnotes
 [^1]: in this screenshot, I've logged in using my Google account, and a navbar item is clicked, the overlay is expanded

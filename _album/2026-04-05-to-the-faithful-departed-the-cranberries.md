@@ -11,7 +11,7 @@ I've heard **Hollywood** before; it sounds grand and angry, unlike the opening a
 
 **Salvation**, is it actually about drug abuse!? I've heard this one before too. sweet, short, simply. very pop-rocky.
 
-**When You're Gone** is a bittersweet ballad. it's about being grateful of having a loved one. the "do-be-da"s makes it sound like 50's traditional pop pieces. this one certainly focus on the atmosphere more then the previous ones, and the reverb and Leslie do help with that. it started to bore me before the last verse. a bit more lyrical diversity would step it up for me. maybe a bridge/counterpoint section. It’s a more straightforward track.
+**When You're Gone** is a bittersweet ballad. it's about being grateful of having a loved one. the "do-be-da"s makes it sound like 50's traditional pop pieces. this one certainly focus on the atmosphere more then the previous ones, and the reverb and Leslie do help with that. it started to bore me before the last verse. a bit more lyrical diversity would step it up for me. maybe a bridge/counterpoint section. It's a more straightforward track.
 
 **Free To Decide** thematically has more depth to it.
 

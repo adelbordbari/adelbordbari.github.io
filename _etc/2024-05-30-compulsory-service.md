@@ -4,7 +4,9 @@ layout: "post"
 ---
 
 ## Table of Contents
+- [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)
+  - [Update - 2025 Sep 30](#update---2025-sep-30)
 - [Footnotes](#footnotes)
 
 ---
@@ -19,7 +21,7 @@ After my degree, I had the time to spend two years in the military. I decided to
 After finishing my M.S. I started the first month of work (actually, right after! exactly two days after. This is crucial since where I lived, studied, and worked were all different cities). Based on what we had agreed on, I had to spend one month of trial employment. after that six months more employment (for the sake of bureaucracy, and since I had no "privileges"[^1]), getting enlisted, two months of military training, then _finally_ starting the two years... there's a lot of paperwork in the process and the company can (quite literally) throw me away at any point without even a reason. I was required to write them a cheque as a "token of good faith" (which is very common, apparently) but there's no guarantee from their side.
 
 ### Update - 2025 Sep 30
-I did all the paperwork, got into my skilled soldier program sucessfully, spent two month at the military camp, and got back to my "job" right after. it's been a long journey and it's been so far, worth it. So many memories at the camp, many new, fun, talented people. The camp was basically in the middle of the desert (as you can see below) and my course happened right in the middle of summer so it was very hot, but I give it a solid 6.5/10 experience nonetheless x)
+I did all the paperwork, got into my skilled soldier program successfully, spent two month at the military camp, and got back to my "job" right after. it's been a long journey and it's been, so far, worth it. So many memories at the camp, many new, fun, talented people. The camp was basically in the middle of the desert (as you can see below) and my course happened right in the middle of summer so it was very hot, but I give it a solid 6.5/10 experience nonetheless.
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d38922.67439592036!2d51.032730029463025!3d35.523538263993395!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sde!4v1759209986383!5m2!1sen!2sde" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 

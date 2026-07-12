@@ -21,8 +21,8 @@ Starts with a whispering song. the wind blows and there's no music. a guy facing
 > Is to leave you alone
 
 The second track is wild and medieval. it's a child talking to his father, promising revenge when he outgrows him. he thinks of the father as something monsterous. **Wild Blue Yonder** sounds cheery and upbeat. it could be the blossoming moments of an unhealthy love, and this fact is known to them but they still stand.
-> And the candle we lit, well we’ll use it to burn this whole place to the ground  
-> I’m lost, I’m found in you
+> And the candle we lit, well we'll use it to burn this whole place to the ground  
+> I'm lost, I'm found in you
 
 **Welly Boots** is also a child-parent monologue. a mother describing her love for her child, how she's there for them even when she's dead: _Just because I left doesn't mean that I'm not still there_.
 > When you were young, you'd kick things just to see if they would fall

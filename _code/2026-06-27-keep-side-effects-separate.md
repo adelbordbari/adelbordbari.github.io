@@ -3,11 +3,11 @@ title: "Keep Side Effects Separate From Decision Logic"
 layout: "post"
 ---
 
-Imagine some code has to touch the real world. It calls a database, reads a file, hits an API, logs something, retries a request, etc. That’s fine. Real software needs that.
+Imagine some code has to touch the real world. It calls a database, reads a file, hits an API, logs something, retries a request, etc. That's fine. Real software needs that.
 
-But the small helper that *decides* something usually doesn’t need to do any of that.
+But the small helper that *decides* something usually doesn't need to do any of that.
 
-```python id="j7cx1d"
+```python
 def is_retryable_error(error):
     logger.info("checking retryability")
     config = read_config()
@@ -22,14 +22,14 @@ But now it also logs, reads config, and talks to the database. So testing it is 
 
 Better:
 
-```python id="odc84z"
+```python
 def is_retryable_error(error):
     return isinstance(error, (TimeoutError, ConnectionError))
 ```
 
 Then use it from the messy, on-the-edge real-world code:
 
-```python id="6x4ya2"
+```python
 try:
     result = client.query(sql)      # side effect happens here
 except Exception as error:
@@ -43,7 +43,7 @@ This also fits nicely with [TDD](https://en.wikipedia.org/wiki/Test-driven_devel
 
 You can write the small tests first:
 
-```python id="843ob0"
+```python
 def test_timeout_is_retryable():
     assert is_retryable_error(TimeoutError()) is True
 

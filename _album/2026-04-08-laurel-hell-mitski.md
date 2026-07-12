@@ -41,7 +41,7 @@ I like the contrast between the upbeat arrangement with the pretty bleak lyrics.
 
 the vocals on **Love Me More** sound very different. it explores our search for validation, and a safe net of expected behaviors. the driving beat fades, again shining the spotlight on the vocal performance. I like the main melody! 
 
-**There's Nothing Left For You** reminds me of Ultravox, 80s again. it starts very quietly and walks slowly into the ear until the synth comes in. I actually like this one. it has strokes, suddenly turns into a full orchestra, and again into a quiet whisper. it ends vaguely. if the ending was more elaborate it could be my favorite, acting as a bridge between the more energetic tracks and the album’s quieter, more introspective moments.
+**There's Nothing Left For You** reminds me of Ultravox, 80s again. it starts very quietly and walks slowly into the ear until the synth comes in. I actually like this one. it has strokes, suddenly turns into a full orchestra, and again into a quiet whisper. it ends vaguely. if the ending was more elaborate it could be my favorite, acting as a bridge between the more energetic tracks and the album's quieter, more introspective moments.
 
 **Should've Been Me** has a darker, almost sarcastic tone. a hazy, atmospheric synth soundscape with a steady funky bassline and once again the processed vocals feels like detachment. I love the ending! the descent feels though-out and on-point.
 

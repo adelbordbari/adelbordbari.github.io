@@ -15,7 +15,7 @@ I didn't like it very much. 49 minutes; it's almost very simple and forgettable.
 
 **Sour Times** sounds very different. it's maybe sampled from a French/Italian song? it makes me think of a cafe at night with the seats out on the sidewalk. it sounds like a Western film score too. I still can think of the album being about Britain: "_I have left is my memories of yesterday_", "_end the vows... take a shot_". the songs aren't very complicated but original. it's not hard to hear that certain early 90s "Bristol sound".
 
-> The song uses a sample from Argentine composer Lalo Schifrin’s “Danube Incident”
+> The song uses a sample from Argentine composer Lalo Schifrin's “Danube Incident”
 
 I wasn't very wrong about that European feel. the electronic alarming sound still wanders through the sounds.  
 I've heard a live performance of **Strangers**, which was fascinating. it perfectly captures the band's DNA. Beth's iconic shaky "ou"s, jazzy guitars, and the electronic glue that ties everything together.
