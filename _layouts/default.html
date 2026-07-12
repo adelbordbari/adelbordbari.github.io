@@ -29,6 +29,12 @@
     {% if site.comments.disqus_shortname and page.layout == "post" %}<script src="//{{ site.comments.disqus_shortname }}.disqus.com/embed.js" async></script>{% endif %}
     {% if site.comments.isso_domain and page.layout == "post" %}<script data-isso="http://{{ site.comments.isso_domain }}" src="//{{ site.comments.isso_domain }}/js/embed.min.js"></script>{% endif %}
     <script defer src="{{ '/assets/js/reader-context.js' | relative_url }}"></script>
+    <script type="module">
+      import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+      import { initMermaidDiagrams } from "{{ '/assets/js/mermaid-diagrams.mjs' | relative_url }}";
+
+      initMermaidDiagrams(document, mermaid);
+    </script>
   </head>
   <body class="layout-{{ page.layout | default: 'default' }}{% if page.url == '/' %} is-home{% endif %}">
     <a class="skip-link" href="#content">Skip to content</a>

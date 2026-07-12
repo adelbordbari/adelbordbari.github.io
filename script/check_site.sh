@@ -27,9 +27,12 @@ grep -q 'page.caption' _layouts/photo.html
 grep -q 'photo-single__caption-text' _layouts/photo.html
 grep -q '^caption:' _photos/2026-06-07-tmp.md
 grep -q 'reader-context.js' _layouts/default.html
+grep -q 'mermaid-diagrams.mjs' _layouts/default.html
+grep -q 'cdn.jsdelivr.net/npm/mermaid' _layouts/default.html
 grep -q 'relative-time' _includes/relative-date.html
 grep -q '200' _includes/reading-time.html
 grep -q 'calculateProgress' assets/js/reader-context.js
+grep -q 'prepareMermaidDiagrams' assets/js/mermaid-diagrams.mjs
 grep -q 'reading-progress__fill' _sass/basic.sass
 grep -q '.photo-single__meta' _sass/classes.sass
 grep -q 'lang: fa' _album/2026-04-15-88-radio-tehran.md
@@ -121,6 +124,8 @@ if command -v bundle >/dev/null 2>&1; then
   grep -q 'role="progressbar"' _site/code/paint-the-code/index.html
   grep -q 'min read' _site/code/paint-the-code/index.html
   grep -q 'reader-context.js' _site/code/paint-the-code/index.html
+  grep -q 'mermaid-diagrams.mjs' _site/code/paint-the-code/index.html
+  grep -q 'cdn.jsdelivr.net/npm/mermaid' _site/code/paint-the-code/index.html
   ! grep -q -E '>Kind<|>Class<|>Project<|>Article<|>Status<|>Stack<' _site/code/paint-the-code/index.html
   grep -q 'class="reading-progress"' _site/photos/tmp/index.html
   grep -q 'class="reading-time"' _site/photos/tmp/index.html

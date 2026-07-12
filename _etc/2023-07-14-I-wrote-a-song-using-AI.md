@@ -5,6 +5,7 @@ toc: true
 ---
 
 ## Table of Contents
+- [Table of Contents](#table-of-contents)
 - [It's scary](#its-scary)
 - [But there's a more real fear](#but-theres-a-more-real-fear)
 
@@ -17,8 +18,6 @@ In general, whenever something appears with an unknown potential limit, it seems
 Not the fear of robots murdering me, but the fear of robots making me obsolete and feel useless. The fear of losing a job, of them doing better "human" things like writing poetry and painting than I.
 
 There is not much to say about the first case; it's fair. We need to control the speed of AI development as a species and not take the next step until we're certain that this current step is firm and reliable. That is beyond the control of most of us, and we just have to hope that things (politicians, AI companies, AI ethics specialists, etc.) work out.
-
-Certainly! Here's a revised version:
 
 When it comes to the second scenario, there's a proverb that goes, "Artificial intelligence won't steal your job, but someone who knows how to leverage it definitely will." Personally, I tend to be cautious when confronted with new technologies and find it challenging to fully embrace them. Whether it's dealing with Instagram and the newer Threads app, or diving into the realm of artificial intelligence, GitLab, and ChatGPT, I can't help but feel a sense of defensiveness. It's a reminder that if I don't adapt quickly enough, someone who is more open to these advancements might just surpass me in the race.
 
