@@ -17,14 +17,14 @@
   position: absolute
   inset: 0
   z-index: 0
-  background-image: linear-gradient(rgba($ink, .045) 1px, transparent 1px), linear-gradient(90deg, rgba($ink, .045) 1px, transparent 1px)
+  background-image: linear-gradient(rgba($ink, .03) 1px, transparent 1px), linear-gradient(90deg, rgba($accent-red, .1) 1px, transparent 1px)
   background-size: 34px 34px
 
 .site-cover::after
   content: ""
   position: absolute
   inset: 1rem
-  border: 1px solid rgba($ink, .08)
+  border: 1px solid rgba($ink, .12)
   pointer-events: none
 
 .site-cover__primary,
@@ -46,7 +46,7 @@
   justify-content: space-between
   align-items: stretch
   padding: clamp(1rem, 3vw, 2rem)
-  background: linear-gradient(180deg, rgba($ink, .015), transparent 45%), $paper
+  background: linear-gradient(180deg, rgba($accent-red, .18), transparent 45%), $paper
 
 .site-cover__calibration
   display: grid
@@ -98,14 +98,14 @@
   right: clamp(1.25rem, 4vw, 2.8rem)
   width: clamp(3.5rem, 8vw, 6.5rem)
   aspect-ratio: 1
-  border: 1px solid rgba($ink, .45)
+  border: 1px solid rgba($ink, .32)
   border-radius: 50%
 
 .site-cover__mark::before,
 .site-cover__mark::after
   content: ""
   position: absolute
-  background: rgba($ink, .38)
+  background: rgba($ink, .28)
 
 .site-cover__mark::before
   top: 50%
@@ -263,7 +263,7 @@
   text-decoration: none
 
 .catalog-kind:hover
-  background: rgba($ink, .05)
+  background: rgba($accent-red, .2)
   color: $ink
 
 .catalog-kind .icon
@@ -285,7 +285,7 @@
   padding: 1rem
   overflow: hidden
   border: 1px solid $rule
-  background: $raised
+  background: rgba($raised, .92)
 
 .utility-module::before
   content: ""
@@ -294,7 +294,7 @@
   left: 0
   width: 100%
   height: 1px
-  background: linear-gradient(90deg, $accent-red, $accent-yellow, transparent 60%)
+  background: linear-gradient(90deg, $accent-blue, $accent-red, transparent 60%)
 
 .utility-module + .utility-module
   border-top: 0
@@ -414,7 +414,7 @@
   transition: background-color .16s ease, border-color .16s ease
 
 .collection-row:hover
-  background: rgba($ink, .05)
+  background: rgba($accent-red, .16)
 
 .collection-row:last-child
   border-bottom: 0
@@ -499,7 +499,7 @@
   transition: border-color .16s ease, transform .16s ease
 
 .album-cover-link:hover .album-cover-duotone
-  border-color: $accent-red
+  border-color: $accent-blue
   transform: translate(-2px, -2px)
 
 .cover-small
@@ -517,7 +517,7 @@
 
 .album-item__body h3 a::after
   content: " ↗"
-  color: $accent-red
+  color: $accent-blue
   font-family: $font-family-mono
   font-size: .65em
 
@@ -556,7 +556,7 @@
   text-decoration-color: rgba($ink, .5)
 
 .album-item__rating-spec dd
-  color: $accent-red
+  color: $accent-blue
   white-space: nowrap
 
 .artist-index__intro
@@ -614,7 +614,7 @@
 .artist-albums li > :last-child
   justify-content: center
   border-right: 0
-  color: $accent-red
+  color: $accent-blue
 
 .artist-albums li > span
   color: $muted
@@ -661,8 +661,8 @@
 
 .pagination a:hover,
 .pagination .is-current
-  border-color: rgba($ink, .38)
-  background: rgba($ink, .06)
+  border-color: rgba($accent-red, .7)
+  background: rgba($accent-red, .2)
   color: $ink
 
 .pagination .is-disabled
@@ -704,7 +704,7 @@
   transition: background-color .16s ease, transform .16s ease
 
 .photo-card:hover
-  background: rgba($ink, .06)
+  background: rgba($accent-red, .16)
   transform: translateY(-1px)
 
 .photo-card__number
@@ -802,7 +802,7 @@
 .photo-single__meta .reading-time::before
   content: "/"
   margin-right: .45rem
-  color: $accent-red
+  color: $accent-blue
 
 .photo-single h1
   margin: 0

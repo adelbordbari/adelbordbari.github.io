@@ -54,17 +54,19 @@ grep -q 'photo-card__number' _includes/photo-index.html
 grep -q 'permalink: /album/artists/' album/artists.html
 test -f assets/fonts/Vazirmatn-Regular.woff2
 test -f assets/fonts/DepartureMono-Regular.woff2
-grep -q '\$paper: #050505' _sass/index.sass
-grep -q '\$sheet: #0a0a0b' _sass/index.sass
-grep -q '\$raised: #111214' _sass/index.sass
-grep -q '\$ink: #f5f3ee' _sass/index.sass
-grep -q '\$muted: #a1a1aa' _sass/index.sass
-grep -q '\$rule: #2e3036' _sass/index.sass
-grep -q '\$rule-strong: #666873' _sass/index.sass
-grep -q '\$accent-red: #e43b2f' _sass/index.sass
-grep -q '\$accent-blue: #1990ff' _sass/index.sass
+grep -q '\$paper: #f2ecda' _sass/index.sass
+grep -q '\$sheet: #f7f1e3' _sass/index.sass
+grep -q '\$raised: #ece3cf' _sass/index.sass
+grep -q '\$ink: #14295c' _sass/index.sass
+grep -q '\$muted: #61705f' _sass/index.sass
+grep -q '\$rule: #aeb79d' _sass/index.sass
+grep -q '\$rule-strong: #7f907d' _sass/index.sass
+grep -q '\$accent-red: #9fb897' _sass/index.sass
+grep -q '\$accent-blue: #14295c' _sass/index.sass
 grep -q '\$font-family-display: "SFMono-Regular"' _sass/index.sass
 grep -q '\$font-family-mono: "SFMono-Regular"' _sass/index.sass
+grep -q 'background: var(--reading-paper, $sheet)' _sass/basic.sass
+grep -q 'box-shadow: 0 0 0 1px rgba($ink, .06)' _sass/basic.sass
 grep -q 'site-cover__primary' _includes/archive.html
 grep -q 'site-cover__secondary' _includes/archive.html
 grep -q 'site-cover__mark" aria-hidden="true"' _includes/archive.html
@@ -156,8 +158,8 @@ if command -v bundle >/dev/null 2>&1; then
     exit 1
   fi
 
-  grep -qi '#e43b2f' _site/assets/css/index.css
-  grep -qi '#1990ff' _site/assets/css/index.css
+  grep -qi '#9fb897' _site/assets/css/index.css
+  grep -qi '#14295c' _site/assets/css/index.css
   grep -q 'SFMono-Regular' _site/assets/css/index.css
   ! grep -q 'Departure Mono' _site/assets/css/index.css
 else

@@ -1,6 +1,6 @@
 html
   min-width: 20rem
-  background: $paper
+  background: linear-gradient(180deg, rgba($accent-red, .14), rgba($paper, .92) 12rem)
   scroll-behavior: smooth
 
 body
@@ -14,7 +14,8 @@ body
   min-height: calc(100vh - clamp(1rem, 4vw, 3rem))
   margin: 0 auto
   border: 1px solid $rule
-  background: $sheet
+  background: linear-gradient(180deg, rgba($accent-red, .12), rgba($sheet, .92) 10rem, $sheet 100%)
+  box-shadow: 0 0 0 1px rgba($ink, .06)
 
 .site-sheet::before,
 .site-sheet::after
@@ -48,6 +49,7 @@ body
 
 .site-header
   border-bottom: 1px solid $rule
+  background: rgba($sheet, .88)
 
 .site-header
   position: relative
@@ -64,6 +66,7 @@ body
 .site-footer
   border-top: 1px solid $rule
   color: $muted
+  background: rgba($raised, .72)
 
 .site-main
   padding: clamp(1rem, 3.5vw, 3.25rem)
@@ -113,12 +116,12 @@ body
   letter-spacing: .12em
   text-decoration: none
   text-transform: uppercase
-  background: rgba($ink, .015)
+  background: rgba($ink, .025)
 
 .site-nav a:hover,
 .site-nav a.selected
-  border-color: rgba($ink, .4)
-  background: rgba($ink, .06)
+  border-color: rgba($accent-red, .7)
+  background: rgba($accent-red, .22)
   color: $ink
 
 .site-nav a:focus-visible
