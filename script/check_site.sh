@@ -65,6 +65,10 @@ grep -q '\$accent-red: #9fb897' _sass/index.sass
 grep -q '\$accent-blue: #14295c' _sass/index.sass
 grep -q '\$font-family-display: "SFMono-Regular"' _sass/index.sass
 grep -q '\$font-family-mono: "SFMono-Regular"' _sass/index.sass
+grep -q 'repeating-radial-gradient' _sass/basic.sass
+grep -q 'repeating-conic-gradient' _sass/basic.sass
+grep -q 'mix-blend-mode: multiply' _sass/basic.sass
+grep -q 'filter: contrast' _sass/basic.sass
 grep -q 'background: var(--reading-paper, $sheet)' _sass/basic.sass
 grep -q 'box-shadow: 0 0 0 1px rgba($ink, .06)' _sass/basic.sass
 grep -q 'site-cover__primary' _includes/archive.html

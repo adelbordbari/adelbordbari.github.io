@@ -22,9 +22,11 @@ body
   isolation: isolate
   overflow-x: hidden
   background-color: $paper
-  background-image: linear-gradient(rgba($accent-blue, .05) 1px, transparent 1px), linear-gradient(90deg, rgba($accent-green, .07) 1px, transparent 1px)
-  background-position: center top
-  background-size: 36px 36px
+  background-image: radial-gradient(ellipse at 8% 4%, rgba($sheet, .92) 0 9%, rgba($accent-cyan, .52) 18%, transparent 36%), radial-gradient(ellipse at 24% 38%, rgba($accent-red, .62) 0 8%, rgba($accent-green, .5) 18%, transparent 35%), radial-gradient(ellipse at 64% 58%, rgba($accent-yellow, .78) 0 11%, rgba($accent-cyan, .46) 24%, transparent 44%), radial-gradient(ellipse at 92% 18%, rgba($ink, .82) 0 11%, rgba($accent-blue, .58) 25%, transparent 43%), radial-gradient(ellipse at 16% 78%, rgba($ink, .72) 0 16%, transparent 42%), radial-gradient(ellipse at 86% 86%, rgba($accent-green, .42) 0 14%, rgba($ink, .42) 39%, transparent 58%), linear-gradient(145deg, rgba($paper, .94) 0%, rgba($raised, .9) 32%, rgba($muted, .42) 58%, rgba($ink, .88) 100%)
+  background-attachment: fixed
+  background-blend-mode: screen, soft-light, screen, multiply, multiply, soft-light, normal
+  background-position: center
+  background-size: cover
   color: $ink
   font-family: $font-family
   font-size: $font-size
@@ -39,10 +41,23 @@ body::before
   inset: 0
   z-index: -1
   pointer-events: none
-  opacity: .35
-  background-image: radial-gradient(circle at center, rgba($ink, .08) 0 1px, transparent 1px)
-  background-size: 9px 9px
+  opacity: .62
+  background-image: repeating-radial-gradient(circle at 18% 22%, rgba($ink, .24) 0 .55px, transparent .65px 2.2px), repeating-radial-gradient(circle at 72% 64%, rgba($sheet, .3) 0 .5px, transparent .7px 2.8px), repeating-conic-gradient(from 12deg at 50% 50%, rgba($ink, .2) 0deg 9deg, rgba($paper, .12) 9deg 18deg, transparent 18deg 31deg)
+  background-position: 0 0, .35rem .5rem, center
+  background-size: 4px 4px, 5px 5px, 11px 11px
+  filter: contrast(145%) saturate(118%)
   mix-blend-mode: multiply
+
+body::after
+  content: ""
+  position: fixed
+  inset: -12vmax
+  z-index: -1
+  pointer-events: none
+  opacity: .48
+  background-image: radial-gradient(ellipse at 12% 10%, rgba($paper, .82) 0 9%, transparent 28%), radial-gradient(ellipse at 54% 22%, rgba($ink, .34) 0 16%, transparent 36%), radial-gradient(ellipse at 26% 56%, rgba($accent-green, .35) 0 12%, transparent 32%), radial-gradient(ellipse at 70% 78%, rgba($ink, .62) 0 21%, transparent 45%)
+  filter: blur(28px) contrast(120%)
+  mix-blend-mode: soft-light
 
 *::selection
   background: rgba($accent-red, .65)
