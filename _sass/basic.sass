@@ -22,10 +22,10 @@ body
   isolation: isolate
   overflow-x: hidden
   background-color: $paper
-  background-image: radial-gradient(ellipse at 12% 8%, rgba($sheet, .82) 0 10%, rgba($accent-cyan, .28) 22%, transparent 44%), radial-gradient(ellipse at 82% 16%, rgba($ink, .36) 0 14%, transparent 42%), radial-gradient(ellipse at 28% 82%, rgba($accent-green, .24) 0 18%, transparent 48%), linear-gradient(145deg, rgba($paper, .98) 0%, rgba($raised, .94) 46%, rgba($muted, .18) 68%, rgba($ink, .28) 100%)
-  background-blend-mode: screen, multiply, soft-light, normal
-  background-position: center
-  background-size: cover
+  // industrial-grid: cheap technical poster background, no filters or blend modes.
+  background-image: linear-gradient(rgba($ink, .09) 1px, transparent 1px), linear-gradient(90deg, rgba($ink, .09) 1px, transparent 1px), linear-gradient(90deg, transparent 0 7%, rgba($accent-red, .92) 7% 7.75%, transparent 7.75% 100%), linear-gradient(180deg, rgba($sheet, .98), rgba($paper, .98))
+  background-position: center top, center top, left top, center
+  background-size: 40px 40px, 40px 40px, 100% 100%, 100% 100%
   color: $ink
   font-family: $font-family
   font-size: $font-size
@@ -34,38 +34,9 @@ body
   -webkit-font-smoothing: antialiased
   text-rendering: optimizeLegibility
 
-body::before
-  content: ""
-  position: fixed
-  inset: 0
-  z-index: -1
-  pointer-events: none
-  opacity: .24
-  background-image: repeating-radial-gradient(circle at 18% 22%, rgba($ink, .18) 0 .45px, transparent .6px 3px), repeating-conic-gradient(from 12deg at 50% 50%, rgba($ink, .12) 0deg 8deg, rgba($paper, .08) 8deg 16deg, transparent 16deg 34deg)
-  background-position: 0 0, center
-  background-size: 6px 6px, 14px 14px
-  mix-blend-mode: multiply
-
-body::after
-  content: ""
-  position: fixed
-  inset: -12vmax
-  z-index: -1
-  pointer-events: none
-  opacity: .14
-  background-image: radial-gradient(ellipse at 12% 10%, rgba($paper, .78) 0 11%, transparent 34%), radial-gradient(ellipse at 72% 82%, rgba($ink, .42) 0 23%, transparent 50%)
-
 body.is-home
-  background-image: radial-gradient(ellipse at 10% 6%, rgba($sheet, .92) 0 10%, rgba($accent-cyan, .46) 22%, transparent 44%), radial-gradient(ellipse at 24% 42%, rgba($accent-red, .5) 0 10%, rgba($accent-green, .38) 24%, transparent 46%), radial-gradient(ellipse at 68% 62%, rgba($accent-yellow, .58) 0 14%, rgba($accent-cyan, .36) 28%, transparent 52%), radial-gradient(ellipse at 92% 18%, rgba($ink, .68) 0 16%, transparent 44%), linear-gradient(145deg, rgba($paper, .95) 0%, rgba($raised, .9) 36%, rgba($muted, .32) 62%, rgba($ink, .62) 100%)
-  background-blend-mode: screen, soft-light, screen, multiply, normal
-
-body.is-home::before
-  opacity: .38
-  background-size: 5px 5px, 12px 12px
-
-body.is-home::after
-  opacity: .24
-  background-image: radial-gradient(ellipse at 14% 8%, rgba($paper, .86) 0 12%, transparent 34%), radial-gradient(ellipse at 28% 70%, rgba($ink, .42) 0 18%, transparent 46%), radial-gradient(ellipse at 78% 72%, rgba($accent-green, .32) 0 18%, transparent 48%)
+  background-image: linear-gradient(rgba($ink, .12) 1px, transparent 1px), linear-gradient(90deg, rgba($ink, .12) 1px, transparent 1px), linear-gradient(90deg, transparent 0 8%, $accent-red 8% 9.25%, transparent 9.25% 74%, $accent-blue 74% 75%, transparent 75% 100%), linear-gradient(135deg, transparent 0 54%, rgba($ink, .5) 54% calc(54% + 1px), transparent calc(54% + 1px)), linear-gradient(180deg, $sheet, $paper)
+  background-size: 36px 36px, 36px 36px, 100% 100%, 100% 100%, 100% 100%
 
 *::selection
   background: rgba($accent-red, .65)

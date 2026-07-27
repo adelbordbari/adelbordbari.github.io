@@ -54,20 +54,18 @@ grep -q 'photo-card__number' _includes/photo-index.html
 grep -q 'permalink: /album/artists/' album/artists.html
 test -f assets/fonts/Vazirmatn-Regular.woff2
 test -f assets/fonts/DepartureMono-Regular.woff2
-grep -q '\$paper: #f2ecda' _sass/index.sass
-grep -q '\$sheet: #f7f1e3' _sass/index.sass
-grep -q '\$raised: #ece3cf' _sass/index.sass
-grep -q '\$ink: #14295c' _sass/index.sass
-grep -q '\$muted: #61705f' _sass/index.sass
-grep -q '\$rule: #aeb79d' _sass/index.sass
-grep -q '\$rule-strong: #7f907d' _sass/index.sass
-grep -q '\$accent-red: #9fb897' _sass/index.sass
-grep -q '\$accent-blue: #14295c' _sass/index.sass
+grep -q '\$paper: #d9d9d2' _sass/index.sass
+grep -q '\$sheet: #f1f0ea' _sass/index.sass
+grep -q '\$raised: #c9c9c1' _sass/index.sass
+grep -q '\$ink: #050505' _sass/index.sass
+grep -q '\$muted: #5f5f58' _sass/index.sass
+grep -q '\$rule: #151515' _sass/index.sass
+grep -q '\$rule-strong: #050505' _sass/index.sass
+grep -q '\$accent-red: #ff4b14' _sass/index.sass
+grep -q '\$accent-blue: #1f2cff' _sass/index.sass
 grep -q '\$font-family-display: "SFMono-Regular"' _sass/index.sass
 grep -q '\$font-family-mono: "SFMono-Regular"' _sass/index.sass
-grep -q 'repeating-radial-gradient' _sass/basic.sass
-grep -q 'repeating-conic-gradient' _sass/basic.sass
-grep -q 'mix-blend-mode: multiply' _sass/basic.sass
+grep -q 'industrial-grid' _sass/basic.sass
 grep -q 'body.is-home' _sass/basic.sass
 grep -q '\.is-home \.site-cover' _sass/classes.sass
 if grep -q 'background-attachment: fixed' _sass/basic.sass; then
@@ -76,6 +74,18 @@ if grep -q 'background-attachment: fixed' _sass/basic.sass; then
 fi
 if grep -q 'filter: blur' _sass/basic.sass; then
   echo "Generated page background must not use blur filters." >&2
+  exit 1
+fi
+if grep -q -E '^body::(before|after)' _sass/basic.sass; then
+  echo "Generated page background must not use fixed body pseudo-layers." >&2
+  exit 1
+fi
+if grep -q 'mix-blend-mode' _sass/basic.sass _sass/classes.sass; then
+  echo "Generated page background must not use blend modes." >&2
+  exit 1
+fi
+if grep -q 'repeating-radial-gradient' _sass/basic.sass _sass/classes.sass; then
+  echo "Generated page background must not use dense radial grain." >&2
   exit 1
 fi
 grep -q 'background: var(--reading-paper, $sheet)' _sass/basic.sass
@@ -171,8 +181,8 @@ if command -v bundle >/dev/null 2>&1; then
     exit 1
   fi
 
-  grep -qi '#9fb897' _site/assets/css/index.css
-  grep -qi '#14295c' _site/assets/css/index.css
+  grep -qi '#ff4b14' _site/assets/css/index.css
+  grep -qi '#1f2cff' _site/assets/css/index.css
   grep -q 'SFMono-Regular' _site/assets/css/index.css
   ! grep -q 'Departure Mono' _site/assets/css/index.css
 else
