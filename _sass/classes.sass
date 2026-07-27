@@ -12,6 +12,11 @@
   border: 1px solid $rule
   background: $sheet
 
+.is-home .site-cover
+  background-color: $paper
+  background-image: radial-gradient(ellipse at 8% 8%, rgba($sheet, .88) 0 12%, rgba($accent-cyan, .42) 24%, transparent 44%), radial-gradient(ellipse at 28% 44%, rgba($accent-red, .46) 0 12%, rgba($accent-green, .36) 26%, transparent 48%), radial-gradient(ellipse at 68% 62%, rgba($accent-yellow, .5) 0 14%, rgba($accent-cyan, .32) 30%, transparent 54%), radial-gradient(ellipse at 92% 18%, rgba($ink, .62) 0 17%, transparent 46%), linear-gradient(145deg, rgba($paper, .9), rgba($raised, .82) 42%, rgba($muted, .28) 68%, rgba($ink, .5))
+  background-blend-mode: screen, soft-light, screen, multiply, normal
+
 .site-cover::before
   content: ""
   position: absolute
@@ -19,6 +24,13 @@
   z-index: 0
   background-image: linear-gradient(rgba($ink, .03) 1px, transparent 1px), linear-gradient(90deg, rgba($accent-red, .1) 1px, transparent 1px)
   background-size: 34px 34px
+
+.is-home .site-cover::before
+  opacity: .42
+  background-image: repeating-radial-gradient(circle at 24% 20%, rgba($ink, .2) 0 .5px, transparent .65px 3px), repeating-radial-gradient(circle at 72% 68%, rgba($sheet, .26) 0 .5px, transparent .65px 3.4px), repeating-conic-gradient(from 10deg at 50% 50%, rgba($ink, .12) 0deg 8deg, rgba($paper, .08) 8deg 18deg, transparent 18deg 34deg)
+  background-position: 0 0, .25rem .35rem, center
+  background-size: 5px 5px, 6px 6px, 13px 13px
+  mix-blend-mode: multiply
 
 .site-cover::after
   content: ""

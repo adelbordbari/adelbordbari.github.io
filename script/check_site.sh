@@ -68,7 +68,16 @@ grep -q '\$font-family-mono: "SFMono-Regular"' _sass/index.sass
 grep -q 'repeating-radial-gradient' _sass/basic.sass
 grep -q 'repeating-conic-gradient' _sass/basic.sass
 grep -q 'mix-blend-mode: multiply' _sass/basic.sass
-grep -q 'filter: contrast' _sass/basic.sass
+grep -q 'body.is-home' _sass/basic.sass
+grep -q '\.is-home \.site-cover' _sass/classes.sass
+if grep -q 'background-attachment: fixed' _sass/basic.sass; then
+  echo "Generated page background must not use fixed attachment." >&2
+  exit 1
+fi
+if grep -q 'filter: blur' _sass/basic.sass; then
+  echo "Generated page background must not use blur filters." >&2
+  exit 1
+fi
 grep -q 'background: var(--reading-paper, $sheet)' _sass/basic.sass
 grep -q 'box-shadow: 0 0 0 1px rgba($ink, .06)' _sass/basic.sass
 grep -q 'site-cover__primary' _includes/archive.html

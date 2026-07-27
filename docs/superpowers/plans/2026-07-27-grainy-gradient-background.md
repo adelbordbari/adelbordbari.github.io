@@ -4,7 +4,7 @@
 
 **Goal:** Build a CSS-only grainy gradient background that imitates the supplied reference images using the site's own color palette.
 
-**Architecture:** Keep the change inside global Sass and the existing acceptance script. `body` owns the broad color fields, while `body::before` and `body::after` provide generated grain and shadow texture.
+**Architecture:** Keep the change inside global Sass, homepage cover Sass, and the existing acceptance script. `body` owns the broad color fields, `body::before` and `body::after` provide lightweight generated grain and shadow texture, and `.is-home .site-cover` carries the stronger homepage treatment.
 
 **Tech Stack:** Jekyll 4.2, Sass, CSS gradients, existing shell acceptance checks.
 
@@ -15,6 +15,8 @@
 - Use existing Sass palette variables.
 - Static background only.
 - Preserve `.site-sheet` readability.
+- Avoid fixed background attachment and blur filters.
+- Make the homepage texture stronger than inner pages.
 
 ---
 
@@ -33,14 +35,15 @@
 grep -q 'repeating-radial-gradient' _sass/basic.sass
 grep -q 'repeating-conic-gradient' _sass/basic.sass
 grep -q 'mix-blend-mode: multiply' _sass/basic.sass
-grep -q 'filter: contrast' _sass/basic.sass
+grep -q 'body.is-home' _sass/basic.sass
+grep -q '\.is-home \.site-cover' _sass/classes.sass
 ```
 
 - [ ] **Step 2: Run test to verify it fails**
 
 Run: `bash script/check_site.sh`
 
-Expected: FAIL before the Sass implementation because the new grain markers are missing.
+Expected: FAIL before the Sass implementation because the new grain markers and homepage selectors are missing.
 
 - [ ] **Step 3: Commit**
 
@@ -53,20 +56,21 @@ git commit -m "test: require generated grain background"
 
 **Files:**
 - Modify: `_sass/basic.sass`
+- Modify: `_sass/classes.sass`
 
 **Interfaces:**
 - Consumes: palette variables from `_sass/index.sass`
-- Produces: global static CSS-only background layers
+- Produces: global static CSS-only background layers and a stronger homepage cover treatment
 
 - [ ] **Step 1: Implement the generated background**
 
-Replace the grid background on `body` and dot overlay on `body::before` with layered radial gradients and CSS-only grain.
+Replace the grid background on `body` and dot overlay on `body::before` with lightweight layered radial gradients and CSS-only grain. Add `body.is-home` and `.is-home .site-cover` variants for stronger homepage visibility. Do not use `background-attachment: fixed` or blur filters.
 
 - [ ] **Step 2: Run test to verify it passes**
 
 Run: `bash script/check_site.sh`
 
-Expected: PASS with generated Sass and built CSS containing the expected palette colors.
+Expected: PASS with generated Sass, homepage selectors, and built CSS containing the expected palette colors.
 
 - [ ] **Step 3: Commit**
 
