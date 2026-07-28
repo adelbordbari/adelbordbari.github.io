@@ -27,7 +27,7 @@ Following that trail eventually led to a much deeper problem than a failed conta
 
 # Problem
 
-ClickHouse refused to load one of the largest tables in the database, `fierwall`.
+ClickHouse refused to load one of the largest tables in the database.
 
 The error wasn't a corrupted database in the traditional sense. Instead, ClickHouse detected **153 suspicious or broken data parts**, exceeding its configured safety threshold of 100.
 
