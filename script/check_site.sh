@@ -51,6 +51,14 @@ grep -q 'catalog-table' _includes/archive.html
 grep -q 'site-cover__calibration' _includes/archive.html
 grep -q 'album-item__specs' _includes/album-index.html
 grep -q 'photo-card__number' _includes/photo-index.html
+grep -q 'about-lede' about.md
+grep -q 'contact-ledger' about.md
+grep -q '\.about-lede' _sass/classes.sass
+grep -q '\.contact-ledger' _sass/classes.sass
+grep -q 'font-variant-numeric: tabular-nums' _sass/classes.sass
+grep -q '\.catalog-row a\[role="cell"\]::after' _sass/classes.sass
+grep -q '\.collection-list::before' _sass/classes.sass
+grep -q '\.collection-row::before' _sass/classes.sass
 grep -q 'permalink: /album/artists/' album/artists.html
 test -f assets/fonts/Vazirmatn-Regular.woff2
 test -f assets/fonts/DepartureMono-Regular.woff2
