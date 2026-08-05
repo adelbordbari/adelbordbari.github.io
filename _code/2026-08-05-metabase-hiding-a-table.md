@@ -35,6 +35,8 @@ The table simply refused to appear under **Explore**.
 
 ---
 
+<img width="975" height="606" alt="metabase" src="https://github.com/user-attachments/assets/c86dc116-c916-48f2-98d5-6fcf6560d6af" />
+
 ## The symptom
 
 At first glance it looked like a ClickHouse problem.
