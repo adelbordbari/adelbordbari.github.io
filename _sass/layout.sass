@@ -1,21 +1,23 @@
 html
   min-width: 20rem
-  background: linear-gradient(180deg, rgba($accent-red, .14), rgba($paper, .92) 12rem)
+  background: linear-gradient(180deg, rgba($accent-orange, .18), rgba($paper, .92) 12rem)
   scroll-behavior: smooth
 
 body
   min-height: 100vh
   margin: 0
-  padding: clamp(.45rem, 1.4vw, 1rem)
+  padding: clamp(.55rem, 1.8vw, 1.15rem)
 
 .site-sheet
   position: relative
   width: min(92rem, 100%)
   min-height: calc(100vh - clamp(1rem, 4vw, 3rem))
   margin: 0 auto
-  border: 1px solid $rule
-  background: linear-gradient(180deg, rgba($accent-red, .12), rgba($sheet, .92) 10rem, $sheet 100%)
-  box-shadow: 0 0 0 1px rgba($ink, .06)
+  overflow: hidden
+  border: .5rem solid $ink
+  border-radius: 8px
+  background: linear-gradient(180deg, rgba($sheet, .96), $sheet 12rem, lighten($paper, 2%) 100%)
+  box-shadow: 0 1.1rem 2.25rem rgba($ink, .16)
 
 .site-sheet::before,
 .site-sheet::after
@@ -24,7 +26,7 @@ body
   width: .8rem
   height: .8rem
   pointer-events: none
-  border-color: rgba($ink, .32)
+  border-color: rgba($sheet, .55)
 
 .site-sheet::before
   top: .55rem
@@ -45,11 +47,12 @@ body
   align-items: center
   justify-content: space-between
   gap: 1rem
-  padding: .9rem clamp(.85rem, 2vw, 1.65rem)
+  padding: 1rem clamp(.85rem, 2vw, 1.65rem)
 
 .site-header
-  border-bottom: 1px solid $rule
-  background: rgba($sheet, .88)
+  border-bottom: 1px solid $ink
+  background: $ink
+  color: $sheet
 
 .site-header
   position: relative
@@ -59,14 +62,14 @@ body
   position: absolute
   left: clamp(.85rem, 2vw, 1.65rem)
   bottom: -1px
-  width: min(14rem, 34vw)
-  height: .78rem
-  background: linear-gradient(90deg, $accent-red 0 14%, $accent-green 14% 28%, $accent-blue 28% 42%, $accent-cyan 42% 56%, $accent-yellow 56% 70%, $accent-magenta 70% 84%, rgba($ink, .25) 84% 100%)
+  width: min(22rem, 64vw)
+  height: .9rem
+  background: linear-gradient(90deg, $accent-yellow 0 20%, $accent-orange 20% 40%, $accent-red 40% 60%, $accent-magenta 60% 80%, $accent-purple 80% 100%)
 
 .site-footer
-  border-top: 1px solid $rule
-  color: $muted
-  background: rgba($raised, .72)
+  border-top: 1px solid $ink
+  color: rgba($sheet, .72)
+  background: $ink
 
 .site-main
   padding: clamp(1rem, 3.5vw, 3.25rem)
@@ -74,25 +77,25 @@ body
 .site-identity
   display: grid
   gap: .28rem
-  color: $ink
+  color: $sheet
   text-decoration: none
 
 .site-identity__label,
 .utility-label
   font-family: $font-family-mono
   font-size: .75rem
-  letter-spacing: .12em
+  letter-spacing: 0
   line-height: 1.2
   text-transform: uppercase
 
 .site-identity__label
-  color: $muted
+  color: $accent-yellow
 
 .title
   font-family: $font-family-display
-  font-size: clamp(1.1rem, 2vw, 1.55rem)
-  font-weight: 700
-  letter-spacing: .08em
+  font-size: 1.45rem
+  font-weight: 400
+  letter-spacing: 0
   line-height: 1
   text-transform: uppercase
 
@@ -109,29 +112,38 @@ body
   align-items: center
   justify-content: center
   padding: .3rem .7rem
-  border: 1px solid $rule
-  color: $muted
+  border: 1px solid rgba($sheet, .32)
+  color: rgba($sheet, .76)
   font-family: $font-family-mono
   font-size: .78rem
-  letter-spacing: .12em
+  letter-spacing: 0
   text-decoration: none
   text-transform: uppercase
-  background: rgba($ink, .025)
+  background: rgba($sheet, .05)
 
 .site-nav a:hover,
 .site-nav a.selected
-  border-color: rgba($accent-red, .7)
-  background: rgba($accent-red, .22)
+  border-color: $accent-orange
+  background: $sheet
   color: $ink
 
 .site-nav a:focus-visible
-  border-color: $accent-blue
+  border-color: $accent-cyan
 
 .site-footer__copy
   display: grid
   gap: .25rem
   font-family: $font-family-mono
   font-size: .78rem
+
+.site-footer .site-nav a
+  border-color: rgba($sheet, .24)
+  color: rgba($sheet, .68)
+
+.site-footer .site-nav a:hover
+  border-color: $accent-yellow
+  background: $accent-yellow
+  color: $ink
 
 @media (max-width: 44rem)
   body

@@ -62,18 +62,20 @@ grep -q '\.collection-row::before' _sass/classes.sass
 grep -q 'permalink: /album/artists/' album/artists.html
 test -f assets/fonts/Vazirmatn-Regular.woff2
 test -f assets/fonts/DepartureMono-Regular.woff2
-grep -q '\$paper: #d9d9d2' _sass/index.sass
-grep -q '\$sheet: #f1f0ea' _sass/index.sass
-grep -q '\$raised: #c9c9c1' _sass/index.sass
-grep -q '\$ink: #050505' _sass/index.sass
-grep -q '\$muted: #5f5f58' _sass/index.sass
-grep -q '\$rule: #151515' _sass/index.sass
-grep -q '\$rule-strong: #050505' _sass/index.sass
-grep -q '\$accent-red: #ff4b14' _sass/index.sass
-grep -q '\$accent-blue: #1f2cff' _sass/index.sass
-grep -q '\$font-family-display: "SFMono-Regular"' _sass/index.sass
-grep -q '\$font-family-mono: "SFMono-Regular"' _sass/index.sass
-grep -q 'industrial-grid' _sass/basic.sass
+grep -q 'font-family: "Departure Mono"' _sass/font.sass
+grep -q '\$paper: #e9dfcf' _sass/index.sass
+grep -q '\$sheet: #f8f0e3' _sass/index.sass
+grep -q '\$raised: #dec8b0' _sass/index.sass
+grep -q '\$ink: #0b0705' _sass/index.sass
+grep -q '\$muted: #746259' _sass/index.sass
+grep -q '\$rule: #1b120d' _sass/index.sass
+grep -q '\$rule-strong: #050302' _sass/index.sass
+grep -q '\$accent-red: #f03a2d' _sass/index.sass
+grep -q '\$accent-orange: #f1782b' _sass/index.sass
+grep -q '\$accent-blue: #13b7d2' _sass/index.sass
+grep -q '\$font-family-display: "Departure Mono"' _sass/index.sass
+grep -q '\$font-family-mono: "Departure Mono"' _sass/index.sass
+grep -q 'warm-vhs-field' _sass/basic.sass
 grep -q 'body.is-home' _sass/basic.sass
 grep -q '\.is-home \.site-cover' _sass/classes.sass
 if grep -q 'background-attachment: fixed' _sass/basic.sass; then
@@ -94,6 +96,14 @@ if grep -q 'mix-blend-mode' _sass/basic.sass _sass/classes.sass; then
 fi
 if grep -q 'repeating-radial-gradient' _sass/basic.sass _sass/classes.sass; then
   echo "Generated page background must not use dense radial grain." >&2
+  exit 1
+fi
+if grep -R -n 'font-size: clamp' _sass assets/css --include='*.sass'; then
+  echo "Typography must not scale font size with viewport width." >&2
+  exit 1
+fi
+if grep -R -n -E 'letter-spacing: *(-|\.|[1-9])' _sass assets/css --include='*.sass'; then
+  echo "Letter spacing must remain 0." >&2
   exit 1
 fi
 grep -q 'background: var(--reading-paper, $sheet)' _sass/basic.sass
@@ -189,10 +199,9 @@ if command -v bundle >/dev/null 2>&1; then
     exit 1
   fi
 
-  grep -qi '#ff4b14' _site/assets/css/index.css
-  grep -qi '#1f2cff' _site/assets/css/index.css
-  grep -q 'SFMono-Regular' _site/assets/css/index.css
-  ! grep -q 'Departure Mono' _site/assets/css/index.css
+  grep -qi '#f03a2d' _site/assets/css/index.css
+  grep -qi '#f1782b' _site/assets/css/index.css
+  grep -q 'Departure Mono' _site/assets/css/index.css
 else
   echo "Bundler is unavailable; skipped generated-site checks." >&2
 fi
