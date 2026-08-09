@@ -1,5 +1,6 @@
 ---
-title: "Turning a weird little story idea into something you can actually write"
+title: "Turning A Weird Little Story Idea Into Something You Can Actually Write"
+layout: "post"
 ---
 
 # what do you do with an idea that isn't a story yet?
