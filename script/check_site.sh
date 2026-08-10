@@ -20,7 +20,7 @@ grep -q 'include reading-progress.html' _layouts/post.html
 grep -q 'class="reading-region prose"' _layouts/post.html
 grep -q 'has_backstory' _layouts/photo.html
 grep -q 'photo-single__notes reading-region prose' _layouts/photo.html
-grep -q 'grid-template-columns: 8.5rem minmax(0, 1fr) 8rem' _sass/classes.sass
+grep -q 'grid-template-columns: 9.5rem minmax(0, 1fr) 9rem' _sass/classes.sass
 grep -q 'grid-template-columns: 7.75rem minmax(0, 1fr)' _sass/classes.sass
 grep -q 'page.caption' _layouts/photo.html
 grep -q 'photo-single__caption-text' _layouts/photo.html
@@ -33,6 +33,7 @@ grep -q '200' _includes/reading-time.html
 grep -q 'calculateProgress' assets/js/reader-context.js
 grep -q 'prepareMermaidDiagrams' assets/js/mermaid-diagrams.mjs
 grep -q 'reading-progress__fill' _sass/basic.sass
+grep -q 'height: 8px' _sass/basic.sass
 grep -q '.photo-single__meta' _sass/classes.sass
 grep -q 'lang: fa' _album/2026-04-15-88-radio-tehran.md
 grep -q '\[dir="rtl"\]' _sass/basic.sass
@@ -53,12 +54,16 @@ grep -q 'album-item__specs' _includes/album-index.html
 grep -q 'photo-card__number' _includes/photo-index.html
 grep -q 'about-lede' about.md
 grep -q 'contact-ledger' about.md
+grep -q 'religiously proud of my playlists' about.md
 grep -q '\.about-lede' _sass/classes.sass
 grep -q '\.contact-ledger' _sass/classes.sass
 grep -q 'font-variant-numeric: tabular-nums' _sass/classes.sass
 grep -q '\.catalog-row a\[role="cell"\]::after' _sass/classes.sass
 grep -q '\.collection-list::before' _sass/classes.sass
-grep -q '\.collection-row::before' _sass/classes.sass
+if grep -q '\.collection-row::before' _sass/classes.sass; then
+  echo "Collection row date tick must not overlap dates." >&2
+  exit 1
+fi
 grep -q 'permalink: /album/artists/' album/artists.html
 test -f assets/fonts/Vazirmatn-Regular.woff2
 test -f assets/fonts/DepartureMono-Regular.woff2
@@ -67,8 +72,8 @@ grep -q '\$paper: #050505' _sass/index.sass
 grep -q '\$sheet: #0b0b09' _sass/index.sass
 grep -q '\$raised: #15130f' _sass/index.sass
 grep -q '\$ink: #f7f2e8' _sass/index.sass
-grep -q '\$muted: #8a8580' _sass/index.sass
-grep -q '\$rule: #2c2a25' _sass/index.sass
+grep -q '\$muted: #c8c0b5' _sass/index.sass
+grep -q '\$rule: #524c43' _sass/index.sass
 grep -q '\$rule-strong: #f7f2e8' _sass/index.sass
 grep -q '\$accent-red: #f02a3a' _sass/index.sass
 grep -q '\$accent-orange: #ffb000' _sass/index.sass

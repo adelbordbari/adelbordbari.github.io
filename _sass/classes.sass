@@ -6,15 +6,15 @@
   position: relative
   isolation: isolate
   display: grid
-  grid-template-columns: minmax(0, 1.35fr) minmax(18rem, .7fr)
-  min-height: 42rem
+  grid-template-columns: minmax(0, 1.25fr) minmax(20rem, .75fr)
+  min-height: 32rem
   overflow: hidden
   border: 1px solid $ink
   background: $sheet
 
 .is-home .site-cover
   background-color: $sheet
-  background-image: linear-gradient(180deg, transparent 0 61%, $accent-yellow 61% 65%, $accent-orange 65% 69%, $accent-red 69% 73%, $accent-magenta 73% 77%, $accent-purple 77% 81%, transparent 81% 100%), linear-gradient(90deg, $rule 0 .75rem, transparent .75rem calc(100% - .75rem), $rule calc(100% - .75rem) 100%), linear-gradient(180deg, $sheet, $paper)
+  background-image: linear-gradient(180deg, $accent-yellow 0 .55rem, $accent-orange .55rem 1.1rem, $accent-red 1.1rem 1.65rem, $accent-magenta 1.65rem 2.2rem, $accent-purple 2.2rem 2.75rem, transparent 2.75rem 100%), linear-gradient(90deg, $rule 0 .75rem, transparent .75rem calc(100% - .75rem), $rule calc(100% - .75rem) 100%), linear-gradient(180deg, $sheet, $paper)
 
 .site-cover::before
   content: ""
@@ -45,7 +45,7 @@
 .site-cover__primary
   display: flex
   flex-direction: column
-  justify-content: flex-end
+  justify-content: center
   gap: 1rem
   padding: clamp(2rem, 6vw, 4rem) clamp(1.25rem, 5vw, 4.25rem) clamp(2.5rem, 8vw, 5.5rem)
   border-right: 1px solid $ink
@@ -53,10 +53,10 @@
 .site-cover__secondary
   display: flex
   flex-direction: column
-  justify-content: space-between
+  justify-content: center
   align-items: stretch
   padding: clamp(1rem, 3vw, 2rem)
-  background: linear-gradient(180deg, rgba($accent-orange, .18), transparent 45%), $paper
+  background: $paper
   color: $ink
 
 .site-cover__calibration
@@ -88,17 +88,17 @@
   background: $ink
 
 .site-cover h1
-  max-width: 8ch
+  max-width: none
   margin: .1em 0 .12em
-  font-size: 6.4rem
+  font-size: 5.4rem
   letter-spacing: 0
   line-height: .92
   text-transform: uppercase
 
 .site-cover__intro
-  max-width: 44ch
+  max-width: 50ch
   margin: .35rem 0 0
-  color: $ink
+  color: rgba($ink, .94)
   font-family: $font-family-sans
   font-size: 1.22rem
   font-weight: 700
@@ -110,7 +110,7 @@
   right: clamp(1.25rem, 4vw, 2.8rem)
   width: clamp(3.5rem, 8vw, 6.5rem)
   aspect-ratio: 1
-  border: 1px solid rgba($ink, .45)
+  border: 1px solid rgba($ink, .34)
   border-radius: 50%
 
 .site-cover__mark::before,
@@ -141,7 +141,7 @@
   border-left: 0
   color: $ink
   font-family: $font-family-display
-  font-size: 1.28rem
+  font-size: 1.42rem
   font-weight: 400
   line-height: 1.18
   letter-spacing: 0
@@ -165,10 +165,7 @@
   text-transform: uppercase
 
 .site-cover__scale
-  display: grid
-  grid-template-columns: repeat(8, minmax(0, 1fr))
-  gap: .3rem
-  align-self: end
+  display: none
 
 .site-cover__scale span
   height: .9rem
@@ -223,7 +220,7 @@
   position: relative
   overflow: hidden
   border: 1px solid $ink
-  background: linear-gradient(180deg, rgba($ink, .04), transparent 10%), $raised
+  background: $sheet
 
 .catalog-table::before
   content: ""
@@ -234,10 +231,11 @@
 
 .catalog-row
   display: grid
-  grid-template-columns: 8rem minmax(0, 1fr) 8rem
-  border-bottom: 1px solid rgba($ink, .48)
+  grid-template-columns: 9rem minmax(0, 1fr) 10.5rem
+  height: 4.25rem
+  border-bottom: 1px solid rgba($ink, .56)
   font-family: $font-family-mono
-  font-size: .8rem
+  font-size: .95rem
   font-variant-numeric: tabular-nums
   background: transparent
 
@@ -246,7 +244,7 @@
 
 .catalog-row > *
   min-width: 0
-  padding: .78rem .85rem
+  padding: .95rem 1rem
   border-right: 1px solid $rule
   overflow-wrap: anywhere
 
@@ -255,7 +253,7 @@
 
 .catalog-row a
   font-family: $font-family-ui
-  font-size: .95rem
+  font-size: 1.08rem
   font-weight: 400
   letter-spacing: 0
   text-decoration: none
@@ -265,6 +263,9 @@
   display: flex
   align-items: center
   gap: .6rem
+  overflow: hidden
+  text-overflow: ellipsis
+  white-space: nowrap
 
 .catalog-row a[role="cell"]::after
   content: "→"
@@ -278,7 +279,8 @@
   background: $paper
   color: $ink
   border-top: 1px solid $ink
-  font-size: .75rem
+  height: 3.25rem
+  font-size: .86rem
   letter-spacing: 0
   text-transform: uppercase
 
@@ -286,7 +288,7 @@
   display: flex
   align-items: center
   gap: .45rem
-  color: $muted
+  color: rgba($ink, .78)
   text-decoration: none
 
 .catalog-kind:hover
@@ -297,8 +299,11 @@
   display: none
 
 .catalog-kind .icon
-  width: .85rem
-  height: .85rem
+  width: 1rem
+  height: 1rem
+
+.catalog-kind span
+  white-space: nowrap
 
 .utility-grid
   position: relative
@@ -312,7 +317,7 @@
   position: relative
   z-index: 1
   min-width: 0
-  padding: 1rem
+  padding: 1.25rem
   overflow: hidden
   border: 1px solid $ink
   background: $paper
@@ -324,7 +329,7 @@
   top: 0
   left: 0
   width: 100%
-  height: 1px
+  height: 3px
   background: linear-gradient(90deg, $accent-yellow, $accent-orange, $accent-red, $accent-magenta, transparent 72%)
 
 .utility-module + .utility-module
@@ -360,14 +365,14 @@
   max-width: 100%
   display: flex
   align-items: center
-  gap: .6rem
-  margin: 1rem 0 0
+  gap: .8rem
+  margin: 1.1rem 0 0
   padding: 0
   overflow: hidden
   background: transparent
   color: $ink
   font-family: $font-family-mono
-  font-size: .82rem
+  font-size: 1rem
 
 .recent-played-track
   min-width: 0
@@ -377,9 +382,9 @@
   line-height: 1.45
 
 .recent-played-art
-  width: 42px
-  height: 42px
-  flex: 0 0 42px
+  width: 56px
+  height: 56px
+  flex: 0 0 56px
   margin: 0 0 0 auto
   object-fit: cover
 
@@ -397,9 +402,9 @@
   min-height: 2.75rem
   display: inline-flex
   align-items: center
-  color: rgba($ink, .62)
+  color: rgba($ink, .84)
   font-family: $font-family-mono
-  font-size: .82rem
+  font-size: 1rem
 
 .atomic-widget--lastfm:has(.recent-played) > .widget-fallback
   display: none
@@ -411,15 +416,36 @@
   background: transparent
   color: $ink
 
+#letterboxd-embed-tc
+  color: $ink
+  font-size: 1rem
+
+#letterboxd-embed-tc a
+  color: $ink
+
+#letterboxd-embed-tc h1,
+#letterboxd-embed-tc h2,
+#letterboxd-embed-tc h3,
+#letterboxd-embed-tc strong
+  color: $ink
+  font-size: 1.18rem
+
+#letterboxd-embed-tc p,
+#letterboxd-embed-tc span,
+#letterboxd-embed-tc time
+  color: rgba($ink, .86)
+
 #letterboxd-embed-tc .letterboxd-embed-tc-divider
   border-color: rgba($ink, .28)
 
 #letterboxd-embed-tc .letterboxd-embed-tc-rating
   color: $accent-orange
+  font-size: 1.35rem
+  line-height: 1.1
 
 #letterboxd-embed-tc .letterboxd-embed-tc-review,
 #letterboxd-embed-tc .letterboxd-embed-tc-date
-  color: rgba($ink, .64)
+  color: rgba($ink, .82)
 
 #letterboxd-embed-tc .letterboxd-embed-tc-more,
 #letterboxd-embed-tc .letterboxd-embed-tc-footer
@@ -433,7 +459,7 @@
   overflow: hidden
   border: 1px solid $ink
   border-top: 1px solid $ink
-  background: linear-gradient(180deg, rgba($accent-yellow, .14), transparent 8%), $raised
+  background: $sheet
   list-style: none
 
 .collection-list::before
@@ -448,27 +474,15 @@
 .collection-row
   position: relative
   display: grid
-  grid-template-columns: 8.5rem minmax(0, 1fr) 8rem
+  grid-template-columns: 9.5rem minmax(0, 1fr) 9rem
   align-items: center
-  min-height: 3.5rem
+  height: 4.35rem
   margin: 0
-  border-bottom: 1px solid rgba($ink, .46)
+  border-bottom: 1px solid rgba($ink, .56)
   transition: background-color .16s ease, border-color .16s ease
 
-.collection-row::before
-  content: ""
-  position: absolute
-  top: 50%
-  left: .35rem
-  z-index: 2
-  width: .65rem
-  height: 1px
-  background: $ink
-  transform: translateY(-50%)
-  pointer-events: none
-
 .collection-row:hover
-  background: rgba($accent-orange, .2)
+  background: rgba($accent-orange, .14)
 
 .collection-row:last-child
   border-bottom: 0
@@ -486,9 +500,9 @@
 
 .collection-row time,
 .collection-row .reading-time
-  color: $muted
+  color: rgba($ink, .82)
   font-family: $font-family-mono
-  font-size: .78rem
+  font-size: .9rem
   font-variant-numeric: tabular-nums
   letter-spacing: 0
   text-transform: uppercase
@@ -502,6 +516,7 @@
 .collection-row__title
   overflow: hidden
   font-family: $font-family-ui
+  font-size: 1.08rem
   font-weight: 400
   text-decoration: none
   text-overflow: ellipsis
@@ -531,7 +546,7 @@
   padding: clamp(.75rem, 2vw, 1.25rem)
   border: 1px solid $ink
   border-top: 0
-  background: linear-gradient(90deg, rgba($accent-yellow, .18), transparent 12%), linear-gradient(180deg, rgba($ink, .03), transparent 18%), $raised
+  background: $sheet
 
 .album-item__entry
   display: grid
@@ -612,7 +627,8 @@
   text-decoration-color: rgba($ink, .5)
 
 .album-item__rating-spec dd
-  color: $accent-magenta
+  color: $accent-yellow
+  font-size: 1rem
   white-space: nowrap
 
 .artist-index__intro
@@ -899,6 +915,15 @@
 .contact-ledger a:hover
   color: $accent-red
 
+.contact-ledger__note
+  flex-basis: 100%
+  margin-top: .35rem
+  color: rgba($ink, .82)
+  font-family: $font-family-serif
+  font-size: .98rem
+  line-height: 1.45
+  text-transform: none
+
 .photo-single
   min-width: 0
 
@@ -1020,6 +1045,7 @@
 
   .catalog-row
     grid-template-columns: 6.25rem minmax(0, 1fr)
+    height: auto
 
   .catalog-row--head
     display: none
@@ -1046,6 +1072,9 @@
     display: block
     margin-bottom: .18rem
 
+  .catalog-row a[role="cell"]
+    white-space: normal
+
   .photo-grid
     grid-template-columns: 1fr
 
@@ -1055,6 +1084,7 @@
 
   .collection-row
     grid-template-columns: 7.75rem minmax(0, 1fr)
+    height: auto
 
   .collection-row .reading-time
     grid-column: 1 / -1

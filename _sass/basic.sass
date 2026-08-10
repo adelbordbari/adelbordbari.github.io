@@ -343,6 +343,11 @@ input, textarea, select
 .post-header__meta a
   color: inherit
 
+.post-rating
+  color: $accent-yellow
+  font-size: 1.2rem
+  line-height: 1
+
 .site-sheet,
 .site-header,
 .site-footer,
@@ -417,9 +422,9 @@ input, textarea, select
   position: fixed
   inset: 0 0 auto
   z-index: 100
-  height: 4px
+  height: 8px
   overflow: hidden
-  background: rgba($ink, .14)
+  background: rgba($ink, .18)
 
 .reading-progress[hidden]
   display: none
@@ -430,7 +435,7 @@ input, textarea, select
   display: block
   transform: scaleX(0)
   transform-origin: left center
-  background: linear-gradient(90deg, $accent-yellow 0 18%, $accent-orange 18% 36%, $accent-red 36% 54%, $accent-magenta 54% 72%, $accent-purple 72% 88%, $accent-cyan 88% 100%)
+  background: linear-gradient(90deg, $accent-orange 0 70%, $accent-yellow 70% 100%)
   will-change: transform
 
 .post-cover

@@ -17,6 +17,6 @@
       {% assign artist_slug = artist_name | slugify %}
       <a href="{{ '/album/artists/' | relative_url }}#{{ artist_slug }}">{{ artist_name }}</a>
     {% endif %}
-    {% if include.post.rating %}<span>{{ include.post.rating }}</span>{% endif %}
+    {% if include.post.rating %}<span class="post-rating">{{ include.post.rating }}</span>{% endif %}
   </div>
 </header>
