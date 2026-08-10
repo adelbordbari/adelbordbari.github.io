@@ -18,6 +18,13 @@ grep -q 'include relative-date.html' _includes/meta.html
 grep -q 'include reading-time.html' _includes/meta.html
 grep -q 'include reading-progress.html' _layouts/post.html
 grep -q 'class="reading-region prose"' _layouts/post.html
+grep -q 'per_page: 100' code.md
+grep -q 'per_page: 100' etc.md
+grep -q 'total_pages > 1' _includes/pagination.html
+if grep -q 'total_pages > 0' _includes/pagination.html; then
+  echo "Pagination must not render for single-page sections." >&2
+  exit 1
+fi
 grep -q 'has_backstory' _layouts/photo.html
 grep -q 'photo-single__notes reading-region prose' _layouts/photo.html
 grep -q 'grid-template-columns: 9.5rem minmax(0, 1fr) 9rem' _sass/classes.sass
@@ -103,6 +110,10 @@ if grep -q 'repeating-radial-gradient' _sass/basic.sass _sass/classes.sass; then
   echo "Generated page background must not use dense radial grain." >&2
   exit 1
 fi
+if grep -R -n 'rgba(\$accent-yellow' _sass assets/css --include='*.sass'; then
+  echo "Yellow overlay gradients must not be used on dark panels." >&2
+  exit 1
+fi
 if grep -R -n 'font-size: clamp' _sass assets/css --include='*.sass'; then
   echo "Typography must not scale font size with viewport width." >&2
   exit 1
@@ -112,7 +123,9 @@ if grep -R -n -E 'letter-spacing: *(-|\.|[1-9])' _sass assets/css --include='*.s
   exit 1
 fi
 grep -q 'background: var(--reading-paper, $sheet)' _sass/basic.sass
+grep -q 'background-image: none' _sass/basic.sass
 grep -q 'box-shadow: 0 0 0 1px rgba($ink, .06)' _sass/basic.sass
+grep -q 'max-width: min(75vw, 88ch)' _sass/basic.sass
 grep -q 'site-cover__primary' _includes/archive.html
 grep -q 'site-cover__secondary' _includes/archive.html
 grep -q 'site-cover__mark" aria-hidden="true"' _includes/archive.html

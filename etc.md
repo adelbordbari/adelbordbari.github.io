@@ -5,7 +5,7 @@ permalink: /etc/
 collection_name: etc
 pagination_base: /etc/
 current_page: 1
-per_page: 10
+per_page: 100
 ---
 
 {% include simple-collection-index.html %}

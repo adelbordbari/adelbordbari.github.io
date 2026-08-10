@@ -25,9 +25,9 @@ body
   overflow-x: hidden
   background-color: $paper
   // dark-calibration-field: black type-specimen field plus faint monitor scanlines.
-  background-image: repeating-linear-gradient(180deg, rgba($ink, .035) 0 1px, transparent 1px 8px), linear-gradient(90deg, transparent 0 60%, rgba($accent-yellow, .88) 60% 63.5%, rgba($accent-orange, .9) 63.5% 67%, rgba($accent-red, .88) 67% 70.5%, rgba($accent-magenta, .82) 70.5% 74%, rgba($accent-purple, .8) 74% 77.5%, transparent 77.5% 100%), linear-gradient(180deg, $sheet 0, $paper 62%, #000 100%)
-  background-position: center top, center top, center
-  background-size: 100% 100%, 100% 100%, 100% 100%
+  background-image: repeating-linear-gradient(180deg, rgba($ink, .035) 0 1px, transparent 1px 8px), linear-gradient(180deg, $sheet 0, $paper 62%, #000 100%)
+  background-position: center top, center
+  background-size: 100% 100%, 100% 100%
   color: $ink
   font-family: $font-family
   font-size: $font-size
@@ -37,8 +37,8 @@ body
   text-rendering: optimizeLegibility
 
 body.is-home
-  background-image: repeating-linear-gradient(180deg, rgba($ink, .045) 0 1px, transparent 1px 7px), linear-gradient(90deg, $rule 0 1rem, transparent 1rem 60%, $accent-yellow 60% 63.5%, $accent-orange 63.5% 67%, $accent-red 67% 70.5%, $accent-magenta 70.5% 74%, $accent-purple 74% 77.5%, transparent 77.5% calc(100% - 1rem), $rule calc(100% - 1rem) 100%), linear-gradient(180deg, $sheet 0, $paper 62%, #000 100%)
-  background-size: 100% 100%, 100% 100%, 100% 100%
+  background-image: repeating-linear-gradient(180deg, rgba($ink, .045) 0 1px, transparent 1px 7px), linear-gradient(180deg, $sheet 0, $paper 62%, #000 100%)
+  background-size: 100% 100%, 100% 100%
 
 *::selection
   background: rgba($accent-orange, .72)
@@ -245,7 +245,7 @@ input, textarea, select
   border: 1px solid $rule
   background: var(--reading-paper, $sheet)
   box-shadow: 0 0 0 1px rgba($ink, .06)
-  background-image: linear-gradient(180deg, rgba($accent-yellow, .12), rgba($accent-yellow, 0) 4.5rem)
+  background-image: none
 
 .reading-region
   max-width: 74ch
@@ -456,7 +456,7 @@ input, textarea, select
   min-width: 0
 
 .post-content .prose
-  max-width: 74ch
+  max-width: min(75vw, 88ch)
   margin-inline: auto
 
 .visually-hidden

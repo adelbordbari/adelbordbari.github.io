@@ -2,7 +2,7 @@
 {% assign total_pages = total_pages | default: page.total_pages | default: 1 %}
 {% assign pagination_base = pagination_base | default: page.pagination_base | default: page.url %}
 
-{% if total_pages > 0 %}
+{% if total_pages > 1 %}
   {% assign start_page = current_page | minus: 1 %}
   {% assign end_page = start_page | plus: 2 %}
 
