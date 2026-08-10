@@ -63,19 +63,19 @@ grep -q 'permalink: /album/artists/' album/artists.html
 test -f assets/fonts/Vazirmatn-Regular.woff2
 test -f assets/fonts/DepartureMono-Regular.woff2
 grep -q 'font-family: "Departure Mono"' _sass/font.sass
-grep -q '\$paper: #e9dfcf' _sass/index.sass
-grep -q '\$sheet: #f8f0e3' _sass/index.sass
-grep -q '\$raised: #dec8b0' _sass/index.sass
-grep -q '\$ink: #0b0705' _sass/index.sass
-grep -q '\$muted: #746259' _sass/index.sass
-grep -q '\$rule: #1b120d' _sass/index.sass
-grep -q '\$rule-strong: #050302' _sass/index.sass
-grep -q '\$accent-red: #f03a2d' _sass/index.sass
-grep -q '\$accent-orange: #f1782b' _sass/index.sass
-grep -q '\$accent-blue: #13b7d2' _sass/index.sass
+grep -q '\$paper: #050505' _sass/index.sass
+grep -q '\$sheet: #0b0b09' _sass/index.sass
+grep -q '\$raised: #15130f' _sass/index.sass
+grep -q '\$ink: #f7f2e8' _sass/index.sass
+grep -q '\$muted: #8a8580' _sass/index.sass
+grep -q '\$rule: #2c2a25' _sass/index.sass
+grep -q '\$rule-strong: #f7f2e8' _sass/index.sass
+grep -q '\$accent-red: #f02a3a' _sass/index.sass
+grep -q '\$accent-orange: #ffb000' _sass/index.sass
+grep -q '\$accent-blue: #1857ff' _sass/index.sass
 grep -q '\$font-family-display: "Departure Mono"' _sass/index.sass
 grep -q '\$font-family-mono: "Departure Mono"' _sass/index.sass
-grep -q 'warm-vhs-field' _sass/basic.sass
+grep -q 'dark-calibration-field' _sass/basic.sass
 grep -q 'body.is-home' _sass/basic.sass
 grep -q '\.is-home \.site-cover' _sass/classes.sass
 if grep -q 'background-attachment: fixed' _sass/basic.sass; then
@@ -199,8 +199,8 @@ if command -v bundle >/dev/null 2>&1; then
     exit 1
   fi
 
-  grep -qi '#f03a2d' _site/assets/css/index.css
-  grep -qi '#f1782b' _site/assets/css/index.css
+  grep -qi '#f02a3a' _site/assets/css/index.css
+  grep -qi '#ffb000' _site/assets/css/index.css
   grep -q 'Departure Mono' _site/assets/css/index.css
 else
   echo "Bundler is unavailable; skipped generated-site checks." >&2

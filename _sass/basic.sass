@@ -24,8 +24,8 @@ body
   isolation: isolate
   overflow-x: hidden
   background-color: $paper
-  // warm-vhs-field: product-packaging bands plus faint analog scanlines.
-  background-image: repeating-linear-gradient(180deg, rgba($ink, .026) 0 1px, transparent 1px 8px), linear-gradient(90deg, transparent 0 63%, rgba($accent-yellow, .72) 63% 66.5%, rgba($accent-orange, .76) 66.5% 70%, rgba($accent-red, .78) 70% 73.5%, rgba($accent-magenta, .72) 73.5% 77%, rgba($accent-purple, .72) 77% 80.5%, transparent 80.5% 100%), linear-gradient(180deg, $sheet 0, $paper 58%, darken($paper, 5%) 100%)
+  // dark-calibration-field: black type-specimen field plus faint monitor scanlines.
+  background-image: repeating-linear-gradient(180deg, rgba($ink, .035) 0 1px, transparent 1px 8px), linear-gradient(90deg, transparent 0 60%, rgba($accent-yellow, .88) 60% 63.5%, rgba($accent-orange, .9) 63.5% 67%, rgba($accent-red, .88) 67% 70.5%, rgba($accent-magenta, .82) 70.5% 74%, rgba($accent-purple, .8) 74% 77.5%, transparent 77.5% 100%), linear-gradient(180deg, $sheet 0, $paper 62%, #000 100%)
   background-position: center top, center top, center
   background-size: 100% 100%, 100% 100%, 100% 100%
   color: $ink
@@ -37,7 +37,7 @@ body
   text-rendering: optimizeLegibility
 
 body.is-home
-  background-image: repeating-linear-gradient(180deg, rgba($ink, .03) 0 1px, transparent 1px 7px), linear-gradient(90deg, $ink 0 1rem, transparent 1rem 64%, $accent-yellow 64% 67.5%, $accent-orange 67.5% 71%, $accent-red 71% 74.5%, $accent-magenta 74.5% 78%, $accent-purple 78% 81.5%, transparent 81.5% calc(100% - 1rem), $ink calc(100% - 1rem) 100%), linear-gradient(180deg, $sheet 0, $paper 62%, darken($paper, 7%) 100%)
+  background-image: repeating-linear-gradient(180deg, rgba($ink, .045) 0 1px, transparent 1px 7px), linear-gradient(90deg, $rule 0 1rem, transparent 1rem 60%, $accent-yellow 60% 63.5%, $accent-orange 63.5% 67%, $accent-red 67% 70.5%, $accent-magenta 70.5% 74%, $accent-purple 74% 77.5%, transparent 77.5% calc(100% - 1rem), $rule calc(100% - 1rem) 100%), linear-gradient(180deg, $sheet 0, $paper 62%, #000 100%)
   background-size: 100% 100%, 100% 100%, 100% 100%
 
 *::selection
@@ -51,8 +51,8 @@ body.is-home
   z-index: 20
   padding: .55rem .75rem
   border: 1px solid $accent-yellow
-  background: $ink
-  color: $sheet
+  background: $paper
+  color: $ink
   transform: translateY(-160%)
 
 .skip-link:focus

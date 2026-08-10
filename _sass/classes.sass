@@ -14,7 +14,7 @@
 
 .is-home .site-cover
   background-color: $sheet
-  background-image: linear-gradient(180deg, transparent 0 63%, $accent-yellow 63% 67%, $accent-orange 67% 71%, $accent-red 71% 75%, $accent-magenta 75% 79%, $accent-purple 79% 83%, transparent 83% 100%), linear-gradient(90deg, $ink 0 .75rem, transparent .75rem calc(100% - .75rem), $ink calc(100% - .75rem) 100%), linear-gradient(180deg, lighten($sheet, 2%), $paper)
+  background-image: linear-gradient(180deg, transparent 0 61%, $accent-yellow 61% 65%, $accent-orange 65% 69%, $accent-red 69% 73%, $accent-magenta 73% 77%, $accent-purple 77% 81%, transparent 81% 100%), linear-gradient(90deg, $rule 0 .75rem, transparent .75rem calc(100% - .75rem), $rule calc(100% - .75rem) 100%), linear-gradient(180deg, $sheet, $paper)
 
 .site-cover::before
   content: ""
@@ -56,8 +56,8 @@
   justify-content: space-between
   align-items: stretch
   padding: clamp(1rem, 3vw, 2rem)
-  background: linear-gradient(180deg, rgba($accent-orange, .18), transparent 45%), $ink
-  color: $sheet
+  background: linear-gradient(180deg, rgba($accent-orange, .18), transparent 45%), $paper
+  color: $ink
 
 .site-cover__calibration
   display: grid
@@ -136,10 +136,10 @@
   z-index: 1
   margin: 0
   padding: 1.2rem 0 1.1rem
-  border-top: 1px solid rgba($sheet, .36)
-  border-bottom: 1px solid rgba($sheet, .36)
+  border-top: 1px solid rgba($ink, .36)
+  border-bottom: 1px solid rgba($ink, .36)
   border-left: 0
-  color: $sheet
+  color: $ink
   font-family: $font-family-display
   font-size: 1.28rem
   font-weight: 400
@@ -157,7 +157,7 @@
 .cover-quote cite
   display: block
   margin-top: .75rem
-  color: rgba($sheet, .62)
+  color: rgba($ink, .62)
   font-family: $font-family-mono
   font-size: .75rem
   font-style: normal
@@ -172,10 +172,10 @@
 
 .site-cover__scale span
   height: .9rem
-  background: rgba($sheet, .18)
+  background: rgba($ink, .18)
 
 .site-cover__scale span:nth-child(1)
-  background: rgba($sheet, .2)
+  background: rgba($ink, .2)
 
 .site-cover__scale span:nth-child(2)
   background: $accent-yellow
@@ -193,10 +193,10 @@
   background: $accent-purple
 
 .site-cover__scale span:nth-child(7)
-  background: rgba($sheet, .55)
+  background: rgba($ink, .55)
 
 .site-cover__scale span:nth-child(8)
-  background: rgba($sheet, .78)
+  background: rgba($ink, .78)
 
 .catalog-section
   margin-top: clamp(2rem, 6vw, 5rem)
@@ -275,8 +275,8 @@
   font-weight: 400
 
 .catalog-row--head
-  background: $ink
-  color: $sheet
+  background: $paper
+  color: $ink
   border-top: 1px solid $ink
   font-size: .75rem
   letter-spacing: 0
@@ -315,8 +315,8 @@
   padding: 1rem
   overflow: hidden
   border: 1px solid $ink
-  background: $ink
-  color: $sheet
+  background: $paper
+  color: $ink
 
 .utility-module::before
   content: ""
@@ -365,7 +365,7 @@
   padding: 0
   overflow: hidden
   background: transparent
-  color: $sheet
+  color: $ink
   font-family: $font-family-mono
   font-size: .82rem
 
@@ -397,7 +397,7 @@
   min-height: 2.75rem
   display: inline-flex
   align-items: center
-  color: rgba($sheet, .62)
+  color: rgba($ink, .62)
   font-family: $font-family-mono
   font-size: .82rem
 
@@ -409,17 +409,17 @@
   padding: 0
   border: 0
   background: transparent
-  color: $sheet
+  color: $ink
 
 #letterboxd-embed-tc .letterboxd-embed-tc-divider
-  border-color: rgba($sheet, .28)
+  border-color: rgba($ink, .28)
 
 #letterboxd-embed-tc .letterboxd-embed-tc-rating
   color: $accent-orange
 
 #letterboxd-embed-tc .letterboxd-embed-tc-review,
 #letterboxd-embed-tc .letterboxd-embed-tc-date
-  color: rgba($sheet, .64)
+  color: rgba($ink, .64)
 
 #letterboxd-embed-tc .letterboxd-embed-tc-more,
 #letterboxd-embed-tc .letterboxd-embed-tc-footer
@@ -728,15 +728,15 @@
 .photo-page
   min-width: 0
   padding: 1px
-  background: $ink
-  color: $sheet
+  background: $paper
+  color: $ink
 
 .photo-hero
   position: relative
   overflow: hidden
   padding: clamp(1.25rem, 4vw, 3rem) clamp(1rem, 4vw, 2rem) clamp(2rem, 6vw, 5rem)
   border: 1px solid $ink
-  background: $ink
+  background: $paper
 
 .photo-hero::after
   content: ""
@@ -749,11 +749,11 @@
 
 .photo-hero h1
   margin: .25rem 0
-  color: $sheet
+  color: $ink
 
 .photo-hero p
   max-width: 42ch
-  color: rgba($sheet, .68)
+  color: rgba($ink, .68)
   font-family: $font-family-serif
   font-size: .9rem
 
@@ -761,19 +761,19 @@
   display: grid
   grid-template-columns: repeat(2, minmax(0, 1fr))
   gap: 1px
-  background: $ink
+  background: $paper
   padding: 1px
 
 .photo-page .pagination
   margin: 0
   padding: 1rem
-  background: $ink
+  background: $paper
 
 .photo-page .pagination a,
 .photo-page .pagination .is-current,
 .photo-page .pagination .is-disabled
-  border-color: rgba($sheet, .28)
-  color: $sheet
+  border-color: rgba($ink, .28)
+  color: $ink
 
 .photo-page .pagination a:hover,
 .photo-page .pagination .is-current
@@ -786,13 +786,13 @@
   display: block
   padding: .75rem
   border: 0
-  background: $ink
-  color: $sheet
+  background: $paper
+  color: $ink
   text-decoration: none
   transition: background-color .16s ease, transform .16s ease
 
 .photo-card:hover
-  background: lighten($ink, 4%)
+  background: lighten($paper, 5%)
   transform: translateY(-1px)
 
 .photo-card__number
@@ -811,7 +811,7 @@
   width: 100%
   aspect-ratio: 4 / 3
   object-fit: cover
-  border: 1px solid rgba($sheet, .16)
+  border: 1px solid rgba($ink, .16)
 
 .photo-card figcaption
   display: flex
@@ -824,14 +824,14 @@
   font-weight: 400
 
 .photo-card figcaption small
-  color: rgba($sheet, .58)
+  color: rgba($ink, .58)
   font-family: $font-family-mono
   text-align: right
 
 .photo-empty
   padding: 4rem 0
-  color: rgba($sheet, .62)
-  background: $ink
+  color: rgba($ink, .62)
+  background: $paper
 
 .about-lede
   max-width: 34ch
@@ -908,8 +908,8 @@
   align-items: center
   margin-bottom: 2rem
   padding: .35rem .65rem
-  border: 1px solid rgba($sheet, .34)
-  color: $sheet
+  border: 1px solid rgba($ink, .34)
+  color: $ink
   font-family: $font-family-mono
   font-size: .78rem
   text-decoration: none
@@ -929,8 +929,8 @@
   margin: 0
   padding: .55rem
   object-fit: contain
-  border-color: rgba($sheet, .16)
-  background: $ink
+  border-color: rgba($ink, .16)
+  background: $paper
 
 .photo-single figcaption
   display: flex
@@ -942,7 +942,7 @@
 .photo-single__caption-text
   max-width: 36rem
   margin: .75rem 0 0
-  color: rgba($sheet, .7)
+  color: rgba($ink, .7)
   font-family: $font-family-serif
   font-size: 1rem
   line-height: 1.5
@@ -952,7 +952,7 @@
   flex-wrap: wrap
   gap: .45rem
   margin: 0
-  color: rgba($sheet, .62)
+  color: rgba($ink, .62)
   font-family: $font-family-mono
   font-size: .8rem
 
@@ -963,7 +963,7 @@
 
 .photo-single h1
   margin: 0
-  color: $sheet
+  color: $ink
   font-size: 2.8rem
 
 .photo-single__notes
