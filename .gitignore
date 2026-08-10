@@ -1,4 +1,5 @@
 .DS_Store
+.env
 .bundle
 .jekyll-cache
 .sass-cache
