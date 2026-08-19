@@ -1,40 +1,41 @@
 .utility-label
   display: inline-block
-  color: $accent-orange
+  color: $accent-red
 
 .site-cover
   position: relative
   isolation: isolate
   display: grid
-  grid-template-columns: minmax(0, 1.25fr) minmax(20rem, .75fr)
-  min-height: 32rem
+  grid-template-columns: minmax(0, 1.12fr) minmax(20rem, .88fr)
+  min-height: 34rem
   overflow: hidden
-  border: 1px solid $ink
-  background: $sheet
+  border-radius: $radius-soft
+  background: $paper
+  color: $ink
 
 .is-home .site-cover
-  background-color: $sheet
-  background-image: linear-gradient(180deg, $accent-yellow 0 .55rem, $accent-orange .55rem 1.1rem, $accent-red 1.1rem 1.65rem, $accent-magenta 1.65rem 2.2rem, $accent-purple 2.2rem 2.75rem, transparent 2.75rem 100%), linear-gradient(90deg, $rule 0 .75rem, transparent .75rem calc(100% - .75rem), $rule calc(100% - .75rem) 100%), linear-gradient(180deg, $sheet, $paper)
+  background-color: $paper
+  background-image: linear-gradient(120deg, rgba($accent-blue, .38) 0 18%, transparent 18% 52%, rgba($accent-red, .32) 52% 66%, transparent 66% 100%), linear-gradient(180deg, $sheet, $paper)
 
 .site-cover::before
   content: ""
   position: absolute
   inset: 0
   z-index: 0
-  background-image: repeating-linear-gradient(180deg, rgba($ink, .032) 0 1px, transparent 1px 9px), linear-gradient(90deg, rgba($ink, .08) 1px, transparent 1px)
-  background-size: 100% 100%, 2.25rem 100%
+  // post-internet-dither-field: cheap linear dither over dark expressive areas.
+  background-image: repeating-linear-gradient(90deg, rgba($ink, .055) 0 1px, transparent 1px 5px), repeating-linear-gradient(180deg, rgba($ink, .035) 0 1px, transparent 1px 7px)
+  pointer-events: none
 
 .is-home .site-cover::before
-  opacity: .65
-  background-image: repeating-linear-gradient(180deg, rgba($ink, .035) 0 1px, transparent 1px 8px), linear-gradient(90deg, rgba($ink, .09) 1px, transparent 1px)
-  background-position: center
-  background-size: 100% 100%, 2rem 100%
+  opacity: .72
 
 .site-cover::after
   content: ""
   position: absolute
   inset: 1rem
+  z-index: 0
   border: 1px solid rgba($ink, .18)
+  border-radius: $radius-soft
   pointer-events: none
 
 .site-cover__primary,
@@ -47,42 +48,44 @@
   flex-direction: column
   justify-content: center
   gap: 1rem
-  padding: clamp(2rem, 6vw, 4rem) clamp(1.25rem, 5vw, 4.25rem) clamp(2.5rem, 8vw, 5.5rem)
-  border-right: 1px solid $ink
+  padding: clamp(2rem, 6vw, 4.8rem) clamp(1.25rem, 5vw, 5rem) clamp(2.5rem, 8vw, 5.5rem)
+
+.site-cover__primary .utility-label
+  color: $accent-green
 
 .site-cover__secondary
-  display: flex
-  flex-direction: column
-  justify-content: center
-  align-items: stretch
+  display: grid
+  align-content: center
+  gap: 1.15rem
   padding: clamp(1rem, 3vw, 2rem)
-  background: $paper
-  color: $ink
+  background: $gallery-paper
+  color: $gallery-ink
 
 .site-cover__calibration
   display: grid
   grid-template-columns: repeat(6, minmax(0, 1fr))
-  gap: .25rem
+  gap: .28rem
   width: min(20rem, 54vw)
 
 .site-cover__calibration span
-  height: 1rem
-  border: 1px solid rgba($ink, .34)
+  height: .82rem
+  border-radius: 999px
+  background: rgba($ink, .25)
 
 .site-cover__calibration span:nth-child(1)
-  background: $accent-red
+  background: $accent-blue
 
 .site-cover__calibration span:nth-child(2)
-  background: $accent-orange
+  background: $accent-green
 
 .site-cover__calibration span:nth-child(3)
-  background: $accent-red
+  background: $accent-orange
 
 .site-cover__calibration span:nth-child(4)
-  background: $accent-magenta
+  background: $accent-red
 
 .site-cover__calibration span:nth-child(5)
-  background: $accent-purple
+  background: $accent-magenta
 
 .site-cover__calibration span:nth-child(6)
   background: $ink
@@ -90,19 +93,19 @@
 .site-cover h1
   max-width: none
   margin: .1em 0 .12em
-  font-size: 5.4rem
-  letter-spacing: 0
-  line-height: .92
-  text-transform: uppercase
+  color: $ink
+  font-size: 5.8rem
+  line-height: .9
+  text-transform: none
 
 .site-cover__intro
-  max-width: 50ch
+  max-width: 48ch
   margin: .35rem 0 0
-  color: rgba($ink, .94)
+  color: rgba($ink, .88)
   font-family: $font-family-sans
-  font-size: 1.22rem
+  font-size: 1.18rem
   font-weight: 700
-  line-height: 1.32
+  line-height: 1.34
 
 .site-cover__mark
   position: absolute
@@ -111,7 +114,7 @@
   width: clamp(3.5rem, 8vw, 6.5rem)
   aspect-ratio: 1
   border: 1px solid rgba($ink, .34)
-  border-radius: 50%
+  border-radius: $radius-soft
 
 .site-cover__mark::before,
 .site-cover__mark::after
@@ -131,19 +134,71 @@
   width: 1px
   height: 150%
 
+.site-cover__art-field
+  position: relative
+  min-height: 15rem
+  overflow: hidden
+  border-radius: $radius-soft
+  background-color: $paper
+  background-image: linear-gradient(135deg, rgba($accent-blue, .56), transparent 36%), linear-gradient(25deg, transparent 0 46%, rgba($accent-red, .74) 46% 66%, transparent 66% 100%), repeating-linear-gradient(180deg, rgba($ink, .08) 0 1px, transparent 1px 6px), url("../photos/tmp.jpeg")
+  background-position: center
+  background-size: cover
+  box-shadow: inset 0 0 0 1px rgba($ink, .18), 0 1rem 2rem rgba($paper, .18)
+
+.site-cover__visual-grid
+  position: absolute
+  inset: 1rem
+  display: grid
+  grid-template-columns: repeat(4, minmax(0, 1fr))
+  gap: .45rem
+
+.site-cover__visual-grid span
+  border-radius: .35rem
+  background: rgba($ink, .08)
+
+.site-cover__visual-grid span:nth-child(3n)
+  background: rgba($accent-green, .76)
+
+.site-cover__visual-grid span:nth-child(4n)
+  background: rgba($accent-blue, .76)
+
+.site-cover__visual-grid span:nth-child(5n)
+  background: rgba($accent-red, .78)
+
+.site-cover__artifact
+  position: absolute
+  border-radius: $radius-soft
+  box-shadow: 0 0 0 1px rgba($ink, .22), 0 .8rem 1.6rem rgba($paper, .24)
+
+.site-cover__artifact--blue
+  right: 1.4rem
+  bottom: 1.2rem
+  width: 7.2rem
+  height: 4.6rem
+  background: $accent-blue
+  transform: rotate(-4deg)
+
+.site-cover__artifact--red
+  left: 16%
+  top: 18%
+  width: 4.8rem
+  height: 6.2rem
+  background: $accent-red
+  transform: rotate(6deg)
+
 .cover-quote
   position: relative
   z-index: 1
   margin: 0
-  padding: 1.2rem 0 1.1rem
-  border-top: 1px solid rgba($ink, .36)
-  border-bottom: 1px solid rgba($ink, .36)
+  padding: 1rem 0 1.05rem
+  border-top: 1px solid rgba($gallery-ink, .16)
+  border-bottom: 1px solid rgba($gallery-ink, .16)
   border-left: 0
-  color: $ink
-  font-family: $font-family-display
-  font-size: 1.42rem
+  color: $gallery-ink
+  font-family: $font-family-serif
+  font-size: 1.34rem
   font-weight: 400
-  line-height: 1.18
+  line-height: 1.22
   letter-spacing: 0
   text-align: left
 
@@ -157,107 +212,130 @@
 .cover-quote cite
   display: block
   margin-top: .75rem
-  color: rgba($ink, .62)
+  color: rgba($gallery-ink, .58)
   font-family: $font-family-mono
-  font-size: .75rem
+  font-size: .72rem
   font-style: normal
   letter-spacing: 0
   text-transform: uppercase
 
 .site-cover__scale
-  display: none
+  display: grid
+  grid-template-columns: repeat(8, minmax(0, 1fr))
+  gap: .35rem
 
 .site-cover__scale span
-  height: .9rem
-  background: rgba($ink, .18)
-
-.site-cover__scale span:nth-child(1)
-  background: rgba($ink, .2)
+  height: .7rem
+  border-radius: 999px
+  background: rgba($gallery-ink, .12)
 
 .site-cover__scale span:nth-child(2)
-  background: $accent-yellow
+  background: $accent-blue
 
 .site-cover__scale span:nth-child(3)
-  background: $accent-orange
+  background: $accent-green
 
 .site-cover__scale span:nth-child(4)
-  background: $accent-red
+  background: $accent-orange
 
 .site-cover__scale span:nth-child(5)
-  background: $accent-magenta
+  background: $accent-red
 
 .site-cover__scale span:nth-child(6)
-  background: $accent-purple
+  background: $accent-magenta
 
 .site-cover__scale span:nth-child(7)
-  background: rgba($ink, .55)
-
-.site-cover__scale span:nth-child(8)
-  background: rgba($ink, .78)
+  background: $gallery-ink
 
 .catalog-section
-  margin-top: clamp(2rem, 6vw, 5rem)
+  margin-top: clamp(2rem, 6vw, 5.5rem)
 
 .section-heading
   display: flex
   align-items: end
   justify-content: space-between
   gap: 1rem
-  margin-bottom: .65rem
+  margin-bottom: 1rem
 
 .section-heading h2
   margin: 0
-  font-size: 2.2rem
+  font-size: 2.35rem
 
 .section-heading span
-  color: $muted
+  color: rgba($gallery-ink, .58)
   font-family: $font-family-mono
-  font-size: .75rem
+  font-size: .72rem
   letter-spacing: 0
   text-transform: uppercase
 
 .catalog-table
   position: relative
-  overflow: hidden
-  border: 1px solid $ink
-  background: $sheet
+  display: grid
+  gap: .8rem
+  overflow: visible
+  background: transparent
 
 .catalog-table::before
   content: ""
   position: absolute
-  inset: 0 auto 0 0
-  width: .65rem
-  background: linear-gradient(180deg, $accent-yellow 0 20%, $accent-orange 20% 40%, $accent-red 40% 60%, $accent-magenta 60% 80%, $accent-purple 80% 100%)
+  inset: .35rem auto .35rem 0
+  z-index: 0
+  width: .35rem
+  border-radius: 999px
+  background: linear-gradient(180deg, $accent-blue 0 18%, $accent-green 18% 36%, $accent-orange 36% 58%, $accent-red 58% 78%, $accent-magenta 78% 100%)
+  pointer-events: none
 
 .catalog-row
+  position: relative
+  z-index: 1
   display: grid
   grid-template-columns: 9rem minmax(0, 1fr) 10.5rem
-  height: 4.25rem
-  border-bottom: 1px solid rgba($ink, .56)
+  min-height: 4.35rem
+  overflow: hidden
+  border: 1px solid rgba($gallery-ink, .1)
+  border-radius: $radius-soft
   font-family: $font-family-mono
-  font-size: .95rem
+  font-size: .86rem
   font-variant-numeric: tabular-nums
-  background: transparent
+  background: rgba($gallery-paper, .88)
+  box-shadow: 0 .45rem 1.1rem rgba($paper, .06)
+  transition: transform .18s ease, background-color .18s ease, color .18s ease
 
-.catalog-row:last-child
-  border-bottom: 0
+.catalog-row:not(.catalog-row--head):nth-child(4n+2)
+  margin-right: clamp(0rem, 7vw, 8rem)
+
+.catalog-row:not(.catalog-row--head):nth-child(4n+3)
+  margin-left: clamp(0rem, 9vw, 10rem)
+  background: $paper
+  color: $ink
+
+.catalog-row:not(.catalog-row--head):nth-child(4n+4)
+  margin-right: clamp(0rem, 4vw, 4rem)
+  background: rgba($accent-blue, .12)
+
+.catalog-row:not(.catalog-row--head):hover
+  transform: translateY(-2px)
 
 .catalog-row > *
   min-width: 0
   padding: .95rem 1rem
-  border-right: 1px solid $rule
+  border-right: 1px solid rgba($gallery-ink, .08)
   overflow-wrap: anywhere
 
 .catalog-row > :last-child
   border-right: 0
 
 .catalog-row a
+  color: inherit
   font-family: $font-family-ui
   font-size: 1.08rem
-  font-weight: 400
+  font-weight: 700
   letter-spacing: 0
   text-decoration: none
   transition: color .16s ease, background-color .16s ease
+
+.catalog-row a:hover
+  color: inherit
 
 .catalog-row a[role="cell"]
   display: flex
@@ -268,19 +346,20 @@
   white-space: nowrap
 
 .catalog-row a[role="cell"]::after
-  content: "→"
+  content: "->"
   margin-left: auto
-  color: $accent-orange
+  color: $accent-red
   font-family: $font-family-mono
   font-size: .82em
   font-weight: 400
 
 .catalog-row--head
-  background: $paper
-  color: $ink
-  border-top: 1px solid $ink
-  height: 3.25rem
-  font-size: .86rem
+  min-height: 2.75rem
+  border-color: transparent
+  background: transparent
+  box-shadow: none
+  color: rgba($gallery-ink, .54)
+  font-size: .72rem
   letter-spacing: 0
   text-transform: uppercase
 
@@ -288,12 +367,12 @@
   display: flex
   align-items: center
   gap: .45rem
-  color: rgba($ink, .78)
+  color: inherit
   text-decoration: none
 
 .catalog-kind:hover
-  background: rgba($accent-orange, .22)
-  color: $ink
+  background: transparent
+  color: inherit
 
 .catalog-kind::after
   display: none
@@ -309,8 +388,8 @@
   position: relative
   isolation: isolate
   display: grid
-  grid-template-columns: 1fr
-  gap: 0
+  grid-template-columns: minmax(0, 1.15fr) minmax(18rem, .85fr)
+  gap: 1rem
   margin-top: 3rem
 
 .utility-module
@@ -319,9 +398,10 @@
   min-width: 0
   padding: 1.25rem
   overflow: hidden
-  border: 1px solid $ink
-  background: $paper
-  color: $ink
+  border: 1px solid rgba($gallery-ink, .1)
+  border-radius: $radius-soft
+  background: rgba($gallery-paper, .9)
+  color: $gallery-ink
 
 .utility-module::before
   content: ""
@@ -330,10 +410,7 @@
   left: 0
   width: 100%
   height: 3px
-  background: linear-gradient(90deg, $accent-yellow, $accent-orange, $accent-red, $accent-magenta, transparent 72%)
-
-.utility-module + .utility-module
-  border-top: 0
+  background: linear-gradient(90deg, $accent-blue, $accent-green, $accent-orange, $accent-red, transparent 72%)
 
 .utility-module > *,
 .cover-quote > *
@@ -341,10 +418,12 @@
   z-index: 1
 
 .utility-module--compact
-  padding-block: .75rem
+  background: $paper
+  color: $ink
   text-align: left
 
 .utility-module--compact .utility-label
+  color: $accent-green
   text-align: left
 
 .utility-module--compact .recent-played
@@ -370,9 +449,9 @@
   padding: 0
   overflow: hidden
   background: transparent
-  color: $ink
+  color: inherit
   font-family: $font-family-mono
-  font-size: 1rem
+  font-size: .9rem
 
 .recent-played-track
   min-width: 0
@@ -387,6 +466,7 @@
   flex: 0 0 56px
   margin: 0 0 0 auto
   object-fit: cover
+  border-radius: $radius-soft
 
 .recent-gif,
 .recent-gif--inline
@@ -402,9 +482,9 @@
   min-height: 2.75rem
   display: inline-flex
   align-items: center
-  color: rgba($ink, .84)
+  color: inherit
   font-family: $font-family-mono
-  font-size: 1rem
+  font-size: .9rem
 
 .atomic-widget--lastfm:has(.recent-played) > .widget-fallback
   display: none
@@ -414,29 +494,29 @@
   padding: 0
   border: 0
   background: transparent
-  color: $ink
+  color: inherit
 
 #letterboxd-embed-tc
-  color: $ink
+  color: inherit
   font-size: 1rem
 
 #letterboxd-embed-tc a
-  color: $ink
+  color: inherit
 
 #letterboxd-embed-tc h1,
 #letterboxd-embed-tc h2,
 #letterboxd-embed-tc h3,
 #letterboxd-embed-tc strong
-  color: $ink
+  color: inherit
   font-size: 1.18rem
 
 #letterboxd-embed-tc p,
 #letterboxd-embed-tc span,
 #letterboxd-embed-tc time
-  color: rgba($ink, .86)
+  color: inherit
 
 #letterboxd-embed-tc .letterboxd-embed-tc-divider
-  border-color: rgba($ink, .28)
+  border-color: rgba($gallery-ink, .18)
 
 #letterboxd-embed-tc .letterboxd-embed-tc-rating
   color: $accent-orange
@@ -445,7 +525,7 @@
 
 #letterboxd-embed-tc .letterboxd-embed-tc-review,
 #letterboxd-embed-tc .letterboxd-embed-tc-date
-  color: rgba($ink, .82)
+  color: rgba($gallery-ink, .72)
 
 #letterboxd-embed-tc .letterboxd-embed-tc-more,
 #letterboxd-embed-tc .letterboxd-embed-tc-footer
@@ -453,22 +533,23 @@
 
 .collection-list
   position: relative
+  display: grid
+  gap: .8rem
   width: 100%
   margin: 0
-  padding: 0
-  overflow: hidden
-  border: 1px solid $ink
-  border-top: 1px solid $ink
-  background: $sheet
+  padding: .15rem 0 .15rem 1rem
+  overflow: visible
+  background: transparent
   list-style: none
 
 .collection-list::before
   content: ""
   position: absolute
-  inset: 0 auto 0 0
+  inset: .15rem auto .15rem 0
   z-index: 1
-  width: .35rem
-  background: linear-gradient(180deg, $accent-yellow 0 20%, $accent-orange 20% 40%, $accent-red 40% 60%, $accent-magenta 60% 80%, $accent-purple 80% 100%)
+  width: .32rem
+  border-radius: 999px
+  background: linear-gradient(180deg, $accent-blue 0 18%, $accent-green 18% 36%, $accent-orange 36% 58%, $accent-red 58% 78%, $accent-magenta 78% 100%)
   pointer-events: none
 
 .collection-row
@@ -476,16 +557,28 @@
   display: grid
   grid-template-columns: 9.5rem minmax(0, 1fr) 9rem
   align-items: center
-  height: 4.35rem
+  min-height: 4.35rem
   margin: 0
-  border-bottom: 1px solid rgba($ink, .56)
-  transition: background-color .16s ease, border-color .16s ease
+  overflow: hidden
+  border: 1px solid rgba($gallery-ink, .1)
+  border-radius: $radius-soft
+  background: rgba($gallery-paper, .9)
+  box-shadow: 0 .45rem 1.1rem rgba($paper, .05)
+  transition: transform .18s ease, background-color .18s ease, border-color .18s ease
+
+.collection-row:nth-child(3n+1)
+  margin-right: clamp(0rem, 7vw, 7rem)
+
+.collection-row:nth-child(3n+2)
+  margin-left: clamp(0rem, 7vw, 7rem)
+
+.collection-row:nth-child(5n)
+  background: $paper
+  color: $ink
 
 .collection-row:hover
-  background: rgba($accent-orange, .14)
-
-.collection-row:last-child
-  border-bottom: 0
+  transform: translateY(-2px)
+  border-color: rgba($accent-red, .42)
 
 .collection-row > *
   height: 100%
@@ -493,16 +586,16 @@
   display: flex
   align-items: center
   padding: .75rem
-  border-right: 1px solid $rule
+  border-right: 1px solid rgba($gallery-ink, .08)
 
 .collection-row > :last-child
   border-right: 0
 
 .collection-row time,
 .collection-row .reading-time
-  color: rgba($ink, .82)
+  color: inherit
   font-family: $font-family-mono
-  font-size: .9rem
+  font-size: .76rem
   font-variant-numeric: tabular-nums
   letter-spacing: 0
   text-transform: uppercase
@@ -515,12 +608,16 @@
 
 .collection-row__title
   overflow: hidden
+  color: inherit
   font-family: $font-family-ui
   font-size: 1.08rem
-  font-weight: 400
+  font-weight: 700
   text-decoration: none
   text-overflow: ellipsis
   white-space: nowrap
+
+.collection-row__title:hover
+  color: inherit
 
 .collection-row__title-track
   display: inline-block
@@ -539,14 +636,23 @@
 
 .album-list
   display: grid
-  gap: 0
-  border-top: 1px solid $ink
+  grid-template-columns: repeat(2, minmax(0, 1fr))
+  gap: 1rem
 
 .album-item
+  min-width: 0
   padding: clamp(.75rem, 2vw, 1.25rem)
-  border: 1px solid $ink
-  border-top: 0
-  background: $sheet
+  border: 1px solid rgba($gallery-ink, .1)
+  border-radius: $radius-soft
+  background: rgba($gallery-paper, .9)
+  box-shadow: 0 .55rem 1.4rem rgba($paper, .06)
+
+.album-item:nth-child(4n+2)
+  transform: translateY(1.25rem)
+
+.album-item:nth-child(4n+3)
+  background: $paper
+  color: $ink
 
 .album-item__entry
   display: grid
@@ -564,30 +670,33 @@
 
 .album-cover-duotone
   padding: .4rem
-  border: 1px solid $ink
-  background: $sheet
-  transition: border-color .16s ease, transform .16s ease
+  overflow: hidden
+  border-radius: $radius-soft
+  background: $paper
+  transition: transform .18s ease
 
 .album-cover-link:hover .album-cover-duotone
-  border-color: $accent-orange
-  transform: translate(-2px, -2px)
+  transform: translateY(-3px) scale(1.015)
 
 .cover-small
   width: 100%
   aspect-ratio: 1
   margin: 0
   object-fit: cover
+  border-radius: .35rem
 
 .album-item__body h3
   margin: 0 0 .8rem
-  font-size: 1.55rem
+  color: inherit
+  font-size: 1.5rem
 
 .album-item__body h3 a
+  color: inherit
   text-decoration: none
 
 .album-item__body h3 a::after
-  content: " ↗"
-  color: $accent-orange
+  content: " ->"
+  color: $accent-red
   font-family: $font-family-mono
   font-size: .65em
 
@@ -595,9 +704,10 @@
   display: flex
   margin: 0
   overflow-x: auto
-  border: 1px solid $ink
+  border: 1px solid currentColor
+  border-radius: $radius-soft
   font-family: $font-family-mono
-  font-size: .78rem
+  font-size: .72rem
   font-variant-numeric: tabular-nums
   text-transform: uppercase
   white-space: nowrap
@@ -608,7 +718,7 @@
   align-items: baseline
   gap: .35rem
   padding: .45rem
-  border-right: 1px solid $ink
+  border-right: 1px solid currentColor
 
 .album-item__specs div:first-child
   flex: 1 1 auto
@@ -617,24 +727,25 @@
   border-right: 0
 
 .album-item__specs dt
-  color: $muted
+  color: currentColor
+  opacity: .64
 
 .album-item__specs dd
   margin: 0
 
 .album-item__specs a
-  color: $ink
-  text-decoration-color: rgba($ink, .5)
+  color: inherit
+  text-decoration-color: currentColor
 
 .album-item__rating-spec dd
-  color: $accent-yellow
+  color: $accent-orange
   font-size: 1rem
   white-space: nowrap
 
 .artist-index__intro
-  color: $muted
+  color: rgba($gallery-ink, .62)
   font-family: $font-family-mono
-  font-size: .85rem
+  font-size: .78rem
   letter-spacing: 0
   text-transform: uppercase
 
@@ -662,8 +773,10 @@
 .artist-albums
   margin: 0
   padding: 0
-  border: 1px solid $ink
-  border-top: 1px solid $ink
+  border: 1px solid rgba($gallery-ink, .12)
+  border-radius: $radius-soft
+  overflow: hidden
+  background: rgba($gallery-paper, .92)
   list-style: none
 
 .artist-albums li
@@ -672,7 +785,7 @@
   grid-template-columns: 5rem minmax(0, 1fr) 6rem
   align-items: stretch
   margin: 0
-  border-bottom: 1px solid rgba($ink, .46)
+  border-bottom: 1px solid rgba($gallery-ink, .1)
 
 .artist-albums li:last-child
   border-bottom: 0
@@ -682,7 +795,7 @@
   display: flex
   align-items: center
   padding: .7rem
-  border-right: 1px solid $ink
+  border-right: 1px solid rgba($gallery-ink, .1)
 
 .artist-albums li > :last-child
   justify-content: center
@@ -690,13 +803,14 @@
   color: $accent-magenta
 
 .artist-albums li > span
-  color: $muted
+  color: rgba($gallery-ink, .62)
   font-family: $font-family-mono
   font-size: .78rem
 
 .artist-albums a
+  color: $gallery-ink
   font-family: $font-family-ui
-  font-weight: 400
+  font-weight: 700
   text-decoration: none
   transition: color .16s ease
 
@@ -710,7 +824,7 @@
   display: flex
   flex-wrap: wrap
   justify-content: center
-  gap: 0
+  gap: .35rem
   padding: 0
   list-style: none
 
@@ -720,39 +834,37 @@
 .pagination a,
 .pagination .is-current,
 .pagination .is-disabled
-  min-width: 2.5rem
-  min-height: 2.5rem
+  min-width: 2.35rem
+  min-height: 2.35rem
   display: inline-flex
   align-items: center
   justify-content: center
   padding: .4rem .65rem
-  border: 1px solid $ink
+  border: 1px solid rgba($gallery-ink, .16)
+  border-radius: $radius-soft
+  color: $gallery-ink
   text-decoration: none
-
-.pagination li + li > *
-  border-left: 0
 
 .pagination a:hover,
 .pagination .is-current
-  border-color: rgba($accent-orange, .9)
-  background: rgba($accent-orange, .24)
+  border-color: rgba($accent-red, .9)
+  background: $paper
   color: $ink
 
 .pagination .is-disabled
-  color: $rule
+  color: rgba($gallery-ink, .36)
 
 .photo-page
   min-width: 0
-  padding: 1px
-  background: $paper
-  color: $ink
+  color: $gallery-ink
 
 .photo-hero
   position: relative
   overflow: hidden
-  padding: clamp(1.25rem, 4vw, 3rem) clamp(1rem, 4vw, 2rem) clamp(2rem, 6vw, 5rem)
-  border: 1px solid $ink
+  padding: clamp(1.25rem, 4vw, 3rem) clamp(1rem, 4vw, 2.4rem) clamp(2rem, 6vw, 5rem)
+  border-radius: $radius-soft
   background: $paper
+  color: $ink
 
 .photo-hero::after
   content: ""
@@ -760,8 +872,8 @@
   right: 0
   bottom: 0
   left: 0
-  height: 1.1rem
-  background: linear-gradient(90deg, $accent-yellow 0 20%, $accent-orange 20% 40%, $accent-red 40% 60%, $accent-magenta 60% 80%, $accent-purple 80% 100%)
+  height: .55rem
+  background: linear-gradient(90deg, $accent-blue 0 20%, $accent-green 20% 40%, $accent-orange 40% 60%, $accent-red 60% 80%, $accent-magenta 80% 100%)
 
 .photo-hero h1
   margin: .25rem 0
@@ -769,54 +881,51 @@
 
 .photo-hero p
   max-width: 42ch
-  color: rgba($ink, .68)
+  color: rgba($ink, .7)
   font-family: $font-family-serif
-  font-size: .9rem
+  font-size: 1rem
 
 .photo-grid
   display: grid
-  grid-template-columns: repeat(2, minmax(0, 1fr))
-  gap: 1px
-  background: $paper
-  padding: 1px
+  grid-template-columns: repeat(6, minmax(0, 1fr))
+  gap: 1rem
+  margin-top: 1rem
 
 .photo-page .pagination
-  margin: 0
-  padding: 1rem
-  background: $paper
-
-.photo-page .pagination a,
-.photo-page .pagination .is-current,
-.photo-page .pagination .is-disabled
-  border-color: rgba($ink, .28)
-  color: $ink
-
-.photo-page .pagination a:hover,
-.photo-page .pagination .is-current
-  background: $accent-yellow
-  color: $ink
+  margin-top: 1rem
 
 .photo-card
   position: relative
   min-width: 0
   display: block
-  padding: .75rem
-  border: 0
-  background: $paper
-  color: $ink
+  grid-column: span 3
+  padding: .65rem
+  overflow: hidden
+  border: 1px solid rgba($gallery-ink, .1)
+  border-radius: $radius-soft
+  background: rgba($gallery-paper, .92)
+  color: $gallery-ink
   text-decoration: none
-  transition: background-color .16s ease, transform .16s ease
+  transition: transform .18s ease, background-color .18s ease
+
+.photo-card:nth-child(5n+1)
+  grid-column: span 4
+
+.photo-card:nth-child(5n+2)
+  grid-column: span 2
+  margin-top: 2.5rem
 
 .photo-card:hover
-  background: lighten($paper, 5%)
-  transform: translateY(-1px)
+  background: $paper
+  color: $ink
+  transform: translateY(-3px)
 
 .photo-card__number
   display: block
   margin-bottom: .45rem
-  color: $accent-yellow
+  color: $accent-red
   font-family: $font-family-mono
-  font-size: .75rem
+  font-size: .72rem
   text-transform: uppercase
 
 .photo-card figure,
@@ -827,47 +936,57 @@
   width: 100%
   aspect-ratio: 4 / 3
   object-fit: cover
-  border: 1px solid rgba($ink, .16)
+  border-radius: $radius-soft
+  transition: transform .22s ease
+
+.photo-card:nth-child(5n+1) img
+  aspect-ratio: 5 / 3
+
+.photo-card:hover img
+  transform: scale(1.025)
 
 .photo-card figcaption
   display: flex
   justify-content: space-between
   gap: 1rem
   padding: .65rem .15rem .1rem
+  color: inherit
 
 .photo-card figcaption span
   font-family: $font-family-ui
-  font-weight: 400
+  font-weight: 700
 
 .photo-card figcaption small
-  color: rgba($ink, .58)
+  color: currentColor
   font-family: $font-family-mono
+  opacity: .64
   text-align: right
 
 .photo-empty
   padding: 4rem 0
-  color: rgba($ink, .62)
-  background: $paper
+  color: rgba($gallery-ink, .62)
+  background: transparent
 
 .about-lede
   max-width: 34ch
   margin: 0 0 clamp(2rem, 6vw, 3.5rem)
-  color: $ink
-  font-family: $font-family-ui
+  color: $gallery-ink
+  font-family: $font-family-display
   font-size: 2.35rem
-  font-weight: 400
-  line-height: 1.06
+  font-weight: 700
+  line-height: 1.08
   text-wrap: balance
 
 .contact-ledger
   max-width: 58rem
   margin: clamp(1.25rem, 4vw, 2.5rem) 0 0
   padding: 0
-  border: 1px solid $ink
-  border-top-color: $ink
-  background: $sheet
+  overflow: hidden
+  border: 1px solid rgba($gallery-ink, .14)
+  border-radius: $radius-soft
+  background: rgba($gallery-paper, .92)
   font-family: $font-family-mono
-  font-size: .82rem
+  font-size: .78rem
   font-variant-numeric: tabular-nums
   list-style: none
 
@@ -876,7 +995,7 @@
   grid-template-columns: 8rem minmax(0, 1fr)
   align-items: stretch
   margin: 0
-  border-bottom: 1px solid rgba($ink, .46)
+  border-bottom: 1px solid rgba($gallery-ink, .1)
 
 .contact-ledger li:last-child
   border-bottom: 0
@@ -888,8 +1007,8 @@
   padding: .75rem .85rem
 
 .contact-ledger__label
-  border-right: 1px solid $ink
-  color: $muted
+  border-right: 1px solid rgba($gallery-ink, .12)
+  color: rgba($gallery-ink, .58)
   letter-spacing: 0
   text-transform: uppercase
 
@@ -899,16 +1018,16 @@
   gap: 0
 
 .contact-ledger a
-  color: $ink
+  color: $gallery-ink
   font-family: $font-family-ui
-  font-weight: 400
+  font-weight: 700
   overflow-wrap: anywhere
   text-decoration: none
 
 .contact-ledger a + a::before
   content: "/"
   margin: 0 .65rem
-  color: $accent-orange
+  color: $accent-red
   font-family: $font-family-mono
   font-weight: 400
 
@@ -918,7 +1037,7 @@
 .contact-ledger__note
   flex-basis: 100%
   margin-top: .35rem
-  color: rgba($ink, .82)
+  color: rgba($gallery-ink, .7)
   font-family: $font-family-serif
   font-size: .98rem
   line-height: 1.45
@@ -932,18 +1051,17 @@
   min-height: 2.5rem
   align-items: center
   margin-bottom: 2rem
-  padding: .35rem .65rem
-  border: 1px solid rgba($ink, .34)
-  color: $ink
+  padding: .35rem 0
+  color: $gallery-ink
   font-family: $font-family-mono
   font-size: .78rem
   text-decoration: none
   text-transform: uppercase
 
 .photo-single__back::before
-  content: "←"
+  content: "<-"
   margin-right: .55rem
-  color: $accent-yellow
+  color: $accent-red
 
 .photo-single figure
   margin: 0
@@ -954,7 +1072,7 @@
   margin: 0
   padding: .55rem
   object-fit: contain
-  border-color: rgba($ink, .16)
+  border-radius: $radius-soft
   background: $paper
 
 .photo-single figcaption
@@ -963,11 +1081,12 @@
   justify-content: space-between
   gap: 1rem
   margin-top: 1rem
+  color: rgba($gallery-ink, .68)
 
 .photo-single__caption-text
   max-width: 36rem
   margin: .75rem 0 0
-  color: rgba($ink, .7)
+  color: rgba($gallery-ink, .7)
   font-family: $font-family-serif
   font-size: 1rem
   line-height: 1.5
@@ -977,22 +1096,22 @@
   flex-wrap: wrap
   gap: .45rem
   margin: 0
-  color: rgba($ink, .62)
+  color: rgba($gallery-ink, .62)
   font-family: $font-family-mono
   font-size: .8rem
 
 .photo-single__meta .reading-time::before
   content: "/"
   margin-right: .45rem
-  color: $accent-orange
+  color: $accent-red
 
 .photo-single h1
   margin: 0
-  color: $ink
+  color: $gallery-ink
   font-size: 2.8rem
 
 .photo-single__notes
-  color: $ink
+  color: $gallery-ink
   max-width: 42rem
   margin: clamp(2rem, 6vw, 4rem) auto 0
 
@@ -1000,17 +1119,16 @@
   display: inline-flex
   min-height: 2.5rem
   align-items: center
-  padding: .35rem .65rem
-  border: 1px solid $rule
+  padding: .35rem 0
   font-family: $font-family-mono
   font-size: .78rem
   text-decoration: none
   text-transform: uppercase
 
 .more a::after
-  content: "→"
+  content: "->"
   margin-left: .55rem
-  color: $accent-yellow
+  color: $accent-red
 
 .icon
   width: 1em
@@ -1024,34 +1142,33 @@
 
   .site-cover__primary
     min-height: 27rem
-    border-right: 0
-    border-bottom: 1px solid $rule
 
   .site-cover__secondary
     min-height: 13rem
 
-  .site-cover__scale
-    margin-top: 1rem
-
   .site-cover h1
     font-size: 4.4rem
 
-  .utility-grid
+  .utility-grid,
+  .album-list
     grid-template-columns: 1fr
 
-  .utility-module + .utility-module
-    border-top: 0
-    border-left: 0
+  .album-item:nth-child(4n+2)
+    transform: none
 
   .catalog-row
     grid-template-columns: 6.25rem minmax(0, 1fr)
     height: auto
 
+  .catalog-row:not(.catalog-row--head)
+    margin-left: 0
+    margin-right: 0
+
   .catalog-row--head
     display: none
 
   .catalog-row > *
-    border-bottom: 1px solid $rule
+    border-bottom: 1px solid rgba($gallery-ink, .08)
 
   .catalog-row > :nth-child(2)
     border-right: 0
@@ -1063,7 +1180,7 @@
 
   .catalog-row > [data-label]::before
     content: attr(data-label) " / "
-    color: $muted
+    color: rgba($gallery-ink, .58)
     font-family: $font-family-mono
     font-size: .72rem
     text-transform: uppercase
@@ -1075,9 +1192,6 @@
   .catalog-row a[role="cell"]
     white-space: normal
 
-  .photo-grid
-    grid-template-columns: 1fr
-
   .section-heading
     align-items: flex-start
     flex-direction: column
@@ -1085,10 +1199,12 @@
   .collection-row
     grid-template-columns: 7.75rem minmax(0, 1fr)
     height: auto
+    margin-left: 0
+    margin-right: 0
 
   .collection-row .reading-time
     grid-column: 1 / -1
-    border-top: 1px solid $rule
+    border-top: 1px solid rgba($gallery-ink, .08)
     border-right: 0
     justify-content: flex-start
 
@@ -1109,7 +1225,16 @@
 
   .artist-albums li > :last-child
     grid-column: 1 / -1
-    border-top: 1px solid $rule
+    border-top: 1px solid rgba($gallery-ink, .1)
+
+  .photo-grid
+    grid-template-columns: 1fr
+
+  .photo-card,
+  .photo-card:nth-child(5n+1),
+  .photo-card:nth-child(5n+2)
+    grid-column: auto
+    margin-top: 0
 
   .photo-single figcaption
     align-items: flex-start
@@ -1130,7 +1255,7 @@
   .album-item__specs div,
   .album-item__specs div:first-child
     min-width: 0
-    border-bottom: 1px solid $rule
+    border-bottom: 1px solid currentColor
 
   .album-item__specs div:nth-child(even)
     border-right: 0
@@ -1153,6 +1278,9 @@
   .site-cover h1
     font-size: 3.25rem
 
+  .site-cover__visual-grid
+    grid-template-columns: repeat(3, minmax(0, 1fr))
+
   .site-cover__scale
     grid-template-columns: repeat(4, minmax(0, 1fr))
 
@@ -1169,7 +1297,7 @@
   .catalog-row > * + *,
   .collection-row > * + *,
   .artist-albums li > * + *
-    border-top: 1px solid $rule
+    border-top: 1px solid rgba($gallery-ink, .08)
 
   .collection-row time,
   .collection-row .reading-time,
@@ -1197,7 +1325,7 @@
 
   .contact-ledger__label
     border-right: 0
-    border-bottom: 1px solid $rule
+    border-bottom: 1px solid rgba($gallery-ink, .1)
 
   .contact-ledger a + a::before
     margin-inline: .45rem
@@ -1217,6 +1345,15 @@
   .collection-row__title--scroll:hover .collection-row__title-track,
   .collection-row__title--scroll:focus-visible .collection-row__title-track
     animation: none
+
+  .catalog-row:not(.catalog-row--head):hover,
+  .collection-row:hover,
+  .photo-card:hover,
+  .album-cover-link:hover .album-cover-duotone
+    transform: none
+
+  .photo-card:hover img
+    transform: none
 
   .reading-progress__fill
     transition: none

@@ -10,35 +10,37 @@ body
 
 .site-sheet
   position: relative
-  width: min(92rem, 100%)
+  isolation: isolate
+  width: min(96rem, 100%)
   min-height: calc(100vh - clamp(1rem, 4vw, 3rem))
   margin: 0 auto
   overflow: hidden
-  border: 1px solid $rule
-  border-radius: 0
-  background: linear-gradient(180deg, $sheet, $paper 12rem, #000 100%)
-  box-shadow: 0 0 0 1px rgba($ink, .05), 0 1.1rem 2.25rem rgba(#000, .48)
+  border: 1px solid rgba($ink, .2)
+  border-radius: $radius-soft
+  background: $gallery-paper
+  color: $gallery-ink
+  box-shadow: 0 0 0 1px rgba($paper, .38), 0 1.1rem 2.25rem rgba(#000, .48)
 
 .site-sheet::before,
 .site-sheet::after
   content: ""
   position: absolute
-  width: .8rem
-  height: .8rem
   pointer-events: none
-  border-color: rgba($ink, .42)
+  z-index: 0
 
 .site-sheet::before
-  top: .55rem
-  left: .55rem
-  border-top: 1px solid
-  border-left: 1px solid
+  inset: 0
+  background-image: linear-gradient(90deg, rgba($accent-blue, .08), transparent 26rem), repeating-linear-gradient(180deg, rgba($gallery-ink, .035) 0 1px, transparent 1px 10px)
+  opacity: .65
 
 .site-sheet::after
-  right: .55rem
-  bottom: .55rem
-  border-right: 1px solid
-  border-bottom: 1px solid
+  top: clamp(5rem, 12vw, 9rem)
+  right: clamp(-4rem, -6vw, -2rem)
+  width: 22rem
+  height: 8rem
+  border-radius: $radius-soft
+  background: linear-gradient(135deg, rgba($accent-red, .36), rgba($accent-blue, .22))
+  transform: rotate(-5deg)
 
 .site-header,
 .site-footer
@@ -47,103 +49,117 @@ body
   align-items: center
   justify-content: space-between
   gap: 1rem
-  padding: 1rem clamp(.85rem, 2vw, 1.65rem)
-
-.site-header
-  border-bottom: 1px solid $ink
-  background: $paper
-  color: $ink
-
-.site-header
+  padding: .95rem clamp(.9rem, 2vw, 1.8rem)
   position: relative
+  z-index: 1
+
+.site-header
+  border-bottom: 1px solid rgba($gallery-ink, .1)
+  background: rgba($gallery-paper, .94)
+  color: $gallery-ink
 
 .site-header::after
   content: ""
   position: absolute
-  left: clamp(.85rem, 2vw, 1.65rem)
+  right: clamp(.9rem, 2vw, 1.8rem)
   bottom: -1px
-  width: min(22rem, 64vw)
-  height: .9rem
-  background: linear-gradient(90deg, $accent-yellow 0 20%, $accent-orange 20% 40%, $accent-red 40% 60%, $accent-magenta 60% 80%, $accent-purple 80% 100%)
+  width: min(18rem, 58vw)
+  height: 2px
+  background: linear-gradient(90deg, $accent-blue 0 20%, $accent-green 20% 40%, $accent-orange 40% 62%, $accent-red 62% 82%, $accent-magenta 82% 100%)
 
 .site-footer
-  border-top: 1px solid $ink
-  color: rgba($ink, .68)
-  background: $paper
+  border-top: 1px solid rgba($gallery-ink, .1)
+  color: rgba($gallery-ink, .62)
+  background: rgba($gallery-paper, .92)
 
 .site-main
-  padding: clamp(1rem, 3.5vw, 3.25rem)
+  position: relative
+  z-index: 1
+  padding: clamp(1.15rem, 3.7vw, 4rem)
 
 .site-identity
   display: grid
-  gap: .28rem
-  color: $ink
+  gap: .18rem
+  color: $gallery-ink
   text-decoration: none
+
+.site-identity:hover
+  color: $gallery-ink
 
 .site-identity__label,
 .utility-label
   font-family: $font-family-mono
-  font-size: .75rem
+  font-size: .72rem
   letter-spacing: 0
   line-height: 1.2
   text-transform: uppercase
 
 .site-identity__label
-  color: $accent-yellow
+  color: rgba($gallery-ink, .58)
 
 .title
   font-family: $font-family-display
   font-size: 1.45rem
-  font-weight: 400
+  font-weight: 700
   letter-spacing: 0
   line-height: 1
-  text-transform: uppercase
+  text-transform: none
 
 .site-nav
   display: flex
   flex-wrap: wrap
   justify-content: flex-end
-  gap: .35rem
+  gap: .85rem
   margin: 0
 
 .site-nav a
-  min-height: 2.5rem
+  min-height: 2.25rem
   display: inline-flex
   align-items: center
   justify-content: center
-  padding: .3rem .7rem
-  border: 1px solid rgba($ink, .32)
-  color: rgba($ink, .76)
+  gap: .35rem
+  padding: .25rem 0
+  border: 0
+  color: rgba($gallery-ink, .68)
   font-family: $font-family-mono
-  font-size: .78rem
+  font-size: .74rem
   letter-spacing: 0
   text-decoration: none
   text-transform: uppercase
-  background: rgba($ink, .04)
+  background: transparent
+  transition: color .18s ease, transform .18s ease
 
 .site-nav a:hover,
 .site-nav a.selected
-  border-color: $accent-orange
-  background: $ink
-  color: $paper
+  color: $gallery-ink
+  transform: translateY(-1px)
+
+.site-nav a::after
+  content: ""
+  width: .45rem
+  height: .28rem
+  border-radius: .08rem
+  background: transparent
+
+.site-nav a:hover::after,
+.site-nav a.selected::after
+  background: $accent-red
 
 .site-nav a:focus-visible
-  border-color: $accent-cyan
+  outline-color: $accent-blue
 
 .site-footer__copy
   display: grid
   gap: .25rem
   font-family: $font-family-mono
-  font-size: .78rem
+  font-size: .76rem
 
 .site-footer .site-nav a
-  border-color: rgba($ink, .24)
-  color: rgba($ink, .68)
+  color: rgba($gallery-ink, .58)
 
-.site-footer .site-nav a:hover
-  border-color: $accent-yellow
-  background: $accent-yellow
-  color: $ink
+.site-footer .site-nav a:hover,
+.site-footer .site-nav a.selected
+  color: $gallery-ink
 
 @media (max-width: 44rem)
   body
@@ -152,18 +168,24 @@ body
   .site-sheet
     min-height: calc(100vh - .7rem)
 
+  .site-sheet::after
+    opacity: .45
+
   .site-header,
   .site-footer
     align-items: stretch
-    flex-direction: column
     grid-template-columns: 1fr
 
   .site-nav
     display: grid
     grid-template-columns: repeat(3, minmax(0, 1fr))
+    gap: .35rem .65rem
+    justify-content: stretch
 
   .site-nav a
-    padding-inline: .35rem
+    justify-content: flex-start
+    min-height: 2rem
+    padding-inline: 0
 
   .site-footer .site-nav
     grid-template-columns: repeat(2, minmax(0, 1fr))

@@ -85,9 +85,16 @@ grep -q '\$rule-strong: #f7f2e8' _sass/index.sass
 grep -q '\$accent-red: #f02a3a' _sass/index.sass
 grep -q '\$accent-orange: #ffb000' _sass/index.sass
 grep -q '\$accent-blue: #1857ff' _sass/index.sass
-grep -q '\$font-family-display: "Departure Mono"' _sass/index.sass
+grep -q '\$gallery-paper: \$ink' _sass/index.sass
+grep -q '\$gallery-ink: \$paper' _sass/index.sass
+grep -q '\$radius-soft: \.5rem' _sass/index.sass
+grep -q '\$font-family-display: "PT Sans"' _sass/index.sass
+grep -q '\$font-family-ui: "PT Sans"' _sass/index.sass
 grep -q '\$font-family-mono: "Departure Mono"' _sass/index.sass
-grep -q 'dark-calibration-field' _sass/basic.sass
+grep -q 'cyber-surreal-gallery-field' _sass/basic.sass
+grep -q 'post-internet-dither-field' _sass/classes.sass
+grep -q 'site-cover__art-field' _includes/archive.html
+grep -q 'site-cover__visual-grid' _includes/archive.html
 grep -q 'body.is-home' _sass/basic.sass
 grep -q '\.is-home \.site-cover' _sass/classes.sass
 if grep -q 'background-attachment: fixed' _sass/basic.sass; then
@@ -122,9 +129,9 @@ if grep -R -n -E 'letter-spacing: *(-|\.|[1-9])' _sass assets/css --include='*.s
   echo "Letter spacing must remain 0." >&2
   exit 1
 fi
-grep -q 'background: var(--reading-paper, $sheet)' _sass/basic.sass
+grep -q 'background: var(--reading-paper, $gallery-paper)' _sass/basic.sass
 grep -q 'background-image: none' _sass/basic.sass
-grep -q 'box-shadow: 0 0 0 1px rgba($ink, .06)' _sass/basic.sass
+grep -q 'box-shadow: 0 0 0 1px rgba($gallery-ink, .08)' _sass/basic.sass
 grep -q 'max-width: min(75vw, 88ch)' _sass/basic.sass
 grep -q 'site-cover__primary' _includes/archive.html
 grep -q 'site-cover__secondary' _includes/archive.html

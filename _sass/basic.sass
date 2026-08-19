@@ -15,6 +15,8 @@ html
   --accent-cyan: #{$accent-cyan}
   --accent-magenta: #{$accent-magenta}
   --accent-purple: #{$accent-purple}
+  --gallery-paper: #{$gallery-paper}
+  --gallery-ink: #{$gallery-ink}
 
 *
   box-sizing: border-box
@@ -24,11 +26,11 @@ body
   isolation: isolate
   overflow-x: hidden
   background-color: $paper
-  // dark-calibration-field: black type-specimen field plus faint monitor scanlines.
-  background-image: repeating-linear-gradient(180deg, rgba($ink, .035) 0 1px, transparent 1px 8px), linear-gradient(180deg, $sheet 0, $paper 62%, #000 100%)
-  background-position: center top, center
-  background-size: 100% 100%, 100% 100%
-  color: $ink
+  // cyber-surreal-gallery-field: quiet black surround, soft signal washes, fine scan noise.
+  background-image: linear-gradient(132deg, rgba($accent-blue, .24) 0 9rem, transparent 9rem 44%), linear-gradient(24deg, transparent 0 48%, rgba($accent-red, .18) 48% 58%, transparent 58% 100%), repeating-linear-gradient(180deg, rgba($ink, .035) 0 1px, transparent 1px 7px), linear-gradient(180deg, $sheet 0, $paper 54%, #000 100%)
+  background-position: left top, right 8rem, center top, center
+  background-size: 100% 34rem, 100% 44rem, 100% 100%, 100% 100%
+  color: $gallery-ink
   font-family: $font-family
   font-size: $font-size
   font-weight: $font-weight
@@ -37,12 +39,12 @@ body
   text-rendering: optimizeLegibility
 
 body.is-home
-  background-image: repeating-linear-gradient(180deg, rgba($ink, .045) 0 1px, transparent 1px 7px), linear-gradient(180deg, $sheet 0, $paper 62%, #000 100%)
-  background-size: 100% 100%, 100% 100%
+  background-image: linear-gradient(132deg, rgba($accent-blue, .28) 0 12rem, transparent 12rem 48%), linear-gradient(24deg, transparent 0 43%, rgba($accent-red, .2) 43% 58%, transparent 58% 100%), repeating-linear-gradient(180deg, rgba($ink, .04) 0 1px, transparent 1px 6px), linear-gradient(180deg, $sheet 0, $paper 58%, #000 100%)
+  background-size: 100% 40rem, 100% 48rem, 100% 100%, 100% 100%
 
 *::selection
   background: rgba($accent-orange, .72)
-  color: $ink
+  color: $gallery-ink
 
 .skip-link
   position: fixed
@@ -50,42 +52,41 @@ body.is-home
   left: .5rem
   z-index: 20
   padding: .55rem .75rem
-  border: 1px solid $accent-yellow
-  background: $paper
-  color: $ink
+  border: 1px solid $accent-blue
+  border-radius: $radius-soft
+  background: $gallery-paper
+  color: $gallery-ink
   transform: translateY(-160%)
 
 .skip-link:focus
   transform: translateY(0)
 
 *:focus-visible
-  outline: 2px solid $accent-cyan
+  outline: 2px solid $accent-blue
   outline-offset: 3px
 
 h1, h2, h3, h4, h5, h6
-  color: $ink
+  color: $gallery-ink
   font-family: $font-family-display
   font-weight: $heading-weight
-  line-height: .96
+  line-height: .98
   letter-spacing: 0
-  text-transform: uppercase
+  text-transform: none
   text-wrap: balance
 
 h1
-  font-size: 4rem
-  font-weight: 400
-  line-height: .94
+  font-size: 4.4rem
+  line-height: .92
   letter-spacing: 0
 
 h2
   margin-top: 2.4em
-  font-size: 2.25rem
-  font-weight: 400
+  font-size: 2.35rem
   letter-spacing: 0
 
 h3
   margin-top: 2em
-  font-size: 1.35rem
+  font-size: 1.45rem
 
 h4
   font-size: 1.15rem
@@ -94,20 +95,21 @@ h5, h6
   font-family: $font-family-mono
   font-size: .82rem
   letter-spacing: 0
+  text-transform: uppercase
 
 p
-  margin: 1.15em 0
+  margin: 1.1em 0
   overflow-wrap: anywhere
 
 a
-  color: $ink
-  text-decoration-color: rgba($ink, .55)
+  color: $gallery-ink
+  text-decoration-color: rgba($gallery-ink, .42)
   text-decoration-thickness: 1px
-  text-underline-offset: .22em
+  text-underline-offset: .24em
 
 a:hover
-  color: $ink
-  text-decoration-color: $accent-orange
+  color: $accent-red
+  text-decoration-color: $accent-red
 
 strong, b, th
   font-weight: 700
@@ -119,14 +121,15 @@ hr
   height: 1px
   margin: 2.5rem 0
   border: 0
-  background: linear-gradient(90deg, $accent-yellow 0 3rem, $accent-orange 3rem 5rem, $accent-red 5rem 7rem, $accent-magenta 7rem 9rem, $rule 9rem 100%)
+  background: linear-gradient(90deg, $accent-blue 0 4rem, $accent-green 4rem 6rem, $accent-orange 6rem 8rem, $accent-red 8rem 10rem, rgba($gallery-ink, .16) 10rem 100%)
 
 img
   display: block
   max-width: 100%
   height: auto
   margin: 1.5rem auto
-  border: 1px solid $rule
+  border: 0
+  border-radius: $radius-soft
 
 svg,
 iframe
@@ -139,21 +142,22 @@ figure
   margin: 1.75rem 0
 
 figcaption
-  margin-top: .5rem
-  color: $muted
+  margin-top: .55rem
+  color: rgba($gallery-ink, .62)
   font-family: $font-family-mono
-  font-size: .8rem
+  font-size: .74rem
   letter-spacing: 0
   text-transform: uppercase
   overflow-wrap: anywhere
 
 blockquote
   margin: 2rem 0
-  padding: .75rem 1.25rem
-  border-left: .35rem solid $accent-orange
-  border-top: 1px solid rgba($ink, .2)
-  border-bottom: 1px solid rgba($ink, .2)
-  color: $ink
+  padding: 1rem 1.25rem
+  border-left: .35rem solid $accent-red
+  border-top: 1px solid rgba($gallery-ink, .12)
+  border-bottom: 1px solid rgba($gallery-ink, .12)
+  color: $gallery-ink
+  font-family: $font-family-serif
   font-size: 1.04rem
 
 blockquote p:first-child
@@ -173,9 +177,10 @@ code, kbd, samp
 
 \:not(pre) > code
   padding: .14rem .34rem
-  border: 1px solid rgba($rule, .8)
-  background: $raised
-  color: $ink
+  border: 1px solid rgba($gallery-ink, .16)
+  border-radius: .25rem
+  background: rgba($gallery-ink, .06)
+  color: $gallery-ink
   font-size: .84em
 
 pre
@@ -183,9 +188,10 @@ pre
   margin: 1.8rem 0
   padding: 1rem 1.15rem
   overflow-x: auto
-  border: 1px solid $rule
-  border-top-color: $accent-orange
-  background: lighten($sheet, 2%)
+  border: 1px solid rgba($gallery-ink, .16)
+  border-top-color: $accent-blue
+  border-radius: $radius-soft
+  background: $paper
   color: $ink
   font-family: $font-family-code
   font-size: .82rem
@@ -203,24 +209,25 @@ table
   width: 100%
   margin: 1.8rem 0
   border-collapse: collapse
-  border: 1px solid $rule
+  border: 1px solid rgba($gallery-ink, .18)
+  border-radius: $radius-soft
   font-family: $font-family-mono
   font-size: .84rem
 
 th, td
   padding: .55rem .7rem
-  border: 1px solid $rule
+  border: 1px solid rgba($gallery-ink, .18)
   text-align: left
 
 th
-  background: $raised
+  background: $paper
   color: $ink
-  border-top-color: $accent-orange
+  border-top-color: $accent-blue
   letter-spacing: 0
   text-transform: uppercase
 
 tbody tr:nth-child(even)
-  background: rgba($ink, .035)
+  background: rgba($gallery-ink, .035)
 
 audio
   width: 100%
@@ -231,21 +238,23 @@ button, input, textarea, select
   font: inherit
 
 button, input, textarea, select
-  border-radius: 0
+  border-radius: $radius-soft
 
 input, textarea, select
-  border: 1px solid $rule-strong
-  background: $paper
-  color: $ink
+  border: 1px solid rgba($gallery-ink, .32)
+  background: $gallery-paper
+  color: $gallery-ink
 
 .reading-region,
 .page-content > .prose
-  --reading-paper: #{$sheet}
+  --reading-paper: #{$gallery-paper}
   padding: clamp(1.2rem, 3vw, 2.2rem) clamp(1rem, 4vw, 2.6rem)
-  border: 1px solid $rule
-  background: var(--reading-paper, $sheet)
-  box-shadow: 0 0 0 1px rgba($ink, .06)
+  border: 1px solid rgba($gallery-ink, .1)
+  border-radius: $radius-soft
+  background: var(--reading-paper, $gallery-paper)
+  box-shadow: 0 0 0 1px rgba($gallery-ink, .08)
   background-image: none
+  color: $gallery-ink
 
 .reading-region
   max-width: 74ch
@@ -253,6 +262,16 @@ input, textarea, select
 
 .prose
   max-width: 72ch
+  font-family: $font-family-serif
+  line-height: 1.74
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6
+  font-family: $font-family-display
 
 .page-content > .prose
   width: 100%
@@ -277,45 +296,57 @@ input, textarea, select
 .prose .footnotes
   margin-top: 3rem
   padding-top: 1rem
-  border-top: 1px solid $rule
-  color: $muted
+  border-top: 1px solid rgba($gallery-ink, .14)
+  color: $gallery-muted
   font-size: .88rem
 
 .page-header,
 .post-header
   position: relative
+  isolation: isolate
+  overflow: hidden
   margin-bottom: clamp(2rem, 6vw, 4.5rem)
   padding: clamp(1.5rem, 4vw, 3rem) clamp(1rem, 4vw, 2.6rem) clamp(1.75rem, 5vw, 4rem)
-  border: 1px solid $rule
-  background: linear-gradient(180deg, lighten($sheet, 2%), $sheet)
-  box-shadow: 0 0 0 1px rgba($ink, .06)
+  border: 1px solid rgba($gallery-ink, .12)
+  border-radius: $radius-soft
+  background-color: $paper
+  background-image: linear-gradient(90deg, rgba($accent-blue, .2), transparent 34%), repeating-linear-gradient(180deg, rgba($ink, .045) 0 1px, transparent 1px 8px), linear-gradient(180deg, $raised, $paper)
+  color: $ink
+  box-shadow: 0 0 0 1px rgba($gallery-ink, .08)
 
 .page-header::before,
 .post-header::before
   content: ""
   position: absolute
-  top: .65rem
-  right: 0
+  top: .75rem
+  right: .75rem
   width: clamp(6rem, 16vw, 11rem)
-  height: .72rem
-  background: linear-gradient(90deg, $accent-yellow 0 18%, $accent-orange 18% 36%, $accent-red 36% 54%, $accent-magenta 54% 72%, $accent-purple 72% 88%, $ink 88% 100%)
+  height: .55rem
+  border-radius: 999px
+  background: linear-gradient(90deg, $accent-blue 0 20%, $accent-green 20% 40%, $accent-orange 40% 60%, $accent-red 60% 80%, $accent-magenta 80% 100%)
 
 .page-header::after,
 .post-header::after
   content: ""
   position: absolute
-  left: 0
-  bottom: -1px
+  left: clamp(1rem, 4vw, 2.6rem)
+  bottom: clamp(1rem, 3vw, 2rem)
   width: clamp(4rem, 12vw, 9rem)
   height: 1px
-  background: $ink
+  background: rgba($ink, .38)
+
+.page-header > *,
+.post-header > *
+  position: relative
+  z-index: 1
 
 .page-header h1,
 .post-header h1
-  max-width: 16ch
+  max-width: 17ch
   margin: .65rem 0 0
-  font-size: 3.3rem
-  line-height: .96
+  color: $ink
+  font-size: 3.55rem
+  line-height: .95
 
 .page-title
   word-spacing: 0
@@ -326,9 +357,9 @@ input, textarea, select
   align-items: center
   gap: .45rem
   margin-top: 1.2rem
-  color: $muted
+  color: rgba($ink, .7)
   font-family: $font-family-mono
-  font-size: .8rem
+  font-size: .75rem
   letter-spacing: 0
   text-transform: uppercase
 
@@ -336,9 +367,9 @@ input, textarea, select
   min-width: 0
 
 .post-header__meta > * + *::before
-  content: "•"
+  content: "/"
   margin-right: .45rem
-  color: $accent-orange
+  color: $accent-cyan
 
 .post-header__meta a
   color: inherit
@@ -384,7 +415,7 @@ input, textarea, select
 [dir="rtl"] .prose blockquote
   padding-right: 1.25rem
   padding-left: 0
-  border-right: .35rem solid $accent-orange
+  border-right: .35rem solid $accent-red
   border-left: 0
 
 [dir="rtl"] .prose ul,
@@ -424,7 +455,7 @@ input, textarea, select
   z-index: 100
   height: 8px
   overflow: hidden
-  background: rgba($ink, .18)
+  background: rgba($gallery-ink, .16)
 
 .reading-progress[hidden]
   display: none
@@ -435,16 +466,17 @@ input, textarea, select
   display: block
   transform: scaleX(0)
   transform-origin: left center
-  background: linear-gradient(90deg, $accent-orange 0 70%, $accent-yellow 70% 100%)
+  background: linear-gradient(90deg, $accent-blue 0 34%, $accent-green 34% 58%, $accent-orange 58% 78%, $accent-red 78% 100%)
   will-change: transform
 
 .post-cover
   max-width: 32rem
   margin: 0 0 3rem
-  padding: .65rem
-  border: 1px solid $rule
-  background: $sheet
-  box-shadow: 0 0 0 1px rgba($ink, .06)
+  padding: .55rem
+  border: 1px solid rgba($gallery-ink, .12)
+  border-radius: $radius-soft
+  background: $gallery-paper
+  box-shadow: 0 0 0 1px rgba($gallery-ink, .08)
 
 .post-cover__image,
 #cover
@@ -483,16 +515,16 @@ input, textarea, select
   color: $ink
 
 .highlight .c, .highlight .cm, .highlight .cp, .highlight .c1, .highlight .cs
-  color: $muted
+  color: rgba($ink, .58)
 
 .highlight .k, .highlight .kc, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kt
   color: $accent-red
 
 .highlight .s, .highlight .sb, .highlight .sc, .highlight .sd, .highlight .s1, .highlight .s2, .highlight .se, .highlight .sh, .highlight .si, .highlight .sx, .highlight .sr, .highlight .ss
-  color: $ink
+  color: $accent-cyan
 
 .highlight .m, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .mo
-  color: $accent-cyan
+  color: $accent-green
 
 .highlight .nf, .highlight .nc, .highlight .na
   color: $ink
@@ -512,7 +544,7 @@ input, textarea, select
 
 .rouge-table .gutter
   padding-right: 1rem
-  color: $rule
+  color: rgba($ink, .42)
 
 .katex
   overflow-x: auto
