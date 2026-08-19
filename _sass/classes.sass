@@ -15,7 +15,7 @@
 
 .is-home .site-cover
   background-color: $paper
-  background-image: linear-gradient(120deg, rgba($accent-blue, .38) 0 18%, transparent 18% 52%, rgba($accent-red, .32) 52% 66%, transparent 66% 100%), linear-gradient(180deg, $sheet, $paper)
+  background-image: linear-gradient(180deg, $sheet, $paper)
 
 .site-cover::before
   content: ""
@@ -134,58 +134,6 @@
   width: 1px
   height: 150%
 
-.site-cover__art-field
-  position: relative
-  min-height: 15rem
-  overflow: hidden
-  border-radius: $radius-soft
-  background-color: $paper
-  background-image: linear-gradient(135deg, rgba($accent-blue, .56), transparent 36%), linear-gradient(25deg, transparent 0 46%, rgba($accent-red, .74) 46% 66%, transparent 66% 100%), repeating-linear-gradient(180deg, rgba($ink, .08) 0 1px, transparent 1px 6px), url("../photos/tmp.jpeg")
-  background-position: center
-  background-size: cover
-  box-shadow: inset 0 0 0 1px rgba($ink, .18), 0 1rem 2rem rgba($paper, .18)
-
-.site-cover__visual-grid
-  position: absolute
-  inset: 1rem
-  display: grid
-  grid-template-columns: repeat(4, minmax(0, 1fr))
-  gap: .45rem
-
-.site-cover__visual-grid span
-  border-radius: .35rem
-  background: rgba($ink, .08)
-
-.site-cover__visual-grid span:nth-child(3n)
-  background: rgba($accent-green, .76)
-
-.site-cover__visual-grid span:nth-child(4n)
-  background: rgba($accent-blue, .76)
-
-.site-cover__visual-grid span:nth-child(5n)
-  background: rgba($accent-red, .78)
-
-.site-cover__artifact
-  position: absolute
-  border-radius: $radius-soft
-  box-shadow: 0 0 0 1px rgba($ink, .22), 0 .8rem 1.6rem rgba($paper, .24)
-
-.site-cover__artifact--blue
-  right: 1.4rem
-  bottom: 1.2rem
-  width: 7.2rem
-  height: 4.6rem
-  background: $accent-blue
-  transform: rotate(-4deg)
-
-.site-cover__artifact--red
-  left: 16%
-  top: 18%
-  width: 4.8rem
-  height: 6.2rem
-  background: $accent-red
-  transform: rotate(6deg)
-
 .cover-quote
   position: relative
   z-index: 1
@@ -230,19 +178,19 @@
   background: rgba($gallery-ink, .12)
 
 .site-cover__scale span:nth-child(2)
-  background: $accent-blue
+  background: rgba($gallery-ink, .26)
 
 .site-cover__scale span:nth-child(3)
-  background: $accent-green
+  background: rgba($gallery-ink, .2)
 
 .site-cover__scale span:nth-child(4)
-  background: $accent-orange
-
-.site-cover__scale span:nth-child(5)
   background: $accent-red
 
+.site-cover__scale span:nth-child(5)
+  background: rgba($gallery-ink, .2)
+
 .site-cover__scale span:nth-child(6)
-  background: $accent-magenta
+  background: rgba($gallery-ink, .26)
 
 .site-cover__scale span:nth-child(7)
   background: $gallery-ink
@@ -299,22 +247,11 @@
   font-variant-numeric: tabular-nums
   background: rgba($gallery-paper, .88)
   box-shadow: 0 .45rem 1.1rem rgba($paper, .06)
-  transition: transform .18s ease, background-color .18s ease, color .18s ease
-
-.catalog-row:not(.catalog-row--head):nth-child(4n+2)
-  margin-right: clamp(0rem, 7vw, 8rem)
-
-.catalog-row:not(.catalog-row--head):nth-child(4n+3)
-  margin-left: clamp(0rem, 9vw, 10rem)
-  background: $paper
-  color: $ink
-
-.catalog-row:not(.catalog-row--head):nth-child(4n+4)
-  margin-right: clamp(0rem, 4vw, 4rem)
-  background: rgba($accent-blue, .12)
+  transition: background-color .18s ease, border-color .18s ease
 
 .catalog-row:not(.catalog-row--head):hover
-  transform: translateY(-2px)
+  border-color: rgba($accent-red, .28)
+  background: rgba($gallery-paper, .96)
 
 .catalog-row > *
   min-width: 0
@@ -388,7 +325,7 @@
   position: relative
   isolation: isolate
   display: grid
-  grid-template-columns: minmax(0, 1.15fr) minmax(18rem, .85fr)
+  grid-template-columns: 1fr
   gap: 1rem
   margin-top: 3rem
 
@@ -418,12 +355,9 @@
   z-index: 1
 
 .utility-module--compact
-  background: $paper
-  color: $ink
   text-align: left
 
 .utility-module--compact .utility-label
-  color: $accent-green
   text-align: left
 
 .utility-module--compact .recent-played
@@ -564,21 +498,11 @@
   border-radius: $radius-soft
   background: rgba($gallery-paper, .9)
   box-shadow: 0 .45rem 1.1rem rgba($paper, .05)
-  transition: transform .18s ease, background-color .18s ease, border-color .18s ease
-
-.collection-row:nth-child(3n+1)
-  margin-right: clamp(0rem, 7vw, 7rem)
-
-.collection-row:nth-child(3n+2)
-  margin-left: clamp(0rem, 7vw, 7rem)
-
-.collection-row:nth-child(5n)
-  background: $paper
-  color: $ink
+  transition: background-color .18s ease, border-color .18s ease
 
 .collection-row:hover
-  transform: translateY(-2px)
   border-color: rgba($accent-red, .42)
+  background: rgba($gallery-paper, .96)
 
 .collection-row > *
   height: 100%
@@ -647,13 +571,6 @@
   background: rgba($gallery-paper, .9)
   box-shadow: 0 .55rem 1.4rem rgba($paper, .06)
 
-.album-item:nth-child(4n+2)
-  transform: translateY(1.25rem)
-
-.album-item:nth-child(4n+3)
-  background: $paper
-  color: $ink
-
 .album-item__entry
   display: grid
   grid-template-columns: minmax(7rem, 10rem) minmax(0, 1fr)
@@ -673,10 +590,10 @@
   overflow: hidden
   border-radius: $radius-soft
   background: $paper
-  transition: transform .18s ease
+  transition: box-shadow .18s ease
 
 .album-cover-link:hover .album-cover-duotone
-  transform: translateY(-3px) scale(1.015)
+  box-shadow: inset 0 0 0 1px rgba($accent-red, .42)
 
 .cover-small
   width: 100%
@@ -887,7 +804,7 @@
 
 .photo-grid
   display: grid
-  grid-template-columns: repeat(6, minmax(0, 1fr))
+  grid-template-columns: repeat(2, minmax(0, 1fr))
   gap: 1rem
   margin-top: 1rem
 
@@ -898,7 +815,6 @@
   position: relative
   min-width: 0
   display: block
-  grid-column: span 3
   padding: .65rem
   overflow: hidden
   border: 1px solid rgba($gallery-ink, .1)
@@ -906,19 +822,11 @@
   background: rgba($gallery-paper, .92)
   color: $gallery-ink
   text-decoration: none
-  transition: transform .18s ease, background-color .18s ease
-
-.photo-card:nth-child(5n+1)
-  grid-column: span 4
-
-.photo-card:nth-child(5n+2)
-  grid-column: span 2
-  margin-top: 2.5rem
+  transition: background-color .18s ease, border-color .18s ease
 
 .photo-card:hover
-  background: $paper
-  color: $ink
-  transform: translateY(-3px)
+  border-color: rgba($accent-red, .28)
+  background: rgba($gallery-paper, .96)
 
 .photo-card__number
   display: block
@@ -939,11 +847,8 @@
   border-radius: $radius-soft
   transition: transform .22s ease
 
-.photo-card:nth-child(5n+1) img
-  aspect-ratio: 5 / 3
-
 .photo-card:hover img
-  transform: scale(1.025)
+  transform: scale(1.012)
 
 .photo-card figcaption
   display: flex
@@ -1153,16 +1058,9 @@
   .album-list
     grid-template-columns: 1fr
 
-  .album-item:nth-child(4n+2)
-    transform: none
-
   .catalog-row
     grid-template-columns: 6.25rem minmax(0, 1fr)
     height: auto
-
-  .catalog-row:not(.catalog-row--head)
-    margin-left: 0
-    margin-right: 0
 
   .catalog-row--head
     display: none
@@ -1230,12 +1128,6 @@
   .photo-grid
     grid-template-columns: 1fr
 
-  .photo-card,
-  .photo-card:nth-child(5n+1),
-  .photo-card:nth-child(5n+2)
-    grid-column: auto
-    margin-top: 0
-
   .photo-single figcaption
     align-items: flex-start
     flex-direction: column
@@ -1277,9 +1169,6 @@
 
   .site-cover h1
     font-size: 3.25rem
-
-  .site-cover__visual-grid
-    grid-template-columns: repeat(3, minmax(0, 1fr))
 
   .site-cover__scale
     grid-template-columns: repeat(4, minmax(0, 1fr))

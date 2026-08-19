@@ -93,8 +93,22 @@ grep -q '\$font-family-ui: "PT Sans"' _sass/index.sass
 grep -q '\$font-family-mono: "Departure Mono"' _sass/index.sass
 grep -q 'cyber-surreal-gallery-field' _sass/basic.sass
 grep -q 'post-internet-dither-field' _sass/classes.sass
-grep -q 'site-cover__art-field' _includes/archive.html
-grep -q 'site-cover__visual-grid' _includes/archive.html
+if grep -R -n -E 'site-cover__art-field|site-cover__visual-grid|site-cover__artifact' _includes/archive.html _sass/classes.sass; then
+  echo "Homepage quote area must stay clean: decorative art grid/artifacts remain." >&2
+  exit 1
+fi
+if grep -q -E 'catalog-row:not\(\.catalog-row--head\):nth-child|collection-row:nth-child|album-item:nth-child\(4n\+|photo-card:nth-child\(5n\+' _sass/classes.sass; then
+  echo "Randomized nth-child layout offsets or color variants remain." >&2
+  exit 1
+fi
+if grep -q -E 'margin-(left|right): clamp\(0rem, [0-9]vw' _sass/classes.sass; then
+  echo "Alternating row margins remain." >&2
+  exit 1
+fi
+if grep -q 'grid-template-columns: minmax(0, 1.15fr) minmax(18rem, .85fr)' _sass/classes.sass; then
+  echo "Activity widgets must be stacked, not side-by-side." >&2
+  exit 1
+fi
 grep -q 'body.is-home' _sass/basic.sass
 grep -q '\.is-home \.site-cover' _sass/classes.sass
 if grep -q 'background-attachment: fixed' _sass/basic.sass; then
@@ -192,6 +206,7 @@ if command -v bundle >/dev/null 2>&1; then
   grep -q 'site-cover__primary' _site/index.html
   grep -q 'site-cover__secondary' _site/index.html
   grep -q 'site-cover__mark" aria-hidden="true"' _site/index.html
+  ! grep -q -E 'site-cover__art-field|site-cover__visual-grid|site-cover__artifact' _site/index.html
   grep -q 'catalog-table' _site/index.html
   grep -q 'Perhaps if I make myself write I shall find out what is wrong with me.' _site/index.html
   grep -q 'catalog-kind' _site/index.html

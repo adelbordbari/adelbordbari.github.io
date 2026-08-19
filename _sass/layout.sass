@@ -21,8 +21,7 @@ body
   color: $gallery-ink
   box-shadow: 0 0 0 1px rgba($paper, .38), 0 1.1rem 2.25rem rgba(#000, .48)
 
-.site-sheet::before,
-.site-sheet::after
+.site-sheet::before
   content: ""
   position: absolute
   pointer-events: none
@@ -32,15 +31,6 @@ body
   inset: 0
   background-image: linear-gradient(90deg, rgba($accent-blue, .08), transparent 26rem), repeating-linear-gradient(180deg, rgba($gallery-ink, .035) 0 1px, transparent 1px 10px)
   opacity: .65
-
-.site-sheet::after
-  top: clamp(5rem, 12vw, 9rem)
-  right: clamp(-4rem, -6vw, -2rem)
-  width: 22rem
-  height: 8rem
-  border-radius: $radius-soft
-  background: linear-gradient(135deg, rgba($accent-red, .36), rgba($accent-blue, .22))
-  transform: rotate(-5deg)
 
 .site-header,
 .site-footer
@@ -127,12 +117,11 @@ body
   text-decoration: none
   text-transform: uppercase
   background: transparent
-  transition: color .18s ease, transform .18s ease
+  transition: color .18s ease
 
 .site-nav a:hover,
 .site-nav a.selected
   color: $gallery-ink
-  transform: translateY(-1px)
 
 .site-nav a::after
   content: ""
@@ -167,9 +156,6 @@ body
 
   .site-sheet
     min-height: calc(100vh - .7rem)
-
-  .site-sheet::after
-    opacity: .45
 
   .site-header,
   .site-footer
