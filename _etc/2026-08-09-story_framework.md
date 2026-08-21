@@ -3,93 +3,129 @@ title: "Turning A Weird Little Story Idea Into Something You Can Actually Write"
 layout: "post"
 ---
 
-sometimes I have an idea that feels like a story; but it isn't. it's more like a little object I found somewhere. something like:
+Sometimes I have an idea that feels like a story, but it isn't. It's more like a little object I found somewhere. Something like:
 
-> a superpower that's actually a virus. it brings death closer. there's no cure. eventually it becomes a pandemic.
+> A superpower that's actually a virus. It brings death closer. There's no cure. Eventually it becomes a pandemic.
 
-and my first instinct is usually to start asking *what happens next?* which is, I've realized, kind of the wrong question. because I don't have a story yet. I have a **premise** and a premise can be exciting without having anywhere to go. I've been trying to think about this as a small pipeline:
+And my first instinct is usually to start asking *what happens next?* Which is, I've realized, kind of the wrong question. Because I don't have a story yet. I have a **premise**, and a premise can be exciting without having anywhere to go.
+
+I've been trying to think about this as a small pipeline:
 
 **idea → question → person → problem → rules → escalation → choice → scenes**
 
-not a rigid formula. more like a way of giving the idea somewhere to grow.
+Not a rigid formula. More like a way of giving the idea somewhere to grow.
 
-## start with the weird thing
+## Start With The Weird Thing
 
-first, I try not to explain the idea too much, just say what the strange thing is.
+First, I try not to explain the idea too much. Just say what the strange thing is.
 
-> what if a superpower were actually a contagious virus that shortened people's remaining lifespan?
+> What if a superpower were actually a contagious virus that shortened people's remaining lifespan?
 
-that's enough.
+That's enough.
 
-I don't need the characters yet. I don't need the ending. I don't need to know how the government responds to the pandemic. I just want to know what makes this idea *this idea*. because there's a difference between:
+I don't need the characters yet. I don't need the ending. I don't need to know how the government responds to the pandemic. I just want to know what makes this idea *this idea*.
 
-> "there's a pandemic"
+Because there's a difference between:
 
-and:
+> "There's a pandemic."
 
-> "there's a pandemic caused by something people initially think is a superpower."
+And:
 
-the second one has a little bit of tension already. there's a contradiction hiding inside it and contradictions are useful!
+> "There's a pandemic caused by something people initially think is a superpower."
 
-## then I look for the human question
+The second one has a little bit of tension already. There's a contradiction hiding inside it, and contradictions are useful!
 
-this is probably the part I find most useful. the same premise can become completely different stories depending on the question underneath it. a virus that brings death closer could become a story about:
+## Then I Look For The Human Question
 
-> would you want to know exactly when you're going to die?
+This is probably the part I find most useful.
 
-or:
+The same premise can become completely different stories depending on the question underneath it. A virus that brings death closer could become a story about:
 
-> how much of your own life would you sacrifice to save someone else's?
+> Would you want to know exactly when you're going to die?
 
-or:
+Or:
 
-> what happens when something that is killing people is also giving them extraordinary abilities?
+> How much of your own life would you sacrifice to save someone else's?
 
-or even:
+Or:
 
-> what does society do when death becomes something people can see coming?
+> What happens when something that is killing people is also giving them extraordinary abilities?
 
-none of these are *the plot*. they're more like the emotional direction and I think that's important because otherwise I tend to confuse **having more events** with **having more story**. you can add governments and hospitals and riots and conspiracies and helicopters and still not know what the story is about. sometimes the thing I actually need is one uncomfortable question.
+Or even:
 
-## find one person to make the idea hurt
+> What does society do when death becomes something people can see coming?
 
-this is where the abstract idea starts becoming a story. I try to find one person who has a particularly bad relationship with the premise. not necessarily the person who would be the most qualified to deal with it. the person for whom this particular problem is *personal*. maybe it's a doctor who discovers she's infected. maybe it's a teenager who realizes his new "power" is killing him. maybe it's someone who can see other people's time of death but can't see their own. maybe it's a father who discovers that his daughter has the virus. then I give them three things:
+None of these are *the plot*. They're more like the emotional direction, and I think that's important because otherwise I tend to confuse **having more events** with **having more story**.
 
-**what do they want?**
+You can add governments and hospitals and riots and conspiracies and helicopters and still not know what the story is about.
 
-**what are they afraid of?**
+Sometimes the thing I actually need is one uncomfortable question.
 
-**what do they actually need?**
+## Find One Person To Make The Idea Hurt
 
-I don't always know the answers immediately. but once I have even rough versions, the premise starts behaving differently. "there is a pandemic" becomes:
+This is where the abstract idea starts becoming a story.
 
-> she wants to save her brother, but she's infected, and every person she gets close to might be someone she kills.
+I try to find one person who has a particularly bad relationship with the premise. Not necessarily the person who would be the most qualified to deal with it. The person for whom this particular problem is *personal*.
 
-now I have somewhere to stand. the pandemic is no longer just *the thing happening in the world*. it's happening **to someone**.
+Maybe it's a doctor who discovers she's infected. Maybe it's a teenager who realizes his new "power" is killing him. Maybe it's someone who can see other people's time of death but can't see their own. Maybe it's a father who discovers that his daughter has the virus.
 
-## give the idea rules, then make those rules inconvenient
+Then I give them three things:
 
-this is the part I used to skip because it felt too much like worldbuilding. but I think rules are less about building a world and more about creating problems. if this is a virus, how does it spread? if it's a superpower, what does it actually let you do? what does "bringing death closer" mean? does it literally move your natural death date forward? does using the power cost you time? can you see someone else's death? does the person know they're infected? when do they become contagious? what happens if two infected people interact? and, most importantly:
+**What do they want?**
 
-**what happens when someone tries to use the rules to their advantage?**
+**What are they afraid of?**
 
-because that's where things get interesting. maybe the infected can see when someone will die. suddenly people want to find them. maybe using the power makes your own death come sooner. now every attempt to solve a problem has a price. maybe there is no cure, but there are ways to slow the virus down. now "no cure" doesn't mean "nothing can happen." it means people have to make choices. and choices are much more useful to me than explanations.
+**What do they actually need?**
 
-## I don't try to invent the whole plot — I make things worse
+I don't always know the answers immediately. But once I have even rough versions, the premise starts behaving differently.
 
-once I have a character and a problem, I usually don't ask:
+"There is a pandemic" becomes:
 
-> "what should happen in chapter two?"
+> She wants to save her brother, but she's infected, and every person she gets close to might be someone she kills.
+
+Now I have somewhere to stand.
+
+The pandemic is no longer just *the thing happening in the world*. It's happening **to someone**.
+
+## Give The Idea Rules, Then Make Those Rules Inconvenient
+
+This is the part I used to skip because it felt too much like worldbuilding. But I think rules are less about building a world and more about creating problems.
+
+If this is a virus, how does it spread? If it's a superpower, what does it actually let you do? What does "bringing death closer" mean? Does it literally move your natural death date forward? Does using the power cost you time? Can you see someone else's death? Does the person know they're infected? When do they become contagious? What happens if two infected people interact?
+
+And, most importantly:
+
+**What happens when someone tries to use the rules to their advantage?**
+
+Because that's where things get interesting.
+
+Maybe the infected can see when someone will die. Suddenly people want to find them.
+
+Maybe using the power makes your own death come sooner. Now every attempt to solve a problem has a price.
+
+Maybe there is no cure, but there are ways to slow the virus down. Now "no cure" doesn't mean "nothing can happen." It means people have to make choices.
+
+And choices are much more useful to me than explanations.
+
+## I Don't Try To Invent The Whole Plot — I Make Things Worse
+
+Once I have a character and a problem, I usually don't ask:
+
+> "What should happen in chapter two?"
 
 I ask:
 
-> **"what would make this situation worse?"**
+> **"What would make this situation worse?"**
 
-then:
+Then:
 
-> "okay, what would make *that* worse?"
+> "Okay, what would make *that* worse?"
 
-that's basically the escalation ladder. something happens to one person. then someone they love gets involved. then other people are affected. then institutions notice. then society starts reacting. then the problem becomes too big to contain. so with the virus idea, it might go:
+That's basically the escalation ladder.
+
+Something happens to one person. Then someone they love gets involved. Then other people are affected. Then institutions notice. Then society starts reacting. Then the problem becomes too big to contain.
+
+So with the virus idea, it might go:
 
 ```text
 one person is infected
@@ -111,51 +147,57 @@ the outbreak becomes a pandemic
 the protagonist has to make an impossible choice
 ```
 
-I like this because the pandemic doesn't have to be the starting point. it can be the **consequence** of smaller things. and that usually makes the story feel more inevitable. the world doesn't suddenly become huge because the writer decided it should. it becomes huge because the characters kept making decisions inside a problem that wouldn't stay small.
+I like this because the pandemic doesn't have to be the starting point. It can be the **consequence** of smaller things.
+
+And that usually makes the story feel more inevitable.
+
+The world doesn't suddenly become huge because the writer decided it should. It becomes huge because the characters kept making decisions inside a problem that wouldn't stay small.
 
 ---
 
-## the part I care about most: the choice
+## The Part I Care About Most: The Choice
 
-at some point, all of this has to collapse into one decision.
+At some point, all of this has to collapse into one decision.
 
-not:
+Not:
 
-> "how do we stop the pandemic?"
+> "How do we stop the pandemic?"
 
-but:
+But:
 
-> **"what does this person have to choose between?"**
+> **"What does this person have to choose between?"**
 
-that's the thing I want to know before I start outlining scenes.
+That's the thing I want to know before I start outlining scenes.
 
-maybe:
+Maybe:
 
-> save her brother, or stop the spread.
+> Save her brother, or stop the spread.
 
-or:
+Or:
 
-> use the power again and die sooner, or let someone else die.
+> Use the power again and die sooner, or let someone else die.
 
-or:
+Or:
 
-> reveal the truth and cause mass panic, or keep people calm and let them remain ignorant.
+> Reveal the truth and cause mass panic, or keep people calm and let them remain ignorant.
 
-or:
+Or:
 
-> accept the virus as part of humanity, or destroy the thing that gives people the power.
+> Accept the virus as part of humanity, or destroy the thing that gives people the power.
 
-I don't always know the exact final scene yet. but if I know the **choice**, I usually know what kind of story I'm trying to build and then scenes become much easier. because a scene is basically just a moment that moves the character closer to that choice.
+I don't always know the exact final scene yet. But if I know the **choice**, I usually know what kind of story I'm trying to build, and then scenes become much easier.
 
-something changes, they learn something, they lose something, they make a decision, the situation gets worse, someone changes their mind, another door closes and eventually there aren't any easy doors left.
+Because a scene is basically just a moment that moves the character closer to that choice.
+
+Something changes, they learn something, they lose something, they make a decision, the situation gets worse, someone changes their mind, another door closes, and eventually there aren't any easy doors left.
 
 ---
 
-## so this is the little framework I'm keeping
+## So This Is The Little Framework I'm Keeping
 
-when I get one of those annoying, exciting ideas that isn't a story yet, I'm trying not to force a plot out of it immediately.
+When I get one of those annoying, exciting ideas that isn't a story yet, I'm trying not to force a plot out of it immediately.
 
-instead:
+Instead:
 
 ```text
 IDEA
@@ -202,6 +244,12 @@ SCENES
 what moments take us there?
 ```
 
-I like this because it doesn't require me to be clever all at once. I don't have to invent a 30-chapter plot from one sentence. I just have to answer the **next useful question**. and maybe that's the real shift:
+I like this because it doesn't require me to be clever all at once.
 
-an idea doesn't need to become a story immediately. it just needs to become **slightly more specific**. a weird thing becomes a question. the question becomes a person. the person gets a problem. the problem gets rules. the rules create consequences. the consequences force a choice and somewhere along the way, almost quietly, the little idea I started with turns into a story!
+I don't have to invent a 30-chapter plot from one sentence. I just have to answer the **next useful question**.
+
+And maybe that's the real shift:
+
+An idea doesn't need to become a story immediately. It just needs to become **slightly more specific**.
+
+A weird thing becomes a question. The question becomes a person. The person gets a problem. The problem gets rules. The rules create consequences. The consequences force a choice, and somewhere along the way, almost quietly, the little idea I started with turns into a story!
