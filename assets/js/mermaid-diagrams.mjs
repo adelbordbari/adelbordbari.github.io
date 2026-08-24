@@ -1,6 +1,7 @@
 const MERMAID_CODE_SELECTOR = 'pre > code.language-mermaid, code.language-mermaid';
 const MERMAID_SELECTOR = '.mermaid';
-const ZOOM_SCALE = 2.8;
+const ZOOM_TEXT_SIZE = 18;
+const ZOOM_FALLBACK_TEXT_SIZE = 18;
 const ZOOM_EDGE_REACH_X = 0.12;
 const ZOOM_EDGE_REACH_Y = 0.27;
 const ZOOM_DETAIL_MAX_SIZE = 448;
@@ -159,21 +160,71 @@ function fullViewBoxFor(svg) {
     || parseViewBox(svg.getAttribute('viewBox'));
 }
 
-function updateDetailViewBox(zoom, x, y) {
+function parseCssSize(value) {
+  if (!value) return null;
+
+  const size = Number.parseFloat(value);
+  return Number.isFinite(size) && size > 0 ? size : null;
+}
+
+function computedStyleFor(element) {
+  const view = element.ownerDocument?.defaultView || globalThis;
+
+  return typeof view.getComputedStyle === 'function'
+    ? view.getComputedStyle(element)
+    : null;
+}
+
+function textSizeFor(element) {
+  const attributeSize = parseCssSize(element.getAttribute?.('font-size'));
+  if (attributeSize) return attributeSize;
+
+  const inlineSize = parseCssSize(element.style?.fontSize);
+  if (inlineSize) return inlineSize;
+
+  return parseCssSize(computedStyleFor(element)?.fontSize);
+}
+
+function representativeTextSize(svg) {
+  const textElements = Array.from(svg.querySelectorAll('text, .nodeLabel, .edgeLabel, .messageText, text.actor'));
+  const sizes = textElements
+    .map(textSizeFor)
+    .filter((size) => size && size >= 6 && size <= 96)
+    .sort((a, b) => a - b);
+
+  if (!sizes.length) return ZOOM_FALLBACK_TEXT_SIZE;
+
+  return sizes[Math.floor(sizes.length / 2)];
+}
+
+function detailCropSizeFor(svg, detailSize) {
+  const textSize = representativeTextSize(svg);
+  const paneSize = Number.isFinite(detailSize) && detailSize > 0
+    ? detailSize
+    : ZOOM_DETAIL_MAX_SIZE;
+  const cropSize = (paneSize * textSize) / ZOOM_TEXT_SIZE;
+
+  return {
+    width: cropSize,
+    height: cropSize
+  };
+}
+
+function updateDetailViewBox(zoom, x, y, detailSize) {
   const detailSvg = zoom.querySelector('.mermaid-zoom__detail svg');
   if (!detailSvg) return;
 
   const full = fullViewBoxFor(detailSvg);
   if (!full || full.width <= 0 || full.height <= 0) return;
 
-  const cropSize = Math.min(full.width, full.height, Math.max(full.width, full.height) / ZOOM_SCALE);
-  const maxX = full.width - cropSize;
-  const maxY = full.height - cropSize;
+  const cropSize = detailCropSizeFor(detailSvg, detailSize);
+  const maxX = full.width - cropSize.width;
+  const maxY = full.height - cropSize.height;
   const crop = {
     x: full.x + (maxX * x),
     y: full.y + (maxY * y),
-    width: cropSize,
-    height: cropSize
+    width: cropSize.width,
+    height: cropSize.height
   };
 
   detailSvg.setAttribute('viewBox', viewBoxValue(crop));
@@ -220,6 +271,8 @@ function setDetailPosition(zoom, source, event) {
   setStyleProperty(zoom, '--mermaid-detail-size', `${formatNumber(size)}px`);
   setStyleProperty(zoom, '--mermaid-detail-left', `${formatNumber(left)}px`);
   setStyleProperty(zoom, '--mermaid-detail-top', `${formatNumber(top)}px`);
+
+  return size;
 }
 
 function zoomTargetRect(source) {
@@ -262,8 +315,8 @@ function setZoomPoint(zoom, source, event) {
 
   setStyleProperty(zoom, '--mermaid-zoom-x', `${Math.round(lensX * 10000) / 100}%`);
   setStyleProperty(zoom, '--mermaid-zoom-y', `${Math.round(lensY * 10000) / 100}%`);
-  updateDetailViewBox(zoom, x, y);
-  setDetailPosition(zoom, source, event);
+  const detailSize = setDetailPosition(zoom, source, event);
+  updateDetailViewBox(zoom, x, y, detailSize);
 }
 
 function cloneSvg(svg) {
@@ -312,7 +365,6 @@ export function enhanceMermaidDiagrams(document) {
     zoom.setAttribute('tabindex', '0');
     zoom.setAttribute('role', 'img');
     zoom.setAttribute('aria-label', 'Zoomable Mermaid diagram');
-    setStyleProperty(zoom, '--mermaid-zoom-scale', ZOOM_SCALE);
     setStyleProperty(zoom, '--mermaid-zoom-x', '50%');
     setStyleProperty(zoom, '--mermaid-zoom-y', '50%');
 

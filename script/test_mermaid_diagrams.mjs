@@ -174,7 +174,10 @@ const mermaid = {
     runQuery = querySelector;
     const diagram = document.querySelector('.mermaid');
     const svg = document.createElement('svg');
+    const text = document.createElement('text');
     svg.setAttribute('viewBox', '0 0 1200 800');
+    text.setAttribute('font-size', '18px');
+    svg.appendChild(text);
     diagram.appendChild(svg);
     return Promise.resolve();
   }
@@ -209,26 +212,31 @@ source.scrollHeight = 300;
 source.getBoundingClientRect = () => ({ left: 10, top: 20, width: 500, height: 300 });
 
 source.listeners.pointermove({ clientX: 30, clientY: 40 });
-assert.equal(detailSvg.getAttribute('viewBox'), '0 0 428.57 428.57');
+assert.equal(detailSvg.getAttribute('viewBox'), '0 0 448 448');
 source.listeners.pointermove({ clientX: 490, clientY: 40 });
-assert.equal(detailSvg.getAttribute('viewBox'), '771.43 0 428.57 428.57');
+assert.equal(detailSvg.getAttribute('viewBox'), '752 0 448 448');
 source.listeners.pointermove({ clientX: 30, clientY: 300 });
-assert.equal(detailSvg.getAttribute('viewBox'), '0 371.43 428.57 428.57');
+assert.equal(detailSvg.getAttribute('viewBox'), '0 352 448 448');
 source.listeners.pointermove({ clientX: 490, clientY: 300 });
-assert.equal(detailSvg.getAttribute('viewBox'), '771.43 371.43 428.57 428.57');
+assert.equal(detailSvg.getAttribute('viewBox'), '752 352 448 448');
 assert.equal(zoom.style['--mermaid-detail-size'], '448px');
 assert.equal(zoom.style['--mermaid-detail-left'], '18px');
 
 sourceSvg.getBoundingClientRect = () => ({ left: 210, top: 70, width: 100, height: 200 });
 source.listeners.pointermove({ clientX: 260, clientY: 116 });
-assert.equal(detailSvg.getAttribute('viewBox'), '385.71 0 428.57 428.57');
+assert.equal(detailSvg.getAttribute('viewBox'), '376 0 448 448');
 source.listeners.pointermove({ clientX: 260, clientY: 224 });
-assert.equal(detailSvg.getAttribute('viewBox'), '385.71 371.43 428.57 428.57');
+assert.equal(detailSvg.getAttribute('viewBox'), '376 352 448 448');
+
+detailSvg.querySelector('text').setAttribute('font-size', '36px');
+source.listeners.pointermove({ clientX: 260, clientY: 170 });
+assert.equal(detailSvg.getAttribute('viewBox'), '152 -48 896 896');
+detailSvg.querySelector('text').setAttribute('font-size', '18px');
 
 source.getBoundingClientRect = () => ({ left: 260, top: 270, width: 500, height: 300 });
 sourceSvg.getBoundingClientRect = null;
 source.listeners.pointermove({ clientX: 740, clientY: 550 });
-assert.equal(detailSvg.getAttribute('viewBox'), '771.43 371.43 428.57 428.57');
+assert.equal(detailSvg.getAttribute('viewBox'), '752 352 448 448');
 assert.equal(zoom.style['--mermaid-detail-left'], '268px');
 assert.equal(zoom.style['--mermaid-detail-top'], '136px');
 
