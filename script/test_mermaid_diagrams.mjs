@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 import { initMermaidDiagrams } from '../assets/js/mermaid-diagrams.mjs';
 
 class TestElement {
@@ -180,5 +181,9 @@ assert.equal(zoom.querySelector('.mermaid svg').getAttribute('viewBox'), '0 0 12
 assert.equal(zoom.querySelector('.mermaid-zoom__lens').getAttribute('aria-hidden'), 'true');
 assert.equal(zoom.querySelector('.mermaid-zoom__detail').getAttribute('aria-hidden'), 'true');
 assert.equal(zoom.querySelector('.mermaid-zoom__detail svg').getAttribute('viewBox'), '0 0 1200 800');
+
+const mermaidStyles = readFileSync(new URL('../_sass/basic.sass', import.meta.url), 'utf8');
+assert.match(mermaidStyles, /\.mermaid-zoom__source \.mermaid svg\s+display: block\s+width: 100%\s+min-width: 0\s+max-width: 100%/);
+assert.match(mermaidStyles, /\.mermaid-zoom__detail svg[\s\S]+transform: scale\(var\(--mermaid-zoom-scale\)\)/);
 
 console.log('Mermaid diagram unit checks passed.');
