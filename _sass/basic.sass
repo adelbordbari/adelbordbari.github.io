@@ -465,6 +465,9 @@ input, textarea, select
   --mermaid-zoom-x: 50%
   --mermaid-zoom-y: 50%
   --mermaid-lens-size: min(10rem, 38%)
+  --mermaid-detail-size: min(28rem, calc(100vw - 2rem), calc(100vh - 2rem))
+  --mermaid-detail-left: 1rem
+  --mermaid-detail-top: 1rem
   position: relative
   margin: 2rem 0
   max-width: 100%
@@ -475,6 +478,8 @@ input, textarea, select
   outline-offset: .35rem
 
 .mermaid-zoom__source
+  display: grid
+  place-items: center
   position: relative
   max-width: 100%
   overflow: hidden
@@ -487,6 +492,7 @@ input, textarea, select
   isolation: isolate
 
 .mermaid-zoom__diagram
+  width: 100%
   margin: 0
   padding: 0
   border: 0
@@ -495,9 +501,10 @@ input, textarea, select
 
 .mermaid-zoom__source .mermaid svg
   display: block
-  width: 100%
+  width: auto
   min-width: 0
   max-width: 100%
+  max-height: min(26rem, 58vh)
   height: auto
   margin: 0 auto
 
@@ -517,11 +524,11 @@ input, textarea, select
   transition: opacity .14s ease
 
 .mermaid-zoom__detail
-  position: absolute
-  z-index: 3
-  top: .9rem
-  right: .9rem
-  width: min(28rem, calc(100% - 1.8rem))
+  position: fixed
+  z-index: 30
+  top: var(--mermaid-detail-top)
+  left: var(--mermaid-detail-left)
+  width: var(--mermaid-detail-size)
   aspect-ratio: 1
   overflow: hidden
   border: 3px solid $accent-blue
@@ -564,9 +571,7 @@ input, textarea, select
     min-width: 44rem
 
   .mermaid-zoom__detail
-    top: .75rem
-    right: .75rem
-    width: calc(100% - 1.5rem)
+    max-width: calc(100vw - 1.5rem)
 
 @media (prefers-reduced-motion: reduce)
   .mermaid-zoom__lens,

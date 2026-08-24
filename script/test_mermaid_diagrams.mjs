@@ -3,8 +3,9 @@ import { readFileSync } from 'node:fs';
 import { initMermaidDiagrams } from '../assets/js/mermaid-diagrams.mjs';
 
 class TestElement {
-  constructor(tagName) {
+  constructor(tagName, ownerDocument = null) {
     this.tagName = tagName.toUpperCase();
+    this.ownerDocument = ownerDocument;
     this.children = [];
     this.parentElement = null;
     this.attributes = {};
@@ -123,10 +124,19 @@ class TestElement {
 class TestDocument extends TestElement {
   constructor() {
     super('#document');
+    this.ownerDocument = this;
+    this.defaultView = {
+      innerWidth: 800,
+      innerHeight: 600
+    };
+    this.documentElement = {
+      clientWidth: 800,
+      clientHeight: 600
+    };
   }
 
   createElement(tagName) {
-    return new TestElement(tagName);
+    return new TestElement(tagName, this);
   }
 }
 
@@ -197,18 +207,27 @@ source.scrollWidth = 500;
 source.scrollHeight = 300;
 source.getBoundingClientRect = () => ({ left: 10, top: 20, width: 500, height: 300 });
 
-source.listeners.pointermove({ clientX: 10, clientY: 20 });
+source.listeners.pointermove({ clientX: 30, clientY: 40 });
 assert.equal(detailSvg.getAttribute('viewBox'), '0 0 428.57 428.57');
-source.listeners.pointermove({ clientX: 510, clientY: 20 });
+source.listeners.pointermove({ clientX: 490, clientY: 40 });
 assert.equal(detailSvg.getAttribute('viewBox'), '771.43 0 428.57 428.57');
-source.listeners.pointermove({ clientX: 10, clientY: 320 });
+source.listeners.pointermove({ clientX: 30, clientY: 300 });
 assert.equal(detailSvg.getAttribute('viewBox'), '0 371.43 428.57 428.57');
-source.listeners.pointermove({ clientX: 510, clientY: 320 });
+source.listeners.pointermove({ clientX: 490, clientY: 300 });
 assert.equal(detailSvg.getAttribute('viewBox'), '771.43 371.43 428.57 428.57');
+assert.equal(zoom.style['--mermaid-detail-size'], '448px');
+assert.equal(zoom.style['--mermaid-detail-left'], '18px');
+
+source.getBoundingClientRect = () => ({ left: 260, top: 270, width: 500, height: 300 });
+source.listeners.pointermove({ clientX: 740, clientY: 550 });
+assert.equal(detailSvg.getAttribute('viewBox'), '771.43 371.43 428.57 428.57');
+assert.equal(zoom.style['--mermaid-detail-left'], '268px');
+assert.equal(zoom.style['--mermaid-detail-top'], '136px');
 
 const mermaidStyles = readFileSync(new URL('../_sass/basic.sass', import.meta.url), 'utf8');
-assert.match(mermaidStyles, /\.mermaid-zoom__source\s+position: relative[\s\S]+overflow: hidden/);
-assert.match(mermaidStyles, /\.mermaid-zoom__source \.mermaid svg\s+display: block\s+width: 100%\s+min-width: 0\s+max-width: 100%/);
+assert.match(mermaidStyles, /\.mermaid-zoom__detail\s+position: fixed[\s\S]+top: var\(--mermaid-detail-top/);
+assert.match(mermaidStyles, /\.mermaid-zoom__source\s+display: grid\s+place-items: center\s+position: relative[\s\S]+overflow: hidden/);
+assert.match(mermaidStyles, /\.mermaid-zoom__source \.mermaid svg\s+display: block\s+width: auto\s+min-width: 0\s+max-width: 100%\s+max-height: min\(26rem, 58vh\)/);
 assert.doesNotMatch(mermaidStyles, /\.mermaid-zoom__detail svg[\s\S]+transform: scale\(var\(--mermaid-zoom-scale\)\)/);
 
 console.log('Mermaid diagram unit checks passed.');

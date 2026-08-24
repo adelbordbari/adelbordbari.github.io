@@ -1,6 +1,10 @@
 const MERMAID_CODE_SELECTOR = 'pre > code.language-mermaid, code.language-mermaid';
 const MERMAID_SELECTOR = '.mermaid';
 const ZOOM_SCALE = 2.8;
+const ZOOM_EDGE_REACH = 0.12;
+const ZOOM_DETAIL_MAX_SIZE = 448;
+const ZOOM_DETAIL_GAP = 16;
+const ZOOM_DETAIL_POINTER_OFFSET = 24;
 const MERMAID_THEME = {
   startOnLoad: false,
   securityLevel: 'strict',
@@ -108,6 +112,20 @@ function clamp(value, min, max) {
   return Math.min(Math.max(value, min), max);
 }
 
+function edgeZone(length) {
+  return Math.min(Math.max(length * ZOOM_EDGE_REACH, 24), length / 2);
+}
+
+function edgeProgress(value, length) {
+  if (length <= 0) return 0.5;
+
+  const zone = edgeZone(length);
+  if (value <= zone) return 0;
+  if (value >= length - zone) return 1;
+
+  return (value - zone) / (length - (zone * 2));
+}
+
 function formatNumber(value) {
   return Number.parseFloat(value.toFixed(2)).toString();
 }
@@ -160,20 +178,70 @@ function updateDetailViewBox(zoom, x, y) {
   detailSvg.setAttribute('viewBox', viewBoxValue(crop));
 }
 
+function viewportFor(source) {
+  const view = source.ownerDocument?.defaultView || globalThis;
+  const documentElement = source.ownerDocument?.documentElement;
+
+  return {
+    width: view.innerWidth || documentElement?.clientWidth || 1024,
+    height: view.innerHeight || documentElement?.clientHeight || 768
+  };
+}
+
+function setDetailPosition(zoom, source, event) {
+  const viewport = viewportFor(source);
+  const availableWidth = Math.max(160, viewport.width - (ZOOM_DETAIL_GAP * 2));
+  const availableHeight = Math.max(160, viewport.height - (ZOOM_DETAIL_GAP * 2));
+  const size = Math.min(ZOOM_DETAIL_MAX_SIZE, availableWidth, availableHeight);
+  const rect = typeof source.getBoundingClientRect === 'function'
+    ? source.getBoundingClientRect()
+    : { left: 0, top: 0, width: 0, height: 0 };
+  const clientX = event && Number.isFinite(event.clientX)
+    ? event.clientX
+    : rect.left + (rect.width / 2);
+  const clientY = event && Number.isFinite(event.clientY)
+    ? event.clientY
+    : rect.top + (rect.height / 2);
+  let left = clientX + ZOOM_DETAIL_POINTER_OFFSET;
+
+  if (left + size > viewport.width - ZOOM_DETAIL_GAP) {
+    left = clientX - ZOOM_DETAIL_POINTER_OFFSET - size;
+  }
+
+  left = clamp(left, ZOOM_DETAIL_GAP, viewport.width - size - ZOOM_DETAIL_GAP);
+
+  const top = clamp(
+    clientY - (size / 2),
+    ZOOM_DETAIL_GAP,
+    viewport.height - size - ZOOM_DETAIL_GAP
+  );
+
+  setStyleProperty(zoom, '--mermaid-detail-size', `${formatNumber(size)}px`);
+  setStyleProperty(zoom, '--mermaid-detail-left', `${formatNumber(left)}px`);
+  setStyleProperty(zoom, '--mermaid-detail-top', `${formatNumber(top)}px`);
+}
+
 function setZoomPoint(zoom, source, event) {
   const rect = typeof source.getBoundingClientRect === 'function'
     ? source.getBoundingClientRect()
     : { left: 0, top: 0, width: 0, height: 0 };
+  const localX = event && Number.isFinite(event.clientX)
+    ? clamp(event.clientX - rect.left, 0, rect.width)
+    : rect.width / 2;
+  const localY = event && Number.isFinite(event.clientY)
+    ? clamp(event.clientY - rect.top, 0, rect.height)
+    : rect.height / 2;
   const x = event && Number.isFinite(event.clientX) && rect.width > 0
-    ? clamp(event.clientX - rect.left, 0, rect.width) / rect.width
+    ? edgeProgress(localX, rect.width)
     : 0.5;
   const y = event && Number.isFinite(event.clientY) && rect.height > 0
-    ? clamp(event.clientY - rect.top, 0, rect.height) / rect.height
+    ? edgeProgress(localY, rect.height)
     : 0.5;
 
   setStyleProperty(zoom, '--mermaid-zoom-x', `${Math.round(x * 10000) / 100}%`);
   setStyleProperty(zoom, '--mermaid-zoom-y', `${Math.round(y * 10000) / 100}%`);
   updateDetailViewBox(zoom, x, y);
+  setDetailPosition(zoom, source, event);
 }
 
 function cloneSvg(svg) {
