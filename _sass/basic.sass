@@ -443,11 +443,128 @@ input, textarea, select
   border: 0
 
 .mermaid
+  margin: 2rem 0
   max-width: 100%
   overflow-x: auto
+  padding: .9rem
+  border: 1px solid rgba($gallery-ink, .2)
+  border-radius: $radius-soft
+  background: #fffaf0
+  color: $gallery-ink
 
 .mermaid svg
-  min-width: min-content
+  display: block
+  width: auto
+  min-width: 56rem
+  max-width: none
+  height: auto
+  margin: 0 auto
+
+.mermaid-zoom
+  --mermaid-zoom-scale: 2.8
+  --mermaid-zoom-x: 50%
+  --mermaid-zoom-y: 50%
+  position: relative
+  margin: 2rem 0
+  max-width: 100%
+  outline: 0
+
+.mermaid-zoom:focus-visible
+  outline: 3px solid $accent-blue
+  outline-offset: .35rem
+
+.mermaid-zoom__source
+  position: relative
+  max-width: 100%
+  overflow: auto
+  padding: .9rem
+  border: 1px solid rgba($gallery-ink, .22)
+  border-radius: $radius-soft
+  background: #fffaf0
+  box-shadow: inset 0 0 0 1px rgba($gallery-ink, .05)
+  cursor: crosshair
+  isolation: isolate
+
+.mermaid-zoom__diagram
+  margin: 0
+  padding: 0
+  border: 0
+  background: transparent
+  overflow: visible
+
+.mermaid-zoom__lens
+  position: absolute
+  z-index: 2
+  left: var(--mermaid-zoom-x)
+  top: var(--mermaid-zoom-y)
+  width: min(9rem, 42%)
+  aspect-ratio: 1
+  border: 2px solid $accent-blue
+  background: rgba($accent-blue, .08)
+  box-shadow: inset 0 0 0 1px rgba($gallery-paper, .65), 0 8px 22px rgba($gallery-ink, .22)
+  opacity: 0
+  pointer-events: none
+  transform: translate(-50%, -50%)
+  transition: opacity .14s ease
+
+.mermaid-zoom__detail
+  position: absolute
+  z-index: 3
+  top: .9rem
+  right: .9rem
+  width: min(28rem, calc(100% - 1.8rem))
+  aspect-ratio: 1
+  overflow: hidden
+  border: 2px solid $gallery-ink
+  border-radius: $radius-soft
+  background: #fffaf0
+  box-shadow: 0 14px 34px rgba($gallery-ink, .28), inset 0 0 0 1px rgba($gallery-paper, .72)
+  opacity: 0
+  pointer-events: none
+  transform: translateY(.3rem)
+  transition: opacity .14s ease, transform .14s ease
+
+.mermaid-zoom__detail-frame
+  width: 100%
+  height: 100%
+  overflow: hidden
+
+.mermaid-zoom__detail svg
+  display: block
+  width: 100%
+  min-width: 100%
+  max-width: none
+  height: 100%
+  margin: 0
+  transform: scale(var(--mermaid-zoom-scale))
+  transform-origin: var(--mermaid-zoom-x) var(--mermaid-zoom-y)
+
+.mermaid-zoom:hover .mermaid-zoom__lens,
+.mermaid-zoom.is-zooming .mermaid-zoom__lens,
+.mermaid-zoom:focus .mermaid-zoom__lens,
+.mermaid-zoom:focus-within .mermaid-zoom__lens
+  opacity: 1
+
+.mermaid-zoom:hover .mermaid-zoom__detail,
+.mermaid-zoom.is-zooming .mermaid-zoom__detail,
+.mermaid-zoom:focus .mermaid-zoom__detail,
+.mermaid-zoom:focus-within .mermaid-zoom__detail
+  opacity: 1
+  transform: translateY(0)
+
+@media (max-width: 46rem)
+  .mermaid svg
+    min-width: 44rem
+
+  .mermaid-zoom__detail
+    top: .75rem
+    right: .75rem
+    width: calc(100% - 1.5rem)
+
+@media (prefers-reduced-motion: reduce)
+  .mermaid-zoom__lens,
+  .mermaid-zoom__detail
+    transition: none
 
 .reading-progress
   position: fixed

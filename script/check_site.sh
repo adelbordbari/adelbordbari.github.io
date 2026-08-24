@@ -4,8 +4,9 @@ set -euo pipefail
 
 if command -v node >/dev/null 2>&1; then
   node script/test_reader_context.js
+  node script/test_mermaid_diagrams.mjs
 else
-  echo "Node is unavailable; skipped reader-context unit checks." >&2
+  echo "Node is unavailable; skipped JavaScript unit checks." >&2
 fi
 
 grep -q '^url: "https://adelbordbari.github.io"' _config.yml
@@ -39,6 +40,9 @@ grep -q 'relative-time' _includes/relative-date.html
 grep -q '200' _includes/reading-time.html
 grep -q 'calculateProgress' assets/js/reader-context.js
 grep -q 'prepareMermaidDiagrams' assets/js/mermaid-diagrams.mjs
+grep -q 'enhanceMermaidDiagrams' assets/js/mermaid-diagrams.mjs
+grep -q 'theme: '"'"'base'"'"'' assets/js/mermaid-diagrams.mjs
+grep -q 'mermaid-zoom__detail' _sass/basic.sass
 grep -q 'reading-progress__fill' _sass/basic.sass
 grep -q 'height: 8px' _sass/basic.sass
 grep -q '.photo-single__meta' _sass/classes.sass
