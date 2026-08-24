@@ -202,6 +202,7 @@ assert.equal(zoom.querySelector('.mermaid-zoom__detail').getAttribute('aria-hidd
 assert.equal(zoom.querySelector('.mermaid-zoom__detail svg').getAttribute('viewBox'), '0 0 1200 800');
 
 const source = zoom.querySelector('.mermaid-zoom__source');
+const sourceSvg = zoom.querySelector('.mermaid svg');
 const detailSvg = zoom.querySelector('.mermaid-zoom__detail svg');
 source.scrollWidth = 500;
 source.scrollHeight = 300;
@@ -218,7 +219,14 @@ assert.equal(detailSvg.getAttribute('viewBox'), '771.43 371.43 428.57 428.57');
 assert.equal(zoom.style['--mermaid-detail-size'], '448px');
 assert.equal(zoom.style['--mermaid-detail-left'], '18px');
 
+sourceSvg.getBoundingClientRect = () => ({ left: 210, top: 70, width: 100, height: 200 });
+source.listeners.pointermove({ clientX: 260, clientY: 116 });
+assert.equal(detailSvg.getAttribute('viewBox'), '385.71 0 428.57 428.57');
+source.listeners.pointermove({ clientX: 260, clientY: 224 });
+assert.equal(detailSvg.getAttribute('viewBox'), '385.71 371.43 428.57 428.57');
+
 source.getBoundingClientRect = () => ({ left: 260, top: 270, width: 500, height: 300 });
+sourceSvg.getBoundingClientRect = null;
 source.listeners.pointermove({ clientX: 740, clientY: 550 });
 assert.equal(detailSvg.getAttribute('viewBox'), '771.43 371.43 428.57 428.57');
 assert.equal(zoom.style['--mermaid-detail-left'], '268px');
