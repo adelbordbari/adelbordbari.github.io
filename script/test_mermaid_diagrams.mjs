@@ -229,7 +229,11 @@ source.listeners.pointermove({ clientX: 260, clientY: 224 });
 assert.equal(detailSvg.getAttribute('viewBox'), '376 352 448 448');
 
 detailSvg.querySelector('text').setAttribute('font-size', '36px');
+source.listeners.pointermove({ clientX: 260, clientY: 116 });
+assert.equal(detailSvg.getAttribute('viewBox'), '152 -48 896 896');
 source.listeners.pointermove({ clientX: 260, clientY: 170 });
+assert.equal(detailSvg.getAttribute('viewBox'), '152 -48 896 896');
+source.listeners.pointermove({ clientX: 260, clientY: 224 });
 assert.equal(detailSvg.getAttribute('viewBox'), '152 -48 896 896');
 detailSvg.querySelector('text').setAttribute('font-size', '18px');
 

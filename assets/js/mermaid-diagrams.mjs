@@ -210,6 +210,14 @@ function detailCropSizeFor(svg, detailSize) {
   };
 }
 
+function cropStart(fullStart, fullLength, cropLength, progress) {
+  if (cropLength >= fullLength) {
+    return fullStart - ((cropLength - fullLength) / 2);
+  }
+
+  return fullStart + ((fullLength - cropLength) * progress);
+}
+
 function updateDetailViewBox(zoom, x, y, detailSize) {
   const detailSvg = zoom.querySelector('.mermaid-zoom__detail svg');
   if (!detailSvg) return;
@@ -218,11 +226,9 @@ function updateDetailViewBox(zoom, x, y, detailSize) {
   if (!full || full.width <= 0 || full.height <= 0) return;
 
   const cropSize = detailCropSizeFor(detailSvg, detailSize);
-  const maxX = full.width - cropSize.width;
-  const maxY = full.height - cropSize.height;
   const crop = {
-    x: full.x + (maxX * x),
-    y: full.y + (maxY * y),
+    x: cropStart(full.x, full.width, cropSize.width, x),
+    y: cropStart(full.y, full.height, cropSize.height, y),
     width: cropSize.width,
     height: cropSize.height
   };
