@@ -464,6 +464,7 @@ input, textarea, select
   --mermaid-zoom-scale: 2.8
   --mermaid-zoom-x: 50%
   --mermaid-zoom-y: 50%
+  --mermaid-lens-size: min(10rem, 38%)
   position: relative
   margin: 2rem 0
   max-width: 100%
@@ -476,7 +477,7 @@ input, textarea, select
 .mermaid-zoom__source
   position: relative
   max-width: 100%
-  overflow: auto
+  overflow: hidden
   padding: .9rem
   border: 1px solid rgba($gallery-ink, .22)
   border-radius: $radius-soft
@@ -490,7 +491,7 @@ input, textarea, select
   padding: 0
   border: 0
   background: transparent
-  overflow: visible
+  overflow: hidden
 
 .mermaid-zoom__source .mermaid svg
   display: block
@@ -503,13 +504,13 @@ input, textarea, select
 .mermaid-zoom__lens
   position: absolute
   z-index: 2
-  left: var(--mermaid-zoom-x)
-  top: var(--mermaid-zoom-y)
-  width: min(9rem, 42%)
+  left: clamp(calc(var(--mermaid-lens-size) / 2), var(--mermaid-zoom-x), calc(100% - calc(var(--mermaid-lens-size) / 2)))
+  top: clamp(calc(var(--mermaid-lens-size) / 2), var(--mermaid-zoom-y), calc(100% - calc(var(--mermaid-lens-size) / 2)))
+  width: var(--mermaid-lens-size)
   aspect-ratio: 1
-  border: 2px solid $accent-blue
-  background: rgba($accent-blue, .08)
-  box-shadow: inset 0 0 0 1px rgba($gallery-paper, .65), 0 8px 22px rgba($gallery-ink, .22)
+  border: 3px solid $accent-blue
+  background: rgba($accent-blue, .1)
+  box-shadow: inset 0 0 0 2px rgba($gallery-paper, .84), 0 8px 22px rgba($gallery-ink, .25)
   opacity: 0
   pointer-events: none
   transform: translate(-50%, -50%)
@@ -523,10 +524,10 @@ input, textarea, select
   width: min(28rem, calc(100% - 1.8rem))
   aspect-ratio: 1
   overflow: hidden
-  border: 2px solid $gallery-ink
+  border: 3px solid $accent-blue
   border-radius: $radius-soft
   background: #fffaf0
-  box-shadow: 0 14px 34px rgba($gallery-ink, .28), inset 0 0 0 1px rgba($gallery-paper, .72)
+  box-shadow: 0 0 0 2px rgba($gallery-ink, .86), 0 14px 34px rgba($gallery-ink, .28), inset 0 0 0 2px rgba($gallery-paper, .78)
   opacity: 0
   pointer-events: none
   transform: translateY(.3rem)
@@ -544,8 +545,6 @@ input, textarea, select
   max-width: none
   height: 100%
   margin: 0
-  transform: scale(var(--mermaid-zoom-scale))
-  transform-origin: var(--mermaid-zoom-x) var(--mermaid-zoom-y)
 
 .mermaid-zoom:hover .mermaid-zoom__lens,
 .mermaid-zoom.is-zooming .mermaid-zoom__lens,

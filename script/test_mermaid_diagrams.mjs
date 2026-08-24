@@ -11,6 +11,7 @@ class TestElement {
     this.style = {};
     this.textContent = '';
     this.className = '';
+    this.listeners = {};
   }
 
   get classList() {
@@ -113,6 +114,10 @@ class TestElement {
 
     return clone;
   }
+
+  addEventListener(name, callback) {
+    this.listeners[name] = callback;
+  }
 }
 
 class TestDocument extends TestElement {
@@ -171,7 +176,11 @@ assert.equal(runQuery, '.mermaid');
 assert.equal(options.theme, 'base');
 assert.equal(options.themeVariables.primaryTextColor, '#050505');
 assert.equal(options.themeVariables.lineColor, '#15130f');
-assert.equal(options.themeVariables.actorBorder, '#15130f');
+assert.equal(options.themeVariables.actorBkg, '#fffdf6');
+assert.equal(options.themeVariables.actorBorder, '#2f2a22');
+assert.match(options.themeCSS, /rect\.actor[\s\S]+fill: #fffdf6/);
+assert.match(options.themeCSS, /text\.actor[\s\S]+fill: #15130f/);
+assert.doesNotMatch(options.themeCSS, /\.actor,[\s\S]+fill: #050505/);
 
 const zoom = document.querySelector('.mermaid-zoom');
 assert.ok(zoom);
@@ -182,8 +191,24 @@ assert.equal(zoom.querySelector('.mermaid-zoom__lens').getAttribute('aria-hidden
 assert.equal(zoom.querySelector('.mermaid-zoom__detail').getAttribute('aria-hidden'), 'true');
 assert.equal(zoom.querySelector('.mermaid-zoom__detail svg').getAttribute('viewBox'), '0 0 1200 800');
 
+const source = zoom.querySelector('.mermaid-zoom__source');
+const detailSvg = zoom.querySelector('.mermaid-zoom__detail svg');
+source.scrollWidth = 500;
+source.scrollHeight = 300;
+source.getBoundingClientRect = () => ({ left: 10, top: 20, width: 500, height: 300 });
+
+source.listeners.pointermove({ clientX: 10, clientY: 20 });
+assert.equal(detailSvg.getAttribute('viewBox'), '0 0 428.57 428.57');
+source.listeners.pointermove({ clientX: 510, clientY: 20 });
+assert.equal(detailSvg.getAttribute('viewBox'), '771.43 0 428.57 428.57');
+source.listeners.pointermove({ clientX: 10, clientY: 320 });
+assert.equal(detailSvg.getAttribute('viewBox'), '0 371.43 428.57 428.57');
+source.listeners.pointermove({ clientX: 510, clientY: 320 });
+assert.equal(detailSvg.getAttribute('viewBox'), '771.43 371.43 428.57 428.57');
+
 const mermaidStyles = readFileSync(new URL('../_sass/basic.sass', import.meta.url), 'utf8');
+assert.match(mermaidStyles, /\.mermaid-zoom__source\s+position: relative[\s\S]+overflow: hidden/);
 assert.match(mermaidStyles, /\.mermaid-zoom__source \.mermaid svg\s+display: block\s+width: 100%\s+min-width: 0\s+max-width: 100%/);
-assert.match(mermaidStyles, /\.mermaid-zoom__detail svg[\s\S]+transform: scale\(var\(--mermaid-zoom-scale\)\)/);
+assert.doesNotMatch(mermaidStyles, /\.mermaid-zoom__detail svg[\s\S]+transform: scale\(var\(--mermaid-zoom-scale\)\)/);
 
 console.log('Mermaid diagram unit checks passed.');

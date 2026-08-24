@@ -8,8 +8,8 @@ const MERMAID_THEME = {
   themeVariables: {
     background: '#f7f2e8',
     mainBkg: '#fffaf0',
-    primaryColor: '#fffaf0',
-    primaryBorderColor: '#15130f',
+    primaryColor: '#fffdf6',
+    primaryBorderColor: '#2f2a22',
     primaryTextColor: '#050505',
     secondaryColor: '#e7f1ff',
     secondaryBorderColor: '#1857ff',
@@ -24,8 +24,8 @@ const MERMAID_THEME = {
     noteBkgColor: '#fff2bf',
     noteTextColor: '#050505',
     noteBorderColor: '#9b6a00',
-    actorBkg: '#fffaf0',
-    actorBorder: '#15130f',
+    actorBkg: '#fffdf6',
+    actorBorder: '#2f2a22',
     actorTextColor: '#050505',
     activationBkgColor: '#e7f1ff',
     activationBorderColor: '#1857ff',
@@ -45,13 +45,25 @@ const MERMAID_THEME = {
     useMaxWidth: false
   },
   themeCSS: `
-    .actor, .messageText, .loopText, .labelText, .nodeLabel, .edgeLabel {
-      color: #050505 !important;
-      fill: #050505 !important;
+    rect.actor {
+      fill: #fffdf6 !important;
+      stroke: #2f2a22 !important;
+      stroke-width: 1.5px !important;
+    }
+
+    text.actor, .messageText, .loopText, .labelText, .nodeLabel, .edgeLabel, .noteText {
+      color: #15130f !important;
+      fill: #15130f !important;
     }
 
     .messageLine0, .messageLine1, .flowchart-link, .actor-line {
-      stroke: #15130f !important;
+      stroke: #2f2a22 !important;
+      stroke-width: 1.5px !important;
+    }
+
+    .labelBox, .loopLine {
+      fill: #fffdf6 !important;
+      stroke: #6c6255 !important;
     }
   `
 };
@@ -96,25 +108,80 @@ function clamp(value, min, max) {
   return Math.min(Math.max(value, min), max);
 }
 
+function formatNumber(value) {
+  return Number.parseFloat(value.toFixed(2)).toString();
+}
+
+function parseViewBox(value) {
+  if (!value) return null;
+
+  const parts = value.trim().split(/[\s,]+/).map(Number);
+  if (parts.length !== 4 || parts.some((part) => !Number.isFinite(part))) return null;
+
+  return {
+    x: parts[0],
+    y: parts[1],
+    width: parts[2],
+    height: parts[3]
+  };
+}
+
+function viewBoxValue(viewBox) {
+  return [
+    viewBox.x,
+    viewBox.y,
+    viewBox.width,
+    viewBox.height
+  ].map(formatNumber).join(' ');
+}
+
+function fullViewBoxFor(svg) {
+  return parseViewBox(svg.getAttribute('data-mermaid-full-view-box'))
+    || parseViewBox(svg.getAttribute('viewBox'));
+}
+
+function updateDetailViewBox(zoom, x, y) {
+  const detailSvg = zoom.querySelector('.mermaid-zoom__detail svg');
+  if (!detailSvg) return;
+
+  const full = fullViewBoxFor(detailSvg);
+  if (!full || full.width <= 0 || full.height <= 0) return;
+
+  const cropSize = Math.min(full.width, full.height, Math.max(full.width, full.height) / ZOOM_SCALE);
+  const maxX = full.width - cropSize;
+  const maxY = full.height - cropSize;
+  const crop = {
+    x: full.x + (maxX * x),
+    y: full.y + (maxY * y),
+    width: cropSize,
+    height: cropSize
+  };
+
+  detailSvg.setAttribute('viewBox', viewBoxValue(crop));
+}
+
 function setZoomPoint(zoom, source, event) {
   const rect = typeof source.getBoundingClientRect === 'function'
     ? source.getBoundingClientRect()
     : { left: 0, top: 0, width: 0, height: 0 };
-  const width = source.scrollWidth || rect.width;
-  const height = source.scrollHeight || rect.height;
-  const x = event && Number.isFinite(event.clientX) && width > 0
-    ? clamp(event.clientX - rect.left + (source.scrollLeft || 0), 0, width) / width
+  const x = event && Number.isFinite(event.clientX) && rect.width > 0
+    ? clamp(event.clientX - rect.left, 0, rect.width) / rect.width
     : 0.5;
-  const y = event && Number.isFinite(event.clientY) && height > 0
-    ? clamp(event.clientY - rect.top + (source.scrollTop || 0), 0, height) / height
+  const y = event && Number.isFinite(event.clientY) && rect.height > 0
+    ? clamp(event.clientY - rect.top, 0, rect.height) / rect.height
     : 0.5;
 
   setStyleProperty(zoom, '--mermaid-zoom-x', `${Math.round(x * 10000) / 100}%`);
   setStyleProperty(zoom, '--mermaid-zoom-y', `${Math.round(y * 10000) / 100}%`);
+  updateDetailViewBox(zoom, x, y);
 }
 
 function cloneSvg(svg) {
   const clone = svg.cloneNode(true);
+  const full = parseViewBox(svg.getAttribute('viewBox'));
+
+  if (full) clone.setAttribute('data-mermaid-full-view-box', viewBoxValue(full));
+
   clone.setAttribute('aria-hidden', 'true');
   clone.setAttribute('focusable', 'false');
   clone.setAttribute('preserveAspectRatio', 'xMidYMid meet');
