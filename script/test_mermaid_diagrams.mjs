@@ -246,8 +246,8 @@ assert.equal(zoom.style['--mermaid-detail-top'], '136px');
 
 const mermaidStyles = readFileSync(new URL('../_sass/basic.sass', import.meta.url), 'utf8');
 assert.match(mermaidStyles, /\.mermaid-zoom__detail\s+position: fixed[\s\S]+top: var\(--mermaid-detail-top/);
-assert.match(mermaidStyles, /\.mermaid-zoom__source\s+display: grid\s+place-items: center\s+position: relative[\s\S]+overflow: hidden/);
-assert.match(mermaidStyles, /\.mermaid-zoom__source \.mermaid svg\s+display: block\s+width: auto\s+min-width: 0\s+max-width: 100%\s+max-height: min\(26rem, 58vh\)/);
+assert.match(mermaidStyles, /\.mermaid-zoom__source\s+display: grid\s+place-items: center\s+position: relative[\s\S]+overflow: visible/);
+assert.match(mermaidStyles, /\.mermaid-zoom__source \.mermaid svg\s+display: block\s+width: 100%\s+min-width: 0\s+max-width: 100%\s+max-height: none\s+height: auto[\s\S]+object-fit: contain/);
 assert.doesNotMatch(mermaidStyles, /\.mermaid-zoom__detail svg[\s\S]+transform: scale\(var\(--mermaid-zoom-scale\)\)/);
 
 console.log('Mermaid diagram unit checks passed.');

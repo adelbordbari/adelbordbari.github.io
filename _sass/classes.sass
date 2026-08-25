@@ -220,15 +220,17 @@
   position: relative
   display: grid
   gap: .8rem
+  width: 100%
+  padding: .15rem 0 .15rem 1rem
   overflow: visible
   background: transparent
 
 .catalog-table::before
   content: ""
   position: absolute
-  inset: .35rem auto .35rem 0
-  z-index: 0
-  width: .35rem
+  inset: .15rem auto .15rem 0
+  z-index: 1
+  width: .32rem
   border-radius: 999px
   background: linear-gradient(180deg, $accent-blue 0 18%, $accent-green 18% 36%, $accent-orange 36% 58%, $accent-red 58% 78%, $accent-magenta 78% 100%)
   pointer-events: none

@@ -187,7 +187,7 @@ pre
   max-width: 100%
   margin: 1.8rem 0
   padding: 1rem 1.15rem
-  overflow-x: auto
+  overflow-x: hidden
   border: 1px solid rgba($gallery-ink, .16)
   border-top-color: $accent-blue
   border-radius: $radius-soft
@@ -197,9 +197,15 @@ pre
   font-size: .82rem
   line-height: 1.55
   tab-size: 2
+  white-space: pre-wrap
+  overflow-wrap: anywhere
+  word-break: break-word
 
 pre code
   color: inherit
+  white-space: inherit
+  overflow-wrap: inherit
+  word-break: inherit
 
 .table-wrapper
   max-width: 100%
@@ -481,7 +487,7 @@ input, textarea, select
   place-items: center
   position: relative
   max-width: 100%
-  overflow: hidden
+  overflow: visible
   padding: .9rem
   border: 1px solid rgba($gallery-ink, .22)
   border-radius: $radius-soft
@@ -500,12 +506,13 @@ input, textarea, select
 
 .mermaid-zoom__source .mermaid svg
   display: block
-  width: auto
+  width: 100%
   min-width: 0
   max-width: 100%
-  max-height: min(26rem, 58vh)
+  max-height: none
   height: auto
   margin: 0 auto
+  object-fit: contain
 
 .mermaid-zoom__lens
   position: absolute

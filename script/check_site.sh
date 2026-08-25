@@ -5,6 +5,7 @@ set -euo pipefail
 if command -v node >/dev/null 2>&1; then
   node script/test_reader_context.js
   node script/test_mermaid_diagrams.mjs
+  node script/test_layout_styles.js
 else
   echo "Node is unavailable; skipped JavaScript unit checks." >&2
 fi
