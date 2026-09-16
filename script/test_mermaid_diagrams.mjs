@@ -187,13 +187,16 @@ await initMermaidDiagrams(document, mermaid);
 
 assert.equal(runQuery, '.mermaid');
 assert.equal(options.theme, 'base');
-assert.equal(options.themeVariables.primaryTextColor, '#050505');
-assert.equal(options.themeVariables.lineColor, '#15130f');
-assert.equal(options.themeVariables.actorBkg, '#fffdf6');
-assert.equal(options.themeVariables.actorBorder, '#2f2a22');
-assert.match(options.themeCSS, /rect\.actor[\s\S]+fill: #fffdf6/);
-assert.match(options.themeCSS, /text\.actor[\s\S]+fill: #15130f/);
-assert.doesNotMatch(options.themeCSS, /\.actor,[\s\S]+fill: #050505/);
+assert.equal(options.themeVariables.background, '#f3f1e8');
+assert.equal(options.themeVariables.primaryTextColor, '#171714');
+assert.equal(options.themeVariables.lineColor, '#4b4943');
+assert.equal(options.themeVariables.actorBkg, '#f8f6ef');
+assert.equal(options.themeVariables.actorBorder, '#716b61');
+assert.equal(options.themeVariables.secondaryColor, '#ebe8dd');
+assert.equal(options.themeVariables.tertiaryColor, '#e2ded0');
+assert.match(options.themeCSS, /rect\.actor[\s\S]+fill: #f8f6ef/);
+assert.match(options.themeCSS, /text\.actor[\s\S]+fill: #171714/);
+assert.doesNotMatch(options.themeCSS, /#1857ff|#fff2bf|#9b6a00/);
 
 const zoom = document.querySelector('.mermaid-zoom');
 assert.ok(zoom);

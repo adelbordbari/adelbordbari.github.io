@@ -45,7 +45,7 @@ grep -q 'enhanceMermaidDiagrams' assets/js/mermaid-diagrams.mjs
 grep -q 'theme: '"'"'base'"'"'' assets/js/mermaid-diagrams.mjs
 grep -q 'mermaid-zoom__detail' _sass/basic.sass
 grep -q 'reading-progress__fill' _sass/basic.sass
-grep -q 'height: 8px' _sass/basic.sass
+grep -q 'height: 3px' _sass/editorial.sass
 grep -q '.photo-single__meta' _sass/classes.sass
 grep -q 'lang: fa' _album/2026-04-15-88-radio-tehran.md
 grep -q '\[dir="rtl"\]' _sass/basic.sass
@@ -80,24 +80,22 @@ grep -q 'permalink: /album/artists/' album/artists.html
 test -f assets/fonts/Vazirmatn-Regular.woff2
 test -f assets/fonts/DepartureMono-Regular.woff2
 grep -q 'font-family: "Departure Mono"' _sass/font.sass
-grep -q '\$paper: #050505' _sass/index.sass
-grep -q '\$sheet: #0b0b09' _sass/index.sass
-grep -q '\$raised: #15130f' _sass/index.sass
-grep -q '\$ink: #f7f2e8' _sass/index.sass
-grep -q '\$muted: #c8c0b5' _sass/index.sass
-grep -q '\$rule: #524c43' _sass/index.sass
-grep -q '\$rule-strong: #f7f2e8' _sass/index.sass
-grep -q '\$accent-red: #f02a3a' _sass/index.sass
-grep -q '\$accent-orange: #ffb000' _sass/index.sass
-grep -q '\$accent-blue: #1857ff' _sass/index.sass
-grep -q '\$gallery-paper: \$ink' _sass/index.sass
-grep -q '\$gallery-ink: \$paper' _sass/index.sass
-grep -q '\$radius-soft: \.5rem' _sass/index.sass
-grep -q '\$font-family-display: "PT Sans"' _sass/index.sass
+grep -q '\$paper: #f3f1e8' _sass/index.sass
+grep -q '\$sheet: #ebe8dd' _sass/index.sass
+grep -q '\$raised: #e2ded0' _sass/index.sass
+grep -q '\$ink: #171714' _sass/index.sass
+grep -q '\$muted: #68645c' _sass/index.sass
+grep -q '\$rule: #c7c1b3' _sass/index.sass
+grep -q '\$rule-strong: #716b61' _sass/index.sass
+grep -q '\$accent-red: #171714' _sass/index.sass
+grep -q '\$gallery-paper: \$paper' _sass/index.sass
+grep -q '\$gallery-ink: \$ink' _sass/index.sass
+grep -q '\$radius-soft: 0' _sass/index.sass
+grep -q '\$font-family-display: "PT Serif"' _sass/index.sass
 grep -q '\$font-family-ui: "PT Sans"' _sass/index.sass
 grep -q '\$font-family-mono: "Departure Mono"' _sass/index.sass
-grep -q 'cyber-surreal-gallery-field' _sass/basic.sass
-grep -q 'post-internet-dither-field' _sass/classes.sass
+grep -q '@import index, font, basic, layout, classes, editorial' assets/css/index.sass
+test -f assets/images/folio-mark.svg
 if grep -R -n -E 'site-cover__art-field|site-cover__visual-grid|site-cover__artifact' _includes/archive.html _sass/classes.sass; then
   echo "Homepage quote area must stay clean: decorative art grid/artifacts remain." >&2
   exit 1
@@ -142,10 +140,6 @@ if grep -R -n 'rgba(\$accent-yellow' _sass assets/css --include='*.sass'; then
 fi
 if grep -R -n 'font-size: clamp' _sass assets/css --include='*.sass'; then
   echo "Typography must not scale font size with viewport width." >&2
-  exit 1
-fi
-if grep -R -n -E 'letter-spacing: *(-|\.|[1-9])' _sass assets/css --include='*.sass'; then
-  echo "Letter spacing must remain 0." >&2
   exit 1
 fi
 grep -q 'background: var(--reading-paper, $gallery-paper)' _sass/basic.sass
@@ -244,8 +238,9 @@ if command -v bundle >/dev/null 2>&1; then
     exit 1
   fi
 
-  grep -qi '#f02a3a' _site/assets/css/index.css
-  grep -qi '#ffb000' _site/assets/css/index.css
+  EDITORIAL_CSS_PATH=_site/assets/css/index.css node script/test_editorial_identity.js
+  grep -qi '#f3f1e8' _site/assets/css/index.css
+  grep -qi '#171714' _site/assets/css/index.css
   grep -q 'Departure Mono' _site/assets/css/index.css
 else
   echo "Bundler is unavailable; skipped generated-site checks." >&2

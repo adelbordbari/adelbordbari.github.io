@@ -12,34 +12,34 @@ const MERMAID_THEME = {
   securityLevel: 'strict',
   theme: 'base',
   themeVariables: {
-    background: '#f7f2e8',
-    mainBkg: '#fffaf0',
-    primaryColor: '#fffdf6',
-    primaryBorderColor: '#2f2a22',
-    primaryTextColor: '#050505',
-    secondaryColor: '#e7f1ff',
-    secondaryBorderColor: '#1857ff',
-    secondaryTextColor: '#050505',
-    tertiaryColor: '#fff2bf',
-    tertiaryBorderColor: '#9b6a00',
-    tertiaryTextColor: '#050505',
-    lineColor: '#15130f',
-    textColor: '#050505',
+    background: '#f3f1e8',
+    mainBkg: '#f8f6ef',
+    primaryColor: '#f8f6ef',
+    primaryBorderColor: '#716b61',
+    primaryTextColor: '#171714',
+    secondaryColor: '#ebe8dd',
+    secondaryBorderColor: '#68645c',
+    secondaryTextColor: '#171714',
+    tertiaryColor: '#e2ded0',
+    tertiaryBorderColor: '#716b61',
+    tertiaryTextColor: '#171714',
+    lineColor: '#4b4943',
+    textColor: '#171714',
     fontFamily: '"PT Sans", Arial, sans-serif',
     fontSize: '18px',
-    noteBkgColor: '#fff2bf',
-    noteTextColor: '#050505',
-    noteBorderColor: '#9b6a00',
-    actorBkg: '#fffdf6',
-    actorBorder: '#2f2a22',
-    actorTextColor: '#050505',
-    activationBkgColor: '#e7f1ff',
-    activationBorderColor: '#1857ff',
-    sequenceNumberColor: '#f7f2e8',
-    labelBoxBkgColor: '#fffaf0',
-    labelBoxBorderColor: '#15130f',
-    labelTextColor: '#050505',
-    edgeLabelBackground: '#fffaf0'
+    noteBkgColor: '#e2ded0',
+    noteTextColor: '#171714',
+    noteBorderColor: '#716b61',
+    actorBkg: '#f8f6ef',
+    actorBorder: '#716b61',
+    actorTextColor: '#171714',
+    activationBkgColor: '#ebe8dd',
+    activationBorderColor: '#68645c',
+    sequenceNumberColor: '#f3f1e8',
+    labelBoxBkgColor: '#f8f6ef',
+    labelBoxBorderColor: '#4b4943',
+    labelTextColor: '#171714',
+    edgeLabelBackground: '#f8f6ef'
   },
   sequence: {
     actorFontSize: 18,
@@ -52,24 +52,24 @@ const MERMAID_THEME = {
   },
   themeCSS: `
     rect.actor {
-      fill: #fffdf6 !important;
-      stroke: #2f2a22 !important;
+      fill: #f8f6ef !important;
+      stroke: #716b61 !important;
       stroke-width: 1.5px !important;
     }
 
     text.actor, .messageText, .loopText, .labelText, .nodeLabel, .edgeLabel, .noteText {
-      color: #15130f !important;
-      fill: #15130f !important;
+      color: #171714 !important;
+      fill: #171714 !important;
     }
 
     .messageLine0, .messageLine1, .flowchart-link, .actor-line {
-      stroke: #2f2a22 !important;
+      stroke: #4b4943 !important;
       stroke-width: 1.5px !important;
     }
 
     .labelBox, .loopLine {
-      fill: #fffdf6 !important;
-      stroke: #6c6255 !important;
+      fill: #f8f6ef !important;
+      stroke: #716b61 !important;
     }
   `
 };
