@@ -33,12 +33,28 @@ const catalogTable = declarationsFor(classes, '.catalog-table');
 const catalogRail = declarationsFor(classes, '.catalog-table::before');
 const collectionList = declarationsFor(classes, '.collection-list');
 const collectionRail = declarationsFor(classes, '.collection-list::before');
+const albumList = declarationsFor(classes, '.album-list');
+const albumSpecs = declarationsFor(classes, '.album-item__specs');
+const albumSpec = declarationsFor(classes, '.album-item__specs div');
+const albumRating = declarationsFor(classes, '.album-item__rating-spec dd');
+const aboutLede = declarationsFor(classes, '.about-lede');
+const aboutFarsi = declarationsFor(classes, '.about-lede__fa');
 
 assert.equal(catalogTable.padding, collectionList.padding);
 assert.equal(catalogRail.inset, collectionRail.inset);
 assert.equal(catalogRail['z-index'], collectionRail['z-index']);
 assert.equal(catalogRail.width, collectionRail.width);
 assert.equal(catalogRail.background, collectionRail.background);
+
+assert.equal(albumList['grid-template-columns'], '1fr');
+assert.equal(albumSpecs['overflow-x'], undefined);
+assert.equal(albumSpecs['white-space'], 'normal');
+assert.equal(albumSpec['align-items'], 'center');
+assert.equal(albumRating['font-size'], '1.2rem');
+assert.equal(albumRating['line-height'], '1');
+assert.equal(aboutLede['font-size'], '1.9rem');
+assert.equal(aboutFarsi['font-family'], '"Vazirmatn", sans-serif');
+assert.equal(aboutFarsi['font-size'], '.82em');
 
 const pre = declarationsFor(basic, 'pre');
 const preCode = declarationsFor(basic, 'pre code');

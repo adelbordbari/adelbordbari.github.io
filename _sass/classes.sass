@@ -550,19 +550,19 @@
   min-width: 100%
   white-space: nowrap
 
-.collection-row__title--scroll:hover .collection-row__title-track,
-.collection-row__title--scroll:focus-visible .collection-row__title-track
-  animation: title-marquee 7s linear infinite alternate
+.collection-row__title--overflowing:hover .collection-row__title-track,
+.collection-row__title--overflowing:focus-visible .collection-row__title-track
+  animation: title-marquee var(--title-scroll-duration, 2.5s) linear infinite alternate
 
 @keyframes title-marquee
   from
     transform: translateX(0)
   to
-    transform: translateX(calc(-100% + 12rem))
+    transform: translateX(var(--title-scroll-distance, 0))
 
 .album-list
   display: grid
-  grid-template-columns: repeat(2, minmax(0, 1fr))
+  grid-template-columns: 1fr
   gap: 1rem
 
 .album-item
@@ -621,20 +621,20 @@
 
 .album-item__specs
   display: flex
+  flex-wrap: wrap
   margin: 0
-  overflow-x: auto
   border: 1px solid currentColor
   border-radius: $radius-soft
   font-family: $font-family-mono
   font-size: .72rem
   font-variant-numeric: tabular-nums
   text-transform: uppercase
-  white-space: nowrap
+  white-space: normal
 
 .album-item__specs div
-  min-width: max-content
+  min-width: 0
   display: flex
-  align-items: baseline
+  align-items: center
   gap: .35rem
   padding: .45rem
   border-right: 1px solid currentColor
@@ -651,6 +651,7 @@
 
 .album-item__specs dd
   margin: 0
+  overflow-wrap: anywhere
 
 .album-item__specs a
   color: inherit
@@ -658,7 +659,8 @@
 
 .album-item__rating-spec dd
   color: $accent-orange
-  font-size: 1rem
+  font-size: 1.2rem
+  line-height: 1
   white-space: nowrap
 
 .artist-index__intro
@@ -875,14 +877,19 @@
   background: transparent
 
 .about-lede
-  max-width: 34ch
+  max-width: 42ch
   margin: 0 0 clamp(2rem, 6vw, 3.5rem)
   color: $gallery-ink
   font-family: $font-family-display
-  font-size: 2.35rem
+  font-size: 1.9rem
   font-weight: 700
-  line-height: 1.08
+  line-height: 1.16
   text-wrap: balance
+
+.about-lede__fa
+  font-family: "Vazirmatn", sans-serif
+  font-size: .82em
+  font-weight: 400
 
 .contact-ledger
   max-width: 58rem
@@ -1233,8 +1240,8 @@
     animation-iteration-count: 1 !important
     transition-duration: .01ms !important
 
-  .collection-row__title--scroll:hover .collection-row__title-track,
-  .collection-row__title--scroll:focus-visible .collection-row__title-track
+  .collection-row__title--overflowing:hover .collection-row__title-track,
+  .collection-row__title--overflowing:focus-visible .collection-row__title-track
     animation: none
 
   .catalog-row:not(.catalog-row--head):hover,

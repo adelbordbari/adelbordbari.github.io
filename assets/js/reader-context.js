@@ -40,6 +40,55 @@
     return Math.max(0, Math.min(100, progress));
   }
 
+  function marqueeDuration(distance) {
+    return Math.max(1.25, Math.min(3.5, distance / 140));
+  }
+
+  function updateCollectionTitle(title) {
+    const distance = Math.max(0, Math.ceil(title.scrollWidth - title.clientWidth));
+
+    if (distance <= 1) {
+      title.classList.remove('collection-row__title--overflowing');
+      title.style.removeProperty('--title-scroll-distance');
+      title.style.removeProperty('--title-scroll-duration');
+      return;
+    }
+
+    title.classList.add('collection-row__title--overflowing');
+    title.style.setProperty('--title-scroll-distance', `-${distance}px`);
+    title.style.setProperty('--title-scroll-duration', `${marqueeDuration(distance)}s`);
+  }
+
+  function enhanceCollectionTitles(document, window) {
+    const titles = Array.from(document.querySelectorAll('.collection-row__title'));
+    if (!titles.length) return;
+    let queued = false;
+
+    function update() {
+      titles.forEach(updateCollectionTitle);
+      queued = false;
+    }
+
+    function requestUpdate() {
+      if (queued) return;
+      queued = true;
+      window.requestAnimationFrame(update);
+    }
+
+    window.addEventListener('resize', requestUpdate);
+
+    if (window.ResizeObserver) {
+      const observer = new window.ResizeObserver(requestUpdate);
+      titles.forEach(function (title) { observer.observe(title); });
+    }
+
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(requestUpdate);
+    }
+
+    update();
+  }
+
   function enhanceDates(document, now) {
     document.querySelectorAll('.relative-time[datetime]').forEach(function (time) {
       const date = new Date(time.dateTime);
@@ -79,8 +128,19 @@
 
   function init(document, window) {
     enhanceDates(document, new Date());
+    enhanceCollectionTitles(document, window);
     enhanceProgress(document, window);
   }
 
-  return { calculateProgress, enhanceDates, enhanceProgress, init, relativeDateText, relativeDateValue };
+  return {
+    calculateProgress,
+    enhanceCollectionTitles,
+    enhanceDates,
+    enhanceProgress,
+    init,
+    marqueeDuration,
+    relativeDateText,
+    relativeDateValue,
+    updateCollectionTitle
+  };
 }));

@@ -24,7 +24,7 @@
   {% for post in posts %}
     <li class="collection-row">
       {% include relative-date.html date=post.date %}
-      <a class="collection-row__title{% if post.title.size > 38 %} collection-row__title--scroll{% endif %}" href="{{ post.url | relative_url }}">
+      <a class="collection-row__title" href="{{ post.url | relative_url }}">
         <span class="collection-row__title-track">{{ post.title }}</span>
       </a>
       {% include reading-time.html content=post.content %}

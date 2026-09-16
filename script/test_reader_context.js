@@ -4,9 +4,12 @@ const assert = require('node:assert/strict');
 const {
   calculateProgress,
   enhanceDates,
+  enhanceCollectionTitles,
   enhanceProgress,
+  marqueeDuration,
   relativeDateValue,
-  relativeDateText
+  relativeDateText,
+  updateCollectionTitle
 } = require('../assets/js/reader-context.js');
 
 const now = new Date('2026-06-28T12:00:00Z');
@@ -53,5 +56,58 @@ assert.equal(fill.style.transform, 'scaleX(0.5)');
 assert.equal(attributes['aria-valuenow'], '50');
 assert.equal(typeof listeners.scroll, 'function');
 assert.equal(typeof listeners.resize, 'function');
+
+assert.equal(marqueeDuration(40), 1.25);
+assert.equal(marqueeDuration(280), 2);
+assert.equal(marqueeDuration(700), 3.5);
+
+function titleFixture(scrollWidth, clientWidth) {
+  const classes = new Set();
+  const properties = {};
+  return {
+    clientWidth,
+    scrollWidth,
+    classList: {
+      add: (name) => classes.add(name),
+      remove: (name) => classes.delete(name),
+      contains: (name) => classes.has(name)
+    },
+    style: {
+      removeProperty: (name) => { delete properties[name]; },
+      setProperty: (name, value) => { properties[name] = value; }
+    },
+    properties
+  };
+}
+
+const fittingTitle = titleFixture(180, 200);
+updateCollectionTitle(fittingTitle);
+assert.equal(fittingTitle.classList.contains('collection-row__title--overflowing'), false);
+assert.deepEqual(fittingTitle.properties, {});
+
+const overflowingTitle = titleFixture(480, 200);
+updateCollectionTitle(overflowingTitle);
+assert.equal(overflowingTitle.classList.contains('collection-row__title--overflowing'), true);
+assert.equal(overflowingTitle.properties['--title-scroll-distance'], '-280px');
+assert.equal(overflowingTitle.properties['--title-scroll-duration'], '2s');
+
+const titleListeners = {};
+let resizeCallback;
+const observedTitles = [];
+const titleWindow = {
+  addEventListener: (name, callback) => { titleListeners[name] = callback; },
+  requestAnimationFrame: (callback) => callback(),
+  ResizeObserver: function (callback) {
+    resizeCallback = callback;
+    this.observe = (title) => observedTitles.push(title);
+  }
+};
+enhanceCollectionTitles({
+  fonts: { ready: Promise.resolve() },
+  querySelectorAll: () => [fittingTitle, overflowingTitle]
+}, titleWindow);
+assert.equal(typeof titleListeners.resize, 'function');
+assert.equal(typeof resizeCallback, 'function');
+assert.deepEqual(observedTitles, [fittingTitle, overflowingTitle]);
 
 console.log('Reader context unit checks passed.');

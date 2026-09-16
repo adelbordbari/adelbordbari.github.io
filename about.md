@@ -4,7 +4,7 @@ permalink: "/about/"
 layout: "page"
 ---
 
-<p class="about-lede">My name is Adel(عادل), I'm from Iran. I keep this place as a personal notebook for opinions, reviews, rants, coding challenges, records, and photographs I consider interesting.</p>
+<p class="about-lede">My name is Adel(<span class="about-lede__fa" lang="fa" dir="rtl">عادل</span>), I'm from Iran. I keep this place as a personal notebook for opinions, reviews, rants, coding challenges, records, and photographs I consider interesting.</p>
 
 I've studied software engineering and AI at university, and I currently work as a backend developer. I like photography, story-writing, films, languages, travelling, computers, guitars, geography, and internet culture.
 
