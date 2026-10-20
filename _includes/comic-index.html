@@ -23,14 +23,14 @@
     <section class="comic-grid" aria-label="Comic posts">
       {% for post in comic_posts %}
         <a class="comic-card" href="{{ post.url | relative_url }}">
-          <span class="comic-card__number">EPISODE {{ offset | plus: forloop.index | prepend: '00' | slice: -2, 2 }}</span>
-          <figure>
+          <figure class="comic-card__thumbnail">
             <img src="{{ post.image | relative_url }}" alt="{{ post.title | escape }}" loading="lazy">
-            <figcaption>
-              <span>{{ post.title }}</span>
-              <small>{% include relative-date.html date=post.date %}</small>
-            </figcaption>
           </figure>
+          <div class="comic-card__body">
+            <span class="comic-card__number">EPISODE {{ offset | plus: forloop.index | prepend: '00' | slice: -2, 2 }}</span>
+            <h2>{{ post.title }}</h2>
+            <p class="comic-card__meta"><span>Filed</span> {% include relative-date.html date=post.date %}</p>
+          </div>
         </a>
       {% endfor %}
     </section>

@@ -810,7 +810,7 @@
 
 .comic-grid
   display: grid
-  grid-template-columns: repeat(2, minmax(0, 1fr))
+  grid-template-columns: 1fr
   gap: 1rem
   margin-top: 1rem
 
@@ -820,8 +820,11 @@
 .comic-card
   position: relative
   min-width: 0
-  display: block
-  padding: .65rem
+  display: grid
+  grid-template-columns: minmax(7rem, 10rem) minmax(0, 1fr)
+  gap: 1.25rem
+  align-items: center
+  padding: 1rem
   overflow: hidden
   border: 1px solid rgba($gallery-ink, .1)
   border-radius: $radius-soft
@@ -834,44 +837,58 @@
   border-color: rgba($accent-red, .28)
   background: rgba($gallery-paper, .96)
 
-.comic-card__number
-  display: block
-  margin-bottom: .45rem
-  color: $accent-red
-  font-family: $font-family-mono
-  font-size: .72rem
-  text-transform: uppercase
-
-.comic-card figure,
-.comic-card img
+.comic-card__thumbnail
   margin: 0
-
-.comic-card img
-  width: 100%
-  aspect-ratio: 4 / 3
-  object-fit: cover
+  padding: .4rem
+  overflow: hidden
+  border: 1px solid rgba($gallery-ink, .16)
   border-radius: $radius-soft
+  background: $paper
+
+.comic-card__thumbnail img
+  width: 100%
+  aspect-ratio: 1
+  margin: 0
+  object-fit: cover
+  object-position: top
+  border-radius: .35rem
   transition: transform .22s ease
 
 .comic-card:hover img
   transform: scale(1.012)
 
-.comic-card figcaption
-  display: flex
-  justify-content: space-between
-  gap: 1rem
-  padding: .65rem .15rem .1rem
-  color: inherit
+.comic-card__body
+  min-width: 0
 
-.comic-card figcaption span
-  font-family: $font-family-ui
-  font-weight: 700
-
-.comic-card figcaption small
-  color: currentColor
+.comic-card__number
+  display: inline-block
+  margin-bottom: .55rem
+  color: $accent-red
   font-family: $font-family-mono
+  font-size: .72rem
+  text-transform: uppercase
+
+.comic-card__body h2
+  margin: 0 0 .8rem
+  color: inherit
+  font-size: 1.5rem
+  line-height: 1.15
+
+.comic-card__meta
+  display: flex
+  flex-wrap: wrap
+  gap: .35rem
+  margin: 0
+  padding: .45rem
+  border: 1px solid currentColor
+  border-radius: $radius-soft
+  font-family: $font-family-mono
+  font-size: .72rem
+  font-variant-numeric: tabular-nums
+  text-transform: uppercase
+
+.comic-card__meta span
   opacity: .64
-  text-align: right
 
 .comic-empty
   padding: 4rem 0
@@ -1144,6 +1161,11 @@
     flex-direction: column
 
 @media (max-width: 36rem)
+  .comic-card
+    grid-template-columns: minmax(5.5rem, 7rem) minmax(0, 1fr)
+    gap: .75rem
+    padding: .75rem
+
   .album-item__entry
     grid-template-columns: 1fr
 
@@ -1211,14 +1233,10 @@
   .album-item__specs div:nth-child(even)
     border-right: 0
 
-  .comic-card figcaption,
   .comic-single__meta
     align-items: flex-start
     flex-direction: column
     gap: .35rem
-
-  .comic-card figcaption small
-    text-align: left
 
   .contact-ledger li
     grid-template-columns: 1fr

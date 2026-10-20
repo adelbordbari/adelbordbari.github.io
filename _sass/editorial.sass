@@ -680,18 +680,32 @@ input, textarea, select
   box-shadow: 3px 3px 0 $ink
   transform: translate(-2px, -2px)
 
+.comic-card__thumbnail
+  border-color: $ink
+  border-radius: 0
+
+.comic-card__thumbnail img
+  border-radius: 0
+
 .comic-card__number
+  padding: .25rem .4rem
   background: $ink
   color: $paper
   font-family: $font-family-mono
   letter-spacing: .08em
 
+.comic-card__body h2
+  font-family: $font-family-mono
+  letter-spacing: .03em
+  text-transform: uppercase
+
+.comic-card__meta
+  border-color: $ink
+  border-radius: 0
+  background: $sheet
+
 .comic-card:hover img
   transform: none
-
-.comic-card figcaption
-  border-top-color: $ink
-  font-family: $font-family-mono
 
 .comic-single__back,
 .more a
