@@ -65,7 +65,8 @@
   display: grid
   grid-template-columns: repeat(6, minmax(0, 1fr))
   gap: .28rem
-  width: min(20rem, 54vw)
+  width: 54vw
+  max-width: 20rem
 
 .site-cover__calibration span
   height: .82rem
@@ -550,15 +551,16 @@
   min-width: 100%
   white-space: nowrap
 
+.collection-row__title--overflowing:hover,
+.collection-row__title--overflowing:focus-visible
+  overflow: visible
+  text-overflow: clip
+  white-space: normal
+
 .collection-row__title--overflowing:hover .collection-row__title-track,
 .collection-row__title--overflowing:focus-visible .collection-row__title-track
-  animation: title-marquee var(--title-scroll-duration, 2.5s) linear infinite alternate
-
-@keyframes title-marquee
-  from
-    transform: translateX(0)
-  to
-    transform: translateX(var(--title-scroll-distance, 0))
+  min-width: 0
+  white-space: normal
 
 .album-list
   display: grid

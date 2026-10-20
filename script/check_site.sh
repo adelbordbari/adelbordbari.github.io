@@ -95,7 +95,10 @@ grep -q '\$font-family-display: "PT Serif"' _sass/index.sass
 grep -q '\$font-family-ui: "PT Sans"' _sass/index.sass
 grep -q '\$font-family-mono: "Departure Mono"' _sass/index.sass
 grep -q '@import index, font, basic, layout, classes, editorial' assets/css/index.sass
-test -f assets/images/folio-mark.svg
+if grep -R -n -E 'folio-mark\.svg|✦' _sass assets/css --include='*.sass'; then
+  echo "Decorative folio ornaments must not remain in the microdesign layer." >&2
+  exit 1
+fi
 if grep -R -n -E 'site-cover__art-field|site-cover__visual-grid|site-cover__artifact' _includes/archive.html _sass/classes.sass; then
   echo "Homepage quote area must stay clean: decorative art grid/artifacts remain." >&2
   exit 1
@@ -145,7 +148,8 @@ fi
 grep -q 'background: var(--reading-paper, $gallery-paper)' _sass/basic.sass
 grep -q 'background-image: none' _sass/basic.sass
 grep -q 'box-shadow: 0 0 0 1px rgba($gallery-ink, .08)' _sass/basic.sass
-grep -q 'max-width: min(75vw, 88ch)' _sass/basic.sass
+grep -q 'width: 75vw' _sass/basic.sass
+grep -q 'max-width: 88ch' _sass/basic.sass
 grep -q 'site-cover__primary' _includes/archive.html
 grep -q 'site-cover__secondary' _includes/archive.html
 grep -q 'site-cover__mark" aria-hidden="true"' _includes/archive.html

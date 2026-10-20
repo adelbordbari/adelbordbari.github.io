@@ -11,7 +11,8 @@ body
 .site-sheet
   position: relative
   isolation: isolate
-  width: min(96rem, 100%)
+  width: 100%
+  max-width: 96rem
   min-height: calc(100vh - clamp(1rem, 4vw, 3rem))
   margin: 0 auto
   overflow: hidden
@@ -53,7 +54,8 @@ body
   position: absolute
   right: clamp(.9rem, 2vw, 1.8rem)
   bottom: -1px
-  width: min(18rem, 58vw)
+  width: 58vw
+  max-width: 18rem
   height: 2px
   background: linear-gradient(90deg, $accent-blue 0 20%, $accent-green 20% 40%, $accent-orange 40% 62%, $accent-red 62% 82%, $accent-magenta 82% 100%)
 
