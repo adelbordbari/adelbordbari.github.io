@@ -10,7 +10,7 @@
 {% assign seo_description = page.description | default: page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 180 %}
 {% assign seo_image = page.image | default: page.cover %}
 {% assign seo_type = "website" %}
-{% if page.layout == "post" or page.layout == "photo" %}
+{% if page.layout == "post" or page.layout == "comic" %}
   {% assign seo_type = "article" %}
 {% endif %}
 

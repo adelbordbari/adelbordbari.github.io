@@ -1,7 +1,7 @@
 {% assign per_page = page.per_page | default: 10 %}
 {% assign current_page = page.current_page | default: 1 %}
 {% assign offset = current_page | minus: 1 | times: per_page %}
-{% assign all_posts = site.photos | sort: 'date' | reverse %}
+{% assign all_posts = site.comics | sort: 'date' | reverse %}
 {% assign total_pages = all_posts.size | divided_by: per_page %}
 {% assign remainder = all_posts.size | modulo: per_page %}
 {% if remainder > 0 %}
@@ -10,20 +10,20 @@
 {% if total_pages < 1 %}
   {% assign total_pages = 1 %}
 {% endif %}
-{% assign pagination_base = '/photo/' %}
-{% assign photo_posts = all_posts | slice: offset, per_page %}
+{% assign pagination_base = '/comics/' %}
+{% assign comic_posts = all_posts | slice: offset, per_page %}
 
-<main class="photo-page">
-  <section class="photo-hero" aria-labelledby="photo-title">
-    <h1 id="photo-title">Photos</h1>
-    <p>light leaks, street corners, small rooms, passing weather.</p>
+<main class="comic-page">
+  <section class="comic-hero" aria-labelledby="comic-title">
+    <h1 id="comic-title">Comics</h1>
+    <p>Linguistics, technology, and social commentary in sequential form.</p>
   </section>
 
-  {% if photo_posts.size > 0 %}
-    <section class="photo-grid" aria-label="Photo posts">
-      {% for post in photo_posts %}
-        <a class="photo-card" href="{{ post.url | relative_url }}">
-          <span class="photo-card__number">FRAME {{ offset | plus: forloop.index | prepend: '00' | slice: -2, 2 }}</span>
+  {% if comic_posts.size > 0 %}
+    <section class="comic-grid" aria-label="Comic posts">
+      {% for post in comic_posts %}
+        <a class="comic-card" href="{{ post.url | relative_url }}">
+          <span class="comic-card__number">EPISODE {{ offset | plus: forloop.index | prepend: '00' | slice: -2, 2 }}</span>
           <figure>
             <img src="{{ post.image | relative_url }}" alt="{{ post.title | escape }}" loading="lazy">
             <figcaption>
@@ -35,9 +35,9 @@
       {% endfor %}
     </section>
   {% else %}
-    <section class="photo-empty" aria-label="No photos yet">
-      <div class="photo-empty__frame"></div>
-      <p>No photos yet.</p>
+    <section class="comic-empty" aria-label="No comics yet">
+      <div class="comic-empty__frame"></div>
+      <p>No comics yet.</p>
     </section>
   {% endif %}
 

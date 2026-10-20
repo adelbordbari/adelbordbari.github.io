@@ -27,13 +27,12 @@ if grep -q 'total_pages > 0' _includes/pagination.html; then
   echo "Pagination must not render for single-page sections." >&2
   exit 1
 fi
-grep -q 'has_backstory' _layouts/photo.html
-grep -q 'photo-single__notes reading-region prose' _layouts/photo.html
+grep -q 'has_backstory' _layouts/comic.html
+grep -q 'comic-single__notes reading-region prose' _layouts/comic.html
 grep -q 'grid-template-columns: 9.5rem minmax(0, 1fr) 9rem' _sass/classes.sass
 grep -q 'grid-template-columns: 7.75rem minmax(0, 1fr)' _sass/classes.sass
-grep -q 'page.caption' _layouts/photo.html
-grep -q 'photo-single__caption-text' _layouts/photo.html
-grep -q '^caption:' _photos/2026-06-07-tmp.md
+grep -q 'page.caption' _layouts/comic.html
+grep -q 'comic-single__caption-text' _layouts/comic.html
 grep -q 'reader-context.js' _layouts/default.html
 grep -q 'mermaid-diagrams.mjs' _layouts/default.html
 grep -q 'cdn.jsdelivr.net/npm/mermaid' _layouts/default.html
@@ -46,7 +45,7 @@ grep -q 'theme: '"'"'base'"'"'' assets/js/mermaid-diagrams.mjs
 grep -q 'mermaid-zoom__detail' _sass/basic.sass
 grep -q 'reading-progress__fill' _sass/basic.sass
 grep -q 'height: 3px' _sass/editorial.sass
-grep -q '.photo-single__meta' _sass/classes.sass
+grep -q '.comic-single__meta' _sass/classes.sass
 grep -q 'lang: fa' _album/2026-04-15-88-radio-tehran.md
 grep -q '\[dir="rtl"\]' _sass/basic.sass
 grep -q '@media (prefers-reduced-motion: reduce)' _sass/classes.sass
@@ -63,7 +62,7 @@ grep -q 'Perhaps if I make myself write I shall find out what is wrong with me.'
 grep -q 'catalog-table' _includes/archive.html
 grep -q 'site-cover__calibration' _includes/archive.html
 grep -q 'album-item__specs' _includes/album-index.html
-grep -q 'photo-card__number' _includes/photo-index.html
+grep -q 'comic-card__number' _includes/comic-index.html
 grep -q 'about-lede' about.md
 grep -q 'contact-ledger' about.md
 grep -q 'religiously proud of my playlists' about.md
@@ -103,7 +102,7 @@ if grep -R -n -E 'site-cover__art-field|site-cover__visual-grid|site-cover__arti
   echo "Homepage quote area must stay clean: decorative art grid/artifacts remain." >&2
   exit 1
 fi
-if grep -q -E 'catalog-row:not\(\.catalog-row--head\):nth-child|collection-row:nth-child|album-item:nth-child\(4n\+|photo-card:nth-child\(5n\+' _sass/classes.sass; then
+if grep -q -E 'catalog-row:not\(\.catalog-row--head\):nth-child|collection-row:nth-child|album-item:nth-child\(4n\+|comic-card:nth-child\(5n\+' _sass/classes.sass; then
   echo "Randomized nth-child layout offsets or color variants remain." >&2
   exit 1
 fi
@@ -154,7 +153,7 @@ grep -q 'site-cover__primary' _includes/archive.html
 grep -q 'site-cover__secondary' _includes/archive.html
 grep -q 'site-cover__mark" aria-hidden="true"' _includes/archive.html
 
-if rg -n '```[A-Za-z0-9_+-]+ id="' _code _etc _album _photos >/dev/null; then
+if rg -n '```[A-Za-z0-9_+-]+ id="' _code _etc _album _comics >/dev/null; then
   echo "Nonstandard fenced code block attributes remain in markdown content." >&2
   exit 1
 fi
@@ -169,8 +168,8 @@ if grep -q -E 'site-cover__issue|barcode-divider|REF-' _includes/archive.html _i
   exit 1
 fi
 
-if grep -q 'photo-hero__kicker' _includes/photo-index.html; then
-  echo "Photo archive kicker remains." >&2
+if grep -q 'comic-hero__kicker' _includes/comic-index.html; then
+  echo "Comic archive kicker remains." >&2
   exit 1
 fi
 
@@ -179,8 +178,8 @@ if grep -R -n -E '^:{1,2}[a-zA-Z-]+' _sass assets/css --include='*.sass'; then
   exit 1
 fi
 
-if grep -q 'photo-marquee' _includes/photo-index.html; then
-  echo "Legacy photo marquee remains in the photo index." >&2
+if grep -q 'comic-marquee' _includes/comic-index.html; then
+  echo "Legacy comic marquee remains in the comic index." >&2
   exit 1
 fi
 
@@ -202,7 +201,7 @@ if command -v bundle >/dev/null 2>&1; then
   test -f _site/etc/index.html
   test -f _site/album/index.html
   test -f _site/album/artists/index.html
-  test -f _site/photo/index.html
+  test -f _site/comics/index.html
   test -f _site/about/index.html
   test -f _site/feed.xml
   grep -q 'site-cover' _site/index.html
@@ -224,8 +223,6 @@ if command -v bundle >/dev/null 2>&1; then
   grep -q 'mermaid-diagrams.mjs' _site/code/paint-the-code/index.html
   grep -q 'cdn.jsdelivr.net/npm/mermaid' _site/code/paint-the-code/index.html
   ! grep -q -E '>Kind<|>Class<|>Project<|>Article<|>Status<|>Stack<' _site/code/paint-the-code/index.html
-  grep -q 'class="reading-progress"' _site/photos/tmp/index.html
-  grep -q 'class="reading-time"' _site/photos/tmp/index.html
   grep -q 'artist-index' _site/album/artists/index.html
   grep -q 'The Smiths' _site/album/artists/index.html
   grep -q 'rel="canonical"' _site/index.html
@@ -233,9 +230,8 @@ if command -v bundle >/dev/null 2>&1; then
   grep -q 'name="twitter:card"' _site/index.html
   grep -q 'application/ld+json' _site/index.html
   grep -q '<html lang="fa" dir="rtl">' _site/album/88-radio-tehran/index.html
-  grep -q 'photo-single__caption-text' _site/photos/tmp/index.html
-  grep -q 'photo-single__notes reading-region prose' _site/photos/tmp/index.html
   grep -q 'application/atom+xml' _site/index.html
+  bash script/test_comics_site.sh _site
 
   if grep -q 'fonts.googleapis.com' _site/assets/css/index.css; then
     echo "External Google Fonts import remains in compiled CSS." >&2

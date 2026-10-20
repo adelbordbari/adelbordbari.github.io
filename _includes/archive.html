@@ -6,7 +6,7 @@
       </div>
       <span class="utility-label">Independent web notebook</span>
       <h1 id="cover-title">{{ site.title }}</h1>
-      <p class="site-cover__intro">Field notes from the web: code, records, photographs, reviews, and personal writing.</p>
+      <p class="site-cover__intro">Field notes from the web: code, records, comics, reviews, and personal writing.</p>
       <span class="site-cover__mark" aria-hidden="true"></span>
     </div>
     <div class="site-cover__secondary">
@@ -20,7 +20,7 @@
     </div>
   </section>
 
-  {% assign all_posts = site.posts | concat: site.code | concat: site.album | concat: site.photos | concat: site.etc %}
+  {% assign all_posts = site.posts | concat: site.code | concat: site.album | concat: site.comics | concat: site.etc %}
   {% assign sorted_posts = all_posts | sort: 'date' | reverse %}
   <section class="catalog-section" aria-labelledby="latest-title">
     <div class="section-heading">
@@ -43,10 +43,10 @@
           {% assign collection_title = 'Code' %}
           {% assign collection_url = '/code/' %}
           {% assign collection_icon = 'code' %}
-        {% elsif collection_name == 'photos' %}
-          {% assign collection_title = 'Photo' %}
-          {% assign collection_url = '/photo/' %}
-          {% assign collection_icon = 'camera' %}
+        {% elsif collection_name == 'comics' %}
+          {% assign collection_title = 'Comics' %}
+          {% assign collection_url = '/comics/' %}
+          {% assign collection_icon = 'comments' %}
         {% elsif collection_name == 'etc' %}
           {% assign collection_title = 'Et cetera' %}
           {% assign collection_url = '/etc/' %}

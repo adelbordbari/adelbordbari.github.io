@@ -6,18 +6,18 @@ layout: default
 {% assign has_backstory = false -%}
 {% if backstory_text != "" %}{% assign has_backstory = true %}{% endif -%}
 {% if has_backstory %}{% include reading-progress.html %}{% endif %}
-<main class="photo-page photo-page--single" lang="{{ page.lang | default: site.lang }}" dir="{{ page.dir | default: page_direction }}">
-  <article class="photo-single">
-    <a class="photo-single__back" href="{{ '/photo/' | relative_url }}">Return to contact sheet</a>
+<main class="comic-page comic-page--single" lang="{{ page.lang | default: site.lang }}" dir="{{ page.dir | default: page_direction }}">
+  <article class="comic-single">
+    <a class="comic-single__back" href="{{ '/comics/' | relative_url }}">Return to comics</a>
 
     <figure>
       <img src="{{ page.image | relative_url }}" alt="{{ page.title | escape }}">
       <figcaption>
-        <div class="photo-single__caption">
+        <div class="comic-single__caption">
           <h1>{{ page.title }}</h1>
-          {% if page.caption %}<p class="photo-single__caption-text">{{ page.caption }}</p>{% endif %}
+          {% if page.caption %}<p class="comic-single__caption-text">{{ page.caption }}</p>{% endif %}
         </div>
-        <p class="photo-single__meta">
+        <p class="comic-single__meta">
           {% include relative-date.html date=page.date %}
           {% if has_backstory %}{% include reading-time.html content=content %}{% endif %}
         </p>
@@ -25,7 +25,7 @@ layout: default
     </figure>
 
     {% if has_backstory %}
-      <div class="photo-single__notes reading-region prose">
+      <div class="comic-single__notes reading-region prose">
         {{ content }}
       </div>
     {% endif %}

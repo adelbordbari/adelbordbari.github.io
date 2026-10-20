@@ -777,11 +777,11 @@
 .pagination .is-disabled
   color: rgba($gallery-ink, .36)
 
-.photo-page
+.comic-page
   min-width: 0
   color: $gallery-ink
 
-.photo-hero
+.comic-hero
   position: relative
   overflow: hidden
   padding: clamp(1.25rem, 4vw, 3rem) clamp(1rem, 4vw, 2.4rem) clamp(2rem, 6vw, 5rem)
@@ -789,7 +789,7 @@
   background: $paper
   color: $ink
 
-.photo-hero::after
+.comic-hero::after
   content: ""
   position: absolute
   right: 0
@@ -798,26 +798,26 @@
   height: .55rem
   background: linear-gradient(90deg, $accent-blue 0 20%, $accent-green 20% 40%, $accent-orange 40% 60%, $accent-red 60% 80%, $accent-magenta 80% 100%)
 
-.photo-hero h1
+.comic-hero h1
   margin: .25rem 0
   color: $ink
 
-.photo-hero p
+.comic-hero p
   max-width: 42ch
   color: rgba($ink, .7)
   font-family: $font-family-serif
   font-size: 1rem
 
-.photo-grid
+.comic-grid
   display: grid
   grid-template-columns: repeat(2, minmax(0, 1fr))
   gap: 1rem
   margin-top: 1rem
 
-.photo-page .pagination
+.comic-page .pagination
   margin-top: 1rem
 
-.photo-card
+.comic-card
   position: relative
   min-width: 0
   display: block
@@ -830,11 +830,11 @@
   text-decoration: none
   transition: background-color .18s ease, border-color .18s ease
 
-.photo-card:hover
+.comic-card:hover
   border-color: rgba($accent-red, .28)
   background: rgba($gallery-paper, .96)
 
-.photo-card__number
+.comic-card__number
   display: block
   margin-bottom: .45rem
   color: $accent-red
@@ -842,38 +842,38 @@
   font-size: .72rem
   text-transform: uppercase
 
-.photo-card figure,
-.photo-card img
+.comic-card figure,
+.comic-card img
   margin: 0
 
-.photo-card img
+.comic-card img
   width: 100%
   aspect-ratio: 4 / 3
   object-fit: cover
   border-radius: $radius-soft
   transition: transform .22s ease
 
-.photo-card:hover img
+.comic-card:hover img
   transform: scale(1.012)
 
-.photo-card figcaption
+.comic-card figcaption
   display: flex
   justify-content: space-between
   gap: 1rem
   padding: .65rem .15rem .1rem
   color: inherit
 
-.photo-card figcaption span
+.comic-card figcaption span
   font-family: $font-family-ui
   font-weight: 700
 
-.photo-card figcaption small
+.comic-card figcaption small
   color: currentColor
   font-family: $font-family-mono
   opacity: .64
   text-align: right
 
-.photo-empty
+.comic-empty
   padding: 4rem 0
   color: rgba($gallery-ink, .62)
   background: transparent
@@ -959,10 +959,10 @@
   line-height: 1.45
   text-transform: none
 
-.photo-single
+.comic-single
   min-width: 0
 
-.photo-single__back
+.comic-single__back
   display: inline-flex
   min-height: 2.5rem
   align-items: center
@@ -974,15 +974,15 @@
   text-decoration: none
   text-transform: uppercase
 
-.photo-single__back::before
+.comic-single__back::before
   content: "<-"
   margin-right: .55rem
   color: $accent-red
 
-.photo-single figure
+.comic-single figure
   margin: 0
 
-.photo-single img
+.comic-single img
   width: 100%
   max-height: 78vh
   margin: 0
@@ -991,7 +991,7 @@
   border-radius: $radius-soft
   background: $paper
 
-.photo-single figcaption
+.comic-single figcaption
   display: flex
   align-items: end
   justify-content: space-between
@@ -999,7 +999,7 @@
   margin-top: 1rem
   color: rgba($gallery-ink, .68)
 
-.photo-single__caption-text
+.comic-single__caption-text
   max-width: 36rem
   margin: .75rem 0 0
   color: rgba($gallery-ink, .7)
@@ -1007,7 +1007,7 @@
   font-size: 1rem
   line-height: 1.5
 
-.photo-single__meta
+.comic-single__meta
   display: flex
   flex-wrap: wrap
   gap: .45rem
@@ -1016,17 +1016,17 @@
   font-family: $font-family-mono
   font-size: .8rem
 
-.photo-single__meta .reading-time::before
+.comic-single__meta .reading-time::before
   content: "/"
   margin-right: .45rem
   color: $accent-red
 
-.photo-single h1
+.comic-single h1
   margin: 0
   color: $gallery-ink
   font-size: 2.8rem
 
-.photo-single__notes
+.comic-single__notes
   color: $gallery-ink
   max-width: 42rem
   margin: clamp(2rem, 6vw, 4rem) auto 0
@@ -1136,10 +1136,10 @@
     grid-column: 1 / -1
     border-top: 1px solid rgba($gallery-ink, .1)
 
-  .photo-grid
+  .comic-grid
     grid-template-columns: 1fr
 
-  .photo-single figcaption
+  .comic-single figcaption
     align-items: flex-start
     flex-direction: column
 
@@ -1211,13 +1211,13 @@
   .album-item__specs div:nth-child(even)
     border-right: 0
 
-  .photo-card figcaption,
-  .photo-single__meta
+  .comic-card figcaption,
+  .comic-single__meta
     align-items: flex-start
     flex-direction: column
     gap: .35rem
 
-  .photo-card figcaption small
+  .comic-card figcaption small
     text-align: left
 
   .contact-ledger li
@@ -1248,11 +1248,11 @@
 
   .catalog-row:not(.catalog-row--head):hover,
   .collection-row:hover,
-  .photo-card:hover,
+  .comic-card:hover,
   .album-cover-link:hover .album-cover-duotone
     transform: none
 
-  .photo-card:hover img
+  .comic-card:hover img
     transform: none
 
   .reading-progress__fill

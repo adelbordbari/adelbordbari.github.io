@@ -641,59 +641,59 @@ input, textarea, select
 .pagination .is-disabled
   color: $muted
 
-// Photo archive and single-photo view
-.photo-hero
+// Comic archive and single-comic view
+.comic-hero
   border: 2px solid $ink
   border-radius: 0
   background: $paper
   color: $ink
 
-.photo-hero::after
+.comic-hero::after
   height: 2.5rem
   background-color: transparent
   background-image: radial-gradient(circle, $ink 0 1.2px, transparent 1.4px)
   background-size: 6px 6px
   opacity: .8
 
-.photo-hero h1
+.comic-hero h1
   font-family: $font-family-mono
   text-transform: uppercase
 
-.photo-hero p
+.comic-hero p
   font-family: $font-family-mono
   font-size: .72rem
   letter-spacing: .04em
   text-transform: uppercase
 
-.photo-grid
+.comic-grid
   gap: 1rem
 
-.photo-card
+.comic-card
   border: 1px solid $ink
   border-radius: 0
   background: $paper
   box-shadow: none
   transition: transform .08s steps(2, end), box-shadow .08s steps(2, end)
 
-.photo-card:hover
+.comic-card:hover
   border-color: $ink
   box-shadow: 3px 3px 0 $ink
   transform: translate(-2px, -2px)
 
-.photo-card__number
+.comic-card__number
   background: $ink
   color: $paper
   font-family: $font-family-mono
   letter-spacing: .08em
 
-.photo-card:hover img
+.comic-card:hover img
   transform: none
 
-.photo-card figcaption
+.comic-card figcaption
   border-top-color: $ink
   font-family: $font-family-mono
 
-.photo-single__back,
+.comic-single__back,
 .more a
   border: 1px solid $ink
   border-radius: 0
@@ -704,33 +704,33 @@ input, textarea, select
   letter-spacing: .08em
   text-transform: uppercase
 
-.photo-single__back::before
+.comic-single__back::before
   content: "<-"
 
-.photo-single__back:hover,
+.comic-single__back:hover,
 .more a:hover
   background: $ink
   color: $paper
   transform: translate(-1px, -1px)
 
-.photo-single figure,
-.photo-single__notes
+.comic-single figure,
+.comic-single__notes
   border-color: $ink
   border-radius: 0
   background: $paper
   box-shadow: none
 
-.photo-single img
+.comic-single img
   border: 2px solid $ink
   border-radius: 0
 
-.photo-single__meta
+.comic-single__meta
   color: $ink
   font-family: $font-family-mono
   letter-spacing: .06em
   text-transform: uppercase
 
-.photo-single h1
+.comic-single h1
   font-family: $font-family-mono
   text-transform: uppercase
 
@@ -924,7 +924,7 @@ input, textarea, select
   .collection-row
     grid-template-columns: 6.75rem minmax(0, 1fr)
 
-  .photo-grid
+  .comic-grid
     grid-template-columns: 1fr
 
 @media (max-width: 30rem)
