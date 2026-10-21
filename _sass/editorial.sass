@@ -707,7 +707,6 @@ input, textarea, select
 .comic-card:hover img
   transform: none
 
-.comic-single__back,
 .more a
   border: 1px solid $ink
   border-radius: 0
@@ -718,35 +717,14 @@ input, textarea, select
   letter-spacing: .08em
   text-transform: uppercase
 
-.comic-single__back::before
-  content: "<-"
-
-.comic-single__back:hover,
 .more a:hover
   background: $ink
   color: $paper
   transform: translate(-1px, -1px)
 
-.comic-single figure,
-.comic-single__notes
-  border-color: $ink
-  border-radius: 0
-  background: $paper
-  box-shadow: none
-
-.comic-single img
-  border: 2px solid $ink
-  border-radius: 0
-
-.comic-single__meta
+.comic-post__caption
+  border-top-color: $ink
   color: $ink
-  font-family: $font-family-mono
-  letter-spacing: .06em
-  text-transform: uppercase
-
-.comic-single h1
-  font-family: $font-family-mono
-  text-transform: uppercase
 
 // About/contact
 .about-lede

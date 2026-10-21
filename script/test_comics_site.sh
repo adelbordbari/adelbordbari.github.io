@@ -14,13 +14,18 @@ grep -q '<h1 id="comic-title">Comics</h1>' "${comic_index}"
 grep -q 'class="comic-card__thumbnail"' "${comic_index}"
 grep -q 'class="comic-card__body"' "${comic_index}"
 grep -q 'class="comic-card__meta"' "${comic_index}"
-grep -q '<h1>El Niño</h1>' "${comic_post}"
+grep -q '<article class="post-content comic-post"' "${comic_post}"
+grep -q '<header class="post-header">' "${comic_post}"
+grep -q '<span class="utility-label">Comics</span>' "${comic_post}"
+grep -q '<h1 class="page-title">El Niño</h1>' "${comic_post}"
+grep -q 'class="post-cover comic-post__figure"' "${comic_post}"
+grep -q 'class="post-cover__image"' "${comic_post}"
 grep -q 'src="/assets/comics/1_el_nino.jpg"' "${comic_post}"
 grep -q 'href="/comics/"' "${homepage}"
 grep -q '>Comics</span>' "${homepage}"
 
-if grep -q 'comic-single__caption-text' "${comic_post}"; then
-  echo "El Niño must not render an empty caption." >&2
+if grep -q -E 'comic-post__caption|comic-single__back|Return to comics|class="reading-time"' "${comic_post}"; then
+  echo "El Niño must use the shared post header without return, caption, or reading-time UI." >&2
   exit 1
 fi
 

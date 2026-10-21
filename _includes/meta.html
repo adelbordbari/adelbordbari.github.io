@@ -11,7 +11,7 @@
   <h1 class="page-title">{{ include.post.title }}</h1>
   <div class="post-header__meta">
     {% include relative-date.html date=include.post.date %}
-    {% include reading-time.html content=include.content %}
+    {% if include.show_reading_time != false %}{% include reading-time.html content=include.content %}{% endif %}
     {% if collection_name == "album" and include.post.artist %}
       {% assign artist_name = include.post.artist | strip %}
       {% assign artist_slug = artist_name | slugify %}

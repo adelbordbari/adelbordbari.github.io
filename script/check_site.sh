@@ -28,11 +28,11 @@ if grep -q 'total_pages > 0' _includes/pagination.html; then
   exit 1
 fi
 grep -q 'has_backstory' _layouts/comic.html
-grep -q 'comic-single__notes reading-region prose' _layouts/comic.html
+grep -q 'post-content comic-post' _layouts/comic.html
 grep -q 'grid-template-columns: 9.5rem minmax(0, 1fr) 9rem' _sass/classes.sass
 grep -q 'grid-template-columns: 7.75rem minmax(0, 1fr)' _sass/classes.sass
 grep -q 'page.caption' _layouts/comic.html
-grep -q 'comic-single__caption-text' _layouts/comic.html
+grep -q 'comic-post__caption' _layouts/comic.html
 grep -q 'reader-context.js' _layouts/default.html
 grep -q 'mermaid-diagrams.mjs' _layouts/default.html
 grep -q 'cdn.jsdelivr.net/npm/mermaid' _layouts/default.html
@@ -45,7 +45,7 @@ grep -q 'theme: '"'"'base'"'"'' assets/js/mermaid-diagrams.mjs
 grep -q 'mermaid-zoom__detail' _sass/basic.sass
 grep -q 'reading-progress__fill' _sass/basic.sass
 grep -q 'height: 3px' _sass/editorial.sass
-grep -q '.comic-single__meta' _sass/classes.sass
+grep -q '.comic-post__caption' _sass/classes.sass
 grep -q 'lang: fa' _album/2026-04-15-88-radio-tehran.md
 grep -q '\[dir="rtl"\]' _sass/basic.sass
 grep -q '@media (prefers-reduced-motion: reduce)' _sass/classes.sass
