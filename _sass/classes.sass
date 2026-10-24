@@ -398,9 +398,9 @@
   line-height: 1.45
 
 .recent-played-art
-  width: 56px
-  height: 56px
-  flex: 0 0 56px
+  width: 88px
+  height: 88px
+  flex: 0 0 88px
   margin: 0 0 0 auto
   object-fit: cover
   border-radius: $radius-soft
@@ -463,6 +463,12 @@
 #letterboxd-embed-tc .letterboxd-embed-tc-review,
 #letterboxd-embed-tc .letterboxd-embed-tc-date
   color: rgba($gallery-ink, .72)
+
+#letterboxd-embed-tc .letterboxd-embed-tc-review[lang="fa"]
+  direction: rtl
+  font-family: $font-family-fa
+  line-height: 1.9
+  text-align: right
 
 #letterboxd-embed-tc .letterboxd-embed-tc-more,
 #letterboxd-embed-tc .letterboxd-embed-tc-footer

@@ -42,6 +42,10 @@ const comicCard = declarationsFor(classes, '.comic-card');
 const comicThumbnail = declarationsFor(classes, '.comic-card__thumbnail img');
 const aboutLede = declarationsFor(classes, '.about-lede');
 const aboutFarsi = declarationsFor(classes, '.about-lede__fa');
+const lastfmArt = declarationsFor(classes, '.recent-played-art');
+const letterboxdPersian = declarationsFor(classes, '#letterboxd-embed-tc .letterboxd-embed-tc-review[lang="fa"]');
+const persianReadingRegion = declarationsFor(basic, '.reading-region[lang="fa"]');
+const rtlReadingRegion = declarationsFor(basic, '.reading-region[dir="rtl"]');
 
 assert.equal(catalogTable.padding, collectionList.padding);
 assert.equal(catalogRail.inset, collectionRail.inset);
@@ -62,6 +66,16 @@ assert.equal(comicThumbnail['object-fit'], 'cover');
 assert.equal(aboutLede['font-size'], '1.9rem');
 assert.equal(aboutFarsi['font-family'], '"Vazirmatn", sans-serif');
 assert.equal(aboutFarsi['font-size'], '.82em');
+assert.equal(lastfmArt.width, '88px');
+assert.equal(lastfmArt.height, '88px');
+assert.equal(lastfmArt.flex, '0 0 88px');
+assert.equal(letterboxdPersian['font-family'], '$font-family-fa');
+assert.equal(letterboxdPersian.direction, 'rtl');
+assert.equal(letterboxdPersian['text-align'], 'right');
+assert.equal(persianReadingRegion['font-family'], '$font-family-fa');
+assert.equal(rtlReadingRegion.direction, 'rtl');
+assert.equal(rtlReadingRegion['text-align'], 'right');
+assert.equal(basic.includes('[dir="rtl"] .post-header'), false);
 
 const pre = declarationsFor(basic, 'pre');
 const preCode = declarationsFor(basic, 'pre code');

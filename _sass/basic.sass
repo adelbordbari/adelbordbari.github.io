@@ -393,46 +393,36 @@ input, textarea, select
 .site-identity
   direction: ltr
 
-.post-content[dir="rtl"],
-.page-content[dir="rtl"],
-.comic-page[dir="rtl"],
-[dir="rtl"] .reading-region,
-[dir="rtl"] .prose,
-[dir="rtl"] .post-header,
-[dir="rtl"] .page-header
+.reading-region[dir="rtl"]
   direction: rtl
-  font-family: $font-family-fa
   text-align: right
-
-.post-content[dir="rtl"] .prose,
-.page-content[dir="rtl"] .prose,
-[dir="rtl"] .prose
   line-height: 1.9
 
-[dir="rtl"] .prose h1,
-[dir="rtl"] .prose h2,
-[dir="rtl"] .prose h3,
-[dir="rtl"] .post-header h1,
-[dir="rtl"] .page-header h1
+.reading-region[lang="fa"] h1,
+.reading-region[lang="fa"] h2,
+.reading-region[lang="fa"] h3,
+.reading-region[lang="fa"] h4,
+.reading-region[lang="fa"] h5,
+.reading-region[lang="fa"] h6
   font-family: $font-family-fa
   letter-spacing: 0
   text-transform: none
 
-[dir="rtl"] .prose blockquote
+.reading-region[dir="rtl"] blockquote
   padding-right: 1.25rem
   padding-left: 0
   border-right: .35rem solid $accent-red
   border-left: 0
 
-[dir="rtl"] .prose ul,
-[dir="rtl"] .prose ol
+.reading-region[dir="rtl"] ul,
+.reading-region[dir="rtl"] ol
   padding-right: 1.35rem
   padding-left: 0
 
-[dir="rtl"] pre,
-[dir="rtl"] code,
-[dir="rtl"] kbd,
-[dir="rtl"] samp
+.reading-region[dir="rtl"] pre,
+.reading-region[dir="rtl"] code,
+.reading-region[dir="rtl"] kbd,
+.reading-region[dir="rtl"] samp
   direction: ltr
   text-align: left
 
@@ -686,18 +676,14 @@ input, textarea, select
   overflow-x: auto
   overflow-y: hidden
 
-.post-content[lang="fa"],
-.page-content[lang="fa"],
-.comic-page[lang="fa"],
-[lang="fa"] .reading-region,
-[lang="fa"] .prose
+.reading-region[lang="fa"]
   font-family: $font-family-fa
   line-height: 2
 
-[lang="fa"] code,
-[lang="fa"] pre,
-[dir="rtl"] code,
-[dir="rtl"] pre
+.reading-region[lang="fa"] code,
+.reading-region[lang="fa"] pre,
+.reading-region[dir="rtl"] code,
+.reading-region[dir="rtl"] pre
   font-family: $font-family-code
 
 @media (max-width: 40rem)

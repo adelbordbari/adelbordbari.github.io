@@ -235,10 +235,10 @@ if command -v bundle >/dev/null 2>&1; then
   grep -q 'property="og:title"' _site/index.html
   grep -q 'name="twitter:card"' _site/index.html
   grep -q 'application/ld+json' _site/index.html
-  grep -q '<html lang="en" dir="ltr">' _site/album/88-radio-tehran/index.html
-  grep -q '<article class="post-content">' _site/album/88-radio-tehran/index.html
-  grep -q '<div class="reading-region prose" lang="fa" dir="rtl">' _site/album/88-radio-tehran/index.html
-  grep -q 'class="relative-time"[^>]*lang="en" dir="ltr"' _site/album/88-radio-tehran/index.html
+  grep -q '<html lang="en" dir="ltr">' _site/album/2026-04-15-88-radio-tehran/index.html
+  grep -q '<article class="post-content">' _site/album/2026-04-15-88-radio-tehran/index.html
+  grep -q '<div class="reading-region prose" lang="fa" dir="rtl">' _site/album/2026-04-15-88-radio-tehran/index.html
+  grep -q 'class="relative-time"[^>]*lang="en" dir="ltr"' _site/album/2026-04-15-88-radio-tehran/index.html
   grep -q 'application/atom+xml' _site/index.html
   bash script/test_comics_site.sh _site
 
