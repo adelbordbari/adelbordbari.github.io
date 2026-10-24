@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-{% assign page_language = page.lang | default: site.lang | default: "en" %}
-{% if page.dir %}
-  {% assign page_direction = page.dir %}
+{% assign page_language = page.document_lang | default: site.lang | default: "en" %}
+{% if page.document_dir %}
+  {% assign page_direction = page.document_dir %}
 {% elsif page_language == "fa" or page_language == "ar" or page_language == "he" %}
   {% assign page_direction = "rtl" %}
 {% else %}

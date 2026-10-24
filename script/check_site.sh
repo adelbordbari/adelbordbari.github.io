@@ -13,13 +13,15 @@ fi
 grep -q '^url: "https://adelbordbari.github.io"' _config.yml
 grep -q 'include seo.html' _layouts/default.html
 grep -q 'dir="{{ page_direction }}"' _layouts/default.html
+grep -q 'page.document_lang' _layouts/default.html
 grep -q 'property="og:title"' _includes/seo.html
 grep -q 'name="twitter:card"' _includes/seo.html
 grep -q 'application/ld+json' _includes/seo.html
 grep -q 'include relative-date.html' _includes/meta.html
 grep -q 'include reading-time.html' _includes/meta.html
 grep -q 'include reading-progress.html' _layouts/post.html
-grep -q 'class="reading-region prose"' _layouts/post.html
+grep -q 'class="reading-region prose" lang="{{ content_language }}" dir="{{ content_direction }}"' _layouts/post.html
+grep -q 'lang="en" dir="ltr"' _includes/relative-date.html
 grep -q 'per_page: 100' code.md
 grep -q 'per_page: 100' etc.md
 grep -q 'total_pages > 1' _includes/pagination.html
@@ -229,7 +231,10 @@ if command -v bundle >/dev/null 2>&1; then
   grep -q 'property="og:title"' _site/index.html
   grep -q 'name="twitter:card"' _site/index.html
   grep -q 'application/ld+json' _site/index.html
-  grep -q '<html lang="fa" dir="rtl">' _site/album/88-radio-tehran/index.html
+  grep -q '<html lang="en" dir="ltr">' _site/album/88-radio-tehran/index.html
+  grep -q '<article class="post-content">' _site/album/88-radio-tehran/index.html
+  grep -q '<div class="reading-region prose" lang="fa" dir="rtl">' _site/album/88-radio-tehran/index.html
+  grep -q 'class="relative-time"[^>]*lang="en" dir="ltr"' _site/album/88-radio-tehran/index.html
   grep -q 'application/atom+xml' _site/index.html
   bash script/test_comics_site.sh _site
 

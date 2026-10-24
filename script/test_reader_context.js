@@ -34,6 +34,17 @@ enhanceDates({
 }, now);
 assert.equal(time.textContent, '2 years ago');
 
+const englishTime = {
+  dateTime: '2024-06-26T00:00:00Z',
+  lang: 'en',
+  textContent: 'June 26, 2024'
+};
+enhanceDates({
+  documentElement: { lang: 'fa' },
+  querySelectorAll: () => [englishTime]
+}, now);
+assert.equal(englishTime.textContent, '2 years ago');
+
 const fill = { style: {} };
 const attributes = {};
 const progress = {

@@ -93,7 +93,7 @@
     document.querySelectorAll('.relative-time[datetime]').forEach(function (time) {
       const date = new Date(time.dateTime);
       if (Number.isNaN(date.getTime())) return;
-      const locale = document.documentElement.lang || 'en';
+      const locale = time.lang || document.documentElement.lang || 'en';
       time.textContent = relativeDateText(relativeDateValue(date, now), locale);
     });
   }

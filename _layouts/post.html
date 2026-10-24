@@ -3,7 +3,15 @@ layout: default
 ---
 
 {% include reading-progress.html %}
-<article class="post-content" lang="{{ page.lang | default: site.lang }}" dir="{{ page.dir | default: page_direction }}">
+{% assign content_language = page.lang | default: site.lang | default: "en" %}
+{% if page.dir %}
+  {% assign content_direction = page.dir %}
+{% elsif content_language == "fa" or content_language == "ar" or content_language == "he" %}
+  {% assign content_direction = "rtl" %}
+{% else %}
+  {% assign content_direction = "ltr" %}
+{% endif %}
+<article class="post-content">
   {% include meta.html post=page content=content %}
 
   {% if page.cover %}
@@ -12,7 +20,7 @@ layout: default
     </div>
   {% endif %}
 
-  <div class="reading-region prose">
+  <div class="reading-region prose" lang="{{ content_language }}" dir="{{ content_direction }}">
     {{ content }}
   </div>
 
