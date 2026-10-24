@@ -2,6 +2,7 @@
   <a class="widget-fallback" href="https://letterboxd.com/adel_bordbari/">View my Letterboxd profile</a>
 </div>
 <noscript><a class="widget-fallback" href="https://letterboxd.com/adel_bordbari/">View my Letterboxd profile</a></noscript>
+<script src="{{ '/assets/js/persian-content.js' | relative_url }}"></script>
 <script>
   (function() {
     const wrapper = document.getElementById('letterboxd-embed-wrapper-tc');
@@ -36,6 +37,7 @@
       .then(data => {
         if (!data.trim()) throw new Error('Empty Letterboxd response');
         wrapper.innerHTML = data;
+        window.persianContent.annotatePersianElements(wrapper, '.letterboxd-embed-tc-review');
         return withTimeout(waitForImages(wrapper), 3000);
       })
       .then(() => {

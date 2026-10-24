@@ -4,6 +4,7 @@ set -euo pipefail
 
 if command -v node >/dev/null 2>&1; then
   node script/test_reader_context.js
+  node script/test_persian_content.js
   node script/test_mermaid_diagrams.mjs
   node script/test_layout_styles.js
 else
@@ -58,6 +59,8 @@ grep -q 'figcaption' _sass/basic.sass
 grep -q 'grid-template-columns: 1fr' _sass/classes.sass
 grep -q 'View my Last.fm profile' _includes/lastfm.html
 grep -q 'View my Letterboxd profile' _includes/letterboxd.html
+grep -q 'persian-content.js' _includes/letterboxd.html
+grep -q 'annotatePersianElements' _includes/letterboxd.html
 grep -q 'noscript' _includes/lastfm.html
 grep -q 'noscript' _includes/letterboxd.html
 grep -q 'Perhaps if I make myself write I shall find out what is wrong with me.' _includes/archive.html
@@ -79,6 +82,7 @@ if grep -q '\.collection-row::before' _sass/classes.sass; then
 fi
 grep -q 'permalink: /album/artists/' album/artists.html
 test -f assets/fonts/Vazirmatn-Regular.woff2
+test -f assets/js/persian-content.js
 test -f assets/fonts/DepartureMono-Regular.woff2
 grep -q 'font-family: "Departure Mono"' _sass/font.sass
 grep -q '\$paper: #f3f1e8' _sass/index.sass
