@@ -261,6 +261,10 @@ input, textarea, select
 
 // Homepage cover
 .site-cover
+  width: 100%
+  max-width: 80rem
+  margin-inline: auto
+  grid-template-columns: minmax(0, 8fr) minmax(20rem, 5fr)
   min-height: 32rem
   border: 2px solid $ink
   border-radius: 0
@@ -355,7 +359,9 @@ input, textarea, select
 
 // Index tables
 .catalog-section
-  margin-top: clamp(2.5rem, 6vw, 5rem)
+  width: 100%
+  max-width: 70rem
+  margin: 4rem auto 0
 
 .section-heading
   align-items: center
@@ -436,8 +442,10 @@ input, textarea, select
   height: .9rem
 
 .utility-grid
+  width: 100%
+  max-width: 70rem
   gap: 1.1rem
-  margin-top: 3.5rem
+  margin: 3rem auto 0
 
 .utility-module
   padding: 1.25rem
@@ -837,7 +845,7 @@ input, textarea, select
 // Responsive density
 @media (max-width: 60rem)
   .site-cover
-    grid-template-columns: minmax(0, 1.05fr) minmax(17rem, .95fr)
+    grid-template-columns: minmax(0, 8fr) minmax(17rem, 5fr)
 
   .site-cover h1
     font-size: 4.8rem
@@ -852,6 +860,11 @@ input, textarea, select
   .site-header,
   .site-footer
     grid-template-columns: 1fr
+
+  .site-header
+    min-height: 0
+    gap: .75rem
+    padding: .75rem .65rem
 
   .site-nav
     display: grid
@@ -873,7 +886,7 @@ input, textarea, select
     height: 2.75rem
 
   .site-cover__primary
-    min-height: 25rem
+    min-height: 20rem
     padding: 2rem 1.5rem 5.5rem
 
   .site-cover__secondary
@@ -929,13 +942,16 @@ input, textarea, select
 
   .site-nav,
   .site-footer .site-nav
+    grid-template-columns: repeat(3, minmax(0, 1fr))
+
+  .site-footer .site-nav
     grid-template-columns: repeat(2, minmax(0, 1fr))
 
   .site-main
     padding: 1rem .65rem 1.75rem
 
   .site-cover__primary
-    min-height: 22rem
+    min-height: 20rem
     padding: 1.25rem 1rem 4.5rem
 
   .site-cover__secondary
@@ -953,14 +969,54 @@ input, textarea, select
 
   .catalog-row
     display: grid
-    grid-template-columns: 1fr
+    grid-template-columns: minmax(0, 1fr) auto
+    grid-template-rows: minmax(0, 1fr) auto
+    min-height: 6rem
+    overflow: visible
 
   .catalog-row > *
+    padding: .65rem .75rem
     border-right: 0
+    border-bottom: 0
+
+  .catalog-row > :first-child
+    grid-column: 1
+    grid-row: 2
+
+  .catalog-row > :nth-child(2)
+    grid-column: 1 / -1
+    grid-row: 1
     border-bottom: 1px solid $ink
+
+  .catalog-row > :nth-child(3)
+    grid-column: 2
+    grid-row: 2
+    border-top: 0
+    border-left: 1px solid $ink
 
   .catalog-row > :last-child
     border-bottom: 0
+
+  .catalog-row a[role="cell"]
+    overflow: visible
+    white-space: normal
+
+  .catalog-row > a:nth-child(2)
+    position: relative
+    display: block
+    padding: .45rem 2.5rem .45rem .75rem
+    line-height: 1.25
+
+  .catalog-row > a:nth-child(2)::after
+    position: absolute
+    top: 50%
+    right: .75rem
+    transform: translateY(-50%)
+
+  .catalog-row > a[data-label]::before,
+  .catalog-row > span[data-label]::before
+    content: none
+    display: none
 
   .catalog-row--head
     display: none
