@@ -212,6 +212,119 @@ async function testHome(cdp, baseUrl) {
   }
 }
 
+async function testDetail(cdp, baseUrl) {
+  const desktopPage = await openPage(
+    cdp,
+    `${baseUrl}/album/2026-04-15-88-radio-tehran/`,
+    1440,
+    1000
+  );
+  let desktop;
+  try {
+    desktop = await desktopPage.evaluate(`(() => {
+      const measure = (selector) => {
+        const element = document.querySelector(selector);
+        const box = element.getBoundingClientRect();
+        const style = getComputedStyle(element);
+        return {
+          bottom: box.bottom,
+          fontFamily: style.fontFamily,
+          fontSize: parseFloat(style.fontSize),
+          height: box.height,
+          lineHeight: parseFloat(style.lineHeight),
+          paddingLeft: parseFloat(style.paddingLeft),
+          paddingRight: parseFloat(style.paddingRight),
+          width: box.width,
+          x: box.x,
+          y: box.y,
+        };
+      };
+      return {
+        header: measure('.post-header'),
+        cover: measure('.post-cover'),
+        reading: measure('.reading-region'),
+      };
+    })()`);
+  } finally {
+    await desktopPage.close();
+  }
+
+  almostEqual(desktop.header.width, 760, 1, 'detail header rail');
+  almostEqual(desktop.cover.width, 512, 1, 'album cover rail');
+  almostEqual(desktop.reading.width, 640, 1, 'reading panel rail');
+  almostEqual(
+    desktop.reading.width - desktop.reading.paddingLeft - desktop.reading.paddingRight,
+    552,
+    1,
+    'reading text measure'
+  );
+  almostEqual(desktop.reading.fontSize, 18, 0.1, 'Persian reading font size');
+  almostEqual(desktop.reading.lineHeight, 33.3, 0.2, 'Persian reading line height');
+  assert.match(desktop.reading.fontFamily, /Vazirmatn/, 'Persian reading font must remain Vazirmatn');
+  almostEqual(desktop.cover.y - desktop.header.bottom, 64, 2, 'header-to-cover gap');
+  almostEqual(desktop.reading.y - desktop.cover.bottom, 48, 2, 'cover-to-reading gap');
+
+  const mobilePage = await openPage(
+    cdp,
+    `${baseUrl}/album/2026-04-15-88-radio-tehran/`,
+    390,
+    1000
+  );
+  try {
+    const mobile = await mobilePage.evaluate(`({
+      clientWidth: document.documentElement.clientWidth,
+      scrollWidth: document.documentElement.scrollWidth,
+    })`);
+    assert.equal(mobile.scrollWidth, mobile.clientWidth, 'detail page must not scroll horizontally');
+  } finally {
+    await mobilePage.close();
+  }
+}
+
+async function testAlbums(cdp, baseUrl) {
+  const desktopPage = await openPage(cdp, `${baseUrl}/album/`, 1440, 1000);
+  try {
+    const desktop = await desktopPage.evaluate(`(() => {
+      const box = document.querySelector('.page-content').getBoundingClientRect();
+      return { width: box.width };
+    })()`);
+    assert.ok(desktop.width <= 1120.5, `album collection rail is ${desktop.width}px`);
+  } finally {
+    await desktopPage.close();
+  }
+
+  const mobilePage = await openPage(cdp, `${baseUrl}/album/`, 390, 1000);
+  let mobile;
+  try {
+    mobile = await mobilePage.evaluate(`(() => {
+      const entry = document.querySelector('.album-item__entry');
+      const title = document.querySelector('.album-item__body h3 a');
+      const specs = document.querySelector('.album-item__specs');
+      const entryStyle = getComputedStyle(entry);
+      const specsStyle = getComputedStyle(specs);
+      return {
+        clientWidth: document.documentElement.clientWidth,
+        scrollWidth: document.documentElement.scrollWidth,
+        entryColumns: entryStyle.gridTemplateColumns.split(' ').filter(Boolean),
+        entryWidth: entry.getBoundingClientRect().width,
+        coverWidth: document.querySelector('.album-item__cover').getBoundingClientRect().width,
+        specsColumns: specsStyle.gridTemplateColumns.split(' ').filter(Boolean),
+        titleClipped: title.scrollWidth > title.clientWidth || title.scrollHeight > title.clientHeight,
+        titleWhiteSpace: getComputedStyle(title).whiteSpace,
+      };
+    })()`);
+  } finally {
+    await mobilePage.close();
+  }
+
+  assert.equal(mobile.scrollWidth, mobile.clientWidth, 'album index must not scroll horizontally');
+  assert.equal(mobile.entryColumns.length, 2, 'mobile album card must retain cover/body columns');
+  almostEqual(mobile.coverWidth, 112, 1, 'mobile album cover width');
+  assert.equal(mobile.specsColumns.length, 2, 'mobile album metadata must use two columns');
+  assert.notEqual(mobile.titleWhiteSpace, 'nowrap', 'mobile album title must wrap');
+  assert.equal(mobile.titleClipped, false, 'mobile album title must remain complete');
+}
+
 async function main() {
   const server = await startServer();
   const { port } = server.address();
@@ -219,6 +332,8 @@ async function main() {
   const cdp = await connect(websocketUrl);
   try {
     if (requestedPages.has('home')) await testHome(cdp, `http://127.0.0.1:${port}`);
+    if (requestedPages.has('detail')) await testDetail(cdp, `http://127.0.0.1:${port}`);
+    if (requestedPages.has('albums')) await testAlbums(cdp, `http://127.0.0.1:${port}`);
     console.log(`Proportional layout checks passed: ${[...requestedPages].join(', ')}.`);
   } finally {
     cdp.socket.close();

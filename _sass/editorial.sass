@@ -156,6 +156,31 @@ input, textarea, select
   width: 100%
   max-width: 74ch
 
+.page-content
+  width: 100%
+  max-width: 70rem
+  margin-inline: auto
+
+.page-content > .prose
+  padding: 2rem 0
+
+.post-content .post-header
+  max-width: 47.5rem
+  margin-bottom: 4rem
+
+.post-content .post-cover
+  max-width: 32rem
+  margin-bottom: 3rem
+
+.post-content .reading-region
+  width: 100%
+  max-width: 40rem
+  padding: 2rem 2.75rem
+
+.reading-region[lang="fa"]
+  font-size: 1.125rem
+  line-height: 1.85
+
 .prose .footnotes
   border-top-color: $ink
   color: $muted
@@ -911,6 +936,12 @@ input, textarea, select
   .post-header
     padding: 1.5rem 1.15rem
 
+  .post-content .post-header
+    margin-bottom: 2rem
+
+  .post-content .reading-region
+    padding: 1.5rem 1rem
+
   .album-item__entry
     grid-template-columns: 8rem minmax(0, 1fr)
 
@@ -1022,10 +1053,48 @@ input, textarea, select
     display: none
 
   .album-item__entry
-    grid-template-columns: 1fr
+    grid-template-columns: 7rem minmax(0, 1fr)
+    gap: .75rem
+    align-items: start
+
+  .album-item
+    padding: .75rem
+
+  .album-item__body
+    min-width: 0
+
+  .album-item__body h3
+    margin-bottom: .65rem
+    font-size: 1rem
+    line-height: 1.2
+
+  .album-item__body h3 a
+    display: block
+    overflow-wrap: anywhere
+    white-space: normal
 
   .album-cover-link
-    max-width: 12rem
+    max-width: none
+
+  .album-item__specs
+    display: grid
+    grid-template-columns: repeat(2, minmax(0, 1fr))
+
+  .album-item__specs div,
+  .album-item__specs div:first-child
+    min-width: 0
+    align-items: flex-start
+    flex-direction: column
+    gap: .15rem
+    padding: .4rem
+    border-right: 1px solid $ink
+    border-bottom: 1px solid $ink
+
+  .album-item__specs div:nth-child(even)
+    border-right: 0
+
+  .album-item__specs div:nth-last-child(-n + 2)
+    border-bottom: 0
 
   .about-lede
     padding: 1rem
