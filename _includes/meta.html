@@ -6,9 +6,17 @@
 {% else %}
   {% assign collection_label = collection_name | capitalize %}
 {% endif %}
+{% assign post_language = include.post.lang | default: site.lang | default: "en" %}
+{% if include.post.dir %}
+  {% assign post_direction = include.post.dir %}
+{% elsif post_language == "fa" or post_language == "ar" or post_language == "he" %}
+  {% assign post_direction = "rtl" %}
+{% else %}
+  {% assign post_direction = "ltr" %}
+{% endif %}
 <header class="post-header">
   <span class="utility-label">{{ collection_label }}</span>
-  <h1 class="page-title">{{ include.post.title }}</h1>
+  <h1 class="page-title" lang="{{ post_language }}" dir="{{ post_direction }}">{{ include.post.title }}</h1>
   <div class="post-header__meta">
     {% include relative-date.html date=include.post.date %}
     {% if include.show_reading_time != false %}{% include reading-time.html content=include.content %}{% endif %}

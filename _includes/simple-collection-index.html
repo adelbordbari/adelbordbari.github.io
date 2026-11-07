@@ -22,9 +22,17 @@
 
 <ol class="collection-list">
   {% for post in posts %}
+    {% assign post_language = post.lang | default: site.lang | default: 'en' %}
+    {% if post.dir %}
+      {% assign post_direction = post.dir %}
+    {% elsif post_language == 'fa' or post_language == 'ar' or post_language == 'he' %}
+      {% assign post_direction = 'rtl' %}
+    {% else %}
+      {% assign post_direction = 'ltr' %}
+    {% endif %}
     <li class="collection-row">
       {% include relative-date.html date=post.date %}
-      <a class="collection-row__title" href="{{ post.url | relative_url }}">
+      <a class="collection-row__title" href="{{ post.url | relative_url }}" lang="{{ post_language }}" dir="{{ post_direction }}">
         <span class="collection-row__title-track">{{ post.title }}</span>
       </a>
       {% include reading-time.html content=post.content %}

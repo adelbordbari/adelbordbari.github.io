@@ -9,7 +9,10 @@ const { spawn } = require('node:child_process');
 const ROOT = join(__dirname, '..');
 const SITE = join(ROOT, '_site');
 const requestedPages = new Set(
-  (process.argv.find((argument) => argument.startsWith('--page=')) || '--page=home')
+  (
+    process.argv.find((argument) => argument.startsWith('--page=')) ||
+    '--page=home,detail,albums,activity,persian-post'
+  )
     .slice('--page='.length)
     .split(',')
 );
@@ -325,6 +328,142 @@ async function testAlbums(cdp, baseUrl) {
   assert.equal(mobile.titleClipped, false, 'mobile album title must remain complete');
 }
 
+async function testActivity(cdp, baseUrl) {
+  const page = await openPage(cdp, `${baseUrl}/`, 1440, 1000);
+  let activity;
+  try {
+    activity = await page.evaluate(`(() => {
+      const wrapper = document.querySelector('#letterboxd-embed-wrapper-tc');
+      wrapper.innerHTML = '<div id="letterboxd-embed-tc">' +
+        Array.from({ length: 5 }, (_, index) =>
+          '<div class="letterboxd-embed-tc-diary-entry">Film ' + index + '</div>' +
+          '<div class="letterboxd-embed-tc-divider"></div>'
+        ).join('') +
+        '</div>';
+      window.feedLayout.limitFeed(wrapper);
+
+      const lastfm = document.querySelector('.atomic-widget--lastfm');
+      lastfm.innerHTML =
+        '<div class="recent-played">' +
+        '<img class="recent-played-art" alt="" ' +
+        'src="data:image/gif;base64,R0lGODlhAQABAAAAACw=">' +
+        '<span class="recent-played-track">Track by Artist</span>' +
+        '</div>';
+
+      const borderWidths = (element) => {
+        const style = getComputedStyle(element);
+        return {
+          top: parseFloat(style.borderTopWidth),
+          right: parseFloat(style.borderRightWidth),
+          bottom: parseFloat(style.borderBottomWidth),
+          left: parseFloat(style.borderLeftWidth),
+        };
+      };
+      const art = document.querySelector('.recent-played-art').getBoundingClientRect();
+      const modules = [...document.querySelectorAll('.utility-module')];
+      return {
+        art: { width: art.width, height: art.height },
+        dividers: wrapper.querySelectorAll('.letterboxd-embed-tc-divider').length,
+        entries: wrapper.querySelectorAll('.letterboxd-embed-tc-diary-entry').length,
+        letterboxdBorders: borderWidths(wrapper),
+        lastfmBorders: borderWidths(document.querySelector('.recent-played')),
+        moduleBorders: modules.map(borderWidths),
+      };
+    })()`);
+  } finally {
+    await page.close();
+  }
+
+  assert.equal(activity.entries, 3, 'activity fixture must retain three film entries');
+  assert.equal(activity.dividers, 2, 'activity fixture must retain two internal dividers');
+  almostEqual(activity.art.width, 88, 0.1, 'Last.fm artwork width');
+  almostEqual(activity.art.height, 88, 0.1, 'Last.fm artwork height');
+  for (const borders of activity.moduleBorders) {
+    assert.deepEqual(borders, { top: 2, right: 2, bottom: 2, left: 2 });
+  }
+  assert.deepEqual(
+    activity.lastfmBorders,
+    { top: 1, right: 0, bottom: 0, left: 0 },
+    'Last.fm content should use only an internal top rule'
+  );
+  assert.deepEqual(
+    activity.letterboxdBorders,
+    { top: 1, right: 0, bottom: 0, left: 0 },
+    'Letterboxd content should use only an internal top rule'
+  );
+}
+
+async function testPersianPost(cdp, baseUrl) {
+  const detailPage = await openPage(
+    cdp,
+    `${baseUrl}/etc/2026-11-07-rephrasing/`,
+    1440,
+    1000
+  );
+  let detail;
+  try {
+    detail = await detailPage.evaluate(`(() => {
+      const title = document.querySelector('.post-header .page-title');
+      const reading = document.querySelector('.reading-region');
+      const titleStyle = getComputedStyle(title);
+      const readingStyle = getComputedStyle(reading);
+      return {
+        documentLang: document.documentElement.lang,
+        documentDir: document.documentElement.dir,
+        titleLang: title.lang,
+        titleDir: title.dir,
+        titleDirection: titleStyle.direction,
+        titleFont: titleStyle.fontFamily,
+        readingLang: reading.lang,
+        readingDir: reading.dir,
+        readingDirection: readingStyle.direction,
+        readingFont: readingStyle.fontFamily,
+      };
+    })()`);
+  } finally {
+    await detailPage.close();
+  }
+
+  assert.equal(detail.documentLang, 'en', 'Persian post must keep English document chrome');
+  assert.equal(detail.documentDir, 'ltr', 'Persian post must keep LTR document chrome');
+  assert.equal(detail.titleLang, 'fa', 'Persian detail title must declare its language');
+  assert.equal(detail.titleDir, 'rtl', 'Persian detail title must declare RTL direction');
+  assert.equal(detail.titleDirection, 'rtl', 'Persian detail title must render RTL');
+  assert.match(detail.titleFont, /Vazirmatn/, 'Persian detail title must use Vazirmatn');
+  assert.equal(detail.readingLang, 'fa', 'Persian prose must declare its language');
+  assert.equal(detail.readingDir, 'rtl', 'Persian prose must declare RTL direction');
+  assert.equal(detail.readingDirection, 'rtl', 'Persian prose must render RTL');
+  assert.match(detail.readingFont, /Vazirmatn/, 'Persian prose must use Vazirmatn');
+
+  for (const path of ['/', '/etc/']) {
+    const indexPage = await openPage(cdp, `${baseUrl}${path}`, 1440, 1000);
+    let title;
+    try {
+      title = await indexPage.evaluate(`(() => {
+        const link = [...document.querySelectorAll('a')].find((candidate) =>
+          candidate.textContent.includes('چارچوبی برای واژه‌گزینی')
+        );
+        if (!link) return null;
+        const style = getComputedStyle(link);
+        return {
+          lang: link.lang,
+          dir: link.dir,
+          direction: style.direction,
+          font: style.fontFamily,
+        };
+      })()`);
+    } finally {
+      await indexPage.close();
+    }
+
+    assert.ok(title, `${path} must include the Persian post title`);
+    assert.equal(title.lang, 'fa', `${path} Persian title must declare its language`);
+    assert.equal(title.dir, 'rtl', `${path} Persian title must declare RTL direction`);
+    assert.equal(title.direction, 'rtl', `${path} Persian title must render RTL`);
+    assert.match(title.font, /Vazirmatn/, `${path} Persian title must use Vazirmatn`);
+  }
+}
+
 async function main() {
   const server = await startServer();
   const { port } = server.address();
@@ -334,6 +473,8 @@ async function main() {
     if (requestedPages.has('home')) await testHome(cdp, `http://127.0.0.1:${port}`);
     if (requestedPages.has('detail')) await testDetail(cdp, `http://127.0.0.1:${port}`);
     if (requestedPages.has('albums')) await testAlbums(cdp, `http://127.0.0.1:${port}`);
+    if (requestedPages.has('activity')) await testActivity(cdp, `http://127.0.0.1:${port}`);
+    if (requestedPages.has('persian-post')) await testPersianPost(cdp, `http://127.0.0.1:${port}`);
     console.log(`Proportional layout checks passed: ${[...requestedPages].join(', ')}.`);
   } finally {
     cdp.socket.close();

@@ -56,9 +56,17 @@
           {% assign collection_url = '/' %}
           {% assign collection_icon = 'home' %}
         {% endif %}
+        {% assign post_language = post.lang | default: site.lang | default: 'en' %}
+        {% if post.dir %}
+          {% assign post_direction = post.dir %}
+        {% elsif post_language == 'fa' or post_language == 'ar' or post_language == 'he' %}
+          {% assign post_direction = 'rtl' %}
+        {% else %}
+          {% assign post_direction = 'ltr' %}
+        {% endif %}
         <div class="catalog-row" role="row">
           <span role="cell" data-label="Filed">{% include relative-date.html date=post.date %}</span>
-          <a role="cell" data-label="Entry" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          <a role="cell" data-label="Entry" href="{{ post.url | relative_url }}" lang="{{ post_language }}" dir="{{ post_direction }}">{{ post.title }}</a>
           <a class="catalog-kind" role="cell" data-label="Collection" href="{{ collection_url | relative_url }}" aria-label="View all {{ collection_title }} entries">
             <svg class="icon" aria-hidden="true"><use xlink:href="{{ "/assets/fontawesome/icons.svg" | relative_url }}#{{ collection_icon }}"></use></svg>
             <span>{{ collection_title }}</span>
