@@ -165,6 +165,11 @@ async function homeMeasurements(cdp, baseUrl, width) {
       const header = rect('.site-header');
       const rows = [...document.querySelectorAll('.catalog-row:not(.catalog-row--head)')];
       const titles = [...document.querySelectorAll('.catalog-row:not(.catalog-row--head) > a:nth-child(2)')];
+      const persianTitle = document.querySelector('.catalog-entry__title[lang="fa"]');
+      const persianEntry = persianTitle && persianTitle.closest('a[role="cell"]');
+      const persianRow = persianEntry && persianEntry.closest('.catalog-row');
+      const persianCollectionLabel = persianRow && persianRow.querySelector('.catalog-kind span[lang="fa"]');
+      const persianCollectionLink = persianCollectionLabel && persianCollectionLabel.closest('a');
       return {
         viewportWidth: innerWidth,
         clientWidth: document.documentElement.clientWidth,
@@ -182,6 +187,15 @@ async function homeMeasurements(cdp, baseUrl, width) {
           width: title.getBoundingClientRect().width,
           whiteSpace: getComputedStyle(title).whiteSpace,
         })),
+        persian: persianTitle && persianCollectionLabel ? {
+          arrowContent: getComputedStyle(persianEntry, '::after').content,
+          collectionFont: getComputedStyle(persianCollectionLabel).fontFamily,
+          collectionLabelDirection: getComputedStyle(persianCollectionLabel).direction,
+          collectionLinkDirection: getComputedStyle(persianCollectionLink).direction,
+          entryDirection: getComputedStyle(persianEntry).direction,
+          titleDirection: getComputedStyle(persianTitle).direction,
+          titleFont: getComputedStyle(persianTitle).fontFamily,
+        } : null,
       };
     })()`);
   } finally {
@@ -198,6 +212,14 @@ async function testHome(cdp, baseUrl) {
   almostEqual(desktop.primary.width / desktop.cover.width, 8 / 13, 0.015, 'desktop hero primary ratio');
   almostEqual(desktop.catalog.y - desktop.cover.bottom, 64, 2, 'cover-to-catalog gap');
   almostEqual(desktop.utility.y - desktop.catalog.bottom, 48, 2, 'catalog-to-utility gap');
+  assert.ok(desktop.persian, 'homepage must include the Persian catalog row');
+  assert.equal(desktop.persian.entryDirection, 'ltr', 'Persian entry cell must remain LTR');
+  assert.equal(desktop.persian.titleDirection, 'rtl', 'only the Persian title text must be RTL');
+  assert.equal(desktop.persian.arrowContent, '"->"', 'Persian entry arrow must remain a forward arrow');
+  assert.match(desktop.persian.titleFont, /Vazirmatn/, 'Persian entry title must use Vazirmatn');
+  assert.equal(desktop.persian.collectionLinkDirection, 'ltr', 'Persian collection cell must remain LTR');
+  assert.equal(desktop.persian.collectionLabelDirection, 'rtl', 'Persian collection label text must be RTL');
+  assert.match(desktop.persian.collectionFont, /Vazirmatn/, 'Persian collection label must use Vazirmatn');
 
   const mobile = await homeMeasurements(cdp, baseUrl, 390);
   assert.ok(mobile.header.height <= 176, `mobile header is ${mobile.header.height}px tall`);
@@ -440,14 +462,14 @@ async function testPersianPost(cdp, baseUrl) {
     let title;
     try {
       title = await indexPage.evaluate(`(() => {
-        const link = [...document.querySelectorAll('a')].find((candidate) =>
+        const element = [...document.querySelectorAll('.catalog-entry__title[lang="fa"], .collection-row__title[lang="fa"]')].find((candidate) =>
           candidate.textContent.includes('چارچوبی برای واژه‌گزینی')
         );
-        if (!link) return null;
-        const style = getComputedStyle(link);
+        if (!element) return null;
+        const style = getComputedStyle(element);
         return {
-          lang: link.lang,
-          dir: link.dir,
+          lang: element.lang,
+          dir: element.dir,
           direction: style.direction,
           font: style.fontFamily,
         };

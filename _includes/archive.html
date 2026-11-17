@@ -70,10 +70,12 @@
         {% endif %}
         <div class="catalog-row" role="row">
           <span role="cell" data-label="Filed">{% include relative-date.html date=post.date %}</span>
-          <a role="cell" data-label="Entry" href="{{ post.url | relative_url }}" lang="{{ post_language }}" dir="{{ post_direction }}">{{ post.title }}</a>
+          <a role="cell" data-label="Entry" href="{{ post.url | relative_url }}">
+            <span class="catalog-entry__title" lang="{{ post_language }}" dir="{{ post_direction }}">{{ post.title }}</span>
+          </a>
           <a class="catalog-kind" role="cell" data-label="Collection" href="{{ collection_url | relative_url }}" aria-label="View all {{ collection_title }} entries">
             <svg class="icon" aria-hidden="true"><use xlink:href="{{ "/assets/fontawesome/icons.svg" | relative_url }}#{{ collection_icon }}"></use></svg>
-            <span>{{ collection_title }}</span>
+            <span{% if collection_name == 'farsi' %} lang="fa" dir="rtl"{% endif %}>{{ collection_title }}</span>
           </a>
         </div>
       {% endfor %}
