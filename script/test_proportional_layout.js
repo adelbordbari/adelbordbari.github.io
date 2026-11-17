@@ -396,7 +396,7 @@ async function testActivity(cdp, baseUrl) {
 async function testPersianPost(cdp, baseUrl) {
   const detailPage = await openPage(
     cdp,
-    `${baseUrl}/etc/2026-11-07-rephrasing/`,
+    `${baseUrl}/farsi/2026-11-07-rephrasing/`,
     1440,
     1000
   );
@@ -435,7 +435,7 @@ async function testPersianPost(cdp, baseUrl) {
   assert.equal(detail.readingDirection, 'rtl', 'Persian prose must render RTL');
   assert.match(detail.readingFont, /Vazirmatn/, 'Persian prose must use Vazirmatn');
 
-  for (const path of ['/', '/etc/']) {
+  for (const path of ['/', '/farsi/']) {
     const indexPage = await openPage(cdp, `${baseUrl}${path}`, 1440, 1000);
     let title;
     try {

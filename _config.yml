@@ -22,6 +22,7 @@ navigation:                # accepts {file, title, url, icon, sidebaricon}
   - {file: "code.md", icon: code}
   - {file: "album.md", icon: music}
   - {file: "comics.md", icon: comments}
+  - {file: "farsi.md", icon: language}
   - {file: "etc.md", icon: asterisk}
 
 external:                  # shows a footer with social links - for available icons see fontawesome.com/icons
@@ -44,6 +45,8 @@ collections:
   album:
     output: true
   comics:
+    output: true
+  farsi:
     output: true
   etc:
     output: true

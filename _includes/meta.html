@@ -1,6 +1,8 @@
 {% assign collection_name = include.post.collection | default: "posts" %}
 {% if collection_name == "posts" %}
   {% assign collection_label = "Journal" %}
+{% elsif collection_name == "farsi" %}
+  {% assign collection_label = "فارسی" %}
 {% elsif collection_name == "etc" %}
   {% assign collection_label = "Et cetera" %}
 {% else %}

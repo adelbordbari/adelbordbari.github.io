@@ -25,6 +25,10 @@ grep -q 'include reading-progress.html' _layouts/post.html
 grep -q 'class="reading-region prose" lang="{{ content_language }}" dir="{{ content_direction }}"' _layouts/post.html
 grep -q 'lang="en" dir="ltr"' _includes/relative-date.html
 grep -q 'per_page: 100' code.md
+grep -q 'per_page: 100' farsi.md
+grep -q 'collection_name: farsi' farsi.md
+grep -q 'site.farsi' _includes/simple-collection-index.html
+grep -q 'open.spotify.com/artist/6DURi8sSjUQLijYlINTbuo' about.md
 grep -q 'per_page: 100' etc.md
 grep -q 'total_pages > 1' _includes/pagination.html
 if grep -q 'total_pages > 0' _includes/pagination.html; then
@@ -208,6 +212,7 @@ if command -v bundle >/dev/null 2>&1; then
 
   test -f _site/index.html
   test -f _site/code/index.html
+  test -f _site/farsi/index.html
   test -f _site/etc/index.html
   test -f _site/album/index.html
   test -f _site/album/artists/index.html
@@ -229,6 +234,10 @@ if command -v bundle >/dev/null 2>&1; then
   grep -q 'class="reading-progress"' _site/code/paint-the-code/index.html
   grep -q 'role="progressbar"' _site/code/paint-the-code/index.html
   grep -q 'min read' _site/code/paint-the-code/index.html
+  grep -q 'چارچوبی برای واژه‌گزینی' _site/farsi/index.html
+  grep -q 'class="reading-region prose" lang="fa" dir="rtl"' _site/farsi/2026-11-07-rephrasing/index.html
+  ! grep -q 'چارچوبی برای واژه‌گزینی' _site/etc/index.html
+  test ! -e _site/etc/2026-11-07-rephrasing/index.html
   grep -q 'reader-context.js' _site/code/paint-the-code/index.html
   grep -q 'mermaid-diagrams.mjs' _site/code/paint-the-code/index.html
   grep -q 'cdn.jsdelivr.net/npm/mermaid' _site/code/paint-the-code/index.html

@@ -3,6 +3,8 @@
 {% assign offset = current_page | minus: 1 | times: per_page %}
 {% if page.collection_name == 'code' %}
   {% assign collection_posts = site.code %}
+{% elsif page.collection_name == 'farsi' %}
+  {% assign collection_posts = site.farsi %}
 {% elsif page.collection_name == 'etc' %}
   {% assign collection_posts = site.etc %}
 {% else %}
