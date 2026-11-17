@@ -253,3 +253,107 @@ And maybe that's the real shift:
 An idea doesn't need to become a story immediately. It just needs to become **slightly more specific**.
 
 A weird thing becomes a question. The question becomes a person. The person gets a problem. The problem gets rules. The rules create consequences. The consequences force a choice, and somewhere along the way, almost quietly, the little idea I started with turns into a story!
+
+---
+
+## Revision: Starting Over With The Moth
+
+After writing this, I came across [*How to Tell a Story: The Essential Guide to Memorable Storytelling from The Moth*](https://themoth.org/how-to-tell-a-story), by The Moth team: Meg Bowles, Catherine Burns, Jenifer Hixson, Sarah Austin Jenness, and Kate Tellers.
+
+The book is about telling true, first-person stories, so my virus idea obviously couldn't become a Moth story as it is. But its principles made me notice a weakness in the framework I had built above. I was still looking at the story from the outside. I had a premise, rules, an escalation ladder, and an impossible choice, but I didn't yet have the feeling that somebody was telling me about the worst thing that had ever happened to them.
+
+So I tried starting over. Not with the pandemic. Not with the science of the virus. Not even with the superpower.
+
+I started with a first line:
+
+> The first time I stopped someone from dying, I lost six months of my own life and didn't know it yet.
+
+That line immediately gives me more than the original premise did. There is a person speaking. Something has already happened to them. They once thought they had saved a life, and now they understand that moment differently. It also creates a question I actually want answered: **what did saving that person cost?**
+
+### Make It One Person's Story
+
+The Moth puts a lot of weight on the story being yours to tell. For fiction, I think the useful translation is that the story has to belong completely to the protagonist. They can't just be my camera for recording an interesting pandemic.
+
+So this time, the protagonist is an emergency nurse who has spent years being useful in situations where everyone else panics. When a patient who should have died suddenly stabilizes under her hands, she thinks she has developed an impossible ability: she can pull someone back from the edge of death.
+
+At first, this feels like the purest version of who she already wants to be. She doesn't want fame or money. She wants to be the person who doesn't have to stand helplessly beside a bed.
+
+That is also the vulnerable part she doesn't want to admit. Her need to save people isn't entirely selfless. Being needed protects her from feeling powerless. The power doesn't create that flaw; it rewards it.
+
+Now the premise hurts in a more specific place.
+
+### Give The Power A Price She Can Feel
+
+The virus lets an infected person interrupt an imminent death. A stopped heart starts again. A fatal wound closes just enough. A body that was about to lose its fight gets another chance.
+
+But the time isn't created. It is taken from the infected person.
+
+At first, the cost is invisible. After each rescue, the nurse gets a metallic taste in her mouth, a fever, and a missing patch in her memory. Later, a scan shows changes that should have taken months or years. Every time she uses the power, her own death moves closer.
+
+The virus also spreads most easily during the act of saving someone. Blood, breath, and touch turn a miracle into an exposure. The person who survives may wake up carrying the same ability.
+
+That gives me a reason for the pandemic to happen instead of treating it as the obligatory big final stage. People don't only catch the virus accidentally. Once the first stories get out, some people go looking for it. Parents want it for their children. Doctors convince themselves they can control it. Desperate families treat infected people like saints. Governments call them a biological threat while quietly trying to keep some of them available.
+
+The thing spreads because it is useful, and because refusing to use it while somebody is dying feels monstrous.
+
+### Find The Storyworthy Moment
+
+The whole pandemic is too large to be the story. The Moth's emphasis on one experience with a beginning, middle, and end pushes me toward a smaller moment: the nurse's first deliberate use of the power.
+
+Her younger brother is brought into her hospital after an accident. She already knows what the virus costs by then. She also knows she may be contagious. If she saves him, she will shorten her own life and may pass the virus to him. If she steps away, he dies from an injury she knows she can reverse.
+
+This is where the stakes stop being theoretical.
+
+She wants her brother alive. She wants to remain the person who saves people. She is afraid of dying, but she is even more afraid that, without the power, she is ordinary and helpless again. What she needs is to accept that love doesn't give her control over every ending.
+
+I wouldn't explain all of that before the scene. I would let it appear through specific things: her glove tearing as she presses on the wound, her brother trying to make a joke because he can see that she is scared, the taste of metal when the power begins, and the monitor changing before either of them is ready.
+
+The other characters shouldn't exist only to argue different positions about the virus. Her brother knows exactly why she can't walk away. A colleague sees the danger and tries to pull her back. A frightened parent in the next bed watches a miracle happen and realizes what the nurse might be able to do for her child. Each person adds pressure to the same choice.
+
+### Build Around The Turn, Not The Lore
+
+The large turning points—the “boulders,” in the book's language—could be simple:
+
+```text
+she discovers that she can prevent a death
+        ↓
+she learns that every rescue shortens her life
+        ↓
+she learns that using the power can spread the virus
+        ↓
+her brother arrives dying
+        ↓
+she chooses to save him
+        ↓
+he wakes up infected
+```
+
+The “pebbles” are the smaller details that make those turns feel lived instead of diagrammed: the lie she tells on an exposure form, the hospital coffee going cold, the bruise left by a watch that suddenly fits too loosely, her brother asking how much time she has left, and the pause before she answers.
+
+This version still reaches the pandemic, but it doesn't need to show every stage of it. The story can end later, with the nurse speaking from quarantine while reports of identical rescues appear in other cities. The pandemic is no longer just the biggest event I could add. It is the consequence of a choice I watched her make for a reason I understand.
+
+And I don't think the ending should cleanly declare that saving her brother was right or wrong. She changed him, infected him, and helped release something incurable. She also kept him alive. Both facts remain true.
+
+### What This Changes In My Framework
+
+My original pipeline still helps me turn an idea into a plot. The Moth's approach adds another question that may need to come much earlier:
+
+> **Who is telling this, and what happened that they can no longer understand the way they once did?**
+
+That question gives me the clear arc, stakes, change, vulnerability, and emotional core that the premise alone was missing. It also keeps me from overloading the story with epidemiology, government responses, and clever rules before I have made the audience care about one person in one room.
+
+So if I were beginning again, the framework would be less like:
+
+```text
+premise → world → escalation → person → choice
+```
+
+And more like:
+
+```text
+premise → teller → storyworthy moment → stakes → change
+                    ↓
+              rules and escalation
+```
+
+The strange idea still matters. But now it isn't the center of the story. It is the pressure placed on a person until something honest comes out.
