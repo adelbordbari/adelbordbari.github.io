@@ -21,6 +21,7 @@ navigation:                # accepts {file, title, url, icon, sidebaricon}
   - {file: "index.html", icon: home}
   - {file: "code.md", icon: code}
   - {file: "album.md", icon: music}
+  - {file: "theater.md", title: "Theater"}
   - {file: "comics.md", icon: comments}
   - {file: "farsi.md", icon: language}
   - {file: "etc.md", icon: asterisk}
@@ -44,6 +45,9 @@ collections:
     output: true
   album:
     output: true
+  silent_libretto:
+    output: true
+    permalink: /theater/:path/
   comics:
     output: true
   farsi:

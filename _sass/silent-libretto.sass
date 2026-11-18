@@ -1,0 +1,513 @@
+// Silent Libretto keeps the site's typography while giving the performance its own dark stage.
+.silent-libretto-intro
+  max-width: 54ch
+  margin-bottom: 2.4rem
+  color: rgba($gallery-ink, .72)
+  font-size: 1.18rem
+
+.libretto-list
+  display: grid
+  gap: 1rem
+  margin: 0
+  padding: 0
+  list-style: none
+
+.libretto-list li
+  margin: 0
+
+.libretto-card
+  display: grid
+  grid-template-columns: 3.5rem minmax(0, 1fr) auto
+  align-items: center
+  min-height: 8rem
+  border: 1px solid rgba($gallery-ink, .16)
+  color: $gallery-ink
+  text-decoration: none
+  transition: border-color .2s ease, background-color .2s ease
+
+.libretto-card:hover
+  border-color: $gallery-ink
+  background: rgba($gallery-ink, .035)
+  color: $gallery-ink
+
+.libretto-card__number,
+.libretto-card__runtime
+  align-self: stretch
+  display: flex
+  align-items: center
+  justify-content: center
+  padding: 1rem
+  color: rgba($gallery-ink, .58)
+  font-family: $font-family-mono
+  font-size: .72rem
+  font-variant-numeric: tabular-nums
+  text-transform: uppercase
+
+.libretto-card__number
+  border-right: 1px solid rgba($gallery-ink, .12)
+
+.libretto-card__runtime
+  border-left: 1px solid rgba($gallery-ink, .12)
+
+.libretto-card__body
+  display: grid
+  gap: .4rem
+  padding: 1.25rem 1.5rem
+
+.libretto-card__title
+  font-family: $font-family-display
+  font-size: 1.65rem
+  line-height: 1.1
+
+.libretto-card__description
+  max-width: 55ch
+  color: rgba($gallery-ink, .68)
+  font-family: $font-family-ui
+  font-size: .92rem
+  line-height: 1.55
+
+.layout-silent-libretto .site-main
+  padding: clamp(1rem, 3vw, 3rem)
+
+.libretto
+  --libretto-night: #0d0d14
+  --libretto-raised: #171622
+  --libretto-ink: #f2ede4
+  --libretto-muted: #aaa2a6
+  --libretto-gold: #d4b77e
+  width: 100%
+  max-width: 80rem
+  margin: 0 auto
+  overflow: hidden
+  border: 1px solid #34303c
+  background: var(--libretto-night)
+  background-image: radial-gradient(ellipse 65% 54% at 50% 13%, #292536 0%, #14131e 58%, var(--libretto-night) 100%)
+  color: var(--libretto-ink)
+  color-scheme: dark
+  box-shadow: 0 1.5rem 3.5rem rgba(#000, .28)
+
+.libretto p
+  margin: 0
+
+.libretto-header
+  position: relative
+  z-index: 2
+  padding: 1.4rem 1.5rem 0
+  text-align: center
+
+.libretto-header__back
+  display: block
+  width: max-content
+  margin: 0 auto 2rem
+  color: var(--libretto-muted)
+  font-family: $font-family-mono
+  font-size: .7rem
+  letter-spacing: .06em
+  text-decoration: none
+  text-transform: uppercase
+
+.libretto-header__back::before
+  content: "←"
+  margin-right: .5rem
+  color: var(--libretto-gold)
+
+.libretto-header__back:hover
+  color: var(--libretto-ink)
+
+.libretto-header__kicker,
+.libretto-transcript__kicker
+  color: var(--libretto-gold)
+  font-family: $font-family-ui
+  font-size: .7rem
+  font-weight: 700
+  letter-spacing: .24em
+  text-transform: uppercase
+
+.libretto-header h1
+  margin: .32em 0 .12em
+  color: var(--libretto-ink)
+  font-size: 3.5rem
+  font-weight: 400
+  line-height: 1
+  letter-spacing: .01em
+
+.libretto-header__meta
+  color: #c5bdc0
+  font-family: $font-family-ui
+  font-size: .8rem
+  letter-spacing: .08em
+
+.libretto-stage
+  position: relative
+  isolation: isolate
+  display: grid
+  min-height: 34rem
+  place-items: center
+  overflow: hidden
+  padding: 4rem 2rem 3rem
+  outline: 0
+  text-align: center
+
+.libretto-stage:focus-visible
+  outline: 2px solid var(--libretto-gold)
+  outline-offset: -4px
+
+.libretto-stage__lamp
+  position: absolute
+  z-index: 1
+  top: 0
+  left: 50%
+  width: 8px
+  height: 8px
+  border-radius: 50%
+  background: #efc18b
+  box-shadow: 0 0 20px 6px rgba(#d5a86e, .42), 0 0 60px 16px rgba(#ba8859, .16)
+  transform: translateX(-50%)
+
+.libretto-stage__light
+  position: absolute
+  z-index: 0
+  top: 0
+  left: 50%
+  width: 76vw
+  max-width: 54rem
+  height: 96%
+  background: linear-gradient(180deg, rgba(#efc18d, .055), rgba(#cba679, .08) 62%, transparent 100%)
+  clip-path: polygon(48.5% 0, 51.5% 0, 100% 100%, 0 100%)
+  pointer-events: none
+  transform: translateX(-50%)
+
+.libretto-stage__content
+  position: relative
+  z-index: 2
+  display: grid
+  width: 100%
+  max-width: 52rem
+  min-height: 14rem
+  align-content: center
+  justify-items: center
+  gap: 1.4rem
+
+.libretto-stage__cue
+  color: var(--libretto-gold)
+  font-family: $font-family-ui
+  font-size: .7rem
+  font-weight: 700
+  letter-spacing: .14em
+  opacity: .86
+  text-transform: uppercase
+
+.libretto-stage__line
+  max-width: 29ch
+  color: var(--libretto-ink)
+  font-family: $font-family-serif
+  font-size: 2.4rem
+  line-height: 1.48
+  opacity: 0
+  text-wrap: balance
+  text-shadow: 0 3px 22px rgba(#04030a, .58)
+  transform: translateY(.45rem)
+  transition: opacity .65s ease, transform .65s ease
+
+.libretto-stage__line.is-visible
+  opacity: 1
+  transform: translateY(0)
+
+.libretto-stage__intro
+  max-width: 34rem
+  color: #c8c0c2
+  font-family: $font-family-ui
+  font-size: .95rem
+  line-height: 1.8
+
+.libretto-controls
+  position: relative
+  z-index: 2
+  width: 90%
+  max-width: 56rem
+  margin: 0 auto
+  padding-bottom: 1.8rem
+
+.libretto-controls audio
+  display: none
+
+.libretto-progress
+  --libretto-progress: 0%
+  display: block
+  width: 100%
+  height: 1.6rem
+  margin: 0
+  padding: 0
+  border: 0
+  border-radius: 0
+  background: transparent
+  cursor: pointer
+  accent-color: var(--libretto-gold)
+  appearance: none
+
+.libretto-progress::-webkit-slider-runnable-track
+  height: 3px
+  border: 0
+  background: linear-gradient(90deg, var(--libretto-gold) 0 var(--libretto-progress), #514b56 var(--libretto-progress) 100%)
+
+.libretto-progress::-moz-range-track
+  height: 3px
+  border: 0
+  background: #514b56
+
+.libretto-progress::-moz-range-progress
+  height: 3px
+  background: var(--libretto-gold)
+
+.libretto-progress::-webkit-slider-thumb
+  width: .85rem
+  height: .85rem
+  margin-top: -.36rem
+  border: 1px solid var(--libretto-gold)
+  border-radius: 50%
+  background: var(--libretto-night)
+  appearance: none
+
+.libretto-progress::-moz-range-thumb
+  width: .85rem
+  height: .85rem
+  border: 1px solid var(--libretto-gold)
+  border-radius: 50%
+  background: var(--libretto-night)
+
+.libretto-progress:focus-visible
+  outline: 2px solid var(--libretto-gold)
+  outline-offset: 2px
+
+.libretto-controls__row
+  display: flex
+  align-items: center
+  justify-content: space-between
+  gap: 1.25rem
+  margin-top: .75rem
+
+.libretto-controls__buttons
+  display: flex
+  flex-wrap: wrap
+  align-items: center
+  gap: .65rem
+
+.libretto-button
+  min-height: 2.6rem
+  padding: .62rem 1rem
+  border: 1px solid #69606a
+  border-radius: 0
+  background: transparent
+  color: var(--libretto-ink)
+  font-family: $font-family-ui
+  font-size: .78rem
+  font-weight: 700
+  letter-spacing: .04em
+  cursor: pointer
+  transition: background-color .2s ease, border-color .2s ease, color .2s ease
+
+.libretto-button:hover,
+.libretto-button:focus-visible
+  border-color: var(--libretto-gold)
+  background: rgba(#b99768, .12)
+
+.libretto-button--primary
+  min-width: 5.6rem
+  border-color: var(--libretto-gold)
+  background: var(--libretto-gold)
+  color: #1a1518
+
+.libretto-button--primary:hover,
+.libretto-button--primary:focus-visible
+  background: #e1c58d
+  color: #1a1518
+
+.libretto-time
+  flex: 0 0 auto
+  color: #c9bec0
+  font-family: $font-family-ui
+  font-size: .82rem
+  font-variant-numeric: tabular-nums
+
+.libretto-shortcuts
+  padding: 0 1rem 1.4rem
+  color: #928a91
+  font-family: $font-family-ui
+  font-size: .7rem
+  letter-spacing: .025em
+  text-align: center
+
+.libretto-shortcuts kbd
+  border: 0
+  background: transparent
+  color: #bcb2b8
+  font-family: inherit
+
+.libretto-transcript
+  width: calc(100% - 2rem)
+  max-width: 46rem
+  max-width: none
+  max-height: calc(100vh - 2rem)
+  margin: auto
+  padding: 0
+  overflow: auto
+  border: 1px solid #514b56
+  background: #0d0d14
+  color: var(--libretto-ink)
+
+.libretto-transcript::backdrop
+  background: rgba(#050509, .88)
+
+.libretto-transcript__inner
+  padding: 2rem
+
+.libretto-transcript__header
+  display: flex
+  align-items: flex-start
+  justify-content: space-between
+  gap: 1rem
+  margin-bottom: 2rem
+
+.libretto-transcript h2
+  margin: .18em 0 0
+  color: var(--libretto-ink)
+  font-size: 2.3rem
+  font-weight: 400
+
+.libretto-transcript__list
+  margin: 0
+  padding: 0
+  list-style: none
+
+.libretto-transcript__list li
+  margin: 0
+  border-top: 1px solid #49434d
+
+.libretto-transcript__jump
+  display: grid
+  grid-template-columns: 4.5rem minmax(0, 1fr)
+  width: 100%
+  gap: 1rem
+  padding: 1.05rem .2rem
+  border: 0
+  background: transparent
+  color: var(--libretto-ink)
+  font-family: $font-family-serif
+  font-size: 1.08rem
+  line-height: 1.65
+  text-align: left
+  cursor: pointer
+
+.libretto-transcript__jump:hover,
+.libretto-transcript__jump:focus-visible,
+.libretto-transcript__jump.is-active
+  color: var(--libretto-gold)
+
+.libretto-transcript__time
+  padding-top: .16rem
+  color: var(--libretto-gold)
+  font-family: $font-family-ui
+  font-size: .75rem
+  font-variant-numeric: tabular-nums
+  letter-spacing: .04em
+
+@media (max-width: 43.99rem)
+  .layout-silent-libretto .site-main
+    padding: .8rem
+
+  .libretto-header
+    padding-top: 1.2rem
+
+  .libretto-header__back
+    margin-bottom: 1.5rem
+
+  .libretto-header h1
+    font-size: 2.65rem
+
+  .libretto-stage
+    min-height: 29rem
+    padding: 3rem 1.25rem 2rem
+
+  .libretto-stage__line
+    font-size: 1.9rem
+
+  .libretto-controls
+    width: calc(100% - 2rem)
+
+  .libretto-controls__row
+    align-items: flex-start
+    flex-direction: column-reverse
+    gap: .75rem
+
+  .libretto-time
+    align-self: flex-end
+
+  .libretto-transcript__inner
+    padding: 1.25rem
+
+@media (max-width: 29.99rem)
+  .libretto-card
+    grid-template-columns: 2.7rem minmax(0, 1fr)
+
+  .libretto-card__runtime
+    grid-column: 2
+    justify-content: flex-start
+    padding: 0 1rem 1rem
+    border-left: 0
+
+  .libretto-card__body
+    padding: 1rem
+
+  .libretto-card__title
+    font-size: 1.4rem
+
+  .layout-silent-libretto .site-main
+    padding: .4rem
+
+  .libretto-header h1
+    font-size: 2.15rem
+
+  .libretto-stage
+    min-height: 25rem
+    padding-inline: 1rem
+
+  .libretto-stage__content
+    min-height: 13rem
+
+  .libretto-stage__line
+    font-size: 1.55rem
+    line-height: 1.52
+
+  .libretto-controls__buttons
+    width: 100%
+
+  .libretto-button
+    flex: 1 1 auto
+
+  .libretto-button:last-child
+    flex-basis: 100%
+
+  .libretto-shortcuts
+    display: none
+
+  .libretto-transcript
+    width: calc(100% - .75rem)
+    max-height: calc(100vh - .75rem)
+
+  .libretto-transcript__header
+    align-items: stretch
+    flex-direction: column
+
+  .libretto-transcript__header .libretto-button
+    align-self: flex-start
+
+  .libretto-transcript__jump
+    grid-template-columns: 3.5rem minmax(0, 1fr)
+    gap: .75rem
+    font-size: 1rem
+
+@media (prefers-reduced-motion: reduce)
+  .libretto-stage__line,
+  .libretto-button,
+  .libretto-card
+    transition: none

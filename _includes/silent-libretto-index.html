@@ -1,0 +1,17 @@
+{% assign works = site.silent_libretto | sort: "order" %}
+<ol class="libretto-list">
+  {% for work in works %}
+  <li>
+    <a class="libretto-card" href="{{ work.url | relative_url }}">
+      <span class="libretto-card__number" aria-hidden="true">{{ forloop.index | prepend: "0" | slice: -2, 2 }}</span>
+      <span class="libretto-card__body">
+        <span class="libretto-card__title">{{ work.title }}</span>
+        <span class="libretto-card__description">{{ work.description }}</span>
+      </span>
+      <span class="libretto-card__runtime">{{ work.runtime }}</span>
+    </a>
+  </li>
+  {% else %}
+  <li>No performances have been published yet.</li>
+  {% endfor %}
+</ol>

@@ -7,6 +7,7 @@ if command -v node >/dev/null 2>&1; then
   node script/test_persian_content.js
   node script/test_feed_layout.js
   node script/test_mermaid_diagrams.mjs
+  node script/test_silent_libretto.js
   node script/test_layout_styles.js
 else
   echo "Node is unavailable; skipped JavaScript unit checks." >&2
@@ -217,6 +218,9 @@ if command -v bundle >/dev/null 2>&1; then
   test -f _site/album/index.html
   test -f _site/album/artists/index.html
   test -f _site/comics/index.html
+  test -f _site/theater/index.html
+  test -f _site/theater/the-last-performance/index.html
+  test -f _site/assets/audio/silent-libretto/the-last-performance.mp3
   test -f _site/about/index.html
   test -f _site/feed.xml
   grep -q 'site-cover' _site/index.html
@@ -232,6 +236,12 @@ if command -v bundle >/dev/null 2>&1; then
   grep -q 'class="relative-time"' _site/index.html
   grep -q 'class="reading-time"' _site/code/index.html
   grep -q 'class="reading-progress"' _site/code/paint-the-code/index.html
+  grep -q '>Theater<' _site/index.html
+  grep -q 'The Last Performance' _site/theater/index.html
+  grep -q 'data-silent-libretto' _site/theater/the-last-performance/index.html
+  grep -q 'The theatre is empty' _site/theater/the-last-performance/index.html
+  grep -q 'assets/audio/silent-libretto/the-last-performance.mp3' _site/theater/the-last-performance/index.html
+  ! grep -q 'data:audio' _site/theater/the-last-performance/index.html
   grep -q 'role="progressbar"' _site/code/paint-the-code/index.html
   grep -q 'min read' _site/code/paint-the-code/index.html
   grep -q 'چارچوبی برای واژه‌گزینی' _site/farsi/index.html
