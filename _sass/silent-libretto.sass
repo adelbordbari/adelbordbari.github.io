@@ -751,3 +751,27 @@ body.has-libretto-fullscreen
   .libretto-button,
   .libretto-card
     transition: none
+
+.libretto-button:disabled,
+.libretto-button:disabled:hover,
+.libretto-button:disabled:focus
+  border-color: #514b56
+  background: transparent
+  color: var(--libretto-muted)
+  cursor: wait
+  opacity: .82
+
+.libretto-button--primary:disabled,
+.libretto-button--primary:disabled:hover,
+.libretto-button--primary:disabled:focus
+  border-color: #776c61
+  background: #776c61
+  color: #18141a
+
+.libretto-progress:disabled
+  cursor: wait
+  opacity: .78
+
+.libretto-transcript__jump[aria-disabled="true"]
+  color: var(--libretto-muted)
+  cursor: wait

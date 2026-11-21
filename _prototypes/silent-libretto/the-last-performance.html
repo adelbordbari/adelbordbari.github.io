@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Last Performance — A Story for Orchestra</title>
+<style>
+:root{color-scheme:dark;--gold:#d9bc84;--muted:#9d98a6;--white:#f4efe6;--night:#101018}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--night);color:var(--white)}
+body{font-family:Georgia,'Times New Roman',serif;min-height:100svh;display:flex;flex-direction:column;background:radial-gradient(ellipse 55% 60% at 50% 15%,#262335 0%,#11101b 65%,#0a0a11 100%)}
+header{text-align:center;padding:clamp(1.5rem,4vh,3rem) 1rem 0;position:relative;z-index:2}
+.kicker{font:600 .67rem/1.5 ui-sans-serif,system-ui,sans-serif;text-transform:uppercase;letter-spacing:.32em;color:var(--gold);}
+h1{font-weight:normal;font-size:clamp(1.9rem,5vw,3.3rem);margin:.3em 0 .13em;letter-spacing:.025em}
+.sub{color:#bcb5bd;font:400 .8rem/1.7 ui-sans-serif,system-ui,sans-serif;letter-spacing:.08em;margin:0}
+main{flex:1;display:flex;justify-content:center;align-items:center;flex-direction:column;min-height:400px;position:relative;overflow:hidden;padding:2.2rem 1.3rem}
+.lamp{position:absolute;top:0;left:50%;transform:translateX(-50%);height:9px;width:9px;border-radius:50%;background:#f0c18b;box-shadow:0 0 20px 6px #d5a86e77,0 0 60px 16px #ba885933}
+.lampray{pointer-events:none;position:absolute;top:0;left:50%;width:min(72vw,780px);height:95%;transform:translateX(-50%);background:linear-gradient(180deg,#efc18d0a 0%,#cba67911 62%,transparent 100%);clip-path:polygon(48% 0,52% 0,100% 100%,0 100%);filter:blur(30px)}
+.stage{position:relative;width:100%;max-width:800px;min-height:170px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.4rem;text-align:center}
+.line{font-size:clamp(1.35rem,3.4vw,2.65rem);line-height:1.55;max-width:750px;text-wrap:balance;opacity:0;transform:translateY(9px);transition:opacity .65s ease,transform .65s ease;text-shadow:0 3px 22px #04030a95}
+.line.show{opacity:1;transform:translateY(0)}
+.cue{font:500 .67rem/1.4 ui-sans-serif,system-ui,sans-serif;color:var(--gold);letter-spacing:.16em;text-transform:uppercase;opacity:.82}
+.intro{font:400 .9rem/1.8 ui-sans-serif,system-ui,sans-serif;color:#c1b9ba;max-width:520px;text-align:center;padding:0 1rem}
+.controls{width:min(850px,92%);margin:0 auto;padding:0 0 1.8rem;position:relative;z-index:2}
+.range{width:100%;height:4px;accent-color:var(--gold);cursor:pointer}
+.row{display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-top:1rem}
+.buttons{display:flex;gap:.7rem;align-items:center;flex-wrap:wrap}
+button{border:1px solid #665b5c;background:transparent;color:var(--white);font:500 .75rem/1.2 ui-sans-serif,system-ui,sans-serif;letter-spacing:.07em;border-radius:999px;padding:.68rem 1.05rem;cursor:pointer}
+button:hover,button:focus-visible{border-color:var(--gold);outline:none;background:#b9976820}
+button.primary{background:var(--gold);color:#1a1318;border-color:var(--gold);font-weight:700;min-width:85px}
+.time{color:#c6b9b1;font:400 .8rem ui-sans-serif,system-ui,sans-serif;font-variant-numeric:tabular-nums}
+footer{text-align:center;padding:0 1rem 1rem;color:#938b93;font:400 .68rem/1.7 ui-sans-serif,system-ui,sans-serif;letter-spacing:.025em}
+#transcript{display:none;position:fixed;z-index:5;inset:0;background:#0c0c13f3;overflow:auto;padding:2rem max(1rem,calc((100vw - 700px)/2));}
+#transcript.open{display:block}.transTop{display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-bottom:2rem}
+#transcript h2{font-size:2rem;font-weight:400;margin:0}ol{list-style:none;padding:0;margin:0 0 3rem}
+li{border-top:1px solid #49424b;padding:1rem 0;display:grid;grid-template-columns:85px 1fr;gap:1rem;cursor:pointer;line-height:1.7;font-size:1.08rem}
+li:hover,li.active{color:var(--gold)}li span{font:500 .75rem/2 ui-sans-serif,system-ui,sans-serif;letter-spacing:.04em;color:var(--gold)}
+@media(max-width:570px){main{min-height:350px}.row{align-items:flex-start;flex-direction:column-reverse;gap:.75rem}.time{align-self:flex-end}.line{font-size:clamp(1.4rem,6.3vw,2rem)}li{grid-template-columns:70px 1fr}}
+@media(prefers-reduced-motion:reduce){.line{transition:none}}
+</style>
+</head>
+<body>
+<header><div class="kicker">A story for orchestra</div><h1>The Last Performance</h1><p class="sub">A silent libretto · 3 minutes 16 seconds</p></header>
+<main><div class="lamp"></div><div class="lampray"></div><div class="stage"><div id="cue" class="cue">The curtain is waiting</div><div id="line" class="line" aria-live="polite"></div><div id="intro" class="intro">Press play. Read each brief passage as it appears, then let the orchestra finish the moment.</div></div></main>
+<section class="controls" aria-label="Playback controls"><input id="scrub" class="range" type="range" min="0" max="196.176" value="0" step="0.05" aria-label="Seek through the music"><div class="row"><div class="buttons"><button class="primary" id="play">▶ Play</button><button id="back">↺ 10s</button><button id="read">Read the full story</button></div><div class="time"><span id="now">0:00</span> / 3:16</div></div></section>
+<footer>Space = play / pause &nbsp; · &nbsp; ← → = skip five seconds &nbsp; · &nbsp; Click any line in the full story to replay it</footer>
+<div id="transcript" role="dialog" aria-modal="true" aria-label="Full timed story"><div class="transTop"><h2>The full story</h2><button id="close">Close ✕</button></div><ol id="lines"></ol></div>
+<audio id="audio" preload="metadata" src="../../assets/audio/silent-libretto/the-last-performance.mp3"></audio>
+<script>
+const cues=[{"s": 0, "e": 12, "t": "The theatre is empty. A single lamp glows above the stage."}, {"s": 12, "e": 23, "t": "An old puppeteer sets a wooden case beneath its light."}, {"s": 23, "e": 35, "t": "Inside lies a marionette, dressed for a performance that never happened."}, {"s": 35, "e": 47, "t": "He lifts it by the strings. Its wooden feet brush the floor."}, {"s": 47, "e": 59, "t": "He makes it bow. Once. Twice. Then its head turns on its own."}, {"s": 59, "e": 72, "t": "He tests one string. The puppet moves an entirely different arm."}, {"s": 72, "e": 83, "t": "He orders a bow. It offers a curtsy."}, {"s": 83, "e": 95, "t": "He stamps his foot. It stamps back, twice as fast."}, {"s": 95, "e": 108, "t": "His commands grow furious. The puppet answers with ever more ridiculous steps."}, {"s": 108, "e": 119, "t": "One final tug. The strings pull tight. Everything becomes still."}, {"s": 119, "e": 132, "t": "Suddenly it darts away, dragging the puppeteer into a wild chase."}, {"s": 132, "e": 146, "t": "He lunges to catch it. It leaps straight into his waiting hands."}, {"s": 146, "e": 158, "t": "But instead of resisting, the puppet invites him to dance."}, {"s": 158, "e": 173, "t": "They spin together. The puppet leads; the puppeteer's stiff steps finally begin to soften."}, {"s": 173, "e": 182, "t": "His hands open. The strings drift to the floor."}, {"s": 182, "e": 190, "t": "The puppet lands on its own feet. It takes a step."}, {"s": 190, "e": 196.176, "t": "It offers him its hand. Together, they bow."}];
+const audio=document.getElementById('audio'),line=document.getElementById('line'),intro=document.getElementById('intro'),cue=document.getElementById('cue');
+const scrub=document.getElementById('scrub'),now=document.getElementById('now'),play=document.getElementById('play');
+const read=document.getElementById('read'),overlay=document.getElementById('transcript'),list=document.getElementById('lines');
+let current=-1;
+function clock(t){t=Math.max(0,Math.floor(t));return `${Math.floor(t/60)}:${String(t%60).padStart(2,'0')}`}
+function seek(t){audio.currentTime=Math.min(t,196.176);render();}
+function render(){const t=audio.currentTime||0, idx=cues.findIndex(x=>t>=x.s && t<x.e);scrub.value=t;now.textContent=clock(t);if(idx===current)return;current=idx;if(idx<0){return}
+ intro.style.display='none';line.classList.remove('show');line.textContent=cues[idx].t;cue.textContent=`Scene ${String(idx+1).padStart(2,'0')} / ${cues.length} · ${clock(cues[idx].s)}–${clock(cues[idx].e)}`;
+ // Allow the outgoing phrase to dissolve without leaving an empty screen for long.
+ void line.offsetWidth;line.classList.add('show');
+ [...list.children].forEach((node,i)=>node.classList.toggle('active',i===idx));}
+function toggle(){if(audio.paused){audio.play().catch(()=>{});}else audio.pause()}
+audio.addEventListener('timeupdate',render);audio.addEventListener('seeked',render);
+audio.addEventListener('play',()=>{play.textContent='Ⅱ Pause';render()});audio.addEventListener('pause',()=>{play.textContent='▶ Play'});
+audio.addEventListener('ended',()=>{play.textContent='↺ Replay'});
+play.addEventListener('click',()=>{if(audio.ended)seek(0);toggle()});
+document.getElementById('back').addEventListener('click',()=>seek(Math.max(0,(audio.currentTime||0)-10)));
+scrub.addEventListener('input',e=>seek(Number(e.target.value)));
+function open(){overlay.classList.add('open');}function close(){overlay.classList.remove('open')}
+read.addEventListener('click',open);document.getElementById('close').addEventListener('click',close);
+for(const [i,x] of cues.entries()){const el=document.createElement('li');const when=document.createElement('span');when.textContent=clock(x.s);const txt=document.createElement('div');txt.textContent=x.t;el.append(when,txt);el.addEventListener('click',()=>{seek(x.s);close();if(audio.paused)audio.play().catch(()=>{})});list.append(el)}
+document.addEventListener('keydown',e=>{if(['INPUT','BUTTON'].includes(document.activeElement?.tagName) && e.code==='Space')return;if(e.code==='Space'){e.preventDefault();toggle()}else if(e.key==='ArrowLeft'&&document.activeElement!==scrub){seek(Math.max(0,audio.currentTime-5))}else if(e.key==='ArrowRight'&&document.activeElement!==scrub){seek(Math.min(196.176,audio.currentTime+5))}else if(e.key==='Escape')close()});
+render();
+</script>
+</body>
+</html>

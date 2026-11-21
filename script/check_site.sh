@@ -241,8 +241,11 @@ if command -v bundle >/dev/null 2>&1; then
   grep -q 'The Last Performance' _site/theater/index.html
   grep -q 'data-silent-libretto' _site/theater/the-last-performance/index.html
   grep -q 'The theatre is empty' _site/theater/the-last-performance/index.html
-  grep -q 'assets/audio/silent-libretto/the-last-performance.mp3' _site/theater/the-last-performance/index.html
+  grep -q 'data-src="/assets/audio/silent-libretto/the-last-performance.mp3"' _site/theater/the-last-performance/index.html
+  grep -q 'data-libretto-play[^>]*disabled' _site/theater/the-last-performance/index.html
+  ! grep -q '<audio[^>]* src=' _site/theater/the-last-performance/index.html
   ! grep -q 'data:audio' _site/theater/the-last-performance/index.html
+  test ! -e _site/_prototypes
   grep -q 'role="progressbar"' _site/code/paint-the-code/index.html
   grep -q 'min read' _site/code/paint-the-code/index.html
   grep -q 'چارچوبی برای واژه‌گزینی' _site/farsi/index.html

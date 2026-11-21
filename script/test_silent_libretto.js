@@ -9,6 +9,7 @@ const root = join(__dirname, '..');
 const workPath = join(root, '_silent_libretto', 'the-last-performance.md');
 const layoutPath = join(root, '_layouts', 'silent-libretto.html');
 const audioPath = join(root, 'assets', 'audio', 'silent-libretto', 'the-last-performance.mp3');
+const prototypePath = join(root, '_prototypes', 'silent-libretto', 'the-last-performance.html');
 const theaterPath = join(root, 'theater.md');
 const archivePath = join(root, '_includes', 'archive.html');
 const work = readFileSync(workPath, 'utf8');
@@ -51,8 +52,12 @@ assert.equal(libretto.previousPassageStart(passages, 0), 0);
 assert.equal(libretto.previousPassageStart(passages, 108), 95);
 assert.equal(libretto.previousPassageStart(passages, 196.176), 182);
 
-assert.match(layout, /preload="metadata"/);
+assert.match(layout, /preload="none"/);
+assert.match(layout, /data-src="{{ page\.audio \| relative_url }}"/);
+assert.match(layout, /data-libretto-play[^>]+disabled/);
+assert.match(layout, /data-libretto-progress[^>]+disabled/);
 assert.doesNotMatch(layout, /autoplay/);
+assert.doesNotMatch(layout, /<audio[^>]*\ssrc=/);
 assert.match(layout, /page\.passages \| jsonify/);
 assert.match(layout, /data-libretto-progress/);
 assert.match(layout, /data-libretto-transcript/);
@@ -69,6 +74,9 @@ assert.match(script, /aria-current/);
 assert.match(script, /--scene-progress/);
 assert.match(script, /requestFullscreen/);
 assert.match(script, /previousPassageStart/);
+assert.match(script, /downloadAudioBlob/);
+assert.match(script, /URL\.createObjectURL/);
+assert.match(script, /audioReady/);
 
 assert.match(styles, /linear-gradient\(90deg, var\(--libretto-gold\) 0 var\(--scene-progress\)/);
 assert.match(styles, /\.libretto:fullscreen/);
@@ -84,5 +92,53 @@ assert.match(archive, /collection_title = 'Theater'/);
 assert.equal(existsSync(audioPath), true);
 assert.ok(statSync(audioPath).size > 4_000_000);
 assert.equal(readFileSync(audioPath).subarray(0, 3).toString(), 'ID3');
+assert.equal(existsSync(join(root, 'exex_01.mp3')), false);
+assert.equal(existsSync(join(root, 'the_last_performance_listening_story.html')), false);
+assert.equal(existsSync(prototypePath), true);
+assert.doesNotMatch(readFileSync(prototypePath, 'utf8'), /data:audio/);
+assert.match(readFileSync(prototypePath, 'utf8'), /assets\/audio\/silent-libretto\/the-last-performance\.mp3/);
 
-console.log('Silent Libretto checks passed.');
+async function testCompleteAudioDownload() {
+  const pieces = [
+    new Uint8Array([1, 2]),
+    new Uint8Array([3, 4]),
+  ];
+  let index = 0;
+  const progress = [];
+  const response = {
+    ok: true,
+    status: 200,
+    headers: {
+      get(name) {
+        if (name === 'Content-Length') return '4';
+        if (name === 'Content-Type') return 'audio/mpeg';
+        return null;
+      },
+    },
+    body: {
+      getReader() {
+        return {
+          async read() {
+            if (index >= pieces.length) return { done: true };
+            return { done: false, value: pieces[index++] };
+          },
+        };
+      },
+    },
+  };
+
+  const blob = await libretto.downloadAudioBlob('/music.mp3', (fraction) => {
+    progress.push(fraction);
+  }, async () => response);
+
+  assert.equal(blob.size, 4);
+  assert.equal(blob.type, 'audio/mpeg');
+  assert.deepEqual(progress, [0.5, 1, 1]);
+}
+
+testCompleteAudioDownload()
+  .then(() => console.log('Silent Libretto checks passed.'))
+  .catch((error) => {
+    console.error(error);
+    process.exitCode = 1;
+  });

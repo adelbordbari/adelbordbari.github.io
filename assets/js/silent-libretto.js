@@ -64,6 +64,42 @@
     return Number(passages[index - 1].start);
   }
 
+  async function downloadAudioBlob(url, onProgress, fetchImplementation) {
+    const request = fetchImplementation || (
+      typeof fetch === 'function' ? fetch.bind(globalThis) : null
+    );
+    if (!request) throw new Error('Audio downloads are not supported in this browser.');
+
+    const response = await request(url, { cache: 'force-cache' });
+    if (!response.ok) throw new Error('Audio download failed with status ' + response.status + '.');
+
+    const report = typeof onProgress === 'function' ? onProgress : () => {};
+    const total = Number(response.headers.get('Content-Length')) || 0;
+
+    if (!response.body || typeof response.body.getReader !== 'function') {
+      const blob = await response.blob();
+      report(1, blob.size, blob.size);
+      return blob;
+    }
+
+    const reader = response.body.getReader();
+    const chunks = [];
+    let received = 0;
+
+    while (true) {
+      const result = await reader.read();
+      if (result.done) break;
+      chunks.push(result.value);
+      received += result.value.byteLength;
+      report(total > 0 ? clamp(received / total, 0, 1) : null, received, total);
+    }
+
+    report(1, received, total || received);
+    return new Blob(chunks, {
+      type: response.headers.get('Content-Type') || 'audio/mpeg',
+    });
+  }
+
   function init(player) {
     if (!player || player.dataset.librettoReady === 'true') return null;
 
@@ -95,11 +131,18 @@
 
     const authoredDuration = Number(player.dataset.duration) || Number(progress.max) || 0;
     const title = player.dataset.title || 'this performance';
+    const audioSource = audio.dataset.src;
+    const readyIntro = intro ? intro.textContent : '';
     let activeIndex = -1;
     let frameId = null;
     let hasStarted = false;
     let transcriptOpener = null;
     let fallbackFullscreen = false;
+    let audioReady = false;
+    let audioLoading = false;
+    let audioLoadFailed = false;
+    let audioObjectUrl = null;
+    let lastDownloadPercent = -1;
 
     player.dataset.librettoReady = 'true';
 
@@ -117,6 +160,97 @@
       progress.style.setProperty('--libretto-progress', `${percent}%`);
       progress.setAttribute('aria-valuetext', `${formatTime(safePosition)} of ${formatTime(total)}`);
       if (currentTime) currentTime.textContent = formatTime(safePosition);
+    }
+
+    function setTranscriptAvailability(ready) {
+      if (!transcriptList) return;
+      transcriptList.querySelectorAll('[data-passage-index]').forEach((button) => {
+        if (ready) button.removeAttribute('aria-disabled');
+        else button.setAttribute('aria-disabled', 'true');
+      });
+    }
+
+    function setDownloadProgress(fraction) {
+      const hasPercentage = Number.isFinite(fraction);
+      const percent = hasPercentage ? Math.round(clamp(fraction, 0, 1) * 100) : null;
+      if (percent === lastDownloadPercent) return;
+      lastDownloadPercent = percent;
+
+      const label = percent === null ? 'Loading…' : 'Loading ' + percent + '%';
+      playButton.textContent = label;
+      playButton.setAttribute('aria-label', label + ' ' + title);
+      progress.style.setProperty('--libretto-progress', (percent || 0) + '%');
+      progress.setAttribute('aria-valuetext', percent === null ? 'Loading music' : 'Music ' + percent + '% loaded');
+      if (intro && !hasStarted) intro.textContent = 'Loading the music…';
+    }
+
+    function waitForBlobSource(blob) {
+      return new Promise((resolve, reject) => {
+        const cleanup = () => {
+          audio.removeEventListener('canplay', handleReady);
+          audio.removeEventListener('error', handleError);
+        };
+        const handleReady = () => {
+          cleanup();
+          resolve();
+        };
+        const handleError = () => {
+          cleanup();
+          reject(new Error('The downloaded audio could not be decoded.'));
+        };
+
+        audio.addEventListener('canplay', handleReady, { once: true });
+        audio.addEventListener('error', handleError, { once: true });
+        if (audioObjectUrl) URL.revokeObjectURL(audioObjectUrl);
+        audioObjectUrl = URL.createObjectURL(blob);
+        audio.src = audioObjectUrl;
+        audio.load();
+      });
+    }
+
+    async function loadAudio() {
+      if (audioLoading || audioReady) return;
+
+      audioLoading = true;
+      audioLoadFailed = false;
+      lastDownloadPercent = -1;
+      player.setAttribute('aria-busy', 'true');
+      playButton.disabled = true;
+      previousButton.disabled = true;
+      progress.disabled = true;
+      setTranscriptAvailability(false);
+      setDownloadProgress(null);
+      if (status) status.textContent = 'Loading the complete recording.';
+
+      try {
+        if (!audioSource) throw new Error('The audio source is missing.');
+        const blob = await downloadAudioBlob(audioSource, setDownloadProgress);
+        await waitForBlobSource(blob);
+
+        audioReady = true;
+        playButton.disabled = false;
+        previousButton.disabled = false;
+        progress.disabled = false;
+        playButton.textContent = 'Play';
+        playButton.setAttribute('aria-label', 'Play ' + title);
+        player.setAttribute('aria-busy', 'false');
+        setTranscriptAvailability(true);
+        if (intro && !hasStarted) intro.textContent = readyIntro;
+        if (status) status.textContent = 'The complete recording is ready to play.';
+        setProgress(0);
+      } catch (error) {
+        audioLoadFailed = true;
+        playButton.disabled = false;
+        playButton.textContent = 'Retry';
+        playButton.setAttribute('aria-label', 'Retry loading ' + title);
+        player.setAttribute('aria-busy', 'false');
+        progress.style.setProperty('--libretto-progress', '0%');
+        progress.setAttribute('aria-valuetext', 'Music failed to load');
+        if (intro && !hasStarted) intro.textContent = 'The music could not load. Try again.';
+        if (status) status.textContent = 'The music could not load. Use Retry to try again.';
+      } finally {
+        audioLoading = false;
+      }
     }
 
     function setPassageProgress(index, position) {
@@ -184,6 +318,7 @@
     }
 
     function seek(value) {
+      if (!audioReady) return;
       hasStarted = true;
       audio.currentTime = clamp(value, 0, duration());
       render(true);
@@ -194,6 +329,7 @@
     }
 
     function play() {
+      if (!audioReady) return;
       hasStarted = true;
       if (audio.ended) seek(0);
       const promise = audio.play();
@@ -206,6 +342,11 @@
     }
 
     function togglePlayback() {
+      if (audioLoadFailed) {
+        loadAudio();
+        return;
+      }
+      if (!audioReady) return;
       if (audio.paused || audio.ended) play();
       else audio.pause();
     }
@@ -288,11 +429,13 @@
       button.className = 'libretto-transcript__jump';
       button.dataset.passageIndex = String(index);
       button.setAttribute('aria-label', `Jump to ${formatTime(passage.start)}: ${passage.text}`);
+      button.setAttribute('aria-disabled', 'true');
       when.className = 'libretto-transcript__time';
       when.textContent = formatTime(passage.start);
       text.textContent = passage.text;
       button.append(when, text);
       button.addEventListener('click', () => {
+        if (!audioReady) return;
         seek(passage.start);
         closeTranscript();
         play();
@@ -343,6 +486,7 @@
     });
 
     audio.addEventListener('pause', () => {
+      if (!audioReady) return;
       if (!audio.ended) {
         playButton.textContent = 'Play';
         playButton.setAttribute('aria-label', `Resume ${title}`);
@@ -360,22 +504,26 @@
     });
 
     ['timeupdate', 'seeking', 'seeked', 'loadedmetadata', 'durationchange'].forEach((eventName) => {
-      audio.addEventListener(eventName, () => render(eventName === 'seeked'));
+      audio.addEventListener(eventName, () => { if (audioReady) render(eventName === 'seeked'); });
     });
 
     audio.addEventListener('error', () => {
-      if (status) status.textContent = 'The audio could not be loaded.';
+      if (audioReady && status) status.textContent = 'The audio could not be played.';
     });
 
     document.addEventListener('fullscreenchange', updateFullscreenButton);
     window.addEventListener('resize', fitToViewport, { passive: true });
     if (window.visualViewport) window.visualViewport.addEventListener('resize', fitToViewport, { passive: true });
+    window.addEventListener('beforeunload', () => {
+      if (audioObjectUrl) URL.revokeObjectURL(audioObjectUrl);
+    }, { once: true });
 
     fitToViewport();
     render(false);
+    loadAudio();
 
-    return { render, seek, previousPassage, togglePlayback, toggleFullscreen, passages };
+    return { render, seek, previousPassage, togglePlayback, toggleFullscreen, loadAudio, passages };
   }
 
-  return { clamp, formatTime, passageIndex, passageProgress, previousPassageStart, init };
+  return { clamp, formatTime, passageIndex, passageProgress, previousPassageStart, downloadAudioBlob, init };
 });
