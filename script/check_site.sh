@@ -237,6 +237,7 @@ if command -v bundle >/dev/null 2>&1; then
   grep -q 'class="reading-time"' _site/code/index.html
   grep -q 'class="reading-progress"' _site/code/paint-the-code/index.html
   grep -q '>Theater<' _site/index.html
+  grep -q 'View all Theater entries' _site/index.html
   grep -q 'The Last Performance' _site/theater/index.html
   grep -q 'data-silent-libretto' _site/theater/the-last-performance/index.html
   grep -q 'The theatre is empty' _site/theater/the-last-performance/index.html

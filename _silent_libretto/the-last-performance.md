@@ -2,6 +2,7 @@
 layout: silent-libretto
 title: The Last Performance
 subtitle: A story for orchestra
+date: 2026-11-17
 description: An old puppeteer returns to an empty theatre for one last, unexpected performance.
 audio: /assets/audio/silent-libretto/the-last-performance.mp3
 duration: 196.176

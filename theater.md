@@ -5,6 +5,6 @@ permalink: /theater/
 description: Instrumental stories for orchestra, revealed through a few carefully timed words.
 ---
 
-<p class="silent-libretto-intro"><em>Silent Libretto</em> is theater led by instrumental music. A few words appear only when they are needed, leaving the rest to the orchestra and your imagination.</p>
+<h2 class="silent-libretto-intro">Stories told by music.</h2>
 
 {% include silent-libretto-index.html %}

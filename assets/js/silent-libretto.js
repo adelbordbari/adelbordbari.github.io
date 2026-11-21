@@ -43,6 +43,27 @@
     return -1;
   }
 
+  function passageProgress(passages, index, time) {
+    if (index < 0 || !passages[index]) return 0;
+
+    const passage = passages[index];
+    const start = Number(passage.start);
+    const length = Number(passage.end) - start;
+    if (length <= 0) return 100;
+    return clamp(((Number(time) - start) / length) * 100, 0, 100);
+  }
+
+  function previousPassageStart(passages, time) {
+    if (!passages.length) return 0;
+
+    let index = passageIndex(passages, time);
+    if (index < 0 && Number(time) >= Number(passages[passages.length - 1].end)) {
+      index = passages.length - 1;
+    }
+    if (index <= 0) return 0;
+    return Number(passages[index - 1].start);
+  }
+
   function init(player) {
     if (!player || player.dataset.librettoReady === 'true') return null;
 
@@ -54,14 +75,15 @@
     const progress = player.querySelector('[data-libretto-progress]');
     const currentTime = player.querySelector('[data-libretto-current]');
     const playButton = player.querySelector('[data-libretto-play]');
-    const backButton = player.querySelector('[data-libretto-back]');
+    const previousButton = player.querySelector('[data-libretto-previous]');
+    const fullscreenButton = player.querySelector('[data-libretto-fullscreen]');
     const status = player.querySelector('[data-libretto-status]');
     const openButton = player.querySelector('[data-libretto-transcript-open]');
     const closeButton = player.querySelector('[data-libretto-transcript-close]');
     const transcript = player.querySelector('[data-libretto-transcript]');
     const transcriptList = player.querySelector('[data-libretto-transcript-list]');
 
-    if (!audio || !passageData || !line || !progress || !playButton) return null;
+    if (!audio || !passageData || !line || !progress || !playButton || !previousButton) return null;
 
     let passages;
     try {
@@ -77,6 +99,7 @@
     let frameId = null;
     let hasStarted = false;
     let transcriptOpener = null;
+    let fallbackFullscreen = false;
 
     player.dataset.librettoReady = 'true';
 
@@ -94,6 +117,12 @@
       progress.style.setProperty('--libretto-progress', `${percent}%`);
       progress.setAttribute('aria-valuetext', `${formatTime(safePosition)} of ${formatTime(total)}`);
       if (currentTime) currentTime.textContent = formatTime(safePosition);
+    }
+
+    function setPassageProgress(index, position) {
+      const percent = audio.ended ? 100 : passageProgress(passages, index, position);
+      line.style.setProperty('--scene-progress', `${percent}%`);
+      line.setAttribute('data-scene-progress', String(Math.round(percent)));
     }
 
     function markTranscript(index) {
@@ -118,11 +147,8 @@
       if (intro) intro.hidden = true;
       line.classList.remove('is-visible');
       line.textContent = passage.text;
-      if (cue) {
-        cue.textContent = `Scene ${String(index + 1).padStart(2, '0')} / ${total} · ${formatTime(passage.start)}–${formatTime(passage.end)}`;
-      }
+      if (cue) cue.textContent = `Scene ${String(index + 1).padStart(2, '0')} / ${total}`;
 
-      // Restart only the restrained fade when a new passage arrives.
       void line.offsetWidth;
       line.classList.add('is-visible');
       markTranscript(index);
@@ -130,8 +156,10 @@
 
     function render(force) {
       const position = audio.currentTime || 0;
+      const index = passageIndex(passages, position);
       setProgress(position);
-      showPassage(passageIndex(passages, position), Boolean(force));
+      showPassage(index, Boolean(force));
+      setPassageProgress(index, position);
     }
 
     function stopFrameLoop() {
@@ -159,6 +187,10 @@
       hasStarted = true;
       audio.currentTime = clamp(value, 0, duration());
       render(true);
+    }
+
+    function previousPassage() {
+      seek(previousPassageStart(passages, audio.currentTime || 0));
     }
 
     function play() {
@@ -191,6 +223,59 @@
       if (transcriptOpener && typeof transcriptOpener.focus === 'function') transcriptOpener.focus();
     }
 
+    function fullscreenActive() {
+      return document.fullscreenElement === player || fallbackFullscreen;
+    }
+
+    function updateFullscreenButton() {
+      if (!fullscreenButton) return;
+      const active = fullscreenActive();
+      fullscreenButton.textContent = active ? 'Exit full screen' : 'Full screen';
+      fullscreenButton.setAttribute('aria-pressed', String(active));
+    }
+
+    function enterFallbackFullscreen() {
+      fallbackFullscreen = true;
+      player.classList.add('is-fullscreen-fallback');
+      document.body.classList.add('has-libretto-fullscreen');
+      updateFullscreenButton();
+    }
+
+    function exitFallbackFullscreen() {
+      fallbackFullscreen = false;
+      player.classList.remove('is-fullscreen-fallback');
+      document.body.classList.remove('has-libretto-fullscreen');
+      updateFullscreenButton();
+    }
+
+    async function toggleFullscreen() {
+      if (fallbackFullscreen) {
+        exitFallbackFullscreen();
+        return;
+      }
+
+      try {
+        if (document.fullscreenElement === player) {
+          await document.exitFullscreen();
+        } else if (typeof player.requestFullscreen === 'function') {
+          await player.requestFullscreen();
+        } else {
+          enterFallbackFullscreen();
+        }
+      } catch (error) {
+        enterFallbackFullscreen();
+      }
+      updateFullscreenButton();
+    }
+
+    function fitToViewport() {
+      if (fullscreenActive()) return;
+      const viewportHeight = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+      const top = Math.max(0, player.getBoundingClientRect().top);
+      const availableHeight = Math.max(480, Math.floor(viewportHeight - top - 8));
+      player.style.setProperty('--libretto-available-height', `${availableHeight}px`);
+    }
+
     passages.forEach((passage, index) => {
       if (!transcriptList) return;
 
@@ -217,12 +302,18 @@
     });
 
     playButton.addEventListener('click', togglePlayback);
-    backButton.addEventListener('click', () => seek((audio.currentTime || 0) - 10));
+    previousButton.addEventListener('click', previousPassage);
     progress.addEventListener('input', (event) => seek(event.target.value));
     openButton.addEventListener('click', openTranscript);
     closeButton.addEventListener('click', closeTranscript);
+    if (fullscreenButton) fullscreenButton.addEventListener('click', toggleFullscreen);
 
     player.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && fallbackFullscreen) {
+        event.preventDefault();
+        exitFallbackFullscreen();
+        return;
+      }
       if (event.altKey || event.ctrlKey || event.metaKey) return;
       if (transcript && transcript.open) return;
 
@@ -276,10 +367,15 @@
       if (status) status.textContent = 'The audio could not be loaded.';
     });
 
+    document.addEventListener('fullscreenchange', updateFullscreenButton);
+    window.addEventListener('resize', fitToViewport, { passive: true });
+    if (window.visualViewport) window.visualViewport.addEventListener('resize', fitToViewport, { passive: true });
+
+    fitToViewport();
     render(false);
 
-    return { render, seek, togglePlayback, passages };
+    return { render, seek, previousPassage, togglePlayback, toggleFullscreen, passages };
   }
 
-  return { clamp, formatTime, passageIndex, init };
+  return { clamp, formatTime, passageIndex, passageProgress, previousPassageStart, init };
 });

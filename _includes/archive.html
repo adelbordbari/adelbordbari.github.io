@@ -20,7 +20,7 @@
     </div>
   </section>
 
-  {% assign all_posts = site.posts | concat: site.code | concat: site.album | concat: site.comics | concat: site.farsi | concat: site.etc %}
+  {% assign all_posts = site.posts | concat: site.code | concat: site.album | concat: site.silent_libretto | concat: site.comics | concat: site.farsi | concat: site.etc %}
   {% assign sorted_posts = all_posts | sort: 'date' | reverse %}
   <section class="catalog-section" aria-labelledby="latest-title">
     <div class="section-heading">
@@ -47,6 +47,10 @@
           {% assign collection_title = 'Comics' %}
           {% assign collection_url = '/comics/' %}
           {% assign collection_icon = 'comments' %}
+        {% elsif collection_name == 'silent_libretto' %}
+          {% assign collection_title = 'Theater' %}
+          {% assign collection_url = '/theater/' %}
+          {% assign collection_icon = 'theater-masks' %}
         {% elsif collection_name == 'farsi' %}
           {% assign collection_title = 'فارسی' %}
           {% assign collection_url = '/farsi/' %}

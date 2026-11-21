@@ -511,3 +511,243 @@
   .libretto-button,
   .libretto-card
     transition: none
+
+// Compact, viewport-fitted listening interface.
+.silent-libretto-intro
+  max-width: none
+  margin: 0 0 2rem
+  color: $gallery-ink
+  font-family: $font-family-display
+  font-size: 1.65rem
+  font-weight: 400
+  line-height: 1.2
+
+.layout-silent-libretto .site-main
+  padding: .75rem
+
+.libretto
+  display: grid
+  grid-template-rows: auto minmax(0, 1fr) auto
+  height: var(--libretto-available-height, auto)
+  min-height: 30rem
+
+.libretto-header
+  z-index: 3
+  display: grid
+  grid-template-columns: auto minmax(0, 1fr) auto
+  align-items: center
+  gap: 1rem
+  min-height: 3.6rem
+  padding: .55rem 1rem
+  border-bottom: 1px solid rgba(#aaa2a6, .16)
+  text-align: initial
+
+.libretto-header__back
+  display: inline
+  width: auto
+  margin: 0
+  font-size: .68rem
+
+.libretto-header__back::before
+  margin-right: .45rem
+
+.libretto-header h1
+  margin: 0
+  overflow: hidden
+  font-size: 1.25rem
+  line-height: 1.1
+  text-align: center
+  text-overflow: ellipsis
+  white-space: nowrap
+
+.libretto-header__fullscreen
+  min-height: 2.2rem
+  padding: .42rem .7rem
+
+.libretto-stage
+  min-height: 0
+  padding: 2rem
+
+.libretto-stage__content
+  min-height: 0
+  gap: 1.25rem
+
+.libretto-stage__cue
+  font-size: .68rem
+
+.libretto-stage__line
+  --scene-progress: 0%
+  color: rgba(#f2ede4, .58)
+  font-size: 2.25rem
+  transform: translateY(.35rem)
+  transition: opacity .55s ease, transform .55s ease
+
+@supports ((-webkit-background-clip: text) or (background-clip: text))
+  .libretto-stage__line
+    background-image: linear-gradient(90deg, var(--libretto-gold) 0 var(--scene-progress), rgba(#f2ede4, .58) var(--scene-progress) 100%)
+    background-clip: text
+    color: transparent
+    -webkit-background-clip: text
+    -webkit-text-fill-color: transparent
+
+.libretto-stage__intro
+  font-size: .92rem
+  line-height: 1.7
+
+.libretto-controls
+  z-index: 3
+  width: 100%
+  max-width: none
+  margin: 0
+  padding: .4rem 1rem .75rem
+  border-top: 1px solid rgba(#aaa2a6, .16)
+
+.libretto-progress
+  height: 1.15rem
+
+.libretto-controls__row
+  gap: 1rem
+  margin-top: .35rem
+
+.libretto-controls__buttons
+  gap: .5rem
+
+.libretto-button
+  min-height: 2.35rem
+  padding: .5rem .8rem
+  font-size: .74rem
+  letter-spacing: .035em
+
+.libretto-button--primary
+  min-width: 5.2rem
+
+.libretto-time
+  font-size: .78rem
+
+.libretto-transcript
+  max-width: 46rem
+
+body.has-libretto-fullscreen
+  overflow: hidden
+
+.libretto:fullscreen,
+.libretto.is-fullscreen-fallback
+  width: 100%
+  max-width: none
+  height: 100vh
+  height: 100dvh
+  min-height: 0
+  margin: 0
+  border: 0
+  box-shadow: none
+
+.libretto.is-fullscreen-fallback
+  position: fixed
+  z-index: 1000
+  inset: 0
+
+@media (max-width: 43.99rem)
+  .layout-silent-libretto .site-main
+    padding: .35rem
+
+  .libretto
+    min-height: 28rem
+
+  .libretto-header
+    gap: .6rem
+    min-height: 3.25rem
+    padding: .45rem .7rem
+
+  .libretto-header__back
+    margin: 0
+
+  .libretto-header h1
+    font-size: 1.08rem
+
+  .libretto-header__fullscreen
+    padding-inline: .55rem
+
+  .libretto-stage
+    min-height: 0
+    padding: 1.5rem 1.1rem
+
+  .libretto-stage__content
+    min-height: 0
+
+  .libretto-stage__line
+    font-size: 1.85rem
+
+  .libretto-controls
+    width: 100%
+    padding-inline: .7rem
+
+  .libretto-controls__row
+    align-items: center
+    flex-direction: row
+    gap: .65rem
+
+  .libretto-time
+    align-self: auto
+
+@media (max-width: 29.99rem)
+  .silent-libretto-intro
+    font-size: 1.4rem
+
+  .layout-silent-libretto .site-main
+    padding: 0
+
+  .libretto
+    min-height: 27rem
+    border-right: 0
+    border-left: 0
+
+  .libretto-header
+    grid-template-columns: auto minmax(0, 1fr) auto
+    gap: .4rem
+    padding-inline: .55rem
+
+  .libretto-header__back
+    font-size: 0
+
+  .libretto-header__back::before
+    margin: 0
+    font-size: 1rem
+
+  .libretto-header h1
+    font-size: 1rem
+
+  .libretto-header__fullscreen
+    font-size: .67rem
+
+  .libretto-stage
+    min-height: 0
+    padding-inline: .85rem
+
+  .libretto-stage__content
+    min-height: 0
+    gap: 1rem
+
+  .libretto-stage__line
+    font-size: 1.48rem
+
+  .libretto-controls__buttons
+    width: auto
+    gap: .35rem
+
+  .libretto-button
+    flex: 0 1 auto
+    min-height: 2.25rem
+    padding: .45rem .58rem
+    font-size: .68rem
+
+  .libretto-button:last-child
+    flex-basis: auto
+
+  .libretto-time
+    font-size: .7rem
+
+@media (prefers-reduced-motion: reduce)
+  .libretto-stage__line,
+  .libretto-button,
+  .libretto-card
+    transition: none
